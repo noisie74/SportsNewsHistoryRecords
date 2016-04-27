@@ -6,3 +6,7 @@
 .DS_Store
 /build
 /captures
+/app/src/main/java/com/mikhail/sportsnewshistoryrecords/api/keys/NytKeys.java
+/.gitignore
+
+
