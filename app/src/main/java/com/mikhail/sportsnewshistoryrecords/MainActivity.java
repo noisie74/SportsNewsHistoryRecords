@@ -3,6 +3,8 @@ package com.mikhail.sportsnewshistoryrecords;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -14,7 +16,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment;
 import com.mikhail.sportsnewshistoryrecords.rx.NytAllSportsRxActivity;
 
 import timber.log.Timber;
@@ -23,6 +29,10 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     protected RecyclerView recyclerView;
+    private FragmentManager fragmentManager;
+    private FragmentTransaction fragmentTransaction;
+    private FrameLayout fragContainer;
+    private AllSportsFragment articleListFragment;
 
 
     @Override
@@ -32,12 +42,11 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        recyclerView = (RecyclerView) findViewById(R.id.main_recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        recyclerView = (RecyclerView) findViewById(R.id.main_recycler_view);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        if(BuildConfig.DEBUG) {
-            Timber.plant(new Timber.DebugTree());
-        }
+        setViews();
+        setFragment();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -47,6 +56,18 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    private void setViews() {
+        fragContainer = (FrameLayout) findViewById(R.id.frag_container);
+        fragmentManager = getSupportFragmentManager();
+        articleListFragment = new AllSportsFragment();
+    }
+
+    private void setFragment() {
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.frag_container, articleListFragment);
+        fragmentTransaction.commit();
     }
 
     @Override
@@ -66,62 +87,33 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        NytAllSportsRxActivity nytAllSportsRxActivity = new NytAllSportsRxActivity();
-
+        AllSportsFragment topicFrag = new AllSportsFragment();
         int id = item.getItemId();
 
-//        switch (id) {
-//            case R.id.nav_breakingNews:
+        switch (id) {
+            case R.id.top_news:
 //                topicFrag.setSections(BREAKING_NEWS);
-//                fragmentTransaction = fragmentManager.beginTransaction();
-//                fragmentTransaction.replace(R.id.frag_container, topicFrag);
-//                fragmentTransaction.commit();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.frag_container, topicFrag);
+                fragmentTransaction.commit();
 //                toolbar.setTitle(getString(R.string.breakingNews));
-//                break;
-//            case R.id.nav_world:
+                break;
+            case R.id.nhl:
 //                topicFrag.setSections(WORLD);
-//                fragmentTransaction = fragmentManager.beginTransaction();
-//                fragmentTransaction.replace(R.id.frag_container, topicFrag);
-//                fragmentTransaction.commit();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.frag_container, topicFrag);
+                fragmentTransaction.commit();
 //                toolbar.setTitle(getString(R.string.world));
-//                break;
+                break;
 
-//
-//        if (id == R.id.nav_camera) {
-//            // Handle the camera action
-//        } else if (id == R.id.nav_gallery) {
-//
-//        } else if (id == R.id.nav_slideshow) {
-//
-//        } else if (id == R.id.nav_manage) {
-//
-//        } else if (id == R.id.nav_share) {
-//
-//        } else if (id == R.id.nav_send) {
-//
-//        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
+        }
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            drawer.closeDrawer(GravityCompat.START);
+            return true;
+        }
     }
-}
+
