@@ -9,20 +9,24 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mikhail.sportsnewshistoryrecords.R;
+import com.mikhail.sportsnewshistoryrecords.model.NytSportsObjects;
+import com.mikhail.sportsnewshistoryrecords.model.NytSportsResults;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Mikhail on 4/27/16.
  */
-public class ModelObjectAdaptor<T> extends RecyclerView.Adapter<ModelObjectAdaptor.ViewHolder> {
+public class ModelObjectAdaptor extends RecyclerView.Adapter<ModelObjectAdaptor.ViewHolder> {
 
-    private List<T> modelObject;
+    public NytSportsResults nytSportsResults;
+
     Context context;
 
-    public ModelObjectAdaptor(List<T> modelObject) {
-        this.modelObject = modelObject;
+    public ModelObjectAdaptor(NytSportsResults nytSportsResults) {
+        this.nytSportsResults = nytSportsResults;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -40,8 +44,6 @@ public class ModelObjectAdaptor<T> extends RecyclerView.Adapter<ModelObjectAdapt
 
     }
 
-
-
     @Override
     public ModelObjectAdaptor.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         context = parent.getContext();
@@ -54,11 +56,11 @@ public class ModelObjectAdaptor<T> extends RecyclerView.Adapter<ModelObjectAdapt
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        T modelObject = this.modelObject.get(position);
-        holder.headline.setText(modelObject.toString());
-        holder.articleInfo.setText(modelObject.getAbstractResult());
 
-        String imageURI = modelObject.get(position).getThumbnail_standard();
+        holder.headline.setText(nytSportsResults.getResults()[position].getTitle());
+        holder.articleInfo.setText(nytSportsResults.getResults()[position].getAbstractResult());
+
+        String imageURI = nytSportsResults.getResults()[position].getThumbnail_standard();
         if (imageURI.isEmpty()) {
             imageURI = "R.drawable.nyt_icon";
         }
@@ -73,6 +75,6 @@ public class ModelObjectAdaptor<T> extends RecyclerView.Adapter<ModelObjectAdapt
 
     @Override
     public int getItemCount() {
-        return modelObject.size();
+        return nytSportsResults.getResults().length;
     }
 }

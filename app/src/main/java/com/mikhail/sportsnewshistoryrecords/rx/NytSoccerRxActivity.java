@@ -1,6 +1,7 @@
 package com.mikhail.sportsnewshistoryrecords.rx;
 
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.mikhail.sportsnewshistoryrecords.MainActivity;
 import com.mikhail.sportsnewshistoryrecords.adaptors.ModelObjectAdaptor;
@@ -18,19 +19,22 @@ import timber.log.Timber;
 /**
  * Created by Mikhail on 4/27/16.
  */
-public class NytRxActivity extends MainActivity {
+public class NytSoccerRxActivity extends MainActivity {
+
+    public static final String NYT_SOCCER = "Soccer";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-         NytAPI.NytRx nytSports = NytAPI.createRx();
+        NytAPI.NytRx nytSports = NytAPI.createRx();
 
-        Observable<List<NytSportsResults>> observable = nytSports.nytSportsResults("all", "sports", "Soccer");
+        Observable<NytSportsResults> observable = nytSports.nytSportsResults(NYT_SOCCER);
 
         observable.subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<List<NytSportsResults>>() {
+                .subscribe(new Subscriber<NytSportsResults>() {
                     @Override
                     public void onCompleted() {
 
@@ -42,13 +46,11 @@ public class NytRxActivity extends MainActivity {
                     }
 
                     @Override
-                    public void onNext(List<NytSportsResults> nytSportsResults) {
+                    public void onNext(NytSportsResults nytSportsResults) {
                         ModelObjectAdaptor modelObjectAdapter = new ModelObjectAdaptor(nytSportsResults);
                         recyclerView.setAdapter(modelObjectAdapter);
                     }
                 });
 
     }
-
 }
-

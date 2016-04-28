@@ -25,14 +25,31 @@ public class NytAPI {
 
     public interface NytRx {
         @GET("{source}/{section}/{subsection}/1.json?&api-key=" + NytKeys.newsWireKey)
-        Observable<List<NytSportsResults>> nytSportsResults(
+        Observable<NytSportsResults> nytSportsResults(
                 @Path("source") String source,
                 @Path("section") String section,
-                @Path("subsection") String subsection);
+                @Query("subsection") String subsection);
+        @GET("all/sports/1.json?&api-key=" + NytKeys.newsWireKey)
+        Observable<NytSportsResults> nytSportsResults(
+                @Query("subsection") String subsection);
+
 //        @GET("/users/{owner}/repos")
 //        Observable<List<Repo>> repos(
 //                @Path("owner") String owner);
     }
+
+//    public interface NytRx {
+//        @GET("{source}/{section}/{subsection}/1.json?&api-key=" + NytKeys.newsWireKey)
+//        Observable<List<NytSportsResults>> nytSportsResults(
+//                @Path("source") String source,
+//                @Path("section") String section,
+//                @Path("subsection") String subsection);
+////        @GET("/users/{owner}/repos")
+////        Observable<List<Repo>> repos(
+////                @Path("owner") String owner);
+
+
+//    }
 
     public static NytRx createRx() {
         return new Retrofit.Builder()
