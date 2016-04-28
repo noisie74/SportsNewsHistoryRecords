@@ -68,7 +68,7 @@ public class ModelObjectAdaptor extends RecyclerView.Adapter<ModelObjectAdaptor.
         Picasso.with(context)
                 .load(imageURI)
                 .placeholder(R.drawable.nyt_icon)
-                .resize(100, 100)
+                .resize(200, 200)
                 .centerCrop()
                 .into(holder.articleImage);
     }
