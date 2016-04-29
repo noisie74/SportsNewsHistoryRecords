@@ -16,8 +16,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment;
@@ -25,6 +27,9 @@ import com.mikhail.sportsnewshistoryrecords.fragments.LeaguesFragment;
 import com.mikhail.sportsnewshistoryrecords.rx.NytAllSportsRxActivity;
 
 import timber.log.Timber;
+
+import static com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment.nytAllSportsNews;
+import static com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment.nytSoccerSportsNews;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -34,17 +39,21 @@ public class MainActivity extends AppCompatActivity
     private FragmentTransaction fragmentTransaction;
     private FrameLayout fragContainer;
     private AllSportsFragment articleListFragment;
+    Toolbar toolbar;
+    Spinner spinner;
+    private static final String[]paths = {"item 1", "item 2", "item 3"};
+    ArrayAdapter<String> adapter;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        recyclerView = (RecyclerView) findViewById(R.id.main_recycler_view);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
 
         setViews();
         setFragment();
@@ -63,10 +72,14 @@ public class MainActivity extends AppCompatActivity
         fragContainer = (FrameLayout) findViewById(R.id.frag_container);
         fragmentManager = getSupportFragmentManager();
         articleListFragment = new AllSportsFragment();
+        spinner = (Spinner)findViewById(R.id.spinner);
+
+
     }
 
     private void setFragment() {
         fragmentTransaction = fragmentManager.beginTransaction();
+        nytAllSportsNews();
         fragmentTransaction.add(R.id.frag_container, articleListFragment);
         fragmentTransaction.commit();
     }
@@ -81,6 +94,8 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -88,6 +103,23 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        if (id == R.id.action_settings){
+
+             adapter = new ArrayAdapter<>(MainActivity.this,
+                    R.layout.support_simple_spinner_dropdown_item,paths);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinner.setAdapter(adapter);
+            spinner.setVisibility(View.VISIBLE);
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -98,15 +130,15 @@ public class MainActivity extends AppCompatActivity
 
         switch (id) {
             case R.id.top_news:
-                topicFrag.nytAllSportsNews();
+                nytAllSportsNews();
 //                topicFrag.setSections(BREAKING_NEWS);
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frag_container, topicFrag);
                 fragmentTransaction.commit();
-//                toolbar.setTitle(getString(R.string.breakingNews));
+                toolbar.setTitle("Sports News");
                 break;
             case R.id.english_soccer:
-                topicFrag.nytSoccerSportsNews();
+                nytSoccerSportsNews();
 //                topicFrag.setSections(WORLD);
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frag_container, topicFrag);
