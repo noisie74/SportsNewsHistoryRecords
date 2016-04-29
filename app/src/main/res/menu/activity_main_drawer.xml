@@ -1,35 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
-    </group>
 
-    <item android:title="Communicate">
+    <item
+        android:id="@+id/top_news"
+        android:icon="@drawable/ic_whatshot_24dp"
+        android:title="Sports News" />
+    <item
+        android:id="@+id/favorites"
+        android:icon="@drawable/ic_star_24dp"
+        android:title="Saved Stories" />
+
+    <item android:title="Leagues">
+        <menu>
+
+    <item
+        android:id="@+id/nfl"
+        android:icon="@drawable/americanfootball24"
+        android:title="NFL Football" />
+    <item
+        android:id="@+id/nba"
+        android:icon="@drawable/basketball24"
+        android:title="NBA Basketball" />
+    <item
+        android:id="@+id/mlb"
+        android:icon="@drawable/baseball24"
+        android:title="MLB Baseball" />
+    <item
+        android:id="@+id/nhl"
+        android:icon="@drawable/hockey24"
+        android:title="NHL Hockey" />
+
+    <item
+        android:id="@+id/mls"
+        android:icon="@drawable/soccer24"
+        android:title="MLS Soccer" />
+    <item
+        android:id="@+id/english_soccer"
+        android:icon="@drawable/soccer24"
+        android:title="English Premier League" />
+    <item
+        android:id="@+id/spanish_soccer"
+        android:icon="@drawable/soccer24"
+        android:title="Spanish La Liga" />
+    <item
+        android:id="@+id/italian_soccer"
+        android:icon="@drawable/soccer24"
+        android:title="Italian Serie A" />
+    <item
+        android:id="@+id/german_soccer"
+        android:icon="@drawable/soccer24"
+        android:title="German Bundesliga" />
+        </menu>
+    </item>
+
+    <item android:title="Settings">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:id="@+id/notifications"
+                android:icon="@drawable/ic_notifications_24dp"
+                android:title="Notifications" />
             <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:id="@+id/about"
+                android:icon="@drawable/about24"
+                android:title="About" />
         </menu>
     </item>
 
