@@ -1,33 +1,27 @@
 package com.mikhail.sportsnewshistoryrecords;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.LeaguesFragment;
-import com.mikhail.sportsnewshistoryrecords.rx.NytAllSportsRxActivity;
-
-import timber.log.Timber;
 
 import static com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment.nytAllSportsNews;
 import static com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment.nytSoccerSportsNews;
@@ -39,11 +33,12 @@ public class MainActivity extends AppCompatActivity
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
     private FrameLayout fragContainer;
-    private AllSportsFragment articleListFragment;
+    private AllSportsFragment allSportsFragment;
     Toolbar toolbar;
     Spinner spinner;
     private static final String[] paths = {"item 1", "item 2", "item 3"};
     ArrayAdapter<String> adapter;
+    TabLayout tabLayout;
 
 
     @Override
@@ -56,6 +51,16 @@ public class MainActivity extends AppCompatActivity
 
         setViews();
         setFragment();
+
+        tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        tabLayout.addTab(tabLayout.newTab().setText("Articles"));
+        tabLayout.addTab(tabLayout.newTab().setText("History"));
+        tabLayout.addTab(tabLayout.newTab().setText("Records"));
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
+        if (tabLayout != null){
+            tabLayout.setVisibility(View.GONE);
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -70,7 +75,7 @@ public class MainActivity extends AppCompatActivity
     private void setViews() {
         fragContainer = (FrameLayout) findViewById(R.id.frag_container);
         fragmentManager = getSupportFragmentManager();
-        articleListFragment = new AllSportsFragment();
+        allSportsFragment = new AllSportsFragment();
 //        spinner = (Spinner) findViewById(R.id.spinner);
 
 
@@ -79,7 +84,7 @@ public class MainActivity extends AppCompatActivity
     private void setFragment() {
         fragmentTransaction = fragmentManager.beginTransaction();
         nytAllSportsNews();
-        fragmentTransaction.add(R.id.frag_container, articleListFragment);
+        fragmentTransaction.add(R.id.frag_container, allSportsFragment);
         fragmentTransaction.commit();
     }
 
@@ -110,12 +115,17 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.action_settings) {
 
             popup();
+        }
+
+//            if(allSportsFragment != null){
+//               allSportsFragment.popup();
+//            }
 //            adapter = new ArrayAdapter<>(MainActivity.this,
 //                    R.layout.support_simple_spinner_dropdown_item, paths);
 //            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 //            spinner.setAdapter(adapter);
 //            spinner.setVisibility(View.VISIBLE);
-        }
+//        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -135,6 +145,9 @@ public class MainActivity extends AppCompatActivity
                 fragmentTransaction.replace(R.id.frag_container, topicFrag);
                 fragmentTransaction.commit();
                 toolbar.setTitle("Sports News");
+                toolbar.getChildAt(2).setVisibility(View.VISIBLE);
+                tabLayout.setVisibility(View.GONE);
+//                tabLayout.removeAllTabs();
                 break;
             case R.id.english_soccer:
                 nytSoccerSportsNews();
@@ -142,6 +155,9 @@ public class MainActivity extends AppCompatActivity
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frag_container, topicFrag);
                 fragmentTransaction.commit();
+                if (tabLayout != null){
+                    tabLayout.setVisibility(View.VISIBLE);
+                }
 //                toolbar.setTitle(getString(R.string.world));
                 break;
             case R.id.italian_soccer:
@@ -150,6 +166,10 @@ public class MainActivity extends AppCompatActivity
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
                 fragmentTransaction.commit();
+                toolbar.getChildAt(2).setVisibility(View.INVISIBLE);
+                if (tabLayout != null){
+                    tabLayout.setVisibility(View.VISIBLE);
+                }
 //                toolbar.setTitle(getString(R.string.world));
                 break;
 
@@ -160,13 +180,10 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void popup() {
-        PopupMenu popup = new PopupMenu(MainActivity.this,fragContainer); //the v is the view that you click replace it with your menuitem like : menu.getItem(1)
-        popup.getMenuInflater().inflate(R.menu.pop_up_menu,popup.getMenu());
+        PopupMenu popup = new PopupMenu(MainActivity.this, fragContainer, Gravity.RIGHT);
+        popup.getMenuInflater().inflate(R.menu.pop_up_menu, popup.getMenu());
         popup.show();
-
-
     }
-
 }
 
 

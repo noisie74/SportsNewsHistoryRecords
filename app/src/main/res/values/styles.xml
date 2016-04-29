@@ -17,4 +17,9 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="CustomActionBarTheme" parent="@style/Theme.AppCompat.Light">
+        <item name="android:popupMenuStyle">@style/AppTheme.AppBarOverlay</item>
+        <item name="popupMenuStyle">@style/AppTheme.PopupOverlay</item>
+    </style>
+
 </resources>

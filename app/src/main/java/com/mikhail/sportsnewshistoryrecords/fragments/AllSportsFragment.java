@@ -6,9 +6,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.PopupMenu;
 
 import com.mikhail.sportsnewshistoryrecords.R;
 import com.mikhail.sportsnewshistoryrecords.adapters.AllSportsAdapter;
@@ -37,23 +39,24 @@ public class AllSportsFragment extends Fragment {
     public static final String NYT_SOCCER = "Soccer";
 
 
+   private View rootView;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.recycleview_activity_fragment, container, false);
+        rootView = inflater.inflate(R.layout.recycleview_activity_fragment, container, false);
 
-        setViews(v);
+        setViews(rootView);
         breakingNewsLists = new ArrayList<>();
 //        recycleAdapter = new NewsRecyclerAdapter(breakingNewsLists);
-        swipeContainer = (SwipeRefreshLayout)v.findViewById(R.id.swipeContainer);
+        swipeContainer = (SwipeRefreshLayout)rootView.findViewById(R.id.swipeContainer);
         setPullRefresh();
 //        nytAllSportsNews();
 //        nytSoccerSportsNews();
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 //        recycleAdapterItemClicker();
 
-        return v;
+        return rootView;
     }
 
     /**
@@ -163,6 +166,20 @@ public class AllSportsFragment extends Fragment {
     public void setViews(View v) {
 
         recyclerView = (RecyclerView) v.findViewById(R.id.recycle_view);
+
+    }
+
+    public void popup() {
+        PopupMenu popup = new PopupMenu(getContext(),rootView.findViewById(R.id.recycle_view),
+                Gravity.RIGHT); //the v is the view that you click replace it with your menuitem like : menu.getItem(1)
+        popup.getMenuInflater().inflate(R.menu.pop_up_menu, popup.getMenu());
+        popup.show();
+
+//        PopupWindow popupWindow = new PopupWindow(MainActivity.this);
+////        popupWindow.getContentView(R.menu.pop_up_menu);
+//        popupWindow.showAsDropDown(fragContainer);
+////        fragContainer.removeView(fragContainer);
+////        popupWindow.showAsDropDown(fragContainer);
 
     }
 }
