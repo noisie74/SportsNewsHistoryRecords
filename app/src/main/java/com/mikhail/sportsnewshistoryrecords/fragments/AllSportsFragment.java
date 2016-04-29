@@ -161,6 +161,7 @@ public class AllSportsFragment extends Fragment {
 
 
     public void setViews(View v) {
+
         recyclerView = (RecyclerView) v.findViewById(R.id.recycle_view);
 
     }

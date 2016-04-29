@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -41,9 +42,8 @@ public class MainActivity extends AppCompatActivity
     private AllSportsFragment articleListFragment;
     Toolbar toolbar;
     Spinner spinner;
-    private static final String[]paths = {"item 1", "item 2", "item 3"};
+    private static final String[] paths = {"item 1", "item 2", "item 3"};
     ArrayAdapter<String> adapter;
-
 
 
     @Override
@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
 
         setViews();
@@ -72,7 +71,7 @@ public class MainActivity extends AppCompatActivity
         fragContainer = (FrameLayout) findViewById(R.id.frag_container);
         fragmentManager = getSupportFragmentManager();
         articleListFragment = new AllSportsFragment();
-        spinner = (Spinner)findViewById(R.id.spinner);
+//        spinner = (Spinner) findViewById(R.id.spinner);
 
 
     }
@@ -95,7 +94,6 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -109,13 +107,14 @@ public class MainActivity extends AppCompatActivity
 
         int id = item.getItemId();
 
-        if (id == R.id.action_settings){
+        if (id == R.id.action_settings) {
 
-             adapter = new ArrayAdapter<>(MainActivity.this,
-                    R.layout.support_simple_spinner_dropdown_item,paths);
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            spinner.setAdapter(adapter);
-            spinner.setVisibility(View.VISIBLE);
+            popup();
+//            adapter = new ArrayAdapter<>(MainActivity.this,
+//                    R.layout.support_simple_spinner_dropdown_item, paths);
+//            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//            spinner.setAdapter(adapter);
+//            spinner.setVisibility(View.VISIBLE);
         }
 
         return super.onOptionsItemSelected(item);
@@ -155,9 +154,20 @@ public class MainActivity extends AppCompatActivity
                 break;
 
         }
-            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-            drawer.closeDrawer(GravityCompat.START);
-            return true;
-        }
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
+
+    public void popup() {
+        PopupMenu popup = new PopupMenu(MainActivity.this,fragContainer); //the v is the view that you click replace it with your menuitem like : menu.getItem(1)
+        popup.getMenuInflater().inflate(R.menu.pop_up_menu,popup.getMenu());
+        popup.show();
+
+
+    }
+
+}
+
+
 
