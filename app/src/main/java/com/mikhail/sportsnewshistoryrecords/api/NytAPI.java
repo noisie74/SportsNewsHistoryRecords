@@ -12,6 +12,8 @@ import rx.Observable;
 import com.mikhail.sportsnewshistoryrecords.api.keys.NytKeys;
 import com.mikhail.sportsnewshistoryrecords.model.NytSportsObjects;
 import com.mikhail.sportsnewshistoryrecords.model.NytSportsResults;
+import com.mikhail.sportsnewshistoryrecords.model.search.ArticleSearch;
+import com.mikhail.sportsnewshistoryrecords.model.search.Response;
 
 import java.util.List;
 
@@ -32,6 +34,10 @@ public class NytAPI {
         @GET("all/sports/1.json?&api-key=" + NytKeys.newsWireKey)
         Observable<NytSportsResults> nytSportsResults(
                 @Query("subsection") String subsection);
+//        @GET("articlesearch.json?&sort=newest&api-key=" + NytKeys.nyTimesFullSearchQueryKey)
+//        Observable<ArticleSearch> response(
+//                @Query("q") String q);
+
 
 //        @GET("/users/{owner}/repos")
 //        Observable<List<Repo>> repos(

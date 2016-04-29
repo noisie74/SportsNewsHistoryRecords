@@ -3,7 +3,7 @@ package com.mikhail.sportsnewshistoryrecords.rx;
 import android.os.Bundle;
 
 import com.mikhail.sportsnewshistoryrecords.MainActivity;
-import com.mikhail.sportsnewshistoryrecords.adaptors.ModelObjectAdaptor;
+import com.mikhail.sportsnewshistoryrecords.adapters.AllSportsAdapter;
 import com.mikhail.sportsnewshistoryrecords.api.NytAPI;
 import com.mikhail.sportsnewshistoryrecords.model.NytSportsResults;
 
@@ -49,7 +49,7 @@ public class NytAllSportsRxActivity extends MainActivity {
 
                     @Override
                     public void onNext(NytSportsResults nytSportsResults) {
-                        ModelObjectAdaptor modelObjectAdapter = new ModelObjectAdaptor(nytSportsResults);
+                        AllSportsAdapter modelObjectAdapter = new AllSportsAdapter(nytSportsResults);
                         recyclerView.setAdapter(modelObjectAdapter);
                     }
                 });

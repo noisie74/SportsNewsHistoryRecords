@@ -1,14 +1,11 @@
 package com.mikhail.sportsnewshistoryrecords.rx;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import com.mikhail.sportsnewshistoryrecords.MainActivity;
-import com.mikhail.sportsnewshistoryrecords.adaptors.ModelObjectAdaptor;
+import com.mikhail.sportsnewshistoryrecords.adapters.AllSportsAdapter;
 import com.mikhail.sportsnewshistoryrecords.api.NytAPI;
 import com.mikhail.sportsnewshistoryrecords.model.NytSportsResults;
-
-import java.util.List;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -47,7 +44,7 @@ public class NytSoccerRxActivity extends MainActivity {
 
                     @Override
                     public void onNext(NytSportsResults nytSportsResults) {
-                        ModelObjectAdaptor modelObjectAdapter = new ModelObjectAdaptor(nytSportsResults);
+                        AllSportsAdapter modelObjectAdapter = new AllSportsAdapter(nytSportsResults);
                         recyclerView.setAdapter(modelObjectAdapter);
                     }
                 });

@@ -21,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment;
+import com.mikhail.sportsnewshistoryrecords.fragments.LeaguesFragment;
 import com.mikhail.sportsnewshistoryrecords.rx.NytAllSportsRxActivity;
 
 import timber.log.Timber;
@@ -92,20 +93,31 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         AllSportsFragment topicFrag = new AllSportsFragment();
+        LeaguesFragment leaguesFragment = new LeaguesFragment();
         int id = item.getItemId();
 
         switch (id) {
             case R.id.top_news:
+                topicFrag.nytAllSportsNews();
 //                topicFrag.setSections(BREAKING_NEWS);
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frag_container, topicFrag);
                 fragmentTransaction.commit();
 //                toolbar.setTitle(getString(R.string.breakingNews));
                 break;
-            case R.id.nhl:
+            case R.id.english_soccer:
+                topicFrag.nytSoccerSportsNews();
 //                topicFrag.setSections(WORLD);
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frag_container, topicFrag);
+                fragmentTransaction.commit();
+//                toolbar.setTitle(getString(R.string.world));
+                break;
+            case R.id.italian_soccer:
+                leaguesFragment.serieASearch();
+//                topicFrag.setSections(WORLD);
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
                 fragmentTransaction.commit();
 //                toolbar.setTitle(getString(R.string.world));
                 break;

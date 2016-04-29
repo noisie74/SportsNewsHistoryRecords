@@ -1,4 +1,4 @@
-package com.mikhail.sportsnewshistoryrecords.adaptors;
+package com.mikhail.sportsnewshistoryrecords.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -9,23 +9,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mikhail.sportsnewshistoryrecords.R;
-import com.mikhail.sportsnewshistoryrecords.model.NytSportsObjects;
 import com.mikhail.sportsnewshistoryrecords.model.NytSportsResults;
 import com.squareup.picasso.Picasso;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Mikhail on 4/27/16.
  */
-public class ModelObjectAdaptor extends RecyclerView.Adapter<ModelObjectAdaptor.ViewHolder> {
+public class AllSportsAdapter extends RecyclerView.Adapter<AllSportsAdapter.ViewHolder> {
 
     public NytSportsResults nytSportsResults;
 
     Context context;
 
-    public ModelObjectAdaptor(NytSportsResults nytSportsResults) {
+    public AllSportsAdapter(NytSportsResults nytSportsResults) {
         this.nytSportsResults = nytSportsResults;
     }
 
@@ -45,7 +41,7 @@ public class ModelObjectAdaptor extends RecyclerView.Adapter<ModelObjectAdaptor.
     }
 
     @Override
-    public ModelObjectAdaptor.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public AllSportsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.news_main_layout, parent, false);
@@ -68,7 +64,7 @@ public class ModelObjectAdaptor extends RecyclerView.Adapter<ModelObjectAdaptor.
         Picasso.with(context)
                 .load(imageURI)
                 .placeholder(R.drawable.nyt_icon)
-                .resize(200, 200)
+                .resize(200, 190)
                 .centerCrop()
                 .into(holder.articleImage);
     }

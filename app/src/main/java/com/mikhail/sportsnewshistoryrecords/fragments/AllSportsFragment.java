@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.mikhail.sportsnewshistoryrecords.R;
-import com.mikhail.sportsnewshistoryrecords.adaptors.ModelObjectAdaptor;
+import com.mikhail.sportsnewshistoryrecords.adapters.AllSportsAdapter;
 import com.mikhail.sportsnewshistoryrecords.api.NytAPI;
 import com.mikhail.sportsnewshistoryrecords.model.NytSportsObjects;
 import com.mikhail.sportsnewshistoryrecords.model.NytSportsResults;
@@ -30,12 +30,12 @@ import timber.log.Timber;
 public class AllSportsFragment extends Fragment {
 
     public final static String TAG = "ArticleRecycleView";
-    //region private variables
-    private ModelObjectAdaptor recycleAdapter;
-    RecyclerView recyclerView;
+    public static RecyclerView recyclerView;
     public ArrayList<NytSportsObjects> breakingNewsLists;
     protected SwipeRefreshLayout swipeContainer;
     public static final String NYT_ALL = "Pro football,Pro basketball,baseball,soccer,";
+    public static final String NYT_SOCCER = "Soccer";
+
 
 
     @Nullable
@@ -48,7 +48,8 @@ public class AllSportsFragment extends Fragment {
 //        recycleAdapter = new NewsRecyclerAdapter(breakingNewsLists);
         swipeContainer = (SwipeRefreshLayout)v.findViewById(R.id.swipeContainer);
         setPullRefresh();
-        nytAllSportsNews();
+//        nytAllSportsNews();
+//        nytSoccerSportsNews();
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 //        recycleAdapterItemClicker();
 
@@ -105,7 +106,7 @@ public class AllSportsFragment extends Fragment {
      * this will pull a list of articles according to the navi bar topics
      * default will pull all topics
      */
-    private void nytAllSportsNews() {
+    public static void nytAllSportsNews() {
         NytAPI.NytRx nytSports = NytAPI.createRx();
 
         Observable<NytSportsResults> observable = nytSports.nytSportsResults("all", "sports", NYT_ALL);
@@ -125,7 +126,33 @@ public class AllSportsFragment extends Fragment {
 
                     @Override
                     public void onNext(NytSportsResults nytSportsResults) {
-                        ModelObjectAdaptor modelObjectAdapter = new ModelObjectAdaptor(nytSportsResults);
+                        AllSportsAdapter modelObjectAdapter = new AllSportsAdapter(nytSportsResults);
+                        recyclerView.setAdapter(modelObjectAdapter);
+                    }
+                });
+    }
+
+    public static void nytSoccerSportsNews() {
+        NytAPI.NytRx nytSports = NytAPI.createRx();
+
+        Observable<NytSportsResults> observable = nytSports.nytSportsResults(NYT_SOCCER);
+
+        observable.subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<NytSportsResults>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Timber.e(e.getMessage());
+                    }
+
+                    @Override
+                    public void onNext(NytSportsResults nytSportsResults) {
+                        AllSportsAdapter modelObjectAdapter = new AllSportsAdapter(nytSportsResults);
                         recyclerView.setAdapter(modelObjectAdapter);
                     }
                 });
