@@ -25,6 +25,7 @@ import android.widget.Spinner;
 import com.mikhail.sportsnewshistoryrecords.adapters.ViewPagerAdapter;
 import com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.LeaguesFragment;
+import com.mikhail.sportsnewshistoryrecords.fragments.LeaguesHistoryFragment;
 
 import static com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment.nytAllSportsNews;
 import static com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment.nytSoccerSportsNews;
@@ -38,7 +39,6 @@ public class MainActivity extends AppCompatActivity
     private FrameLayout fragContainer;
     private AllSportsFragment allSportsFragment;
     Toolbar toolbar;
-    Spinner spinner;
     private static final String[] paths = {"item 1", "item 2", "item 3"};
     ArrayAdapter<String> adapter;
     TabLayout tabLayout;
@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
         setViews();
         setFragment();
@@ -174,6 +173,17 @@ public class MainActivity extends AppCompatActivity
 //                topicFrag.setSections(WORLD);
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
+                fragmentTransaction.commit();
+                toolbar.getChildAt(2).setVisibility(View.INVISIBLE);
+                if (tabLayout != null){
+                    tabLayout.setVisibility(View.VISIBLE);
+                }
+//                toolbar.setTitle(getString(R.string.world));
+                break;
+            case R.id.german_soccer:
+                LeaguesHistoryFragment leaguesHistoryFragment = new LeaguesHistoryFragment();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.frag_container, leaguesHistoryFragment);
                 fragmentTransaction.commit();
                 toolbar.getChildAt(2).setVisibility(View.INVISIBLE);
                 if (tabLayout != null){

@@ -169,11 +169,11 @@ public class AllSportsFragment extends Fragment {
 
     }
 
-    public void popup() {
-        PopupMenu popup = new PopupMenu(getContext(),rootView.findViewById(R.id.recycle_view),
-                Gravity.RIGHT); //the v is the view that you click replace it with your menuitem like : menu.getItem(1)
-        popup.getMenuInflater().inflate(R.menu.pop_up_menu, popup.getMenu());
-        popup.show();
+//    public void popup() {
+//        PopupMenu popup = new PopupMenu(getContext(),rootView.findViewById(R.id.recycle_view),
+//                Gravity.RIGHT); //the v is the view that you click replace it with your menuitem like : menu.getItem(1)
+//        popup.getMenuInflater().inflate(R.menu.pop_up_menu, popup.getMenu());
+//        popup.show();
 
 //        PopupWindow popupWindow = new PopupWindow(MainActivity.this);
 ////        popupWindow.getContentView(R.menu.pop_up_menu);
@@ -182,4 +182,4 @@ public class AllSportsFragment extends Fragment {
 ////        popupWindow.showAsDropDown(fragContainer);
 
     }
-}
+
