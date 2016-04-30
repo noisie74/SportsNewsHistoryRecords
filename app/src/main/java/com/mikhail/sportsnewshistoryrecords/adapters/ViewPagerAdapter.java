@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.util.Log;
 
 import com.mikhail.sportsnewshistoryrecords.fragments.LeaguesFragment;
-import com.mikhail.sportsnewshistoryrecords.fragments.LeaguesHistoryFragment;
+import com.mikhail.sportsnewshistoryrecords.fragments.NewsDetailsFragment;
 
 /**
  * Created by Mikhail on 4/29/16.
@@ -29,7 +29,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter{
                 Log.d("MainActivity", "in Tab 1");
                 return tab1;
             case 1:
-                LeaguesHistoryFragment tab2 = new LeaguesHistoryFragment();
+                NewsDetailsFragment tab2 = new NewsDetailsFragment();
                 Log.d("MainActivity", "in Tab 2");
                 return tab2;
 //            case 2:

@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.support.design.widget.NavigationView;
@@ -20,15 +19,20 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.PopupMenu;
-import android.widget.Spinner;
 
 import com.mikhail.sportsnewshistoryrecords.adapters.ViewPagerAdapter;
 import com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.LeaguesFragment;
-import com.mikhail.sportsnewshistoryrecords.fragments.LeaguesHistoryFragment;
+import com.mikhail.sportsnewshistoryrecords.fragments.NewsDetailsFragment;
 
 import static com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment.nytAllSportsNews;
+import static com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment.nytBaseballSportsNews;
+import static com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment.nytBasketballSportsNews;
+import static com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment.nytFootballSportsNews;
+import static com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment.nytHockeySportsNews;
 import static com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment.nytSoccerSportsNews;
+import static com.mikhail.sportsnewshistoryrecords.fragments.LeaguesFragment.mlsSearch;
+import static com.mikhail.sportsnewshistoryrecords.fragments.LeaguesFragment.serieASearch;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -42,6 +46,7 @@ public class MainActivity extends AppCompatActivity
     private static final String[] paths = {"item 1", "item 2", "item 3"};
     ArrayAdapter<String> adapter;
     TabLayout tabLayout;
+    NewsDetailsFragment newsDetailsFragment;
 
 
     @Override
@@ -64,11 +69,11 @@ public class MainActivity extends AppCompatActivity
             tabLayout.setVisibility(View.GONE);
         }
 
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
-        final ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter
-                (getSupportFragmentManager(), tabLayout.getTabCount());
-        viewPager.setAdapter(viewPagerAdapter);
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+//        final ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
+//        final ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter
+//                (getSupportFragmentManager(), tabLayout.getTabCount());
+//        viewPager.setAdapter(viewPagerAdapter);
+//        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -84,6 +89,7 @@ public class MainActivity extends AppCompatActivity
         fragContainer = (FrameLayout) findViewById(R.id.frag_container);
         fragmentManager = getSupportFragmentManager();
         allSportsFragment = new AllSportsFragment();
+        newsDetailsFragment = new NewsDetailsFragment();
 //        spinner = (Spinner) findViewById(R.id.spinner);
 
 
@@ -157,6 +163,61 @@ public class MainActivity extends AppCompatActivity
                 tabLayout.setVisibility(View.GONE);
 //                tabLayout.removeAllTabs();
                 break;
+            case R.id.nfl:
+            nytFootballSportsNews();
+//                topicFrag.setSections(BREAKING_NEWS);
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.frag_container, topicFrag);
+            fragmentTransaction.commit();
+            toolbar.setTitle("Football News");
+            toolbar.getChildAt(2).setVisibility(View.VISIBLE);
+            tabLayout.setVisibility(View.GONE);
+//                tabLayout.removeAllTabs();
+            break;
+            case R.id.nba:
+                nytBasketballSportsNews();
+//                topicFrag.setSections(BREAKING_NEWS);
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.frag_container, topicFrag);
+                fragmentTransaction.commit();
+                toolbar.setTitle("NBA News");
+                toolbar.getChildAt(2).setVisibility(View.VISIBLE);
+                tabLayout.setVisibility(View.GONE);
+//                tabLayout.removeAllTabs();
+                break;
+            case R.id.mlb:
+                nytBaseballSportsNews();
+//                topicFrag.setSections(BREAKING_NEWS);
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.frag_container, topicFrag);
+                fragmentTransaction.commit();
+                toolbar.setTitle("Baseball News");
+                toolbar.getChildAt(2).setVisibility(View.VISIBLE);
+                tabLayout.setVisibility(View.GONE);
+//                tabLayout.removeAllTabs();
+                break;
+            case R.id.nhl:
+                nytHockeySportsNews();
+//                topicFrag.setSections(BREAKING_NEWS);
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.frag_container, topicFrag);
+                fragmentTransaction.commit();
+                toolbar.setTitle("NHL News");
+                toolbar.getChildAt(2).setVisibility(View.VISIBLE);
+                tabLayout.setVisibility(View.GONE);
+//                tabLayout.removeAllTabs();
+                break;
+            case R.id.mls:
+                mlsSearch();
+//                topicFrag.setSections(BREAKING_NEWS);
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
+                fragmentTransaction.commit();
+                toolbar.setTitle("MLS News");
+                toolbar.getChildAt(2).setVisibility(View.VISIBLE);
+                tabLayout.setVisibility(View.GONE);
+//                tabLayout.removeAllTabs();
+                break;
             case R.id.english_soccer:
                 nytSoccerSportsNews();
 //                topicFrag.setSections(WORLD);
@@ -169,11 +230,12 @@ public class MainActivity extends AppCompatActivity
 //                toolbar.setTitle(getString(R.string.world));
                 break;
             case R.id.italian_soccer:
-                leaguesFragment.serieASearch();
+                serieASearch();
 //                topicFrag.setSections(WORLD);
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
                 fragmentTransaction.commit();
+                toolbar.setTitle("Italian Serie A News");
                 toolbar.getChildAt(2).setVisibility(View.INVISIBLE);
                 if (tabLayout != null){
                     tabLayout.setVisibility(View.VISIBLE);
@@ -181,7 +243,7 @@ public class MainActivity extends AppCompatActivity
 //                toolbar.setTitle(getString(R.string.world));
                 break;
             case R.id.german_soccer:
-                LeaguesHistoryFragment leaguesHistoryFragment = new LeaguesHistoryFragment();
+                NewsDetailsFragment leaguesHistoryFragment = new NewsDetailsFragment();
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frag_container, leaguesHistoryFragment);
                 fragmentTransaction.commit();
@@ -203,6 +265,8 @@ public class MainActivity extends AppCompatActivity
         popup.getMenuInflater().inflate(R.menu.pop_up_menu, popup.getMenu());
         popup.show();
     }
+
+
 }
 
 

@@ -18,11 +18,20 @@ import com.squareup.picasso.Picasso;
 public class AllSportsAdapter extends RecyclerView.Adapter<AllSportsAdapter.ViewHolder> {
 
     public NytSportsResults nytSportsResults;
+    private static OnItemClickListener listener;
 
     Context context;
 
     public AllSportsAdapter(NytSportsResults nytSportsResults) {
         this.nytSportsResults = nytSportsResults;
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(View itemView, int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -36,6 +45,14 @@ public class AllSportsAdapter extends RecyclerView.Adapter<AllSportsAdapter.View
             headline = (TextView) itemView.findViewById(R.id.headline);
             articleInfo = (TextView) itemView.findViewById(R.id.article_info);
             articleImage = (ImageView) itemView.findViewById(R.id.cardView_image);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listener != null)
+                        listener.onItemClick(itemView, getLayoutPosition());
+                }
+            });
         }
 
     }

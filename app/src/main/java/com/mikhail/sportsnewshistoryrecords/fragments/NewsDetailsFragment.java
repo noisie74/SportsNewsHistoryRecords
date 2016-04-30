@@ -17,10 +17,12 @@ import com.mikhail.sportsnewshistoryrecords.R;
 /**
  * Created by Mikhail on 4/29/16.
  */
-public class LeaguesHistoryFragment extends Fragment {
+public class NewsDetailsFragment extends Fragment {
 
     private View v;
     private WebView historyWebView;
+    String[] articleDetails;
+
 
 
     @Nullable
@@ -30,12 +32,16 @@ public class LeaguesHistoryFragment extends Fragment {
         v = inflater.inflate(R.layout.histoy_web_view, container, false);
         historyWebView = (WebView) v.findViewById(R.id.league_web_view);
 
+        Bundle article = getArguments();
+
+        articleDetails = article.getStringArray("article");
+
         WebSettings webSettings = historyWebView.getSettings();
         historyWebView.setWebViewClient(new WebViewClientDemo()); //opens url in app, not in default browser
         webSettings.setJavaScriptEnabled(true); //turn js on for hacking and giving better ux
         historyWebView.addJavascriptInterface(new MyJavaScriptInterface(), "HTMLOUT");
 
-        historyWebView.loadUrl("https://en.wikipedia.org/wiki/Serie_A");
+        historyWebView.loadUrl(articleDetails[2]);
 
         return v;
     }

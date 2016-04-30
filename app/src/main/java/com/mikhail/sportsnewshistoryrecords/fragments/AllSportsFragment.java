@@ -3,14 +3,14 @@ package com.mikhail.sportsnewshistoryrecords.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Gravity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.PopupMenu;
 
 import com.mikhail.sportsnewshistoryrecords.R;
 import com.mikhail.sportsnewshistoryrecords.adapters.AllSportsAdapter;
@@ -19,6 +19,7 @@ import com.mikhail.sportsnewshistoryrecords.model.NytSportsObjects;
 import com.mikhail.sportsnewshistoryrecords.model.NytSportsResults;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -31,30 +32,34 @@ import timber.log.Timber;
  */
 public class AllSportsFragment extends Fragment {
 
-    public final static String TAG = "ArticleRecycleView";
     public static RecyclerView recyclerView;
-    public ArrayList<NytSportsObjects> breakingNewsLists;
-    protected SwipeRefreshLayout swipeContainer;
-    public static final String NYT_ALL = "Pro football,Pro basketball,baseball,soccer,";
+    public static AllSportsAdapter allSportsAdapter;
+    public static ArrayList<NytSportsObjects> sportsNewsList;
+    public static SwipeRefreshLayout swipeContainer;
+    public static final String NYT_ALL = "Pro football,Pro basketball,baseball,soccer,Hockey";
+    public static final String NYT_FOOTBALL = "Pro Football";
+    public static final String NYT_BASKETBALL = "Pro basketball";
+    public static final String NYT_BASEBALL = "baseball";
+    public static final String NYT_HOCKEY = "Hockey";
     public static final String NYT_SOCCER = "Soccer";
-
-
-   private View rootView;
+    NytSportsResults nytSportsResults;
+    private View rootView;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.recycleview_activity_fragment, container, false);
 
-        setViews(rootView);
-        breakingNewsLists = new ArrayList<>();
-//        recycleAdapter = new NewsRecyclerAdapter(breakingNewsLists);
-        swipeContainer = (SwipeRefreshLayout)rootView.findViewById(R.id.swipeContainer);
-        setPullRefresh();
+
 //        nytAllSportsNews();
-//        nytSoccerSportsNews();
+
+        setViews(rootView);
+        sportsNewsList = new ArrayList<>();
+        allSportsAdapter = new AllSportsAdapter(nytSportsResults);
+        swipeContainer = (SwipeRefreshLayout) rootView.findViewById(R.id.swipeContainer);
+        setPullRefresh();
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-//        recycleAdapterItemClicker();
+        allSportsAdapterItemClicker();
 
         return rootView;
     }
@@ -62,36 +67,35 @@ public class AllSportsFragment extends Fragment {
     /**
      * Set the itemClicker for the recycleView
      */
-//    private void recycleAdapterItemClicker(){
-//        recycleAdapter.setOnItemClickListener(new NewsRecyclerAdapter.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(View view, int position) {
-//
-//                Log.i(TAG, String.valueOf(position));
-//                breakingNewsLists.get(position);
-//
-//                Bundle article = new Bundle(); //will bundle the 5 fields of newsWireObjects in a string array
-//                String[] articleDetails = {breakingNewsLists.get(position).getSection(),
-//                        breakingNewsLists.get(position).getTitle(),
-//                        breakingNewsLists.get(position).getUrl(),
-//                        breakingNewsLists.get(position).getThumbnail_standard(),
-//                        breakingNewsLists.get(position).getAbstractResult()};
-//                article.putStringArray("article", articleDetails);
-//
-//                Fragment articleStory = new ArticleStory();
-//                articleStory.setArguments(article);
-//                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-//                transaction.replace(R.id.frag_container, articleStory);
-//                transaction.addToBackStack(null);
-//                transaction.commit();
-//            }
-//        });
-//    }
+    private void allSportsAdapterItemClicker() {
+        allSportsAdapter.setOnItemClickListener(new AllSportsAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+
+//                sportsNewsList.get(position);
+
+                Bundle article = new Bundle(); //will bundle the 5 fields of NYTSportsObjects in a string array
+                String[] articleDetails = {sportsNewsList.get(position).getSection(),
+                        sportsNewsList.get(position).getTitle(),
+                        sportsNewsList.get(position).getUrl(),
+                        sportsNewsList.get(position).getThumbnail_standard(),
+                        sportsNewsList.get(position).getAbstractResult()};
+                article.putStringArray("article", articleDetails);
+
+                Fragment newsDetailsFragment = new NewsDetailsFragment();
+                newsDetailsFragment.setArguments(article);
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.frag_container, newsDetailsFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
+    }
 
     /**
      * this re-run the api call to check new articles
      */
-    private void setPullRefresh(){
+    private void setPullRefresh() {
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -129,8 +133,10 @@ public class AllSportsFragment extends Fragment {
 
                     @Override
                     public void onNext(NytSportsResults nytSportsResults) {
-                        AllSportsAdapter modelObjectAdapter = new AllSportsAdapter(nytSportsResults);
-                        recyclerView.setAdapter(modelObjectAdapter);
+                        allSportsAdapter = new AllSportsAdapter(nytSportsResults);
+                        Collections.addAll(sportsNewsList, nytSportsResults.getResults());
+                        swipeContainer.setRefreshing(false);
+                        recyclerView.setAdapter(allSportsAdapter);
                     }
                 });
     }
@@ -155,13 +161,125 @@ public class AllSportsFragment extends Fragment {
 
                     @Override
                     public void onNext(NytSportsResults nytSportsResults) {
-                        AllSportsAdapter modelObjectAdapter = new AllSportsAdapter(nytSportsResults);
-                        recyclerView.setAdapter(modelObjectAdapter);
+                        allSportsAdapter = new AllSportsAdapter(nytSportsResults);
+                        Collections.addAll(sportsNewsList, nytSportsResults.getResults());
+                        swipeContainer.setRefreshing(false);
+                        recyclerView.setAdapter(allSportsAdapter);
                     }
                 });
     }
 
+    public static void nytFootballSportsNews() {
+        NytAPI.NytRx nytSports = NytAPI.createRx();
 
+        Observable<NytSportsResults> observable = nytSports.nytSportsResults(NYT_FOOTBALL);
+
+        observable.subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<NytSportsResults>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Timber.e(e.getMessage());
+                    }
+
+                    @Override
+                    public void onNext(NytSportsResults nytSportsResults) {
+                        allSportsAdapter = new AllSportsAdapter(nytSportsResults);
+                        Collections.addAll(sportsNewsList, nytSportsResults.getResults());
+                        swipeContainer.setRefreshing(false);
+                        recyclerView.setAdapter(allSportsAdapter);
+                    }
+                });
+    }
+
+    public static void nytBaseballSportsNews() {
+        NytAPI.NytRx nytSports = NytAPI.createRx();
+
+        Observable<NytSportsResults> observable = nytSports.nytSportsResults(NYT_BASEBALL);
+
+        observable.subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<NytSportsResults>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Timber.e(e.getMessage());
+                    }
+
+                    @Override
+                    public void onNext(NytSportsResults nytSportsResults) {
+                        allSportsAdapter = new AllSportsAdapter(nytSportsResults);
+                        Collections.addAll(sportsNewsList, nytSportsResults.getResults());
+                        swipeContainer.setRefreshing(false);
+                        recyclerView.setAdapter(allSportsAdapter);
+                    }
+                });
+    }
+
+    public static void nytBasketballSportsNews() {
+        NytAPI.NytRx nytSports = NytAPI.createRx();
+
+        Observable<NytSportsResults> observable = nytSports.nytSportsResults(NYT_BASKETBALL);
+
+        observable.subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<NytSportsResults>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Timber.e(e.getMessage());
+                    }
+
+                    @Override
+                    public void onNext(NytSportsResults nytSportsResults) {
+                        allSportsAdapter = new AllSportsAdapter(nytSportsResults);
+                        Collections.addAll(sportsNewsList, nytSportsResults.getResults());
+                        swipeContainer.setRefreshing(false);
+                        recyclerView.setAdapter(allSportsAdapter);
+                    }
+                });
+    }
+
+    public static void nytHockeySportsNews() {
+        NytAPI.NytRx nytSports = NytAPI.createRx();
+
+        Observable<NytSportsResults> observable = nytSports.nytSportsResults(NYT_HOCKEY);
+
+        observable.subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<NytSportsResults>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Timber.e(e.getMessage());
+                    }
+
+                    @Override
+                    public void onNext(NytSportsResults nytSportsResults) {
+                        allSportsAdapter = new AllSportsAdapter(nytSportsResults);
+                        Collections.addAll(sportsNewsList, nytSportsResults.getResults());
+                        swipeContainer.setRefreshing(false);
+                        recyclerView.setAdapter(allSportsAdapter);
+                    }
+                });
+    }
 
     public void setViews(View v) {
 
@@ -169,17 +287,5 @@ public class AllSportsFragment extends Fragment {
 
     }
 
-//    public void popup() {
-//        PopupMenu popup = new PopupMenu(getContext(),rootView.findViewById(R.id.recycle_view),
-//                Gravity.RIGHT); //the v is the view that you click replace it with your menuitem like : menu.getItem(1)
-//        popup.getMenuInflater().inflate(R.menu.pop_up_menu, popup.getMenu());
-//        popup.show();
-
-//        PopupWindow popupWindow = new PopupWindow(MainActivity.this);
-////        popupWindow.getContentView(R.menu.pop_up_menu);
-//        popupWindow.showAsDropDown(fragContainer);
-////        fragContainer.removeView(fragContainer);
-////        popupWindow.showAsDropDown(fragContainer);
-
-    }
+}
 
