@@ -38,6 +38,8 @@ public class LeaguesFragment extends Fragment {
     protected SwipeRefreshLayout swipeContainer;
     public static final String NYT_ITALIAN = "Italian Serie A";
     public static final String NYT_MLS = "MLS";
+    public static final String NYT_GERMAN = "Bundesliga";
+
 
 
     @Nullable
@@ -98,6 +100,33 @@ public class LeaguesFragment extends Fragment {
         NytSearchAPI.NytRx nytSports = NytSearchAPI.createRx();
 
         Observable<ArticleSearch> observable = nytSports.response(NYT_MLS);
+
+        observable.subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<ArticleSearch>() {
+                    @Override
+                    public void onCompleted() {
+
+                        Log.d("LeaguesFragment", "Query Succes!");
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d("LeaguesFragment", "Error!");
+                    }
+
+                    @Override
+                    public void onNext(ArticleSearch response) {
+                        LeaguesNewsAdapter leaguesNewsAdapter = new LeaguesNewsAdapter(response);
+                        recyclerView.setAdapter(leaguesNewsAdapter);
+                    }
+                });
+    }
+
+    public static void bundesligaSearch() {
+        NytSearchAPI.NytRx nytSports = NytSearchAPI.createRx();
+
+        Observable<ArticleSearch> observable = nytSports.response(NYT_GERMAN);
 
         observable.subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())

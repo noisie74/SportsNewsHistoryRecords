@@ -19,6 +19,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.PopupMenu;
+import android.widget.RelativeLayout;
+import android.widget.Spinner;
 
 import com.mikhail.sportsnewshistoryrecords.adapters.ViewPagerAdapter;
 import com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment;
@@ -31,6 +33,7 @@ import static com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment.n
 import static com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment.nytFootballSportsNews;
 import static com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment.nytHockeySportsNews;
 import static com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment.nytSoccerSportsNews;
+import static com.mikhail.sportsnewshistoryrecords.fragments.LeaguesFragment.bundesligaSearch;
 import static com.mikhail.sportsnewshistoryrecords.fragments.LeaguesFragment.mlsSearch;
 import static com.mikhail.sportsnewshistoryrecords.fragments.LeaguesFragment.serieASearch;
 
@@ -43,10 +46,14 @@ public class MainActivity extends AppCompatActivity
     private FrameLayout fragContainer;
     private AllSportsFragment allSportsFragment;
     Toolbar toolbar;
-    private static final String[] paths = {"item 1", "item 2", "item 3"};
+    private static final String[] paths = {"Top News", "Football", "Basketball", "Baseball", "Hockey", "Soccer"};
     ArrayAdapter<String> adapter;
     TabLayout tabLayout;
     NewsDetailsFragment newsDetailsFragment;
+    PopupMenu popup;
+    Spinner spinner;
+    RelativeLayout root_layout;
+//    String[] arraySpinner;
 
 
     @Override
@@ -55,6 +62,19 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolbar.setTitle("Sports News");
+
+//          spinner=new Spinner(this);
+//         root_layout=(RelativeLayout)findViewById(R.id.relative_layout);
+
+
+//        this.arraySpinner = new String[] {
+//                "1", "2", "3", "4", "5"
+//        };
+        Spinner s = (Spinner)toolbar.findViewById(R.id.app_bar_spinner);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                R.layout.support_simple_spinner_dropdown_item, paths);
+        s.setAdapter(adapter);
 
         setViews();
         setFragment();
@@ -89,6 +109,7 @@ public class MainActivity extends AppCompatActivity
         fragContainer = (FrameLayout) findViewById(R.id.frag_container);
         fragmentManager = getSupportFragmentManager();
         allSportsFragment = new AllSportsFragment();
+        toolbar.setTitle("Sports News");
         newsDetailsFragment = new NewsDetailsFragment();
 //        spinner = (Spinner) findViewById(R.id.spinner);
 
@@ -116,7 +137,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+//        getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
@@ -124,12 +145,17 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        int id = item.getItemId();
-
-        if (id == R.id.action_settings) {
-
-            popup();
-        }
+//        int id = item.getItemId();
+//
+//        if (id == R.id.action_settings) {
+//
+//            root_layout.addView(spinner);
+//            spinner.setAdapter(new ArrayAdapter<>(this,
+//                    android.R.layout.simple_spinner_dropdown_item,paths));
+//
+//
+////            popup();
+//        }
 
 //            if(allSportsFragment != null){
 //               allSportsFragment.popup();
@@ -159,8 +185,8 @@ public class MainActivity extends AppCompatActivity
                 fragmentTransaction.replace(R.id.frag_container, topicFrag);
                 fragmentTransaction.commit();
                 toolbar.setTitle("Sports News");
-                toolbar.getChildAt(2).setVisibility(View.VISIBLE);
-                tabLayout.setVisibility(View.GONE);
+//                toolbar.getChildAt(2).setVisibility(View.VISIBLE);
+//                tabLayout.setVisibility(View.GONE);
 //                tabLayout.removeAllTabs();
                 break;
             case R.id.nfl:
@@ -236,18 +262,19 @@ public class MainActivity extends AppCompatActivity
                 fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
                 fragmentTransaction.commit();
                 toolbar.setTitle("Italian Serie A News");
-                toolbar.getChildAt(2).setVisibility(View.INVISIBLE);
+                toolbar.getChildAt(1).setVisibility(View.GONE);
                 if (tabLayout != null){
                     tabLayout.setVisibility(View.VISIBLE);
                 }
 //                toolbar.setTitle(getString(R.string.world));
                 break;
             case R.id.german_soccer:
-                NewsDetailsFragment leaguesHistoryFragment = new NewsDetailsFragment();
+                bundesligaSearch();
                 fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frag_container, leaguesHistoryFragment);
+                fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
                 fragmentTransaction.commit();
-                toolbar.getChildAt(2).setVisibility(View.INVISIBLE);
+                toolbar.setTitle("German Bundesliga News");
+                toolbar.getChildAt(1).setVisibility(View.GONE);
                 if (tabLayout != null){
                     tabLayout.setVisibility(View.VISIBLE);
                 }
@@ -261,7 +288,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void popup() {
-        PopupMenu popup = new PopupMenu(MainActivity.this, fragContainer, Gravity.RIGHT);
+         popup = new PopupMenu(MainActivity.this, fragContainer, Gravity.RIGHT);
         popup.getMenuInflater().inflate(R.menu.pop_up_menu, popup.getMenu());
         popup.show();
     }

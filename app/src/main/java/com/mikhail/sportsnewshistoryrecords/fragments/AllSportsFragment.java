@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,6 +45,7 @@ public class AllSportsFragment extends Fragment {
     public static final String NYT_SOCCER = "Soccer";
     NytSportsResults nytSportsResults;
     private View rootView;
+    Toolbar toolbar;
 
     @Nullable
     @Override
