@@ -125,6 +125,7 @@ public class AllSportsFragment extends Fragment {
                 .subscribe(new Subscriber<NytSportsResults>() {
                     @Override
                     public void onCompleted() {
+                        Log.d("MainActivity", "Completed!");
 
                     }
 
@@ -135,6 +136,8 @@ public class AllSportsFragment extends Fragment {
 
                     @Override
                     public void onNext(NytSportsResults nytSportsResults) {
+                        Log.d("MainActivity", "Next!");
+
                         allSportsAdapter = new AllSportsAdapter(nytSportsResults);
                         Collections.addAll(sportsNewsList, nytSportsResults.getResults());
                         swipeContainer.setRefreshing(false);

@@ -1,5 +1,6 @@
 package com.mikhail.sportsnewshistoryrecords.model;
 
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.mikhail.sportsnewshistoryrecords.model.search.Multimedia;
 
@@ -15,11 +16,12 @@ public class NytSportsObjects {
     private String thumbnail_standard;
     @SerializedName("abstract") private String abstractResult;
     private String created_date;
-//    private NytSportsMultimedia[] multimedia;
-//
-//    public NytSportsMultimedia[] getMultimedia() {
-//        return multimedia;
-//    }
+    @JsonAdapter(MultimediaAdapter.class)
+    private NytSportsMultimedia[] multimedia;
+
+    public NytSportsMultimedia[] getMultimedia() {
+        return multimedia;
+    }
 
     @Override
     public String toString() {

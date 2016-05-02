@@ -39,6 +39,10 @@ public class LeaguesFragment extends Fragment {
     public static final String NYT_ITALIAN = "Italian Serie A";
     public static final String NYT_MLS = "MLS";
     public static final String NYT_GERMAN = "Bundesliga";
+    public static final String NYT_FOOTBALL = "NFL Football";
+    public static final String NYT_BASKETBALL = "NBA Basketball";
+
+
 
 
 
@@ -127,6 +131,60 @@ public class LeaguesFragment extends Fragment {
         NytSearchAPI.NytRx nytSports = NytSearchAPI.createRx();
 
         Observable<ArticleSearch> observable = nytSports.response(NYT_GERMAN);
+
+        observable.subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<ArticleSearch>() {
+                    @Override
+                    public void onCompleted() {
+
+                        Log.d("LeaguesFragment", "Query Succes!");
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d("LeaguesFragment", "Error!");
+                    }
+
+                    @Override
+                    public void onNext(ArticleSearch response) {
+                        LeaguesNewsAdapter leaguesNewsAdapter = new LeaguesNewsAdapter(response);
+                        recyclerView.setAdapter(leaguesNewsAdapter);
+                    }
+                });
+    }
+
+    public static void nbaSearch() {
+        NytSearchAPI.NytRx nytSports = NytSearchAPI.createRx();
+
+        Observable<ArticleSearch> observable = nytSports.response(NYT_BASKETBALL);
+
+        observable.subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<ArticleSearch>() {
+                    @Override
+                    public void onCompleted() {
+
+                        Log.d("LeaguesFragment", "Query Succes!");
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d("LeaguesFragment", "Error!");
+                    }
+
+                    @Override
+                    public void onNext(ArticleSearch response) {
+                        LeaguesNewsAdapter leaguesNewsAdapter = new LeaguesNewsAdapter(response);
+                        recyclerView.setAdapter(leaguesNewsAdapter);
+                    }
+                });
+    }
+
+    public static void footballSearch() {
+        NytSearchAPI.NytRx nytSports = NytSearchAPI.createRx();
+
+        Observable<ArticleSearch> observable = nytSports.response(NYT_FOOTBALL);
 
         observable.subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())

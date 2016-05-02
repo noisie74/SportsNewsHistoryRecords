@@ -1,5 +1,6 @@
 package com.mikhail.sportsnewshistoryrecords.api;
 
+import com.google.gson.Gson;
 import com.mikhail.sportsnewshistoryrecords.api.keys.NytKeys;
 import com.mikhail.sportsnewshistoryrecords.model.NytSportsResults;
 import com.mikhail.sportsnewshistoryrecords.model.search.ArticleSearch;
@@ -18,6 +19,7 @@ import rx.Observable;
 public class NytSearchAPI {
 
     public static final String NYT_API_URL = "http://api.nytimes.com/svc/search/v2/";
+    public static Gson gson = new Gson();
 
 
     public interface NytRx {
@@ -30,7 +32,7 @@ public class NytSearchAPI {
         return new Retrofit.Builder()
                 .baseUrl(NYT_API_URL)
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .build()
                 .create(NytSearchAPI.NytRx.class);
     }

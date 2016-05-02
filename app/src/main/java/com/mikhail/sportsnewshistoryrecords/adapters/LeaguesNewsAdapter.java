@@ -2,6 +2,7 @@ package com.mikhail.sportsnewshistoryrecords.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,7 +62,9 @@ public class LeaguesNewsAdapter extends RecyclerView.Adapter<LeaguesNewsAdapter.
         holder.articleInfo.setText(leaguesSearchResults.getResponse().getDocs()[position].getLead_paragraph());
         String imageURI = null;
         Multimedia[] multiMedia = leaguesSearchResults.getResponse().getDocs()[position].getMultimedia();
+        Log.d("MainActivity",  ""+ multiMedia.length);
         if (multiMedia != null && multiMedia.length > 0) {
+
             imageURI = multiMedia[0].getUrl();
         }
         if (imageURI == null){
@@ -71,7 +74,7 @@ public class LeaguesNewsAdapter extends RecyclerView.Adapter<LeaguesNewsAdapter.
         Picasso.with(context)
                 .load("http://nytimes.com/" + imageURI)
                 .placeholder(R.drawable.nyt_icon)
-                .resize(100, 100)
+                .resize(200, 200)
                 .centerCrop()
                 .into(holder.articleImage);
     }

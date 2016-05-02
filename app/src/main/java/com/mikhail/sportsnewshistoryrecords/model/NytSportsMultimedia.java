@@ -18,7 +18,12 @@ public class NytSportsMultimedia {
         return format;
     }
 
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
     public void setFormat(String format) {
+
         this.format = format;
     }
 

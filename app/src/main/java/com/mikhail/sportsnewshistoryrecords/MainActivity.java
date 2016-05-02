@@ -22,8 +22,10 @@ import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 
+import com.mikhail.sportsnewshistoryrecords.adapters.HistoryAdapter;
 import com.mikhail.sportsnewshistoryrecords.adapters.ViewPagerAdapter;
 import com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment;
+import com.mikhail.sportsnewshistoryrecords.fragments.HistoryFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.LeaguesFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.NewsDetailsFragment;
 
@@ -34,7 +36,9 @@ import static com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment.n
 import static com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment.nytHockeySportsNews;
 import static com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment.nytSoccerSportsNews;
 import static com.mikhail.sportsnewshistoryrecords.fragments.LeaguesFragment.bundesligaSearch;
+import static com.mikhail.sportsnewshistoryrecords.fragments.LeaguesFragment.footballSearch;
 import static com.mikhail.sportsnewshistoryrecords.fragments.LeaguesFragment.mlsSearch;
+import static com.mikhail.sportsnewshistoryrecords.fragments.LeaguesFragment.nbaSearch;
 import static com.mikhail.sportsnewshistoryrecords.fragments.LeaguesFragment.serieASearch;
 
 public class MainActivity extends AppCompatActivity
@@ -54,6 +58,7 @@ public class MainActivity extends AppCompatActivity
     Spinner spinner;
     RelativeLayout root_layout;
 //    String[] arraySpinner;
+    HistoryAdapter historyAdapter;
 
 
     @Override
@@ -78,6 +83,8 @@ public class MainActivity extends AppCompatActivity
 
         setViews();
         setFragment();
+
+        historyAdapter = new HistoryAdapter();
 
         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText("Articles"));
@@ -190,10 +197,10 @@ public class MainActivity extends AppCompatActivity
 //                tabLayout.removeAllTabs();
                 break;
             case R.id.nfl:
-            nytFootballSportsNews();
+            footballSearch();
 //                topicFrag.setSections(BREAKING_NEWS);
             fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.frag_container, topicFrag);
+            fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
             fragmentTransaction.commit();
             toolbar.setTitle("Football News");
             toolbar.getChildAt(2).setVisibility(View.VISIBLE);
@@ -201,10 +208,10 @@ public class MainActivity extends AppCompatActivity
 //                tabLayout.removeAllTabs();
             break;
             case R.id.nba:
-                nytBasketballSportsNews();
+                nbaSearch();
 //                topicFrag.setSections(BREAKING_NEWS);
                 fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frag_container, topicFrag);
+                fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
                 fragmentTransaction.commit();
                 toolbar.setTitle("NBA News");
                 toolbar.getChildAt(2).setVisibility(View.VISIBLE);
@@ -249,6 +256,16 @@ public class MainActivity extends AppCompatActivity
 //                topicFrag.setSections(WORLD);
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frag_container, topicFrag);
+                fragmentTransaction.commit();
+                if (tabLayout != null){
+                    tabLayout.setVisibility(View.VISIBLE);
+                }
+//                toolbar.setTitle(getString(R.string.world));
+                break;
+            case R.id.spanish_soccer:
+                HistoryFragment historyFragment = new HistoryFragment();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.frag_container, historyFragment);
                 fragmentTransaction.commit();
                 if (tabLayout != null){
                     tabLayout.setVisibility(View.VISIBLE);

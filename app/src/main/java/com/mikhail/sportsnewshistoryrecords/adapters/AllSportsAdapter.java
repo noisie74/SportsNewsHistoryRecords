@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mikhail.sportsnewshistoryrecords.R;
+import com.mikhail.sportsnewshistoryrecords.model.NytSportsMultimedia;
 import com.mikhail.sportsnewshistoryrecords.model.NytSportsResults;
 import com.squareup.picasso.Picasso;
 
@@ -73,19 +74,26 @@ public class AllSportsAdapter extends RecyclerView.Adapter<AllSportsAdapter.View
         holder.headline.setText(nytSportsResults.getResults()[position].getTitle());
         holder.articleInfo.setText(nytSportsResults.getResults()[position].getAbstractResult());
 
-        String imageURI = nytSportsResults.getResults()[position].getThumbnail_standard();
-//                getMultimedia()[position].getUrl();
-        if (imageURI.isEmpty()) {
-            imageURI = "R.drawable.nyt_icon";
-        }
+        NytSportsMultimedia[] nytSportsMultimedias = nytSportsResults.getResults()[position].getMultimedia();
+        String imageURI;
+        if (nytSportsMultimedias.length > 0) {
+           imageURI  = nytSportsMultimedias[nytSportsMultimedias.length-1].getUrl();
+            if (imageURI.isEmpty()) {
+                imageURI = "R.drawable.nyt_icon";
+            }
 
+        }else{
+            imageURI = "R.drawable.nyt_icon";
+
+        }
         Picasso.with(context)
                 .load(imageURI)
                 .placeholder(R.drawable.nyt_icon)
-                .resize(200, 190)
+                .resize(250, 250)
                 .centerCrop()
                 .into(holder.articleImage);
     }
+
 
     @Override
     public int getItemCount() {

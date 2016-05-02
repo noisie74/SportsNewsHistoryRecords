@@ -9,6 +9,7 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 import rx.Observable;
 
+import com.google.gson.Gson;
 import com.mikhail.sportsnewshistoryrecords.api.keys.NytKeys;
 import com.mikhail.sportsnewshistoryrecords.model.NytSportsObjects;
 import com.mikhail.sportsnewshistoryrecords.model.NytSportsResults;
@@ -23,6 +24,7 @@ import java.util.List;
 public class NytAPI {
 
     public static final String NYT_API_URL = "http://api.nytimes.com/svc/news/v3/content/";
+    public static Gson gson = new Gson();
 
 
     public interface NytRx {
@@ -61,7 +63,7 @@ public class NytAPI {
         return new Retrofit.Builder()
                 .baseUrl(NYT_API_URL)
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .build()
                 .create(NytAPI.NytRx.class);
     }
