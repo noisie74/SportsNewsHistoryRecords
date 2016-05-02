@@ -1,6 +1,7 @@
 package com.mikhail.sportsnewshistoryrecords.model;
 
 import com.google.gson.annotations.SerializedName;
+import com.mikhail.sportsnewshistoryrecords.model.search.Multimedia;
 
 /**
  * Created by Mikhail on 4/27/16.
@@ -14,7 +15,11 @@ public class NytSportsObjects {
     private String thumbnail_standard;
     @SerializedName("abstract") private String abstractResult;
     private String created_date;
-
+//    private NytSportsMultimedia[] multimedia;
+//
+//    public NytSportsMultimedia[] getMultimedia() {
+//        return multimedia;
+//    }
 
     @Override
     public String toString() {

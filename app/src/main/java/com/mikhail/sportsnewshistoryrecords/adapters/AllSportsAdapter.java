@@ -74,6 +74,7 @@ public class AllSportsAdapter extends RecyclerView.Adapter<AllSportsAdapter.View
         holder.articleInfo.setText(nytSportsResults.getResults()[position].getAbstractResult());
 
         String imageURI = nytSportsResults.getResults()[position].getThumbnail_standard();
+//                getMultimedia()[position].getUrl();
         if (imageURI.isEmpty()) {
             imageURI = "R.drawable.nyt_icon";
         }

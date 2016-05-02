@@ -23,38 +23,38 @@ public class NytAllSportsRxActivity extends MainActivity {
 //    public static final String NYT_BASEBALL = "Baseball";
 //    public static final String NYT_PRO_BASKETBALL = "Pro Basketball";
 
-    public static final String NYT_ALL = "Pro football,Pro basketball,baseball,soccer,";
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-         NytAPI.NytRx nytSports = NytAPI.createRx();
-
-        Observable<NytSportsResults> observable = nytSports.nytSportsResults("all", "sports", NYT_ALL);
-
-        observable.subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<NytSportsResults>() {
-                    @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Timber.e(e.getMessage());
-                    }
-
-                    @Override
-                    public void onNext(NytSportsResults nytSportsResults) {
-                        AllSportsAdapter modelObjectAdapter = new AllSportsAdapter(nytSportsResults);
-                        recyclerView.setAdapter(modelObjectAdapter);
-                    }
-                });
-
-    }
+//    public static final String NYT_ALL = "Pro football,Pro basketball,baseball,soccer,";
+//
+//
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//
+//         NytAPI.NytRx nytSports = NytAPI.createRx();
+//
+//        Observable<NytSportsResults> observable = nytSports.nytSportsResults("all", "sports");
+//
+//        observable.subscribeOn(Schedulers.newThread())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Subscriber<NytSportsResults>() {
+//                    @Override
+//                    public void onCompleted() {
+//
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                        Timber.e(e.getMessage());
+//                    }
+//
+//                    @Override
+//                    public void onNext(NytSportsResults nytSportsResults) {
+//                        AllSportsAdapter modelObjectAdapter = new AllSportsAdapter(nytSportsResults);
+//                        recyclerView.setAdapter(modelObjectAdapter);
+//                    }
+//                });
+//
+//    }
 
 }
 
