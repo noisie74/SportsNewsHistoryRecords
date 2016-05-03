@@ -10,6 +10,7 @@ import com.mikhail.sportsnewshistoryrecords.R;
 import com.mikhail.sportsnewshistoryrecords.fragments.HistoryFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.LeaguesFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.NewsDetailsFragment;
+import com.mikhail.sportsnewshistoryrecords.fragments.RecordsFragment;
 
 /**
  * Created by Mikhail on 4/29/16.
@@ -31,20 +32,18 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter{
         switch (position) {
             case 0:
                 LeaguesFragment tab1 = new LeaguesFragment();
+                LeaguesFragment.serieASearch();
                 Log.d("MainActivity", "in Tab 1");
                 return tab1;
             case 1:
                 HistoryFragment tab2 = new HistoryFragment();
-//
-//                fragmentTransaction = fragmentManager.beginTransaction();
-//                fragmentTransaction.replace(R.id.frag_container, tab2);
-//                fragmentTransaction.commit();
+
 
                 Log.d("MainActivity", "in Tab 2");
                 return tab2;
-//            case 2:
-//                ContactsFragment tab3 = new ContactsFragment();
-//                return tab3;
+            case 2:
+                RecordsFragment tab3 = new RecordsFragment();
+                return tab3;
 
             default:
                 return null;

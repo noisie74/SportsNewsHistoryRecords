@@ -12,6 +12,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -73,13 +74,6 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
         toolbar.setTitle("Sports News");
 
-//          spinner=new Spinner(this);
-//         root_layout=(RelativeLayout)findViewById(R.id.relative_layout);
-
-
-//        this.arraySpinner = new String[] {
-//                "1", "2", "3", "4", "5"
-//        };
         Spinner s = (Spinner) toolbar.findViewById(R.id.app_bar_spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 R.layout.support_simple_spinner_dropdown_item, paths);
@@ -103,7 +97,10 @@ public class MainActivity extends AppCompatActivity
         final ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
         final ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter
                 (getSupportFragmentManager(), tabLayout.getTabCount());
+        Log.d("MainActivity", "Tab!" + tabLayout.getTabCount());
         viewPager.setAdapter(viewPagerAdapter);
+        viewPager.setVisibility(View.VISIBLE);
+        fragContainer.setVisibility(View.GONE);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -133,13 +130,6 @@ public class MainActivity extends AppCompatActivity
                         fragmentTransaction.commit();
                         break;
 
-//                if (tab.getPosition() == 1){
-//                    historyFragment = new HistoryFragment();
-//                    fragmentTransaction = fragmentManager.beginTransaction();
-//                    fragmentTransaction.replace(R.id.frag_container, historyFragment);
-//                    fragmentTransaction.commit();
-//
-//                }
 
                 }
             }
@@ -238,7 +228,10 @@ public class MainActivity extends AppCompatActivity
                 fragmentTransaction.commit();
                 toolbar.setTitle("Sports News");
 //                toolbar.getChildAt(2).setVisibility(View.VISIBLE);
-//                tabLayout.setVisibility(View.GONE);
+                if (tabLayout != null){
+                    tabLayout.setVisibility(View.GONE);
+
+                }
 //                tabLayout.removeAllTabs();
                 break;
             case R.id.nfl:
@@ -260,7 +253,7 @@ public class MainActivity extends AppCompatActivity
                 fragmentTransaction.commit();
                 toolbar.setTitle("NBA News");
                 toolbar.getChildAt(2).setVisibility(View.VISIBLE);
-                tabLayout.setVisibility(View.GONE);
+                tabLayout.setVisibility(View.VISIBLE);
 //                tabLayout.removeAllTabs();
                 break;
             case R.id.mlb:
