@@ -32,16 +32,16 @@ public class NewsDetailsFragment extends Fragment {
         v = inflater.inflate(R.layout.histoy_web_view, container, false);
         historyWebView = (WebView) v.findViewById(R.id.league_web_view);
 
-        Bundle article = getArguments();
+//        Bundle article = getArguments();
 
-        articleDetails = article.getStringArray("article");
+//        articleDetails = article.getStringArray("article");
 
         WebSettings webSettings = historyWebView.getSettings();
         historyWebView.setWebViewClient(new WebViewClientDemo()); //opens url in app, not in default browser
         webSettings.setJavaScriptEnabled(true); //turn js on for hacking and giving better ux
         historyWebView.addJavascriptInterface(new MyJavaScriptInterface(), "HTMLOUT");
 
-        historyWebView.loadUrl(articleDetails[2]);
+//        historyWebView.loadUrl(articleDetails[2]);
 
         return v;
     }

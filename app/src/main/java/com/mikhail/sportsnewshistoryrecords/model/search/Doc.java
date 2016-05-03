@@ -15,7 +15,7 @@ public class Doc {
     private String web_url;
     private String section_name;
     private Headlines headline;
-//    @JsonAdapter(MultimediaSearchAdapter.class)
+    @JsonAdapter(MultimediaSearchAdapter.class)
     private Multimedia[] multimedia;
     private String pub_date;
 

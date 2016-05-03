@@ -38,7 +38,7 @@ public class AllSportsFragment extends Fragment {
     public static ArrayList<NytSportsObjects> sportsNewsList;
     public static SwipeRefreshLayout swipeContainer;
     public static final String NYT_ALL = "Pro football,Pro basketball,baseball,soccer,Hockey";
-    public static final String NYT_FOOTBALL = "Pro Football";
+    public static final String NYT_FOOTBALL = "Pro%20Football";
     public static final String NYT_BASKETBALL = "Pro basketball";
     public static final String NYT_BASEBALL = "baseball";
     public static final String NYT_HOCKEY = "Hockey";
@@ -189,7 +189,6 @@ public class AllSportsFragment extends Fragment {
 
                     @Override
                     public void onError(Throwable e) {
-                        Timber.e(e.getMessage());
                     }
 
                     @Override

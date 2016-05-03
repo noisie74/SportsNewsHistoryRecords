@@ -265,7 +265,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.spanish_soccer:
                 HistoryFragment historyFragment = new HistoryFragment();
                 fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frag_container, historyFragment);
+                fragmentTransaction.replace(R.id.frag_container, topicFrag);
                 fragmentTransaction.commit();
                 if (tabLayout != null){
                     tabLayout.setVisibility(View.VISIBLE);

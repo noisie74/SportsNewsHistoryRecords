@@ -23,7 +23,7 @@ public class NytSearchAPI {
 
 
     public interface NytRx {
-        @GET("articlesearch.json?&sort=newest&api-key=" + NytKeys.nyTimesFullSearchQueryKey)
+        @GET("articlesearch.json?&api-key=" + NytKeys.nyTimesFullSearchQueryKey)
         Observable<ArticleSearch> response(
                 @Query("q") String q);
     }
@@ -37,3 +37,4 @@ public class NytSearchAPI {
                 .create(NytSearchAPI.NytRx.class);
     }
 }
+//&sort=newest

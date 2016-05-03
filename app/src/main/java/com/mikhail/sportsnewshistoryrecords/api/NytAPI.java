@@ -26,7 +26,7 @@ public class NytAPI {
     public static final String NYT_API_URL = "http://api.nytimes.com/svc/news/v3/content/";
     public static Gson gson = new Gson();
 
-
+//    http://api.nytimes.com/svc/news/v3/content/all/sports/.json?api-key=sample-key&subsection=Pro%20Football
     public interface NytRx {
         @GET("{source}/{section}/{subsection}/1.json?&api-key=" + NytKeys.newsWireKey)
         Observable<NytSportsResults> nytSportsResults(
