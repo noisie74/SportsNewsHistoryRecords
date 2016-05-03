@@ -28,6 +28,7 @@ import com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.HistoryFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.LeaguesFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.NewsDetailsFragment;
+import com.mikhail.sportsnewshistoryrecords.fragments.RecordsFragment;
 
 import static com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment.nytAllSportsNews;
 import static com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment.nytBaseballSportsNews;
@@ -57,8 +58,11 @@ public class MainActivity extends AppCompatActivity
     PopupMenu popup;
     Spinner spinner;
     RelativeLayout root_layout;
-//    String[] arraySpinner;
+    //    String[] arraySpinner;
     HistoryAdapter historyAdapter;
+    HistoryFragment historyFragment;
+    LeaguesFragment leaguesFragment;
+    RecordsFragment recordsFragment;
 
 
     @Override
@@ -76,7 +80,7 @@ public class MainActivity extends AppCompatActivity
 //        this.arraySpinner = new String[] {
 //                "1", "2", "3", "4", "5"
 //        };
-        Spinner s = (Spinner)toolbar.findViewById(R.id.app_bar_spinner);
+        Spinner s = (Spinner) toolbar.findViewById(R.id.app_bar_spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 R.layout.support_simple_spinner_dropdown_item, paths);
         s.setAdapter(adapter);
@@ -92,7 +96,7 @@ public class MainActivity extends AppCompatActivity
         tabLayout.addTab(tabLayout.newTab().setText("Records"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        if (tabLayout != null){
+        if (tabLayout != null) {
             tabLayout.setVisibility(View.GONE);
         }
 
@@ -104,8 +108,40 @@ public class MainActivity extends AppCompatActivity
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
+//                viewPager.setCurrentItem(tab.getPosition());
 
+                int id = tab.getPosition();
+
+                switch (id) {
+                    case 0:
+                        leaguesFragment = new LeaguesFragment();
+                        nytSoccerSportsNews();
+                        fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
+                        fragmentTransaction.commit();
+                        break;
+                    case 1:
+                        historyFragment = new HistoryFragment();
+                        fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.frag_container, historyFragment);
+                        fragmentTransaction.commit();
+                        break;
+                    case 2:
+                        recordsFragment = new RecordsFragment();
+                        fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.frag_container, recordsFragment);
+                        fragmentTransaction.commit();
+                        break;
+
+//                if (tab.getPosition() == 1){
+//                    historyFragment = new HistoryFragment();
+//                    fragmentTransaction = fragmentManager.beginTransaction();
+//                    fragmentTransaction.replace(R.id.frag_container, historyFragment);
+//                    fragmentTransaction.commit();
+//
+//                }
+
+                }
             }
 
             @Override
@@ -118,7 +154,6 @@ public class MainActivity extends AppCompatActivity
 
             }
         });
-
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -207,16 +242,16 @@ public class MainActivity extends AppCompatActivity
 //                tabLayout.removeAllTabs();
                 break;
             case R.id.nfl:
-            footballSearch();
+                footballSearch();
 //                topicFrag.setSections(BREAKING_NEWS);
-            fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
-            fragmentTransaction.commit();
-            toolbar.setTitle("Football News");
-            toolbar.getChildAt(2).setVisibility(View.VISIBLE);
-            tabLayout.setVisibility(View.GONE);
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
+                fragmentTransaction.commit();
+                toolbar.setTitle("Football News");
+                toolbar.getChildAt(2).setVisibility(View.VISIBLE);
+                tabLayout.setVisibility(View.GONE);
 //                tabLayout.removeAllTabs();
-            break;
+                break;
             case R.id.nba:
                 nbaSearch();
 //                topicFrag.setSections(BREAKING_NEWS);
@@ -267,7 +302,7 @@ public class MainActivity extends AppCompatActivity
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frag_container, topicFrag);
                 fragmentTransaction.commit();
-                if (tabLayout != null){
+                if (tabLayout != null) {
                     tabLayout.setVisibility(View.VISIBLE);
                 }
 //                toolbar.setTitle(getString(R.string.world));
@@ -278,7 +313,7 @@ public class MainActivity extends AppCompatActivity
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frag_container, historyFragment);
                 fragmentTransaction.commit();
-                if (tabLayout != null){
+                if (tabLayout != null) {
                     tabLayout.setVisibility(View.VISIBLE);
                 }
 //                toolbar.setTitle(getString(R.string.world));
@@ -291,7 +326,7 @@ public class MainActivity extends AppCompatActivity
                 fragmentTransaction.commit();
                 toolbar.setTitle("Italian Serie A News");
                 toolbar.getChildAt(1).setVisibility(View.GONE);
-                if (tabLayout != null){
+                if (tabLayout != null) {
                     tabLayout.setVisibility(View.VISIBLE);
                 }
 //                toolbar.setTitle(getString(R.string.world));
@@ -303,7 +338,7 @@ public class MainActivity extends AppCompatActivity
                 fragmentTransaction.commit();
                 toolbar.setTitle("German Bundesliga News");
                 toolbar.getChildAt(1).setVisibility(View.GONE);
-                if (tabLayout != null){
+                if (tabLayout != null) {
                     tabLayout.setVisibility(View.VISIBLE);
                 }
 //                toolbar.setTitle(getString(R.string.world));
@@ -316,7 +351,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void popup() {
-         popup = new PopupMenu(MainActivity.this, fragContainer, Gravity.RIGHT);
+        popup = new PopupMenu(MainActivity.this, fragContainer, Gravity.RIGHT);
         popup.getMenuInflater().inflate(R.menu.pop_up_menu, popup.getMenu());
         popup.show();
     }

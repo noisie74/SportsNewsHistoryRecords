@@ -31,4 +31,134 @@ For most of Serie A\'s history, there were 16 or 18 clubs competing at the top l
 •	20 clubs: 2004–present
     </string>
 
+    <string name="team_recors_title">
+                Team records\n
+    </string>
+
+    <string name="serie_a_recors_team">
+Most championships won\n
+Overall\n
+•	32, Juventus\n
+        \n
+Consecutives\n
+•	5, Juventus (1930–31 season to 1934–35 season and from 2011–12 season to 2015–16 season)\n
+•	5, Torino (1942–43 season and the 1945–46 season to 1948–49 season)\n
+•	5, Internazionale (2005–06 season to 2009–10 season)\n
+        \n
+Most seasons in Serie A\n
+•	84, Internazionale\n
+         \n
+Most seasons in Serie B\n
+•	57, Brescia\n
+        \n
+Most points in a season\n
+2 Teams in Final Round (2 points per win) 1928–29\n
+•	4, Bologna\n
+6 Teams in Final Round (2 points per win) 1926–27\n
+•	14, Torino\n
+8 Teams in Final Round (2 points per win) 1927–28 - 1945–46\n
+•	22, Torino 1945–46\n
+16 Teams (2 points per win) 1934–35 to 1942–43 - 1967–68 to 1987–88\n
+•	51, Juventus 1976–77\n
+18 Teams (2 points per win) 1929–30 to 1933–34 - 1952–53 to 1966–67 - 1988–89 to 1993–94\n
+•	58, Internazionale 1988–89\n
+18 Teams (3 points per win) 1994–95 to 2003–04\n
+•	82, Milan 2003–04\n
+20 Teams (2 points per win) 1946–47 - 1948–49 to 1951–52\n
+•	63, Torino 1946–47\n
+20 Teams (3 points per win) 2004–05 to present\n
+•	102, Juventus 2013–14\n
+21 Teams (2 points per win) 1947–48\n
+•	65, Torino\n
+         \n
+Most consecutive wins\n
+•	17, Internazionale, 2006–07\n
+•	15, Juventus, 2015–16\n
+•	13, Juventus, 2013–14 to 2014–15\n
+•	12, Juventus, 2013–14\n
+•	11, Roma, 2005–06 and 2012–13 to 2013–14\n
+•	10, Juventus, 2015-16\n
+•	10, Juventus, 1931–32\n
+•	10, Milan, 1950–51 and 1989–90\n
+•	10, Bologna, 1963–64\n
+        \n
+Most consecutive home wins\n
+•	25, Juventus, 2013–14 to 2014–15\n
+        \n
+Longest win streaks from the start of a Serie A season\n
+•	10, Roma, 2013–14\n
+        \n
+Longest win streaks without conceding from the start of a Serie A season\n
+•	5, Juventus, 2014–15\n
+        \n
+Most wins in season\n
+•	33, Juventus, 2013–14 (38 matches)\n
+•	30, Internazionale, 2006–07 (38 matches)\n
+•	29, Torino, 1947–48 (40 matches)\n
+•	28, Juventus, 2015–16 (38 matches)\n
+•	28, Milan, 2005–06 (38 matches)\n
+•	27, Internazionale, 1950–51 (38 matches)\n
+        \n
+Most home wins in season\n
+•	19, Juventus, 2013–14 (19 matches)\n
+        \n
+Most matches won\n
+•	1495, Juventus\n
+        \n
+Most goals scored\n
+•	4577, Juventus\n
+        \n
+Longest unbeaten streaks\n
+•	58, Milan, 1990–91 to 1992–93 (26 May 1991, 0–0 v Parma; 21 March 1993, 0–1 v Parma)\n
+•	49, Juventus, 2010–11 to 2012–13 (22 May 2011, 2–2 v Napoli; 3 November 2012, 1–3 v Internazionale)\n
+        \n
+Longest unbeaten streaks in a single Serie A season\n
+16 Teams\n
+•	30, Perugia, 1978–79\n
+18 Teams\n
+•	34, Milan, 1991–92\n
+20 Teams\n
+•	38, Juventus, 2011–12
+        \n
+    </string>
+
+    <string name="individual_records_title">
+                Individual records\n
+    </string>
+
+    <string name="serie_a_individual_records">
+Most championships won\n
+8 Championships\n
+•	Virginio Rosetta (2 with Pro Vercelli + 6 with Juventus)\n
+•	Giovanni Ferrari (5 with Juventus + 2 with Inter + 1 with Bologna)\n
+•	Giuseppe Furino (all with Juventus)\n
+        \n
+7 Championships\n
+•	Roberto Bettega (all with Juventus)\n
+•	Alessandro Costacurta (all with Milan)\n
+•	Ciro Ferrara (2 with Napoli + 5 with Juventus)\n
+•	Paolo Maldini (all with Milan)\n
+•	Gaetano Scirea (all with Juventus)\n
+•	Guglielmo Gabetto (2 with Juventus + 5 with Torino)\n
+•	Gianluigi Buffon (all with Juventus)\n
+
+    </string>
+
+    <string name="top_scorers_title">
+        Top Scorers\n
+    </string>
+
+    <string name="serie_a_scorers">
+1	Italy	Silvio Piola	years: 1929–1954 years	274 goals\n
+2	Italy	Francesco Totti	years: 1992–	    248 goals\n
+3	Sweden	Gunnar Nordahl	years: 1948–1958	225 goals\n
+4	Italy	Giuseppe Meazza	years: 1929–1947	216 goals\n
+5   Italy	José Altafini	years: 1958–1976	216 goals\n
+6	Italy	Antonio Di Natale	years: 2002–	208 goals\n
+7	Italy	Roberto Baggio	years: 1985–2004	205 goals\n
+8	Sweden	Kurt Hamrin	    years: 1956–1971	190 goals\n
+9	Italy	Giuseppe Signori	years: 1991–2004	188 goals\n
+10  Italy	Alessandro Del Piero	years: 1993–2012	188 goals
+    </string>
+
 </resources>
