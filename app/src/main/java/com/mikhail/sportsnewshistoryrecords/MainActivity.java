@@ -96,11 +96,30 @@ public class MainActivity extends AppCompatActivity
             tabLayout.setVisibility(View.GONE);
         }
 
-//        final ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
-//        final ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter
-//                (getSupportFragmentManager(), tabLayout.getTabCount());
-//        viewPager.setAdapter(viewPagerAdapter);
-//        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        final ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
+        final ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter
+                (getSupportFragmentManager(), tabLayout.getTabCount());
+        viewPager.setAdapter(viewPagerAdapter);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -164,15 +183,6 @@ public class MainActivity extends AppCompatActivity
 ////            popup();
 //        }
 
-//            if(allSportsFragment != null){
-//               allSportsFragment.popup();
-//            }
-//            adapter = new ArrayAdapter<>(MainActivity.this,
-//                    R.layout.support_simple_spinner_dropdown_item, paths);
-//            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//            spinner.setAdapter(adapter);
-//            spinner.setVisibility(View.VISIBLE);
-//        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -264,8 +274,9 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.spanish_soccer:
                 HistoryFragment historyFragment = new HistoryFragment();
+
                 fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frag_container, topicFrag);
+                fragmentTransaction.replace(R.id.frag_container, historyFragment);
                 fragmentTransaction.commit();
                 if (tabLayout != null){
                     tabLayout.setVisibility(View.VISIBLE);

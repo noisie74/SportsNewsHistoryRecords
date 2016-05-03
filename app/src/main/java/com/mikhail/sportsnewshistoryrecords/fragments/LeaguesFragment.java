@@ -2,6 +2,7 @@ package com.mikhail.sportsnewshistoryrecords.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -41,6 +42,7 @@ public class LeaguesFragment extends Fragment {
     public static final String NYT_GERMAN = "Bundesliga";
     public static final String NYT_FOOTBALL = "NFL Football";
     public static final String NYT_BASKETBALL = "NBA Basketball";
+    TabLayout tabLayout;
 
 
 
@@ -53,6 +55,11 @@ public class LeaguesFragment extends Fragment {
         recyclerView = (RecyclerView) v.findViewById(R.id.recycle_view);
         searchSportsResults = new ArrayList<>();
         swipeContainer = (SwipeRefreshLayout)v.findViewById(R.id.swipeContainer);
+//        tabLayout = (TabLayout) v.findViewById(R.id.tab_layout);
+//        tabLayout.addTab(tabLayout.newTab().setText("Articles"));
+//        tabLayout.addTab(tabLayout.newTab().setText("History"));
+//        tabLayout.addTab(tabLayout.newTab().setText("Records"));
+//        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         setPullRefresh();
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
