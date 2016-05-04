@@ -34,7 +34,7 @@ import timber.log.Timber;
  */
 public class LeaguesFragment extends Fragment {
 
-    public static RecyclerView recyclerView;
+    public RecyclerView recyclerView;
     public ArrayList<Doc> searchSportsResults;
     protected SwipeRefreshLayout swipeContainer;
     public static final String NYT_ITALIAN = "Italian Serie A";
@@ -80,7 +80,7 @@ public class LeaguesFragment extends Fragment {
 
     }
 
-    public static void serieASearch() {
+    public void serieASearch() {
         NytSearchAPI.NytRx nytSports = NytSearchAPI.createRx();
 
         Observable<ArticleSearch> observable = nytSports.response(NYT_ITALIAN);
@@ -107,7 +107,7 @@ public class LeaguesFragment extends Fragment {
                 });
     }
 
-    public static void mlsSearch() {
+    public void mlsSearch() {
         NytSearchAPI.NytRx nytSports = NytSearchAPI.createRx();
 
         Observable<ArticleSearch> observable = nytSports.response(NYT_MLS);
@@ -134,7 +134,7 @@ public class LeaguesFragment extends Fragment {
                 });
     }
 
-    public static void bundesligaSearch() {
+    public void bundesligaSearch() {
         NytSearchAPI.NytRx nytSports = NytSearchAPI.createRx();
 
         Observable<ArticleSearch> observable = nytSports.response(NYT_GERMAN);
@@ -161,7 +161,7 @@ public class LeaguesFragment extends Fragment {
                 });
     }
 
-    public static void nbaSearch() {
+    public void nbaSearch() {
         NytSearchAPI.NytRx nytSports = NytSearchAPI.createRx();
 
         Observable<ArticleSearch> observable = nytSports.response(NYT_BASKETBALL);
@@ -188,7 +188,7 @@ public class LeaguesFragment extends Fragment {
                 });
     }
 
-    public static void footballSearch() {
+    public void footballSearch() {
         NytSearchAPI.NytRx nytSports = NytSearchAPI.createRx();
 
         Observable<ArticleSearch> observable = nytSports.response(NYT_FOOTBALL);
@@ -213,5 +213,18 @@ public class LeaguesFragment extends Fragment {
                         recyclerView.setAdapter(leaguesNewsAdapter);
                     }
                 });
+    }
+
+    public void setFragmentType(int type){
+
+        switch (type){
+            case R.id.nfl:
+//           TODO NFL API Call
+                footballSearch();
+                break;
+            case R.id.nba:
+
+                break;
+        }
     }
 }
