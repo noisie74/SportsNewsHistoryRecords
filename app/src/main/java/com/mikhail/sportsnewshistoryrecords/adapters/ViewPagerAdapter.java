@@ -35,29 +35,30 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter{
 
     @Override
     public Fragment getItem(int position) {
+        Fragment fragment = null;
 
         switch (position) {
             case 0:
-
-
                 LeaguesFragment tab1 = new LeaguesFragment();
                 tab1.setFragmentType(fragmentType);
 
                 Log.d("MainActivity", "in Tab 1");
-                return tab1;
+                fragment = tab1;
+                break;
             case 1:
                 HistoryFragment tab2 = new HistoryFragment();
 
 
                 Log.d("MainActivity", "in Tab 2");
-                return tab2;
+                fragment = tab2;
+                break;
             case 2:
                 RecordsFragment tab3 = new RecordsFragment();
-                return tab3;
+                fragment = tab3;
+                break;
 
-            default:
-                return null;
         }
+        return fragment;
     }
 
     @Override

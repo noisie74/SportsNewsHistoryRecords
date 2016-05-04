@@ -29,7 +29,7 @@ import rx.schedulers.Schedulers;
  * Created by Mikhail on 4/28/16.
  */
 public class LeaguesFragment extends Fragment {
-
+    private int mFragmentType;
     public RecyclerView recyclerView;
     public ArrayList<Doc> searchSportsResults;
     protected SwipeRefreshLayout swipeContainer;
@@ -42,6 +42,8 @@ public class LeaguesFragment extends Fragment {
     public static final String NYT_ENGLISH = "English Premier league";
     public static final String NYT_ITALIAN = "Italian Serie A";
     public static final String NYT_GERMAN = "Bundesliga";
+
+    LeaguesNewsAdapter leaguesNewsAdapter;
 
 
     TabLayout tabLayout;
@@ -65,11 +67,20 @@ public class LeaguesFragment extends Fragment {
         return v;
     }
 
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+
+        if (isVisibleToUser){
+            apiCall();
+        }
+    }
+
     private void setPullRefresh() {
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                italianSoccerSearch();
+                apiCall();
             }
         });
 
@@ -100,8 +111,8 @@ public class LeaguesFragment extends Fragment {
 
                     @Override
                     public void onNext(ArticleSearch response) {
-                        LeaguesNewsAdapter leaguesNewsAdapter = new LeaguesNewsAdapter(response);
-                        recyclerView.setAdapter(leaguesNewsAdapter);
+                        handleData(response);
+
                     }
                 });
     }
@@ -127,8 +138,8 @@ public class LeaguesFragment extends Fragment {
 
                     @Override
                     public void onNext(ArticleSearch response) {
-                        LeaguesNewsAdapter leaguesNewsAdapter = new LeaguesNewsAdapter(response);
-                        recyclerView.setAdapter(leaguesNewsAdapter);
+                        handleData(response);
+
                     }
                 });
     }
@@ -154,8 +165,8 @@ public class LeaguesFragment extends Fragment {
 
                     @Override
                     public void onNext(ArticleSearch response) {
-                        LeaguesNewsAdapter leaguesNewsAdapter = new LeaguesNewsAdapter(response);
-                        recyclerView.setAdapter(leaguesNewsAdapter);
+                        handleData(response);
+
                     }
                 });
     }
@@ -181,8 +192,8 @@ public class LeaguesFragment extends Fragment {
 
                     @Override
                     public void onNext(ArticleSearch response) {
-                        LeaguesNewsAdapter leaguesNewsAdapter = new LeaguesNewsAdapter(response);
-                        recyclerView.setAdapter(leaguesNewsAdapter);
+                        handleData(response);
+
                     }
                 });
     }
@@ -203,13 +214,13 @@ public class LeaguesFragment extends Fragment {
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.d("LeaguesFragment", "Error!");
+                        Log.d("LeaguesFragment", "nba Error!");
+                        e.printStackTrace();
                     }
 
                     @Override
                     public void onNext(ArticleSearch response) {
-                        LeaguesNewsAdapter leaguesNewsAdapter = new LeaguesNewsAdapter(response);
-                        recyclerView.setAdapter(leaguesNewsAdapter);
+                        handleData(response);
                     }
                 });
     }
@@ -230,13 +241,13 @@ public class LeaguesFragment extends Fragment {
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.d("LeaguesFragment", "Error!");
+                        Log.d("LeaguesFragment", "nfl Error!");
+                        e.printStackTrace();
                     }
 
                     @Override
                     public void onNext(ArticleSearch response) {
-                        LeaguesNewsAdapter leaguesNewsAdapter = new LeaguesNewsAdapter(response);
-                        recyclerView.setAdapter(leaguesNewsAdapter);
+                        handleData(response);
                     }
                 });
     }
@@ -262,9 +273,7 @@ public class LeaguesFragment extends Fragment {
 
                     @Override
                     public void onNext(ArticleSearch response) {
-
-                        LeaguesNewsAdapter leaguesNewsAdapter = new LeaguesNewsAdapter(response);
-                        recyclerView.setAdapter(leaguesNewsAdapter);
+                        handleData(response);
                     }
                 });
     }
@@ -291,8 +300,8 @@ public class LeaguesFragment extends Fragment {
                     @Override
                     public void onNext(ArticleSearch response) {
 
-                        LeaguesNewsAdapter leaguesNewsAdapter = new LeaguesNewsAdapter(response);
-                        recyclerView.setAdapter(leaguesNewsAdapter);
+                        handleData(response);
+
                     }
                 });
     }
@@ -318,17 +327,20 @@ public class LeaguesFragment extends Fragment {
 
                     @Override
                     public void onNext(ArticleSearch response) {
-                        LeaguesNewsAdapter leaguesNewsAdapter = new LeaguesNewsAdapter(response);
-                        recyclerView.setAdapter(leaguesNewsAdapter);
+                        handleData(response);
+
                     }
                 });
     }
 
     public void setFragmentType(int type) {
+        mFragmentType = type;
+        apiCall();
+    }
 
-        switch (type) {
+    private void apiCall() {
+        switch (mFragmentType) {
             case R.id.nfl:
-//           TODO NFL API Call
                 footballSearch();
                 break;
             case R.id.nba:
@@ -336,19 +348,37 @@ public class LeaguesFragment extends Fragment {
                 break;
             case R.id.mlb:
                 baseballSearch();
+                break;
             case R.id.nhl:
                 hockeySearch();
+                break;
             case R.id.mls:
                 mlsSearch();
+                break;
             case R.id.english_soccer:
                 englishSoccerSearch();
+                break;
             case R.id.spanish_soccer:
                 spanishSoccerSearch();
+                break;
             case R.id.italian_soccer:
                 italianSoccerSearch();
+                break;
             case R.id.german_soccer:
                 bundesligaSearch();
                 break;
+        }
+    }
+
+    private void handleData(ArticleSearch response){
+        if (leaguesNewsAdapter == null && recyclerView != null){
+            leaguesNewsAdapter = new LeaguesNewsAdapter(response);
+            recyclerView.setAdapter(leaguesNewsAdapter);
+        } else if (leaguesNewsAdapter != null){
+            leaguesNewsAdapter.setArticles(response);
+            leaguesNewsAdapter.notifyDataSetChanged();
+        } else {
+            leaguesNewsAdapter = new LeaguesNewsAdapter(response);
         }
     }
 }

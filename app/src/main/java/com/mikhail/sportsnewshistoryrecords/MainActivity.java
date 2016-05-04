@@ -216,12 +216,29 @@ public class MainActivity extends AppCompatActivity
 
         switch (mNavigationItemId) {
             case R.id.top_news:
+
+                if (viewPager != null){
+                    viewPager.setVisibility(View.GONE);
+                }
+
+                if (tabLayout != null) {
+                    tabLayout.setVisibility(View.GONE);
+                }
+                if (fragContainer != null) {
+                    fragContainer.setVisibility(View.VISIBLE);
+                }
+//                if (spinner != null) {
+//                    spinner.setVisibility(View.VISIBLE);
+//                }
+
                 allSportsFragment.nytAllSportsNews();
 //                topicFrag.setSections(BREAKING_NEWS);
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frag_container, allSportsFragment);
                 fragmentTransaction.commit();
                 toolbar.setTitle("Sports News");
+                toolbar.getChildAt(1).setVisibility(View.VISIBLE);
+
 //                toolbar.getChildAt(2).setVisibility(View.VISIBLE);
 
 //                if (fragContainer != null){
@@ -237,7 +254,9 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nfl:
 
-                viewPager.setVisibility(View.VISIBLE);
+                if (viewPager != null){
+                    viewPager.setVisibility(View.VISIBLE);
+                }
 
                 if (tabLayout != null) {
                     tabLayout.setVisibility(View.VISIBLE);
@@ -247,9 +266,11 @@ public class MainActivity extends AppCompatActivity
                 }
 
 //                topicFrag.setSections(BREAKING_NEWS);
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
-                fragmentTransaction.commit();
+                // TODO this is wrong
+                // TODO You need to put the fragment into viewpager not switch it with cointainer..
+//                fragmentTransaction = fragmentManager.beginTransaction();
+//                fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
+//                fragmentTransaction.commit();
                 toolbar.setTitle("NFL Football");
 //                toolbar.getChildAt(2).setVisibility(View.VISIBLE);
                 toolbar.getChildAt(1).setVisibility(View.GONE);
@@ -273,9 +294,9 @@ public class MainActivity extends AppCompatActivity
                 }
 
 //                topicFrag.setSections(BREAKING_NEWS);
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
-                fragmentTransaction.commit();
+//                fragmentTransaction = fragmentManager.beginTransaction();
+//                fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
+//                fragmentTransaction.commit();
                 toolbar.setTitle("NBA Basketball");
 //                toolbar.getChildAt(2).setVisibility(View.VISIBLE);
                 toolbar.getChildAt(1).setVisibility(View.GONE);
@@ -291,9 +312,9 @@ public class MainActivity extends AppCompatActivity
                 }
 
 //                topicFrag.setSections(BREAKING_NEWS);
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
-                fragmentTransaction.commit();
+//                fragmentTransaction = fragmentManager.beginTransaction();
+//                fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
+//                fragmentTransaction.commit();
                 toolbar.setTitle("MLB Baseball");
 //                toolbar.getChildAt(2).setVisibility(View.VISIBLE);
                 toolbar.getChildAt(1).setVisibility(View.GONE);
@@ -310,9 +331,9 @@ public class MainActivity extends AppCompatActivity
                 }
 
 //                topicFrag.setSections(BREAKING_NEWS);
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
-                fragmentTransaction.commit();
+//                fragmentTransaction = fragmentManager.beginTransaction();
+//                fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
+//                fragmentTransaction.commit();
                 toolbar.setTitle("NHL Hockey");
 //                toolbar.getChildAt(2).setVisibility(View.VISIBLE);
                 toolbar.getChildAt(1).setVisibility(View.GONE);
@@ -331,9 +352,9 @@ public class MainActivity extends AppCompatActivity
 
 
 //                topicFrag.setSections(BREAKING_NEWS);
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
-                fragmentTransaction.commit();
+//                fragmentTransaction = fragmentManager.beginTransaction();
+//                fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
+//                fragmentTransaction.commit();
                 toolbar.setTitle("MLS Soccer");
 //                toolbar.getChildAt(2).setVisibility(View.VISIBLE);
                 toolbar.getChildAt(1).setVisibility(View.GONE);
@@ -352,9 +373,9 @@ public class MainActivity extends AppCompatActivity
                 }
 
 //                topicFrag.setSections(WORLD);
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
-                fragmentTransaction.commit();
+//                fragmentTransaction = fragmentManager.beginTransaction();
+//                fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
+//                fragmentTransaction.commit();
                 toolbar.setTitle("English Soccer");
                 toolbar.getChildAt(1).setVisibility(View.GONE);
                 if (tabLayout != null) {
@@ -370,9 +391,9 @@ public class MainActivity extends AppCompatActivity
                     fragContainer.setVisibility(View.GONE);
                 }
 
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
-                fragmentTransaction.commit();
+//                fragmentTransaction = fragmentManager.beginTransaction();
+//                fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
+//                fragmentTransaction.commit();
                 toolbar.setTitle("Spanish Soccer");
                 toolbar.getChildAt(1).setVisibility(View.GONE);
                 if (tabLayout != null) {
@@ -407,9 +428,9 @@ public class MainActivity extends AppCompatActivity
                     fragContainer.setVisibility(View.GONE);
                 }
 
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
-                fragmentTransaction.commit();
+//                fragmentTransaction = fragmentManager.beginTransaction();
+//                fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
+//                fragmentTransaction.commit();
                 toolbar.setTitle("German Soccer");
                 toolbar.getChildAt(1).setVisibility(View.GONE);
                 if (tabLayout != null) {

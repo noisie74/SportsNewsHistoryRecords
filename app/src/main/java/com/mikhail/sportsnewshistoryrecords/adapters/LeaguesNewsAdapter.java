@@ -32,6 +32,10 @@ public class LeaguesNewsAdapter extends RecyclerView.Adapter<LeaguesNewsAdapter.
         this.leaguesSearchResults = leaguesSearchResults;
     }
 
+    public void setArticles(ArticleSearch results){
+        this.leaguesSearchResults = results;
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView headline;
         public TextView articleInfo;
@@ -74,7 +78,7 @@ public class LeaguesNewsAdapter extends RecyclerView.Adapter<LeaguesNewsAdapter.
         Picasso.with(context)
                 .load("http://nytimes.com/" + imageURI)
                 .placeholder(R.drawable.nyt_icon)
-                .resize(200, 200)
+                .resize(200, 180)
                 .centerCrop()
                 .into(holder.articleImage);
     }

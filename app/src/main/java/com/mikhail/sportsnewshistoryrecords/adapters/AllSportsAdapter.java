@@ -90,7 +90,7 @@ public class AllSportsAdapter extends RecyclerView.Adapter<AllSportsAdapter.View
         Picasso.with(context)
                 .load(imageURI)
                 .placeholder(R.drawable.nyt_icon)
-                .resize(250, 250)
+                .resize(250, 180)
                 .centerCrop()
                 .into(holder.articleImage);
     }
