@@ -5,6 +5,9 @@ import com.mikhail.sportsnewshistoryrecords.api.keys.NytKeys;
 import com.mikhail.sportsnewshistoryrecords.model.NytSportsResults;
 import com.mikhail.sportsnewshistoryrecords.model.search.ArticleSearch;
 
+import java.util.List;
+
+import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -21,6 +24,21 @@ public class NytSearchAPI {
     public static final String NYT_API_URL = "http://api.nytimes.com/svc/search/v2/";
     public static Gson gson = new Gson();
 
+
+    public interface NytAPIRetrofitSimple {
+        @GET("articlesearch.json?&api-key=" + NytKeys.nyTimesFullSearchQueryKey)
+        Call<ArticleSearch> response(
+                @Query("q") String q);
+    }
+
+    public static NytAPIRetrofitSimple create() {
+        // Create a very simple REST adapter which points the GitHub API.
+        return new Retrofit.Builder()
+                .baseUrl(NYT_API_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+                .create(NytSearchAPI.NytAPIRetrofitSimple.class);
+    }
 
     public interface NytRx {
         @GET("articlesearch.json?&api-key=" + NytKeys.nyTimesFullSearchQueryKey)

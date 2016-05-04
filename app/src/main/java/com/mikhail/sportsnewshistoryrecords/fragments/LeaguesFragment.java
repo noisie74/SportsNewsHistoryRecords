@@ -19,7 +19,15 @@ import com.mikhail.sportsnewshistoryrecords.model.search.ArticleSearch;
 import com.mikhail.sportsnewshistoryrecords.model.search.Doc;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -220,6 +228,7 @@ public class LeaguesFragment extends Fragment {
 
                     @Override
                     public void onNext(ArticleSearch response) {
+                        swipeContainer.setRefreshing(false);
                         handleData(response);
                     }
                 });
@@ -247,6 +256,7 @@ public class LeaguesFragment extends Fragment {
 
                     @Override
                     public void onNext(ArticleSearch response) {
+                        swipeContainer.setRefreshing(false);
                         handleData(response);
                     }
                 });
@@ -332,6 +342,63 @@ public class LeaguesFragment extends Fragment {
                     }
                 });
     }
+
+//    private void englishSoccerSearch(){
+//
+//
+//
+//        NytSearchAPI.NytAPIRetrofitSimple nytSportsSearch = NytSearchAPI.create();
+//
+//        Call<ArticleSearch> call = nytSportsSearch.response(NYT_ENGLISH);
+//
+//        call.enqueue(new Callback<ArticleSearch>() {
+//            @Override
+//            public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
+//                List<ArticleSearch> contributors = response.body();
+//
+//                Collection<ArticleSearch> frequentContributors = Filter.isFrequentContributor(contributors);
+//
+//                ModelObjectAdapter modelObjectAdapter = new ModelObjectAdapter(new ArrayList(frequentContributors));
+//                recyclerView.setAdapter(modelObjectAdapter);
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<Contributor>> call, Throwable t) {
+//
+//            }
+//        });
+
+
+//        Retrofit retrofit = new Retrofit.Builder()
+//                .baseUrl("http://api.nytimes.com/svc/search/v2/")
+//                .addConverterFactory(GsonConverterFactory.create())
+//                .build();
+//        ArticleSearch = retrofit.create(SearchAPI.class);
+//        Call<ArticleSearch> call = articleSearchResponse.listArticleSearchDocs(query);
+//        call.enqueue(new Callback<ArticleSearch>() {
+//            @Override
+//            public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
+//                ArticleSearch articleSearchDocs = response.body();
+//                Log.i(TAG, "Searched Article: " + articleSearchDocs);
+//                if(articleSearchDocs == null){
+//                    return;
+//                }
+//
+//                Collections.addAll(articleSearchList, articleSearchDocs.getResponse().getDocs());
+//                Log.i(TAG, "Searched Article2: " + articleSearchList);
+//
+//                if (searchRecyclerView != null) {
+//                    searchRecyclerView.setAdapter(searchArticleAdapter);
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ArticleSearch> call, Throwable t) {
+//                t.printStackTrace();
+//            }
+//        });
+//    }
+
 
     public void setFragmentType(int type) {
         mFragmentType = type;

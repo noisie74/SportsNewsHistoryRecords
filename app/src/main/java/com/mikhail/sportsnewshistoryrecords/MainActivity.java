@@ -217,7 +217,7 @@ public class MainActivity extends AppCompatActivity
         switch (mNavigationItemId) {
             case R.id.top_news:
 
-                if (viewPager != null){
+                if (viewPager != null) {
                     viewPager.setVisibility(View.GONE);
                 }
 
@@ -254,7 +254,7 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nfl:
 
-                if (viewPager != null){
+                if (viewPager != null) {
                     viewPager.setVisibility(View.VISIBLE);
                 }
 
@@ -410,9 +410,9 @@ public class MainActivity extends AppCompatActivity
                 }
 
 //                topicFrag.setSections(WORLD);
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
-                fragmentTransaction.commit();
+//                fragmentTransaction = fragmentManager.beginTransaction();
+//                fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
+//                fragmentTransaction.commit();
                 toolbar.setTitle("Italian Soccer");
                 toolbar.getChildAt(1).setVisibility(View.GONE);
                 if (tabLayout != null) {

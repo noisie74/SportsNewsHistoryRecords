@@ -40,6 +40,9 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter{
         switch (position) {
             case 0:
                 LeaguesFragment tab1 = new LeaguesFragment();
+//                if (fragmentType == R.id.nfl){
+//
+//                }
                 tab1.setFragmentType(fragmentType);
 
                 Log.d("MainActivity", "in Tab 1");
