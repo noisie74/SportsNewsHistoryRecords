@@ -6,6 +6,7 @@ package com.mikhail.sportsnewshistoryrecords.model.search;
 public class ArticleSearch {
     Response response;
 
+
     public Response getResponse() {
         return response;
     }

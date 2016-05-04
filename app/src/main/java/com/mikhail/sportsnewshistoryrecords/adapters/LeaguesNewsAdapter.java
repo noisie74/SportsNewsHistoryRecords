@@ -18,6 +18,7 @@ import com.mikhail.sportsnewshistoryrecords.model.search.Response;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Mikhail on 4/28/16.
@@ -25,10 +26,10 @@ import java.util.ArrayList;
 public class LeaguesNewsAdapter extends RecyclerView.Adapter<LeaguesNewsAdapter.ViewHolder> {
 
     Context context;
-    public ArticleSearch leaguesSearchResults;
+    public List<Doc> docs;
 
-    public LeaguesNewsAdapter(ArticleSearch leaguesSearchResults) {
-        this.leaguesSearchResults = leaguesSearchResults;
+    public LeaguesNewsAdapter(List<Doc>docs) {
+        this.docs = docs;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -58,7 +59,7 @@ public class LeaguesNewsAdapter extends RecyclerView.Adapter<LeaguesNewsAdapter.
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        holder.headline.setText(leaguesSearchResults.getResponse().getDocs()[position].getHeadline().getMain());
+        holder.headline.setText(docs.get(position).getHeadline().getMain());
         holder.articleInfo.setText(leaguesSearchResults.getResponse().getDocs()[position].getLead_paragraph());
         String imageURI = null;
         Multimedia[] multiMedia = leaguesSearchResults.getResponse().getDocs()[position].getMultimedia();

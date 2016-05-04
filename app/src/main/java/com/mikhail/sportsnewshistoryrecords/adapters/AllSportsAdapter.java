@@ -83,6 +83,7 @@ public class AllSportsAdapter extends RecyclerView.Adapter<AllSportsAdapter.View
             }
 
         }else{
+
             imageURI = "R.drawable.nyt_icon";
 
         }

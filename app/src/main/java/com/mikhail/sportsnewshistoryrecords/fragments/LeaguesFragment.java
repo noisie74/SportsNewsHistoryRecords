@@ -22,6 +22,7 @@ import com.mikhail.sportsnewshistoryrecords.model.search.Doc;
 import com.mikhail.sportsnewshistoryrecords.model.search.Response;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -42,10 +43,10 @@ public class LeaguesFragment extends Fragment {
     public static final String NYT_GERMAN = "Bundesliga";
     public static final String NYT_FOOTBALL = "NFL Football";
     public static final String NYT_BASKETBALL = "NBA Basketball";
+    public static final String NYT_BASEBALL = "Baseball";
+    public static final String NYT_SPANISH = "La liga";
+
     TabLayout tabLayout;
-
-
-
 
 
     @Nullable
@@ -54,7 +55,7 @@ public class LeaguesFragment extends Fragment {
         View v = inflater.inflate(R.layout.recycleview_activity_fragment, container, false);
         recyclerView = (RecyclerView) v.findViewById(R.id.recycle_view);
         searchSportsResults = new ArrayList<>();
-        swipeContainer = (SwipeRefreshLayout)v.findViewById(R.id.swipeContainer);
+        swipeContainer = (SwipeRefreshLayout) v.findViewById(R.id.swipeContainer);
 //        tabLayout = (TabLayout) v.findViewById(R.id.tab_layout);
 //        tabLayout.addTab(tabLayout.newTab().setText("Articles"));
 //        tabLayout.addTab(tabLayout.newTab().setText("History"));
@@ -66,7 +67,7 @@ public class LeaguesFragment extends Fragment {
         return v;
     }
 
-    private void setPullRefresh(){
+    private void setPullRefresh() {
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -215,16 +216,59 @@ public class LeaguesFragment extends Fragment {
                 });
     }
 
-    public void setFragmentType(int type){
+    public void baseballSearch() {
+        NytSearchAPI.NytRx nytSports = NytSearchAPI.createRx();
 
-        switch (type){
+        Observable<ArticleSearch> observable = nytSports.response(NYT_FOOTBALL);
+
+        observable.subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<ArticleSearch>() {
+                    @Override
+                    public void onCompleted() {
+
+                        Log.d("LeaguesFragment", "Query Succes!");
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d("LeaguesFragment", "Error!");
+                    }
+
+                    @Override
+                    public void onNext(ArticleSearch response) {
+                        List<Doc> articlesWithImages = articlesWithImages(response);
+                        LeaguesNewsAdapter leaguesNewsAdapter = new LeaguesNewsAdapter(articlesWithImages);
+                        recyclerView.setAdapter(leaguesNewsAdapter);
+                    }
+                });
+    }
+
+    private List<Doc> articlesWithImages(ArticleSearch response) {
+        Doc[] docs = response.getResponse().getDocs();
+        List<Doc> docsWithImages = new ArrayList<>();
+
+        for(Doc doc: docs) {
+            if(doc.getMultimedia() != null && doc.getMultimedia().length != 0) {
+                docsWithImages.add(doc);
+            }
+        }
+
+        return docsWithImages;
+    }
+
+    public void setFragmentType(int type) {
+
+        switch (type) {
             case R.id.nfl:
 //           TODO NFL API Call
                 footballSearch();
                 break;
             case R.id.nba:
-
+                nbaSearch();
                 break;
+            case R.id.mlb:
+
         }
     }
 }
