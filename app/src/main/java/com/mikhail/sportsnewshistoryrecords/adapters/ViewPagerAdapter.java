@@ -18,12 +18,9 @@ import com.mikhail.sportsnewshistoryrecords.fragments.RecordsFragment;
  * Created by Mikhail on 4/29/16.
  */
 public class ViewPagerAdapter extends FragmentStatePagerAdapter{
-    int fragmentType;
 
+    int fragmentType;
     int mNumOfTabs;
-    FragmentTransaction fragmentTransaction;
-    FragmentManager fragmentManager;
-    MainActivity mainActivity;
 
 
 
@@ -42,7 +39,6 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter{
         switch (position) {
             case 0:
 
-//                mainActivity.onNavigationItemSelected()
 
                 LeaguesFragment tab1 = new LeaguesFragment();
                 tab1.setFragmentType(fragmentType);

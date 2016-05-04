@@ -14,21 +14,16 @@ import android.view.ViewGroup;
 
 import com.mikhail.sportsnewshistoryrecords.R;
 import com.mikhail.sportsnewshistoryrecords.adapters.LeaguesNewsAdapter;
-import com.mikhail.sportsnewshistoryrecords.api.NytAPI;
 import com.mikhail.sportsnewshistoryrecords.api.NytSearchAPI;
-import com.mikhail.sportsnewshistoryrecords.model.NytSportsObjects;
 import com.mikhail.sportsnewshistoryrecords.model.search.ArticleSearch;
 import com.mikhail.sportsnewshistoryrecords.model.search.Doc;
-import com.mikhail.sportsnewshistoryrecords.model.search.Response;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
-import timber.log.Timber;
 
 /**
  * Created by Mikhail on 4/28/16.
@@ -38,13 +33,16 @@ public class LeaguesFragment extends Fragment {
     public RecyclerView recyclerView;
     public ArrayList<Doc> searchSportsResults;
     protected SwipeRefreshLayout swipeContainer;
-    public static final String NYT_ITALIAN = "Italian Serie A";
+    public static final String NYT_HOCKEY = "NHL";
     public static final String NYT_MLS = "MLS";
-    public static final String NYT_GERMAN = "Bundesliga";
     public static final String NYT_FOOTBALL = "NFL Football";
     public static final String NYT_BASKETBALL = "NBA Basketball";
     public static final String NYT_BASEBALL = "Baseball";
     public static final String NYT_SPANISH = "La liga";
+    public static final String NYT_ENGLISH = "English Premier league";
+    public static final String NYT_ITALIAN = "Italian Serie A";
+    public static final String NYT_GERMAN = "Bundesliga";
+
 
     TabLayout tabLayout;
 
@@ -71,7 +69,7 @@ public class LeaguesFragment extends Fragment {
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                serieASearch();
+                italianSoccerSearch();
             }
         });
 
@@ -81,10 +79,37 @@ public class LeaguesFragment extends Fragment {
 
     }
 
-    public void serieASearch() {
+    public void italianSoccerSearch() {
         NytSearchAPI.NytRx nytSports = NytSearchAPI.createRx();
 
         Observable<ArticleSearch> observable = nytSports.response(NYT_ITALIAN);
+
+        observable.subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<ArticleSearch>() {
+                    @Override
+                    public void onCompleted() {
+
+                        Log.d("LeaguesFragment", "Query Succes!");
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d("LeaguesFragment", "Error!");
+                    }
+
+                    @Override
+                    public void onNext(ArticleSearch response) {
+                        LeaguesNewsAdapter leaguesNewsAdapter = new LeaguesNewsAdapter(response);
+                        recyclerView.setAdapter(leaguesNewsAdapter);
+                    }
+                });
+    }
+
+    public void spanishSoccerSearch() {
+        NytSearchAPI.NytRx nytSports = NytSearchAPI.createRx();
+
+        Observable<ArticleSearch> observable = nytSports.response(NYT_SPANISH);
 
         observable.subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -219,7 +244,7 @@ public class LeaguesFragment extends Fragment {
     public void baseballSearch() {
         NytSearchAPI.NytRx nytSports = NytSearchAPI.createRx();
 
-        Observable<ArticleSearch> observable = nytSports.response(NYT_FOOTBALL);
+        Observable<ArticleSearch> observable = nytSports.response(NYT_BASEBALL);
 
         observable.subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -237,24 +262,66 @@ public class LeaguesFragment extends Fragment {
 
                     @Override
                     public void onNext(ArticleSearch response) {
-                        List<Doc> articlesWithImages = articlesWithImages(response);
-                        LeaguesNewsAdapter leaguesNewsAdapter = new LeaguesNewsAdapter(articlesWithImages);
+
+                        LeaguesNewsAdapter leaguesNewsAdapter = new LeaguesNewsAdapter(response);
                         recyclerView.setAdapter(leaguesNewsAdapter);
                     }
                 });
     }
 
-    private List<Doc> articlesWithImages(ArticleSearch response) {
-        Doc[] docs = response.getResponse().getDocs();
-        List<Doc> docsWithImages = new ArrayList<>();
+    public void hockeySearch() {
+        NytSearchAPI.NytRx nytSports = NytSearchAPI.createRx();
 
-        for(Doc doc: docs) {
-            if(doc.getMultimedia() != null && doc.getMultimedia().length != 0) {
-                docsWithImages.add(doc);
-            }
-        }
+        Observable<ArticleSearch> observable = nytSports.response(NYT_HOCKEY);
 
-        return docsWithImages;
+        observable.subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<ArticleSearch>() {
+                    @Override
+                    public void onCompleted() {
+
+                        Log.d("LeaguesFragment", "Query Succes!");
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d("LeaguesFragment", "Error!");
+                    }
+
+                    @Override
+                    public void onNext(ArticleSearch response) {
+
+                        LeaguesNewsAdapter leaguesNewsAdapter = new LeaguesNewsAdapter(response);
+                        recyclerView.setAdapter(leaguesNewsAdapter);
+                    }
+                });
+    }
+
+    public void englishSoccerSearch() {
+        NytSearchAPI.NytRx nytSports = NytSearchAPI.createRx();
+
+        Observable<ArticleSearch> observable = nytSports.response(NYT_ENGLISH);
+
+        observable.subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<ArticleSearch>() {
+                    @Override
+                    public void onCompleted() {
+
+                        Log.d("LeaguesFragment", "Query Succes!");
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d("LeaguesFragment", "Error!");
+                    }
+
+                    @Override
+                    public void onNext(ArticleSearch response) {
+                        LeaguesNewsAdapter leaguesNewsAdapter = new LeaguesNewsAdapter(response);
+                        recyclerView.setAdapter(leaguesNewsAdapter);
+                    }
+                });
     }
 
     public void setFragmentType(int type) {
@@ -268,7 +335,38 @@ public class LeaguesFragment extends Fragment {
                 nbaSearch();
                 break;
             case R.id.mlb:
-
+                baseballSearch();
+            case R.id.nhl:
+                hockeySearch();
+            case R.id.mls:
+                mlsSearch();
+            case R.id.english_soccer:
+                englishSoccerSearch();
+            case R.id.spanish_soccer:
+                spanishSoccerSearch();
+            case R.id.italian_soccer:
+                italianSoccerSearch();
+            case R.id.german_soccer:
+                bundesligaSearch();
+                break;
         }
     }
 }
+
+
+//List<Doc> articlesWithImages = articlesWithImages(response);
+//LeaguesNewsAdapter leaguesNewsAdapter = new LeaguesNewsAdapter(articlesWithImages);
+//recyclerView.setAdapter(leaguesNewsAdapter);
+//        }
+//        });
+//        }
+//
+//private List<Doc> articlesWithImages(ArticleSearch response) {
+//        Doc[] docs = response.getResponse().getDocs();
+//        List<Doc> docsWithImages = new ArrayList<>();
+//
+//        for(Doc doc: docs) {
+//        if(doc.getMultimedia() != null && doc.getMultimedia().length != 0) {
+//        docsWithImages.add(doc);
+//        }
+//        }

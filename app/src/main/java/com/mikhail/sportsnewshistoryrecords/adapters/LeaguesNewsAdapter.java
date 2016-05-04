@@ -26,10 +26,10 @@ import java.util.List;
 public class LeaguesNewsAdapter extends RecyclerView.Adapter<LeaguesNewsAdapter.ViewHolder> {
 
     Context context;
-    public List<Doc> docs;
+    public ArticleSearch leaguesSearchResults;
 
-    public LeaguesNewsAdapter(List<Doc>docs) {
-        this.docs = docs;
+    public LeaguesNewsAdapter(ArticleSearch leaguesSearchResults) {
+        this.leaguesSearchResults = leaguesSearchResults;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -59,11 +59,10 @@ public class LeaguesNewsAdapter extends RecyclerView.Adapter<LeaguesNewsAdapter.
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        holder.headline.setText(docs.get(position).getHeadline().getMain());
+        holder.headline.setText(leaguesSearchResults.getResponse().getDocs()[position].getHeadline().getMain());
         holder.articleInfo.setText(leaguesSearchResults.getResponse().getDocs()[position].getLead_paragraph());
         String imageURI = null;
         Multimedia[] multiMedia = leaguesSearchResults.getResponse().getDocs()[position].getMultimedia();
-        Log.d("MainActivity",  ""+ multiMedia.length);
         if (multiMedia != null && multiMedia.length > 0) {
 
             imageURI = multiMedia[0].getUrl();
@@ -85,3 +84,10 @@ public class LeaguesNewsAdapter extends RecyclerView.Adapter<LeaguesNewsAdapter.
         return leaguesSearchResults.getResponse().getDocs().length;
     }
 }
+
+
+//public List<Doc> docs;
+//
+//    public LeaguesNewsAdapter(List<Doc>docs) {
+//        this.docs = docs;
+//    }

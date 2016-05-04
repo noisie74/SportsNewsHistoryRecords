@@ -31,10 +31,6 @@ import com.mikhail.sportsnewshistoryrecords.fragments.LeaguesFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.NewsDetailsFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.RecordsFragment;
 
-import static com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment.nytAllSportsNews;
-import static com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment.nytBaseballSportsNews;
-import static com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment.nytHockeySportsNews;
-import static com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment.nytSoccerSportsNews;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -166,7 +162,7 @@ public class MainActivity extends AppCompatActivity
 
     private void setFragment() {
         fragmentTransaction = fragmentManager.beginTransaction();
-        nytAllSportsNews();
+        allSportsFragment.nytAllSportsNews();
         fragmentTransaction.add(R.id.frag_container, allSportsFragment);
         fragmentTransaction.commit();
     }
@@ -212,25 +208,26 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        AllSportsFragment topicFrag = new AllSportsFragment();
-        LeaguesFragment leaguesFragment = new LeaguesFragment();
+        allSportsFragment = new AllSportsFragment();
+        leaguesFragment = new LeaguesFragment();
 
         mNavigationItemId = item.getItemId();
         leaguesFragment.setFragmentType(mNavigationItemId);
 
         switch (mNavigationItemId) {
             case R.id.top_news:
-                nytAllSportsNews();
+                allSportsFragment.nytAllSportsNews();
 //                topicFrag.setSections(BREAKING_NEWS);
                 fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frag_container, topicFrag);
+                fragmentTransaction.replace(R.id.frag_container, allSportsFragment);
                 fragmentTransaction.commit();
                 toolbar.setTitle("Sports News");
 //                toolbar.getChildAt(2).setVisibility(View.VISIBLE);
 
-                if (fragContainer != null){
-                    fragContainer.setVisibility(View.VISIBLE);
-                }
+//                if (fragContainer != null){
+//                    fragContainer.setVisibility(View.VISIBLE);
+//                }
+
 
                 if (tabLayout != null) {
                     tabLayout.setVisibility(View.GONE);
@@ -239,23 +236,57 @@ public class MainActivity extends AppCompatActivity
 //                tabLayout.removeAllTabs();
                 break;
             case R.id.nfl:
+
                 viewPager.setVisibility(View.VISIBLE);
-                if (fragContainer != null){
+
+                if (tabLayout != null) {
+                    tabLayout.setVisibility(View.VISIBLE);
+                }
+                if (fragContainer != null) {
                     fragContainer.setVisibility(View.GONE);
                 }
+
 //                topicFrag.setSections(BREAKING_NEWS);
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
                 fragmentTransaction.commit();
-                toolbar.setTitle("Football News");
-                toolbar.getChildAt(2).setVisibility(View.VISIBLE);
-                tabLayout.setVisibility(View.GONE);
-//                tabLayout.removeAllTabs();
+                toolbar.setTitle("NFL Football");
+//                toolbar.getChildAt(2).setVisibility(View.VISIBLE);
+                toolbar.getChildAt(1).setVisibility(View.GONE);
+
+
+//                tabLayout.setVisibility(View.GONE);
                 break;
             case R.id.nba:
+
                 viewPager.setVisibility(View.VISIBLE);
                 viewPagerAdapter.setFragmentType(mNavigationItemId);
-                if (fragContainer != null){
+
+                if (fragContainer != null) {
+                    fragContainer.setVisibility(View.GONE);
+                }
+                if (tabLayout != null) {
+                    tabLayout.setVisibility(View.VISIBLE);
+                }
+                if (spinner != null) {
+                    spinner.setVisibility(View.GONE);
+                }
+
+//                topicFrag.setSections(BREAKING_NEWS);
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
+                fragmentTransaction.commit();
+                toolbar.setTitle("NBA Basketball");
+//                toolbar.getChildAt(2).setVisibility(View.VISIBLE);
+                toolbar.getChildAt(1).setVisibility(View.GONE);
+
+                break;
+            case R.id.mlb:
+
+                viewPager.setVisibility(View.VISIBLE);
+                viewPagerAdapter.setFragmentType(mNavigationItemId);
+
+                if (fragContainer != null) {
                     fragContainer.setVisibility(View.GONE);
                 }
 
@@ -263,52 +294,38 @@ public class MainActivity extends AppCompatActivity
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
                 fragmentTransaction.commit();
-                toolbar.setTitle("NBA News");
-                toolbar.getChildAt(2).setVisibility(View.VISIBLE);
-                tabLayout.setVisibility(View.VISIBLE);
-//                tabLayout.removeAllTabs();
-                break;
-            case R.id.mlb:
-                nytBaseballSportsNews();
-
-                viewPager.setVisibility(View.VISIBLE);
-
-                if (fragContainer != null){
-                    fragContainer.setVisibility(View.GONE);
+                toolbar.setTitle("MLB Baseball");
+//                toolbar.getChildAt(2).setVisibility(View.VISIBLE);
+                toolbar.getChildAt(1).setVisibility(View.GONE);
+                if (tabLayout != null) {
+                    tabLayout.setVisibility(View.VISIBLE);
                 }
-
-//                topicFrag.setSections(BREAKING_NEWS);
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frag_container, topicFrag);
-                fragmentTransaction.commit();
-                toolbar.setTitle("Baseball News");
-                toolbar.getChildAt(2).setVisibility(View.VISIBLE);
-                tabLayout.setVisibility(View.GONE);
-//                tabLayout.removeAllTabs();
                 break;
             case R.id.nhl:
-                nytHockeySportsNews();
 
                 viewPager.setVisibility(View.VISIBLE);
 
-                if (fragContainer != null){
+                if (fragContainer != null) {
                     fragContainer.setVisibility(View.GONE);
                 }
 
 //                topicFrag.setSections(BREAKING_NEWS);
                 fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frag_container, topicFrag);
+                fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
                 fragmentTransaction.commit();
-                toolbar.setTitle("NHL News");
-                toolbar.getChildAt(2).setVisibility(View.VISIBLE);
-                tabLayout.setVisibility(View.GONE);
+                toolbar.setTitle("NHL Hockey");
+//                toolbar.getChildAt(2).setVisibility(View.VISIBLE);
+                toolbar.getChildAt(1).setVisibility(View.GONE);
+                if (tabLayout != null) {
+                    tabLayout.setVisibility(View.VISIBLE);
+                }
 //                tabLayout.removeAllTabs();
                 break;
             case R.id.mls:
 
                 viewPager.setVisibility(View.VISIBLE);
 
-                if (fragContainer != null){
+                if (fragContainer != null) {
                     fragContainer.setVisibility(View.GONE);
                 }
 
@@ -317,43 +334,47 @@ public class MainActivity extends AppCompatActivity
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
                 fragmentTransaction.commit();
-                toolbar.setTitle("MLS News");
-                toolbar.getChildAt(2).setVisibility(View.VISIBLE);
+                toolbar.setTitle("MLS Soccer");
+//                toolbar.getChildAt(2).setVisibility(View.VISIBLE);
+                toolbar.getChildAt(1).setVisibility(View.GONE);
                 tabLayout.setVisibility(View.GONE);
-//                tabLayout.removeAllTabs();
+                if (tabLayout != null) {
+                    tabLayout.setVisibility(View.VISIBLE);
+                }
                 break;
             case R.id.english_soccer:
-                nytSoccerSportsNews();
 
 
                 viewPager.setVisibility(View.VISIBLE);
 
-                if (fragContainer != null){
+                if (fragContainer != null) {
                     fragContainer.setVisibility(View.GONE);
                 }
 
 //                topicFrag.setSections(WORLD);
                 fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frag_container, topicFrag);
+                fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
                 fragmentTransaction.commit();
+                toolbar.setTitle("English Soccer");
+                toolbar.getChildAt(1).setVisibility(View.GONE);
                 if (tabLayout != null) {
                     tabLayout.setVisibility(View.VISIBLE);
                 }
 //                toolbar.setTitle(getString(R.string.world));
                 break;
             case R.id.spanish_soccer:
-                HistoryFragment historyFragment = new HistoryFragment();
-
 
                 viewPager.setVisibility(View.VISIBLE);
 
-                if (fragContainer != null){
+                if (fragContainer != null) {
                     fragContainer.setVisibility(View.GONE);
                 }
 
                 fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frag_container, historyFragment);
+                fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
                 fragmentTransaction.commit();
+                toolbar.setTitle("Spanish Soccer");
+                toolbar.getChildAt(1).setVisibility(View.GONE);
                 if (tabLayout != null) {
                     tabLayout.setVisibility(View.VISIBLE);
                 }
@@ -361,10 +382,9 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.italian_soccer:
 
-
                 viewPager.setVisibility(View.VISIBLE);
 
-                if (fragContainer != null){
+                if (fragContainer != null) {
                     fragContainer.setVisibility(View.GONE);
                 }
 
@@ -372,7 +392,7 @@ public class MainActivity extends AppCompatActivity
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
                 fragmentTransaction.commit();
-                toolbar.setTitle("Italian Serie A News");
+                toolbar.setTitle("Italian Soccer");
                 toolbar.getChildAt(1).setVisibility(View.GONE);
                 if (tabLayout != null) {
                     tabLayout.setVisibility(View.VISIBLE);
@@ -381,17 +401,16 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.german_soccer:
 
-
                 viewPager.setVisibility(View.VISIBLE);
 
-                if (fragContainer != null){
+                if (fragContainer != null) {
                     fragContainer.setVisibility(View.GONE);
                 }
 
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
                 fragmentTransaction.commit();
-                toolbar.setTitle("German Bundesliga News");
+                toolbar.setTitle("German Soccer");
                 toolbar.getChildAt(1).setVisibility(View.GONE);
                 if (tabLayout != null) {
                     tabLayout.setVisibility(View.VISIBLE);
@@ -405,11 +424,11 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    public void popup() {
-        popup = new PopupMenu(MainActivity.this, fragContainer, Gravity.RIGHT);
-        popup.getMenuInflater().inflate(R.menu.pop_up_menu, popup.getMenu());
-        popup.show();
-    }
+//    public void popup() {
+//        popup = new PopupMenu(MainActivity.this, fragContainer, Gravity.RIGHT);
+//        popup.getMenuInflater().inflate(R.menu.pop_up_menu, popup.getMenu());
+//        popup.show();
+//    }
 
 
 }

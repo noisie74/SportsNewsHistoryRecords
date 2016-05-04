@@ -33,10 +33,10 @@ import timber.log.Timber;
  */
 public class AllSportsFragment extends Fragment {
 
-    public static RecyclerView recyclerView;
-    public static AllSportsAdapter allSportsAdapter;
-    public static ArrayList<NytSportsObjects> sportsNewsList;
-    public static SwipeRefreshLayout swipeContainer;
+    public RecyclerView recyclerView;
+    public AllSportsAdapter allSportsAdapter;
+    public ArrayList<NytSportsObjects> sportsNewsList;
+    public SwipeRefreshLayout swipeContainer;
     public static final String NYT_ALL = "Pro football,Pro basketball,baseball,soccer,Hockey";
     public static final String NYT_FOOTBALL = "Pro%20Football";
     public static final String NYT_BASKETBALL = "Pro basketball";
@@ -51,9 +51,6 @@ public class AllSportsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.recycleview_activity_fragment, container, false);
-
-
-//        nytAllSportsNews();
 
         setViews(rootView);
         sportsNewsList = new ArrayList<>();
@@ -115,7 +112,7 @@ public class AllSportsFragment extends Fragment {
      * this will pull a list of articles according to the navi bar topics
      * default will pull all topics
      */
-    public static void nytAllSportsNews() {
+    public void nytAllSportsNews() {
         NytAPI.NytRx nytSports = NytAPI.createRx();
 
         Observable<NytSportsResults> observable = nytSports.nytSportsResults("all", "sports", NYT_ALL);
@@ -146,7 +143,7 @@ public class AllSportsFragment extends Fragment {
                 });
     }
 
-    public static void nytSoccerSportsNews() {
+    public void nytSoccerSportsNews() {
         NytAPI.NytRx nytSports = NytAPI.createRx();
 
         Observable<NytSportsResults> observable = nytSports.nytSportsResults(NYT_SOCCER);
@@ -174,7 +171,7 @@ public class AllSportsFragment extends Fragment {
                 });
     }
 
-    public static void nytFootballSportsNews() {
+    public void nytFootballSportsNews() {
         NytAPI.NytRx nytSports = NytAPI.createRx();
 
         Observable<NytSportsResults> observable = nytSports.nytSportsResults(NYT_FOOTBALL);
@@ -201,7 +198,7 @@ public class AllSportsFragment extends Fragment {
                 });
     }
 
-    public static void nytBaseballSportsNews() {
+    public void nytBaseballSportsNews() {
         NytAPI.NytRx nytSports = NytAPI.createRx();
 
         Observable<NytSportsResults> observable = nytSports.nytSportsResults(NYT_BASEBALL);
@@ -229,7 +226,7 @@ public class AllSportsFragment extends Fragment {
                 });
     }
 
-    public static void nytBasketballSportsNews() {
+    public void nytBasketballSportsNews() {
         NytAPI.NytRx nytSports = NytAPI.createRx();
 
         Observable<NytSportsResults> observable = nytSports.nytSportsResults(NYT_BASKETBALL);
@@ -257,7 +254,7 @@ public class AllSportsFragment extends Fragment {
                 });
     }
 
-    public static void nytHockeySportsNews() {
+    public void nytHockeySportsNews() {
         NytAPI.NytRx nytSports = NytAPI.createRx();
 
         Observable<NytSportsResults> observable = nytSports.nytSportsResults(NYT_HOCKEY);
