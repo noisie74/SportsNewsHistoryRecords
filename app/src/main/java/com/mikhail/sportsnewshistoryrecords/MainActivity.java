@@ -55,6 +55,8 @@ public class MainActivity extends AppCompatActivity
     LeaguesFragment leaguesFragment;
     RecordsFragment recordsFragment;
 
+    public static final String KEY = "KEY";
+
     ViewPager viewPager;
     ViewPagerAdapter viewPagerAdapter;
 
@@ -260,8 +262,8 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nfl:
 
-                intent.putExtra("KEY",R.id.nfl);
-                 startActivity(intent);
+                intent.putExtra("KEY", R.id.nfl);
+                startActivity(intent);
 
 //                if (viewPager != null) {
 //                    viewPager.setVisibility(View.VISIBLE);
@@ -289,7 +291,7 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nba:
 
-                intent.putExtra("KEY",R.id.nba);
+                intent.putExtra("KEY", R.id.nba);
 
 
                 startActivity(intent);
@@ -316,13 +318,14 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.mlb:
 
+
 //                viewPager.setVisibility(View.VISIBLE);
 //                viewPagerAdapter.setFragmentType(mNavigationItemId);
 //
 //                if (fragContainer != null) {
 //                    fragContainer.setVisibility(View.GONE);
 //                }
-
+                intent.putExtra("KEY", R.id.mlb);
                 startActivity(intent);
 
 
@@ -344,7 +347,7 @@ public class MainActivity extends AppCompatActivity
 //                if (fragContainer != null) {
 //                    fragContainer.setVisibility(View.GONE);
 //                }
-
+                intent.putExtra("KEY", R.id.nhl);
                 startActivity(intent);
 
 
@@ -363,7 +366,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.mls:
 
 //                viewPager.setVisibility(View.VISIBLE);
-
+                intent.putExtra("KEY", R.id.mls);
                 startActivity(intent);
 
 
@@ -379,14 +382,11 @@ public class MainActivity extends AppCompatActivity
                 toolbar.setTitle("MLS Soccer");
 //                toolbar.getChildAt(2).setVisibility(View.VISIBLE);
                 toolbar.getChildAt(1).setVisibility(View.GONE);
-                tabLayout.setVisibility(View.GONE);
-                if (tabLayout != null) {
-                    tabLayout.setVisibility(View.VISIBLE);
-                }
+
                 break;
             case R.id.english_soccer:
 
-                intent.putExtra("KEY",R.id.english_soccer);
+                intent.putExtra("KEY", R.id.english_soccer);
                 startActivity(intent);
 
 
@@ -402,13 +402,12 @@ public class MainActivity extends AppCompatActivity
 //                fragmentTransaction.commit();
                 toolbar.setTitle("English Soccer");
                 toolbar.getChildAt(1).setVisibility(View.GONE);
-                if (tabLayout != null) {
-                    tabLayout.setVisibility(View.VISIBLE);
-                }
+
 //                toolbar.setTitle(getString(R.string.world));
                 break;
             case R.id.spanish_soccer:
 
+                intent.putExtra("KEY", R.id.spanish_soccer);
                 startActivity(intent);
 
 
@@ -423,15 +422,13 @@ public class MainActivity extends AppCompatActivity
 //                fragmentTransaction.commit();
                 toolbar.setTitle("Spanish Soccer");
                 toolbar.getChildAt(1).setVisibility(View.GONE);
-                if (tabLayout != null) {
-                    tabLayout.setVisibility(View.VISIBLE);
-                }
+
 //                toolbar.setTitle(getString(R.string.world));
                 break;
             case R.id.italian_soccer:
 
 //                viewPager.setVisibility(View.VISIBLE);
-
+                intent.putExtra("KEY", R.id.italian_soccer);
                 startActivity(intent);
 
 //
@@ -454,6 +451,7 @@ public class MainActivity extends AppCompatActivity
 
 //                viewPager.setVisibility(View.VISIBLE);
 
+                intent.putExtra("KEY", R.id.german_soccer);
                 startActivity(intent);
 
 
@@ -477,12 +475,6 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-//    public void popup() {
-//        popup = new PopupMenu(MainActivity.this, fragContainer, Gravity.RIGHT);
-//        popup.getMenuInflater().inflate(R.menu.pop_up_menu, popup.getMenu());
-//        popup.show();
-//    }
 
 
 }

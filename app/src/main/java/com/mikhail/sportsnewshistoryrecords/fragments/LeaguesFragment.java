@@ -100,222 +100,204 @@ public class LeaguesFragment extends Fragment {
 
     }
 
-    public void italianSoccerSearch() {
-        NytSearchAPI.NytRx nytSports = NytSearchAPI.createRx();
+    private void italianSoccerSearch() {
 
-        Observable<ArticleSearch> observable = nytSports.response(NYT_ITALIAN);
+        NytSearchAPI.NytAPIRetrofitSimple nytSportsSearch = NytSearchAPI.create();
 
-        observable.subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<ArticleSearch>() {
-                    @Override
-                    public void onCompleted() {
+        Call<ArticleSearch> call = nytSportsSearch.response(NYT_ITALIAN);
 
-                        Log.d("LeaguesFragment", "Query Succes!");
-                    }
+        call.enqueue(new Callback<ArticleSearch>() {
+            @Override
+            public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
+                ArticleSearch nytSportsSearch = response.body();
 
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.d("LeaguesFragment", "Error!");
-                    }
+//                Collection<Contributor> frequentContributors = Filter.isFrequentContributor(contributors);
 
-                    @Override
-                    public void onNext(ArticleSearch response) {
-                        handleData(response);
+                 leaguesNewsAdapter = new LeaguesNewsAdapter(nytSportsSearch);
+                recyclerView.setAdapter(leaguesNewsAdapter);
+            }
 
-                    }
-                });
+            @Override
+            public void onFailure(Call<ArticleSearch> call, Throwable t) {
+
+            }
+        });
+
     }
 
-    public void spanishSoccerSearch() {
-        NytSearchAPI.NytRx nytSports = NytSearchAPI.createRx();
+    private void spanishSoccerSearch() {
 
-        Observable<ArticleSearch> observable = nytSports.response(NYT_SPANISH);
+        NytSearchAPI.NytAPIRetrofitSimple nytSportsSearch = NytSearchAPI.create();
 
-        observable.subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<ArticleSearch>() {
-                    @Override
-                    public void onCompleted() {
+        Call<ArticleSearch> call = nytSportsSearch.response(NYT_SPANISH);
 
-                        Log.d("LeaguesFragment", "Query Succes!");
-                    }
+        call.enqueue(new Callback<ArticleSearch>() {
+            @Override
+            public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
+                ArticleSearch nytSportsSearch = response.body();
 
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.d("LeaguesFragment", "Error!");
-                    }
+//                Collection<Contributor> frequentContributors = Filter.isFrequentContributor(contributors);
 
-                    @Override
-                    public void onNext(ArticleSearch response) {
-                        handleData(response);
+                leaguesNewsAdapter = new LeaguesNewsAdapter(nytSportsSearch);
+                recyclerView.setAdapter(leaguesNewsAdapter);
+            }
 
-                    }
-                });
+            @Override
+            public void onFailure(Call<ArticleSearch> call, Throwable t) {
+
+            }
+        });
+
+    }
+    private void mlsSearch() {
+
+        NytSearchAPI.NytAPIRetrofitSimple nytSportsSearch = NytSearchAPI.create();
+
+        Call<ArticleSearch> call = nytSportsSearch.response(NYT_MLS);
+
+        call.enqueue(new Callback<ArticleSearch>() {
+            @Override
+            public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
+                ArticleSearch nytSportsSearch = response.body();
+
+//                Collection<Contributor> frequentContributors = Filter.isFrequentContributor(contributors);
+
+                 leaguesNewsAdapter = new LeaguesNewsAdapter(nytSportsSearch);
+                recyclerView.setAdapter(leaguesNewsAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<ArticleSearch> call, Throwable t) {
+
+            }
+        });
+
     }
 
-    public void mlsSearch() {
-        NytSearchAPI.NytRx nytSports = NytSearchAPI.createRx();
+    private void bundesligaSearch() {
 
-        Observable<ArticleSearch> observable = nytSports.response(NYT_MLS);
+        NytSearchAPI.NytAPIRetrofitSimple nytSportsSearch = NytSearchAPI.create();
 
-        observable.subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<ArticleSearch>() {
-                    @Override
-                    public void onCompleted() {
+        Call<ArticleSearch> call = nytSportsSearch.response(NYT_GERMAN);
 
-                        Log.d("LeaguesFragment", "Query Succes!");
-                    }
+        call.enqueue(new Callback<ArticleSearch>() {
+            @Override
+            public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
+                ArticleSearch nytSportsSearch = response.body();
 
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.d("LeaguesFragment", "Error!");
-                    }
+//                Collection<Contributor> frequentContributors = Filter.isFrequentContributor(contributors);
 
-                    @Override
-                    public void onNext(ArticleSearch response) {
-                        handleData(response);
+                 leaguesNewsAdapter = new LeaguesNewsAdapter(nytSportsSearch);
+                recyclerView.setAdapter(leaguesNewsAdapter);
+            }
 
-                    }
-                });
+            @Override
+            public void onFailure(Call<ArticleSearch> call, Throwable t) {
+
+            }
+        });
+
     }
 
-    public void bundesligaSearch() {
-        NytSearchAPI.NytRx nytSports = NytSearchAPI.createRx();
+    private void nbaSearch() {
 
-        Observable<ArticleSearch> observable = nytSports.response(NYT_GERMAN);
+        NytSearchAPI.NytAPIRetrofitSimple nytSportsSearch = NytSearchAPI.create();
 
-        observable.subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<ArticleSearch>() {
-                    @Override
-                    public void onCompleted() {
+        Call<ArticleSearch> call = nytSportsSearch.response(NYT_BASKETBALL);
 
-                        Log.d("LeaguesFragment", "Query Succes!");
-                    }
+        call.enqueue(new Callback<ArticleSearch>() {
+            @Override
+            public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
+                ArticleSearch nytSportsSearch = response.body();
 
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.d("LeaguesFragment", "Error!");
-                    }
+//                Collection<Contributor> frequentContributors = Filter.isFrequentContributor(contributors);
 
-                    @Override
-                    public void onNext(ArticleSearch response) {
-                        handleData(response);
+                 leaguesNewsAdapter = new LeaguesNewsAdapter(nytSportsSearch);
+                recyclerView.setAdapter(leaguesNewsAdapter);
+            }
 
-                    }
-                });
+            @Override
+            public void onFailure(Call<ArticleSearch> call, Throwable t) {
+
+            }
+        });
+
     }
 
-    public void nbaSearch() {
-        NytSearchAPI.NytRx nytSports = NytSearchAPI.createRx();
+    private void footballSearch() {
 
-        Observable<ArticleSearch> observable = nytSports.response(NYT_BASKETBALL);
+        NytSearchAPI.NytAPIRetrofitSimple nytSportsSearch = NytSearchAPI.create();
 
-        observable.subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<ArticleSearch>() {
-                    @Override
-                    public void onCompleted() {
+        Call<ArticleSearch> call = nytSportsSearch.response(NYT_FOOTBALL);
 
-                        Log.d("LeaguesFragment", "Query Succes!");
-                    }
+        call.enqueue(new Callback<ArticleSearch>() {
+            @Override
+            public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
+                ArticleSearch nytSportsSearch = response.body();
 
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.d("LeaguesFragment", "nba Error!");
-                        e.printStackTrace();
-                    }
+//                Collection<Contributor> frequentContributors = Filter.isFrequentContributor(contributors);
 
-                    @Override
-                    public void onNext(ArticleSearch response) {
-                        swipeContainer.setRefreshing(false);
-                        handleData(response);
-                    }
-                });
+                 leaguesNewsAdapter = new LeaguesNewsAdapter(nytSportsSearch);
+                recyclerView.setAdapter(leaguesNewsAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<ArticleSearch> call, Throwable t) {
+
+            }
+        });
+
     }
 
-    public void footballSearch() {
-        NytSearchAPI.NytRx nytSports = NytSearchAPI.createRx();
+    private void baseballSearch() {
 
-        Observable<ArticleSearch> observable = nytSports.response(NYT_FOOTBALL);
+        NytSearchAPI.NytAPIRetrofitSimple nytSportsSearch = NytSearchAPI.create();
 
-        observable.subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<ArticleSearch>() {
-                    @Override
-                    public void onCompleted() {
+        Call<ArticleSearch> call = nytSportsSearch.response(NYT_BASEBALL);
 
-                        Log.d("LeaguesFragment", "Query Succes!");
-                    }
+        call.enqueue(new Callback<ArticleSearch>() {
+            @Override
+            public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
+                ArticleSearch nytSportsSearch = response.body();
 
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.d("LeaguesFragment", "nfl Error!");
-                        e.printStackTrace();
-                    }
+//                Collection<Contributor> frequentContributors = Filter.isFrequentContributor(contributors);
 
-                    @Override
-                    public void onNext(ArticleSearch response) {
-                        swipeContainer.setRefreshing(false);
-                        handleData(response);
-                    }
-                });
+                 leaguesNewsAdapter = new LeaguesNewsAdapter(nytSportsSearch);
+                recyclerView.setAdapter(leaguesNewsAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<ArticleSearch> call, Throwable t) {
+
+            }
+        });
+
     }
 
-    public void baseballSearch() {
-        NytSearchAPI.NytRx nytSports = NytSearchAPI.createRx();
+    private void hockeySearch() {
 
-        Observable<ArticleSearch> observable = nytSports.response(NYT_BASEBALL);
+        NytSearchAPI.NytAPIRetrofitSimple nytSportsSearch = NytSearchAPI.create();
 
-        observable.subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<ArticleSearch>() {
-                    @Override
-                    public void onCompleted() {
+        Call<ArticleSearch> call = nytSportsSearch.response(NYT_HOCKEY);
 
-                        Log.d("LeaguesFragment", "Query Succes!");
-                    }
+        call.enqueue(new Callback<ArticleSearch>() {
+            @Override
+            public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
+                ArticleSearch nytSportsSearch = response.body();
+                swipeContainer.setRefreshing(false);
 
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.d("LeaguesFragment", "Error!");
-                    }
+//                Collection<Contributor> frequentContributors = Filter.isFrequentContributor(contributors);
 
-                    @Override
-                    public void onNext(ArticleSearch response) {
-                        handleData(response);
-                    }
-                });
-    }
+                 leaguesNewsAdapter = new LeaguesNewsAdapter(nytSportsSearch);
+                recyclerView.setAdapter(leaguesNewsAdapter);
+            }
 
-    public void hockeySearch() {
-        NytSearchAPI.NytRx nytSports = NytSearchAPI.createRx();
+            @Override
+            public void onFailure(Call<ArticleSearch> call, Throwable t) {
 
-        Observable<ArticleSearch> observable = nytSports.response(NYT_HOCKEY);
+            }
+        });
 
-        observable.subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<ArticleSearch>() {
-                    @Override
-                    public void onCompleted() {
-
-                        Log.d("LeaguesFragment", "Query Succes!");
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.d("LeaguesFragment", "Error!");
-                    }
-
-                    @Override
-                    public void onNext(ArticleSearch response) {
-
-                        handleData(response);
-
-                    }
-                });
     }
 
 //    public void englishSoccerSearch() {
@@ -358,7 +340,7 @@ public class LeaguesFragment extends Fragment {
 
 //                Collection<Contributor> frequentContributors = Filter.isFrequentContributor(contributors);
 
-                LeaguesNewsAdapter leaguesNewsAdapter = new LeaguesNewsAdapter(nytSportsSearch);
+                 leaguesNewsAdapter = new LeaguesNewsAdapter(nytSportsSearch);
                 recyclerView.setAdapter(leaguesNewsAdapter);
             }
 
@@ -407,6 +389,7 @@ public class LeaguesFragment extends Fragment {
                 break;
         }
     }
+
 
     private void handleData(ArticleSearch response) {
         if (leaguesNewsAdapter == null && recyclerView != null) {
