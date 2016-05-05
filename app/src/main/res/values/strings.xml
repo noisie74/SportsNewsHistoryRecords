@@ -149,7 +149,7 @@ Most championships won\n
     </string>
 
     <string name="serie_a_scorers">
-1.	Italy	Silvio Piola,	years: 1929–1954 years	274 goals\n
+1.	Italy	Silvio Piola,	years: 1929–1954 274 goals\n
 2.	Italy	Francesco Totti,	years: 1992–present 248 goals\n
 3.	Sweden	Gunnar Nordahl,	years: 1948–1958	225 goals\n
 4.	Italy	Giuseppe Meazza,	years: 1929–1947	216 goals\n
@@ -239,5 +239,108 @@ As Primera División entered a new century, the Big Two of Real Madrid and Barce
     <string name="la_liga_10">
 In the 2011–12 season, Real Madrid won its 32nd title under the management of José Mourinho with a record-breaking points tally of 100, a record 121 number of goals scored, most overall (32) and away (16) wins in a single season in La Liga history. Barcelona coach Tito Vilanova matched the 100-point record a year later in 2012–13 while battling terminal cancer. Atlético Madrid won the 2013–14 title, their first in 18 years, and the first title in ten years that Real Madrid or Barcelona had not won. Barcelona won the 2014–15 season.\n
 </string>
+
+    <string name="la_liga_records_title">
+        TEAM RECORDS/n
+    </string>
+
+    <string name="la_liga_records_team1">
+        Titles\n
+•	Most League Titles: 32, Real Madrid (1931–32, 1932–33, 1953–54, 1954–55, 1956–57, 1957–58, 1960–61, 1961–62, 1962–63, 1963–64, 1964–65, 1966–67, 1967–68, 1968–69, 1971–72, 1974–75, 1975–76, 1977–78, 1978–79, 1979–80, 1985–86, 1986–87, 1987–88, 1988–89, 1989–90, 1994–95, 1996–97, 2000–01, 2002–03,2006–07, 2007–08, 2011–12)\n
+•	Most Consecutive League Titles: 5, Real Madrid (twice): (1960–61, 1961–62, 1962–63, 1963–64, 1964–65),(1985–86, 1986–87, 1987–88, 1988–89, 1989–90)\n
+    </string>
+
+     <string name="la_liga_records_team2">
+Top flight appearances\n
+•	Most Appearances: 86, joint record (till 2015–16)\n
+•	Athletic Bilbao (1929–present)\n
+•	F. C. Barcelona (1929–present)\n
+•	Real Madrid (1929–present)\n
+    </string>
+
+    <string name="la_liga_records_team3">
+        Wins\n
+•	Most wins overall: 1590, Real Madrid\n
+•	Most wins in a season: 32, Real Madrid (2011–12), Barcelona (2012–13)\n
+•	Most home wins in a season: 18, joint record:\n
+•	Real Madrid (1987–88and (2009–10)\n
+•	Barcelona (2009–10) and (2012–13)\n
+•	Most away wins in a season: 16, Real Madrid (2011–12)\n
+•	Most consecutive wins: 16, Barcelona (2010–11)\n
+•	Most consecutive home wins: 39, Barcelona (16 February 1958 to 6 November 1960\n
+•	Most consecutive away wins: 12, Barcelona (1 May 2010 to 12 February 2011)\n
+
+•	100% home win record in a season:\n
+•	Athletic Bilbao (9 games; 1933–34)\n
+•	Athletic Bilbao (11 games; 1935–36)\n
+•	Barcelona (13 games; 1948–49)\n
+•	Barcelona (15 games; 1952–53)\n
+•	Sevilla (15 games; 1956–57)\n
+•	Barcelona (15 games; 1958–59)\n
+•	Barcelona (15 games; 1959–60)\n
+•	Real Madrid (15 games; 1959–60)\n
+•	Real Madrid (15 games; 1962–63)\n
+•	Real Madrid (17 games; 1985–86)\n
+•	Longest win streaks from the start of a season: 9, Real Madrid ( 1968–69)\n
+
+    </string>
+
+      <string name="la_liga_records_team4">
+        Draws\n
+•	Most draws overall: 609, Athletic Bilbao\n
+•	Most draws in a season: 17, joint record:\n
+•	Espanyol (1997–98)\n
+•	Racing Santander (1996–97)\n
+•	Rayo Vallecano (1992–93)\n
+•	Burgos (1990–91)\n
+•	Mallorca (1989–90)\n
+•	CD Málaga (1971–72)\n
+    </string>
+
+    <string name="la_liga_records_team5">
+Losses\n
+•	Most losses overall: 1024, Espanyol\n
+•	Most losses in a season: 29, Sporting Gijón (1997–98)\n
+•	Most consecutive losses in a season: 11, Las Palmas (13 December 1959 to 28 February 1960)\n
+   </string>
+
+    <string name="la_liga_records_team6">
+    Points\n
+    •	Most points overall in the top flight: 4110, Real Madrid\n
+    •	Most points in a season overall: 100 (87.72% of points), Real Madrid (2011–12) and Barcelona (2012–13)\n
+    •	Most points in a season home: 55, Barcelona\n
+    •	Most points in a season away: 50, Real Madrid (2011–12)\n
+    •	Most points in a season opening half: 55, Barcelona (2012–13)\n
+    •	Most points in a season closing half: 52, Real Madrid (2009–10)\n
+    </string>
+
+    <string name="la_liga_records_team7">
+Games without a loss\n
+•	Most consecutive league games without a loss: 38, Real Sociedad, (29 April 1979 to 11 May 1980)\n
+•	Most consecutive league games without a loss home: 121, Real Madrid (17 February 1957 to 7 March 1965)\n
+•	Most consecutive league games without a loss away: 23, Barcelona (14 February 2010 to 30 April 2011)\n
+    </string>
+
+     <string name="la_liga_records_team8">
+Goals\n
+Team\n
+•	Most league goals scored in a season: 121, Real Madrid (2011–12)\n
+•	Most home league goals scored in a season: 78, Real Madrid (1989–90)\n
+•	Most away league goals scored in a season: 53, Real Madrid (2014-15)\n
+•	Fewest league goals scored in a season: 15, Logroñés (1994–95)\n
+    </string>
+
+        <string name="la_liga_scorers">
+1	Argentina	Lionel Messi	years:2004–present	311	goals\n
+2	Portugal	Cristiano Ronaldo	years:2009–present	256	goals\n
+3	Spain	Telmo Zarra	years:1940–1955	251	goals\n
+4	Mexico	Hugo Sánchez	years:1981–1994	234	goals\n
+5	Spain	Raúl	years:1994–2010	228	goals\n
+6	Argentina	Alfredo di Stéfano	years:1953–1966	227	goals\n
+7	Spain	César Rodríguez	years:1939–1955	223	goals\n
+8	Spain	Quini	years:1970–1987	219	goals\n
+9	Spain	Pahiño	years:1943–1956	210	goals\n
+10	Spain	Edmundo Suárez	years:1939–1950	195	goals\n
+    </string>
 
 </resources>

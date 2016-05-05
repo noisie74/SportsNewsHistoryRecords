@@ -18,6 +18,8 @@ public class RecordsFragment extends Fragment {
 
     ImageView imageView;
     TextView textView;
+    private int mFragmentType;
+
 
     @Nullable
     @Override
@@ -27,6 +29,47 @@ public class RecordsFragment extends Fragment {
 
         imageView = (ImageView) v.findViewById(R.id.league_records_logo);
         textView = (TextView) v.findViewById(R.id.league_records_text);
+
+
+        return v;
+
+    }
+
+
+    public void setFragmentType(int type) {
+        mFragmentType = type;
+        setHistoryFragmentData();
+    }
+
+    private void setHistoryFragmentData() {
+
+        switch (mFragmentType) {
+            case R.id.nfl:
+                break;
+            case R.id.nba:
+                break;
+            case R.id.mlb:
+                break;
+            case R.id.nhl:
+                break;
+            case R.id.mls:
+                break;
+            case R.id.english_soccer:
+                break;
+            case R.id.spanish_soccer:
+                setSpanishSoccerHistory();
+                break;
+            case R.id.italian_soccer:
+                setItalianSoccerHistory();
+                break;
+            case R.id.german_soccer:
+
+                break;
+        }
+    }
+
+    private void setItalianSoccerHistory() {
+
         imageView.setImageResource(R.drawable.serie_a_records_logo);
         textView.setText(getString(R.string.team_recors_title).toUpperCase() +
                 "\n" + getString(R.string.serie_a_recors_team) +
@@ -34,8 +77,23 @@ public class RecordsFragment extends Fragment {
                 "\n" + getString(R.string.serie_a_individual_records) +
                 "\n" + getString(R.string.top_scorers_title).toUpperCase() +
                 "\n" + getString(R.string.serie_a_scorers));
+    }
 
-        return v;
+    private void setSpanishSoccerHistory() {
 
+        imageView.setImageResource(R.drawable.la_liga_records);
+        textView.setText(getString(R.string.la_liga_records_title) + "\n" +
+                getString(R.string.la_liga_records_team1) + "\n" +
+                getString(R.string.la_liga_records_team2) + "\n" +
+                getString(R.string.la_liga_records_team3) + "\n" +
+                getString(R.string.la_liga_records_team4) + "\n" +
+                getString(R.string.la_liga_records_team5) + "\n" +
+                getString(R.string.la_liga_records_team6) + "\n" +
+                getString(R.string.la_liga_records_team7) + "\n" +
+                getString(R.string.la_liga_records_team8) + "\n" +
+                getString(R.string.top_scorers_title).toUpperCase() + "\n" +
+                getString(R.string.la_liga_scorers));
     }
 }
+
+
