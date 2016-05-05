@@ -21,6 +21,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter{
 
     int fragmentType;
     int mNumOfTabs;
+    private LeaguesFragment leaguesFragment;
 
 
 
@@ -33,29 +34,32 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter{
         this.fragmentType = fragmentType;
     }
 
+    public void refreshData(){
+        if (leaguesFragment != null){
+            leaguesFragment.setFragmentType(fragmentType);
+        }
+    }
+
     @Override
     public Fragment getItem(int position) {
         Fragment fragment = null;
 
         switch (position) {
             case 0:
-                LeaguesFragment tab1 = new LeaguesFragment();
-//                if (fragmentType == R.id.nfl){
-//
-//                }
-                tab1.setFragmentType(fragmentType);
-
-                Log.d("MainActivity", "in Tab 1");
-                fragment = tab1;
+                Log.d("ViewPager", "in Tab 1");
+                if (leaguesFragment == null){
+                    leaguesFragment = new LeaguesFragment();
+                }
+                leaguesFragment.setFragmentType(fragmentType);
+                fragment = leaguesFragment;
                 break;
             case 1:
+                Log.d("ViewPager", "in Tab 2");
                 HistoryFragment tab2 = new HistoryFragment();
-
-
-                Log.d("MainActivity", "in Tab 2");
                 fragment = tab2;
                 break;
             case 2:
+                Log.d("ViewPager", "in Tab 3");
                 RecordsFragment tab3 = new RecordsFragment();
                 fragment = tab3;
                 break;

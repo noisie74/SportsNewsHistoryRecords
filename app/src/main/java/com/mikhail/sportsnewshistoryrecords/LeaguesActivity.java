@@ -24,14 +24,13 @@ import com.mikhail.sportsnewshistoryrecords.fragments.LeaguesFragment;
 public class LeaguesActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     Toolbar toolbar;
-    AllSportsFragment allSportsFragment;
-    LeaguesFragment leaguesFragment;
     private int mNavigationItemId;
     ViewPagerAdapter viewPagerAdapter;
     ViewPager viewPager;
     TabLayout tabLayout;
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
+    NavigationView navigationView;
 
 
     @Override
@@ -50,8 +49,6 @@ public class LeaguesActivity extends AppCompatActivity implements NavigationView
 
 
         fragmentManager = getSupportFragmentManager();
-        allSportsFragment = new AllSportsFragment();
-        leaguesFragment = new LeaguesFragment();
 
         viewPager = (ViewPager) findViewById(R.id.viewPager_leagues);
         viewPagerAdapter = new ViewPagerAdapter
@@ -70,12 +67,13 @@ public class LeaguesActivity extends AppCompatActivity implements NavigationView
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_leagues);
+        navigationView = (NavigationView) findViewById(R.id.nav_view_leagues);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
     public void onBackPressed() {
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_leagues);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
@@ -114,122 +112,53 @@ public class LeaguesActivity extends AppCompatActivity implements NavigationView
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        allSportsFragment = new AllSportsFragment();
-        leaguesFragment = new LeaguesFragment();
 
         mNavigationItemId = item.getItemId();
-        leaguesFragment.setFragmentType(mNavigationItemId);
+        viewPagerAdapter.setFragmentType(mNavigationItemId);
 
         switch (mNavigationItemId) {
             case R.id.top_news:
-
-                if (viewPager != null) {
-                    viewPager.setVisibility(View.GONE);
-                }
-
-                if (tabLayout != null) {
-                    tabLayout.setVisibility(View.GONE);
-                }
-
-                allSportsFragment.nytAllSportsNews();
-//                topicFrag.setSections(BREAKING_NEWS);
-//                fragmentTransaction = fragmentManager.beginTransaction();
-//                fragmentTransaction.replace(R.id.frag_container, allSportsFragment);
-                fragmentTransaction.commit();
-                toolbar.setTitle("Sports News");
-                toolbar.getChildAt(1).setVisibility(View.VISIBLE);
-
-//                toolbar.getChildAt(2).setVisibility(View.VISIBLE);
-
-//                if (fragContainer != null){
-//                    fragContainer.setVisibility(View.VISIBLE);
-//                }
-
-
-                if (tabLayout != null) {
-                    tabLayout.setVisibility(View.GONE);
-
-                }
-//                tabLayout.removeAllTabs();
+                // TODO send user back to main activty
                 break;
             case R.id.nfl:
-
                 toolbar.setTitle("NFL Football");
-//                toolbar.getChildAt(2).setVisibility(View.VISIBLE);
-                toolbar.getChildAt(1).setVisibility(View.GONE);
-
-
-//                tabLayout.setVisibility(View.GONE);
+                viewPagerAdapter.refreshData();
                 break;
             case R.id.nba:
-
                 toolbar.setTitle("NBA Basketball");
-//                toolbar.getChildAt(2).setVisibility(View.VISIBLE);
-                toolbar.getChildAt(1).setVisibility(View.GONE);
-
+                viewPagerAdapter.refreshData();
                 break;
             case R.id.mlb:
-//
-//                viewPager.setVisibility(View.VISIBLE);
-//                viewPagerAdapter.setFragmentType(mNavigationItemId);
-
                 toolbar.setTitle("MLB Baseball");
-//                toolbar.getChildAt(2).setVisibility(View.VISIBLE);
-                toolbar.getChildAt(1).setVisibility(View.GONE);
-
+                viewPagerAdapter.refreshData();
                 break;
             case R.id.nhl:
-
-                viewPager.setVisibility(View.VISIBLE);
-
-//                topicFrag.setSections(BREAKING_NEWS);
-//                fragmentTransaction = fragmentManager.beginTransaction();
-//                fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
-//                fragmentTransaction.commit();
                 toolbar.setTitle("NHL Hockey");
-//                toolbar.getChildAt(2).setVisibility(View.VISIBLE);
-                toolbar.getChildAt(1).setVisibility(View.GONE);
-
-//                tabLayout.removeAllTabs();
+                viewPagerAdapter.refreshData();
                 break;
             case R.id.mls:
-
-                viewPager.setVisibility(View.VISIBLE);
-
                 toolbar.setTitle("MLS Soccer");
-//                toolbar.getChildAt(2).setVisibility(View.VISIBLE);
-                toolbar.getChildAt(1).setVisibility(View.GONE);
+                viewPagerAdapter.refreshData();
                 break;
             case R.id.english_soccer:
-
-                viewPager.setVisibility(View.VISIBLE);
-
-//                topicFrag.setSections(WORLD);
-//                fragmentTransaction = fragmentManager.beginTransaction();
-//                fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
-//                fragmentTransaction.commit();
                 toolbar.setTitle("English Soccer");
-                toolbar.getChildAt(1).setVisibility(View.GONE);
-//                toolbar.setTitle(getString(R.string.world));
+                viewPagerAdapter.refreshData();
                 break;
             case R.id.spanish_soccer:
-
                 toolbar.setTitle("Spanish Soccer");
-                toolbar.getChildAt(1).setVisibility(View.GONE);
+                viewPagerAdapter.refreshData();
                 break;
             case R.id.italian_soccer:
-
                 toolbar.setTitle("Italian Soccer");
-                toolbar.getChildAt(1).setVisibility(View.GONE);
+                viewPagerAdapter.refreshData();
                 break;
             case R.id.german_soccer:
-
                 toolbar.setTitle("German Soccer");
-                toolbar.getChildAt(1).setVisibility(View.GONE);
+                viewPagerAdapter.refreshData();
                 break;
 
         }
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_leagues);
         if (drawer != null){
             drawer.closeDrawer(GravityCompat.START);
         }

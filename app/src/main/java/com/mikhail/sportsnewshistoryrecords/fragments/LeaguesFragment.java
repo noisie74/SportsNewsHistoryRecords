@@ -109,12 +109,8 @@ public class LeaguesFragment extends Fragment {
         call.enqueue(new Callback<ArticleSearch>() {
             @Override
             public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
-                ArticleSearch nytSportsSearch = response.body();
-
-//                Collection<Contributor> frequentContributors = Filter.isFrequentContributor(contributors);
-
-                 leaguesNewsAdapter = new LeaguesNewsAdapter(nytSportsSearch);
-                recyclerView.setAdapter(leaguesNewsAdapter);
+                 ArticleSearch nytSportsSearch = response.body();
+                 handleData(nytSportsSearch);
             }
 
             @Override
@@ -135,11 +131,7 @@ public class LeaguesFragment extends Fragment {
             @Override
             public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
                 ArticleSearch nytSportsSearch = response.body();
-
-//                Collection<Contributor> frequentContributors = Filter.isFrequentContributor(contributors);
-
-                leaguesNewsAdapter = new LeaguesNewsAdapter(nytSportsSearch);
-                recyclerView.setAdapter(leaguesNewsAdapter);
+                handleData(nytSportsSearch);
             }
 
             @Override
@@ -159,11 +151,7 @@ public class LeaguesFragment extends Fragment {
             @Override
             public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
                 ArticleSearch nytSportsSearch = response.body();
-
-//                Collection<Contributor> frequentContributors = Filter.isFrequentContributor(contributors);
-
-                 leaguesNewsAdapter = new LeaguesNewsAdapter(nytSportsSearch);
-                recyclerView.setAdapter(leaguesNewsAdapter);
+                handleData(nytSportsSearch);
             }
 
             @Override
@@ -184,11 +172,7 @@ public class LeaguesFragment extends Fragment {
             @Override
             public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
                 ArticleSearch nytSportsSearch = response.body();
-
-//                Collection<Contributor> frequentContributors = Filter.isFrequentContributor(contributors);
-
-                 leaguesNewsAdapter = new LeaguesNewsAdapter(nytSportsSearch);
-                recyclerView.setAdapter(leaguesNewsAdapter);
+                handleData(nytSportsSearch);
             }
 
             @Override
@@ -209,11 +193,7 @@ public class LeaguesFragment extends Fragment {
             @Override
             public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
                 ArticleSearch nytSportsSearch = response.body();
-
-//                Collection<Contributor> frequentContributors = Filter.isFrequentContributor(contributors);
-
-                 leaguesNewsAdapter = new LeaguesNewsAdapter(nytSportsSearch);
-                recyclerView.setAdapter(leaguesNewsAdapter);
+                handleData(nytSportsSearch);
             }
 
             @Override
@@ -234,11 +214,7 @@ public class LeaguesFragment extends Fragment {
             @Override
             public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
                 ArticleSearch nytSportsSearch = response.body();
-
-//                Collection<Contributor> frequentContributors = Filter.isFrequentContributor(contributors);
-
-                 leaguesNewsAdapter = new LeaguesNewsAdapter(nytSportsSearch);
-                recyclerView.setAdapter(leaguesNewsAdapter);
+                handleData(nytSportsSearch);
             }
 
             @Override
@@ -259,11 +235,7 @@ public class LeaguesFragment extends Fragment {
             @Override
             public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
                 ArticleSearch nytSportsSearch = response.body();
-
-//                Collection<Contributor> frequentContributors = Filter.isFrequentContributor(contributors);
-
-                 leaguesNewsAdapter = new LeaguesNewsAdapter(nytSportsSearch);
-                recyclerView.setAdapter(leaguesNewsAdapter);
+                handleData(nytSportsSearch);
             }
 
             @Override
@@ -284,12 +256,7 @@ public class LeaguesFragment extends Fragment {
             @Override
             public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
                 ArticleSearch nytSportsSearch = response.body();
-                swipeContainer.setRefreshing(false);
-
-//                Collection<Contributor> frequentContributors = Filter.isFrequentContributor(contributors);
-
-                 leaguesNewsAdapter = new LeaguesNewsAdapter(nytSportsSearch);
-                recyclerView.setAdapter(leaguesNewsAdapter);
+                handleData(nytSportsSearch);
             }
 
             @Override
@@ -321,8 +288,8 @@ public class LeaguesFragment extends Fragment {
 //
 //                    @Override
 //                    public void onNext(ArticleSearch response) {
-//                        handleData(response);
-//
+//                        ArticleSearch nytSportsSearch = response.body();
+//                        handleData(nytSportsSearch);
 //                    }
 //                });
 //    }
@@ -337,11 +304,7 @@ public class LeaguesFragment extends Fragment {
             @Override
             public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
                 ArticleSearch nytSportsSearch = response.body();
-
-//                Collection<Contributor> frequentContributors = Filter.isFrequentContributor(contributors);
-
-                 leaguesNewsAdapter = new LeaguesNewsAdapter(nytSportsSearch);
-                recyclerView.setAdapter(leaguesNewsAdapter);
+                handleData(nytSportsSearch);
             }
 
             @Override
