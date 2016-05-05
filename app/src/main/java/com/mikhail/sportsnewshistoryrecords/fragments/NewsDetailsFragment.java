@@ -44,6 +44,8 @@ public class NewsDetailsFragment extends Fragment {
         historyWebView.loadUrl(articleDetails[2]);
 
         return v;
+
+
     }
 
     private class WebViewClientDemo extends WebViewClient {
@@ -74,5 +76,6 @@ public class NewsDetailsFragment extends Fragment {
         public void showHTML(String html) {
         }
     }
+
 
 }

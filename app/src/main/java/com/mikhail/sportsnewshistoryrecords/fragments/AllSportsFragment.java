@@ -33,6 +33,7 @@ import timber.log.Timber;
  */
 public class AllSportsFragment extends Fragment {
 
+    private int mFragmentType;
     public RecyclerView recyclerView;
     public AllSportsAdapter allSportsAdapter;
     public ArrayList<NytSportsObjects> sportsNewsList;
@@ -61,6 +62,11 @@ public class AllSportsFragment extends Fragment {
         allSportsAdapterItemClicker();
 
         return rootView;
+    }
+
+    public void setFragment(int type){
+        this.mFragmentType = type;
+        nytAllSportsNews();
     }
 
     /**

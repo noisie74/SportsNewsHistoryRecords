@@ -193,6 +193,7 @@ public class LeaguesFragment extends Fragment {
             @Override
             public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
                 ArticleSearch nytSportsSearch = response.body();
+                setPullRefresh();
                 handleData(nytSportsSearch);
             }
 

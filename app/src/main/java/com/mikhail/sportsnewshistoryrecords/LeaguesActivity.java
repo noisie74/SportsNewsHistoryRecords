@@ -15,11 +15,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.mikhail.sportsnewshistoryrecords.adapters.ViewPagerAdapter;
-import com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment;
-import com.mikhail.sportsnewshistoryrecords.fragments.LeaguesFragment;
 
 public class LeaguesActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -31,15 +28,22 @@ public class LeaguesActivity extends AppCompatActivity implements NavigationView
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
     NavigationView navigationView;
+    Intent intent;
+    public static final String RETURN_TO_MAIN_ACTIVITY = "backToMainActivity";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         int key = getIntent().getIntExtra("KEY", 0);
+
         setContentView(R.layout.activity_leagues);
         toolbar = (Toolbar) findViewById(R.id.toolbar_leagues);
         setSupportActionBar(toolbar);
+
+        intent = new Intent(LeaguesActivity.this, MainActivity.class);
+
 
         tabLayout = (TabLayout) findViewById(R.id.tab_layout_leagues);
         tabLayout.addTab(tabLayout.newTab().setText("Articles"));
@@ -69,6 +73,40 @@ public class LeaguesActivity extends AppCompatActivity implements NavigationView
 
         navigationView = (NavigationView) findViewById(R.id.nav_view_leagues);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+
+                int id = tab.getPosition();
+
+//                if (id == 0) {
+//                    viewPagerAdapter.setFragmentType(mNavigationItemId);
+//
+//                }
+
+//                switch (id) {
+//                    case 0:
+//                        viewPagerAdapter.setFragmentType(mNavigationItemId);
+//                        break;
+//
+//                }
+
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
     }
 
     @Override
@@ -77,6 +115,8 @@ public class LeaguesActivity extends AppCompatActivity implements NavigationView
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_leagues);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
+//            intent.putExtra(RETURN_TO_MAIN_ACTIVITY, R.id.top_news);
+            startActivity(intent);
         } else {
             super.onBackPressed();
         }
@@ -119,6 +159,9 @@ public class LeaguesActivity extends AppCompatActivity implements NavigationView
         switch (mNavigationItemId) {
             case R.id.top_news:
                 // TODO send user back to main activty
+                intent.putExtra(RETURN_TO_MAIN_ACTIVITY, R.id.top_news);
+                startActivity(intent);
+
                 break;
             case R.id.nfl:
                 toolbar.setTitle("NFL Football");
@@ -159,9 +202,11 @@ public class LeaguesActivity extends AppCompatActivity implements NavigationView
 
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_leagues);
-        if (drawer != null){
+        if (drawer != null) {
             drawer.closeDrawer(GravityCompat.START);
         }
         return true;
     }
+
+
 }

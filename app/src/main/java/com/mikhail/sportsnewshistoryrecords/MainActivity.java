@@ -70,6 +70,8 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
         toolbar.setTitle("Sports News");
 
+
+
         Spinner s = (Spinner) toolbar.findViewById(R.id.app_bar_spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 R.layout.support_simple_spinner_dropdown_item, paths);
@@ -79,7 +81,8 @@ public class MainActivity extends AppCompatActivity
         setFragment();
 
         intent = new Intent(MainActivity.this, LeaguesActivity.class);
-
+        int key = getIntent().getIntExtra("backToMainActivity", 0);
+        allSportsFragment.setFragment(key);
 
 //        historyAdapter = new HistoryAdapter();
 //

@@ -34,9 +34,10 @@ public class HistoryFragment extends Fragment {
         imageView = (ImageView) v.findViewById(R.id.league_logo);
         textView = (TextView) v.findViewById(R.id.league_history_text);
         imageView.setImageResource(R.drawable.serie_a_history);
-        textView.setText(getString(R.string.serie_a_history1)+ "\n" + getString(R.string.serie_a_history2) + "\n" +
-                getString(R.string.serie_a_history3) +"\n" + getString(R.string.serie_a_history4));
-
+        textView.setText(getString(R.string.serie_a_history1)+
+                "\n" + getString(R.string.serie_a_history2) + "\n" +
+                getString(R.string.serie_a_history3) +"\n" +
+                getString(R.string.serie_a_history4));
         return v;
 
     }

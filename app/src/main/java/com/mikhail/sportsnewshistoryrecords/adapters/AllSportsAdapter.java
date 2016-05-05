@@ -18,6 +18,7 @@ import com.squareup.picasso.Picasso;
  */
 public class AllSportsAdapter extends RecyclerView.Adapter<AllSportsAdapter.ViewHolder> {
 
+    public int fragmentType;
     public NytSportsResults nytSportsResults;
     private static OnItemClickListener listener;
 
@@ -29,6 +30,10 @@ public class AllSportsAdapter extends RecyclerView.Adapter<AllSportsAdapter.View
 
     public interface OnItemClickListener {
         void onItemClick(View itemView, int position);
+    }
+
+    public void setFragmentType(int fragmentType) {
+        this.fragmentType = fragmentType;
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
