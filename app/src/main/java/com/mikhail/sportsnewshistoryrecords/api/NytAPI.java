@@ -33,13 +33,13 @@ public class NytAPI {
                 @Path("source") String source,
                 @Path("section") String section,
                 @Query("subsection") String subsection);
-        @GET("all/sports/1.json?&api-key=" + NytKeys.newsWireKey)
-        Observable<NytSportsResults> nytSportsResults(
-                @Query("subsection") String subsection);
+//        @GET("all/sports/1.json?&api-key=" + NytKeys.newsWireKey + "&subsection=")
+//        Observable<NytSportsResults> nytSportsResults(
+//                @Query("subsection") String subsection);
 //        @GET("articlesearch.json?&sort=newest&api-key=" + NytKeys.nyTimesFullSearchQueryKey)
 //        Observable<ArticleSearch> response(
 //                @Query("q") String q);
-
+//    http://api.nytimes.com/svc/news/v3/content/all/sports/.json?api-key=sample-key&subsection=soccer
 
 //        @GET("/users/{owner}/repos")
 //        Observable<List<Repo>> repos(

@@ -27,7 +27,7 @@ public class NytSoccerRxActivity extends MainActivity {
 
         NytAPI.NytRx nytSports = NytAPI.createRx();
 
-        Observable<NytSportsResults> observable = nytSports.nytSportsResults(NYT_SOCCER);
+        Observable<NytSportsResults> observable = nytSports.nytSportsResults("all", "sports",NYT_SOCCER);
 
         observable.subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())

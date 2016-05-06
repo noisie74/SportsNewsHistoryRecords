@@ -18,11 +18,13 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.mikhail.sportsnewshistoryrecords.adapters.HistoryAdapter;
 import com.mikhail.sportsnewshistoryrecords.adapters.ViewPagerAdapter;
@@ -43,20 +45,12 @@ public class MainActivity extends AppCompatActivity
     private int mNavigationItemId;
     Toolbar toolbar;
     private static final String[] paths = {"Top News", "Football", "Basketball", "Baseball", "Hockey", "Soccer"};
-    ArrayAdapter<String> adapter;
     TabLayout tabLayout;
     NewsDetailsFragment newsDetailsFragment;
-    PopupMenu popup;
-    Spinner spinner;
-    RelativeLayout root_layout;
-    //    String[] arraySpinner;
-    HistoryAdapter historyAdapter;
-    HistoryFragment historyFragment;
     LeaguesFragment leaguesFragment;
-    RecordsFragment recordsFragment;
-
     public static final String KEY = "KEY";
 
+    Spinner spinner;
     ViewPager viewPager;
     ViewPagerAdapter viewPagerAdapter;
 
@@ -71,11 +65,10 @@ public class MainActivity extends AppCompatActivity
         toolbar.setTitle("Sports News");
 
 
-
-        Spinner s = (Spinner) toolbar.findViewById(R.id.app_bar_spinner);
+         spinner = (Spinner) toolbar.findViewById(R.id.app_bar_spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 R.layout.support_simple_spinner_dropdown_item, paths);
-        s.setAdapter(adapter);
+        spinner.setAdapter(adapter);
 
         setViews();
         setFragment();
@@ -83,6 +76,46 @@ public class MainActivity extends AppCompatActivity
         intent = new Intent(MainActivity.this, LeaguesActivity.class);
         int key = getIntent().getIntExtra("backToMainActivity", 0);
         allSportsFragment.setFragment(key);
+
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                int spinnerPosition = spinner.getSelectedItemPosition();
+
+                switch (spinnerPosition) {
+                    case 0:
+                        allSportsFragment.nytAllSportsNews();
+                        Toast.makeText(MainActivity.this, "Top News", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 1:
+                        allSportsFragment.nytFootballSportsNews();
+                        Toast.makeText(MainActivity.this, "Football", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 2:
+                        allSportsFragment.nytBasketballSportsNews();
+                        Toast.makeText(MainActivity.this, "Basketball", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 3:
+                        allSportsFragment.nytBaseballSportsNews();
+                        Toast.makeText(MainActivity.this, "Baseball", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 4:
+                        allSportsFragment.nytHockeySportsNews();
+                        Toast.makeText(MainActivity.this, "Hockey", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 5:
+                        allSportsFragment.nytSoccerSportsNews();
+                        Toast.makeText(MainActivity.this, "Soccer", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
 //        historyAdapter = new HistoryAdapter();
 //
@@ -265,7 +298,7 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nfl:
 
-                intent.putExtra("KEY", R.id.nfl);
+                intent.putExtra(KEY, R.id.nfl);
                 startActivity(intent);
 
 //                if (viewPager != null) {
