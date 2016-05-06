@@ -150,7 +150,6 @@ public class AllSportsFragment extends Fragment {
                             recyclerViewIsSet = true;
                         }
                         Collections.addAll(sportsNewsList, nytSportsResults.getResults());
-
                         swipeContainer.setRefreshing(false);
                     }
                 });

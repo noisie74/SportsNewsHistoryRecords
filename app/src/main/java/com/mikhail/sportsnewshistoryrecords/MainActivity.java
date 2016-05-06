@@ -260,19 +260,19 @@ public class MainActivity extends AppCompatActivity
         switch (mNavigationItemId) {
             case R.id.top_news:
 
-                if (viewPager != null) {
-                    viewPager.setVisibility(View.GONE);
-                }
-
-                if (tabLayout != null) {
-                    tabLayout.setVisibility(View.GONE);
-                }
-                if (fragContainer != null) {
-                    fragContainer.setVisibility(View.VISIBLE);
-                }
-//                if (spinner != null) {
-//                    spinner.setVisibility(View.VISIBLE);
+//                if (viewPager != null) {
+//                    viewPager.setVisibility(View.GONE);
 //                }
+//
+//                if (tabLayout != null) {
+//                    tabLayout.setVisibility(View.GONE);
+//                }
+//                if (fragContainer != null) {
+//                    fragContainer.setVisibility(View.VISIBLE);
+//                }
+                if (spinner != null) {
+                    spinner.setSelection(0);
+                }
 
                 allSportsFragment.nytAllSportsNews();
 //                topicFrag.setSections(BREAKING_NEWS);
