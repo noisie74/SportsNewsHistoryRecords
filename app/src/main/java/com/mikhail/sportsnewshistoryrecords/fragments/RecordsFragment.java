@@ -74,7 +74,7 @@ public class RecordsFragment extends Fragment {
                 setItalianSoccerRecords();
                 break;
             case R.id.german_soccer:
-
+                setGermanESoccerRecords();
                 break;
         }
     }
@@ -132,5 +132,28 @@ public class RecordsFragment extends Fragment {
                 getString(R.string.top_scorers_title).toUpperCase() + "\n" +
                 getString(R.string.english_records10));
     }
-}
 
+    private void setGermanESoccerRecords() {
+
+        imageView.setImageResource(R.drawable.logo_german);
+        textView.setText(getString(R.string.german_records_title1).toUpperCase() + "\n" +
+                getString(R.string.german_records_title2) + "\n" +
+                getString(R.string.german_records1) + "\n" +
+                getString(R.string.german_records_title3) + "\n" +
+                getString(R.string.german_records2) + "\n" +
+                getString(R.string.german_records_title4) + "\n" +
+                getString(R.string.german_records3) + "\n" +
+                getString(R.string.german_records_title5) + "\n" +
+                getString(R.string.german_records4) + "\n" +
+                getString(R.string.german_records_title6) + "\n" +
+                getString(R.string.german_records5) + "\n" +
+                getString(R.string.german_records_title7) + "\n" +
+                getString(R.string.german_records_title8) + "\n" +
+                getString(R.string.german_records6) + "\n" +
+                getString(R.string.german_records_title9) + "\n" +
+                getString(R.string.german_records7) + "\n" +
+                getString(R.string.top_scorers_title).toUpperCase() + "\n" +
+                getString(R.string.german_records_10));
+    }
+
+}

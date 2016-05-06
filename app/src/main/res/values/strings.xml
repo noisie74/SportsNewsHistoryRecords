@@ -389,7 +389,7 @@ One significant feature of the Premier League in the mid 2000s was the dominance
     </string>
 
      <string name="english_history5">
-The years following 2009 marked a shift in the structure of the "Big Four" with Tottenham Hotspur and Manchester City both breaking into the top four. In the 2009–10 season, Tottenham finished fourth and became the first team to break the top four since Everton in 2005. Criticism of the gap between an elite group of "super clubs" and the majority of the Premier League has continued, nevertheless, due to their increasing ability to spend more than the other Premier League clubs. Manchester City won the title in the 2011–12 season, becoming the first club outside the "Big Four" to win since 1994–95. That season also saw two of the Big Four (Chelsea and Liverpool) finish outside the top four places for the first time since 1994–95\n
+The years following 2009 marked a shift in the structure of the "Big Four" with Tottenham Hotspur and Manchester City both breaking into the top four. In the 2009–10 season, Tottenham finished fourth and became the first team to break the top four since Everton in 2005. Criticism of the gap between an elite group of "super clubs" and the majority of the Premier League has continued, nevertheless, due to their increasing ability to spend more than the other Premier League clubs. Manchester City won the title in the 2011–12 season, becoming the first club outside the "Big Four" to win since 1994–95. That season also saw two of the Big Four (Chelsea and Liverpool) finish outside the top four places for the first time since 1994–95
     </string>
 
 
@@ -557,7 +557,214 @@ The years following 2009 marked a shift in the structure of the "Big Four" with 
 7	  Michael Owen Liverpool, Newcastle United, Manchester United, Stoke City 150 goals\n
 8	  Les Ferdinand Queens Park Rangers, Newcastle United, Tottenham Hotspur, West Ham United,Leicester City, Bolton Wanderers 149 goals\n
 9	  Teddy Sheringham Nottingham Forest, Tottenham Hotspur, Manchester United, Portsmouth, West Ham United 146 goals\n
-10	  Robin van Persie Arsenal, Manchester United 144 goals\n
+10	  Robin van Persie Arsenal, Manchester United 144 goals
+    </string>
+
+    <string name="german_history_1">
+      The Bundesliga is a professional association football league in Germany and the football league with the highest average stadium attendance worldwide. At the top of the German football league system, the Bundesliga is Germany\'s primary football competition.
+        The Bundesliga is contested by 18 teams and operates on a system of promotion and relegation with the 2. Bundesliga. Seasons run from August to May. Most games are played on Saturdays and Sundays, with a few games played on weekdays. All of the Bundesliga clubs qualify for the DFB-Pokal. The winner of the Bundesliga qualifies for the DFL-Supercup.\n
+A total of 53 clubs have competed in the Bundesliga since its founding. FC Bayern Munich has won the Bundesliga the most, winning the title 24 times. However, the Bundesliga has seen other champions with Borussia Dortmund, Hamburger SV, Werder Bremen, Borussia Mönchengladbach and VfB Stuttgart most prominent among them. The Bundesliga is one of the top national leagues, currently ranked 2nd in Europe according to UEFA\'s league coefficient ranking, based on performances in European competitions over the past five seasons.\n
+        The Bundesliga is the number one football league in the world in terms of average attendance; out of all sports, its average of 45,134 fans per game during the 2011–12 season was the second highest of any sports league in the world after the National Football League. The Bundesliga is broadcast on television in over 200 countries.
+The Bundesliga was founded in 1962 in Dortmund and the first season started in 1963. The structure and organisation of the Bundesliga along with Germany\'s other football leagues have undergone frequent changes right up to the present day.
+        The Bundesliga was originally founded by the Deutscher Fußball-Bund (English: German Football Association), but is now operated by the Deutsche Fußball Liga (English: German Football League).
+
+    </string>
+
+    <string name="german_history_title1">
+       History\n
+    </string>
+
+    <string name="german_history_title2">
+       Origins\n
+    </string>
+
+    <string name="german_history_2">
+       Prior to the formation of the Bundesliga, German football was played at an amateur level in a large number of sub-regional leagues until, in 1949, part-time (semi-) professionalism was introduced and only five regional Oberligen (Premier Leagues) remained.\n
+        Regional champions and runners-up played a series of playoff matches for the right to compete in a final game for the national championship. On 28 January 1900, a national association, the Deutscher Fußball Bund (DFB) had been founded in Leipzig with 86 member clubs. The first recognised national championship team was VfB Leipzig, who beat DFC Prague 7–2 in a game played at Altona on 31 May 1903.\n
+Through the 1950s, there were continued calls for the formation of a central professional league, especially as professional leagues in other countries began to draw Germany\'s best players away from the semi-professional domestic leagues. At the international level the German game began to falter as German teams often fared poorly against professional teams from other countries.\n
+        A key supporter of the central league concept was national team head coach Sepp Herberger who said, “If we want to remain competitive internationally, we have to raise our expectations at the national level.”\n
+Meanwhile, in East Germany, a separate league was established with the formation of the DS-Oberliga (Deutscher Sportausschuss Oberliga) in 1950.
+        The league was renamed the Football Oberliga DFV in 1958 and was generally referred to simply as the DDR-Liga or DDR-Oberliga. The league fielded 14 teams with two relegation spots.\n
+    </string>
+
+    <string name="german_history_title3">
+       Foundation\n
+    </string>
+
+    <string name="german_history_3">
+       The Bundesliga was founded at the annual DFB convention at the Westfalenhallen in Dortmund on 28 July 1962
+The defeat of the national team by Yugoslavia (0–1) in a 1962 World Cup quarter-final game in Chile was one impetus (of many) towards the formation of a national league. At the annual DFB convention under new DFB president Hermann Gösmann (elected that very day) the Bundesliga was created in Dortmund at the Westfalenhallen on 28 July 1962 to begin play starting with the 1963–64 season.\n
+At the time, there were five Oberligen (Premier Leagues) in place representing West Germany\'s North, South, West, Southwest, and Berlin. East Germany, behind the Iron Curtain, maintained its separate league structure. 46 clubs applied for admission to the new league. 16 teams were selected based on their success on the field, economic criteria and representation of the various Oberligen.\n
+    </string>
+
+
+    <string name="german_records_title1">
+       Club records\n
+    </string>
+
+    <string name="german_records_title2">
+       Titles\n
+    </string>
+
+    <string name="german_records1">
+       Highest number of titles won: 24by Bayern Munich (1968–69, 1971–72 to 1973–74, 1979–80, 1980–81, 1984–85 to 1986–87, 1988–89, 1989–90, 1993–94,1996–97, 1998–99 to 2000–01, 2002–03, 2004–05, 2005–06, 2007–08, 2009–10, 2012–13 to 2014–15)\n
+    </string>
+
+    <string name="german_records_title3">
+       Champions\n
+    </string>
+
+    <string name="german_records2">
+•	Highest number of games left when becoming champions: 7 by Bayern Munich (2013–14)\n
+•	Earliest point of time in a year for a team to be crowned champions: 25 March by Bayern Munich (2013–14)\n
+•	Highest number of matchdays being league leaders: 708 by Bayern Munich\n
+•	Highest number of matchdays being league leaders in a season: 34 by Bayern Munich (1968–69, 1972–73, 1984–85 2007–08 and 2012–13)\n
+•	Lowest number of matchdays being league leaders in a season for the champions: 1 by Bayern Munich (1985–86)\n
+•	Lowest number of seasons before becoming champions after being promoted: 1 by 1. FC Kaiserslautern (Promotion: 1997; Champions: 1997–98)\n
+•	Lowest number of seasons before getting relegated for the champions: 1 by 1. FC Nürnberg (Champions: 1967–68; Relegation: 1968–69)\n
+    </string>
+
+    <string name="german_records_title4">
+       Points\n
+    </string>
+
+    <string name="german_records3">
+•	Highest number of points in a season: 91 by Bayern Munich (2012–13)\n
+•	Highest number of points in a season opening half: 47 by Bayern Munich (2013–14)\n
+•	Highest number of points in a season closing half: 49 by Bayern Munich (2012–13)\n
+•	Highest number of points in a season away: 47 by Bayern Munich (2012–13)\n
+•	Highest number of points in a season at home: 49 by FC Schalke 04 (33:1) (1971–72), Bayern Munich (33:1) (1972–73) and VfL Wolfsburg (2008–09)\n
+•	Highest percentage of total possible points in a season: 89.22 by Bayern Munich (2012–13) (91 points out of a possible 102)\n
+•	Highest percentage of total possible points in a season opening half: 92.16 by Bayern Munich (2013–14) (47 points out of a possible 51)\n
+•	Highest percentage of total possible points in a season closing half: 96.08 by Bayern Munich (2012–13) (49 points out of a possible 51)\n
+•	Highest percentage of total possible points in a season at home: 96.08 by FC Schalke 04 (1971–72), Bayern Munich (1972–73) and VfL Wolfsburg (2008–09) (49 points out of a possible 51) (Based on 16 wins and a draw with 3 points per win)\n
+•	Highest percentage of total possible points in a season away: 92.16 by Bayern Munich (2012–13) (47 points out of a possible 51)\n
+•	Biggest lead in points after a season opening half: 11 by Bayern Munich (45) upon VfL Wolfsburg (34) (2014-15)\n
+•	Biggest margin of points between champions and runner-up: 25 between Bayern Munich (91) and Borussia Dortmund (66) (2012–13)\n
+•	Highest percentage of points difference between champions and runner-up: 27.47 between Bayern Munich (91) and Borussia Dortmund (66) (2012–13)\n
+•	Highest points per game average: 1.98 by Bayern Munich\n
+•	Highest points per game average in a season: 2.68 by Bayern Munich (2012–13)\n
+•	Lowest number of points in a season: 10 by Tasmania Berlin (8:60) (1965–66)\n
+•	Lowest number of points in a season opening half: 4 by Tasmania Berlin (3:31) (1965–66)\n
+•	Lowest number of points in a season closing half: 4 by Hannover 96 (4:30) (1985–86)\n
+•	Lowest number of points in a season away: 0 by 1. FC Nürnberg (1983–84)\n
+•	Lowest number of points in a season at home: 4 by SpVgg Greuther Fürth (2012–13)\n
+•	Highest number of points in a calendar year: 93 by Bayern Munich (2013)\n
+•	Highest percentage of total possible points in a calendar year: 93.94 by Bayern Munich (2013) (93 points out of a possible 99)\n
+    </string>
+
+    <string name="german_records_title5">
+       Wins and losses\n
+    </string>
+
+    <string name="german_records4">
+•	Highest number of wins: 1015 by Bayern Munich\n
+•	Highest number of wins in a season: 29 by Bayern Munich (2012–13 and 2013–14)\n
+•	Highest number of wins in a season opening half: 15 by Bayern Munich (2013–14 and 2015–16)\n
+•	Highest number of wins in a season closing half: 16 by Bayern Munich (2012–13)\n
+•	Highest number of wins in a season away: 15 by Bayern Munich (2012–13)\n
+•	Lowest number of losses in a season: 1 by Bayern Munich (1986–87 and 2012–13)\n
+•	Lowest number of losses in a season opening half:0 by Hamburger SV (1982–83), Bayern Munich (1988–89, 2013–14 and 2014–15) and Bayer Leverkusen(2009–10)\n
+•	Lowest number of losses in a season closing half:0 by Eintracht Frankfurt (1976–77), Bayern Munich (1986–87 and 2012–13) and Borussia Dortmund (2011–12)\n
+•	Highest number of losses: 607 by Eintracht Frankfurt\n
+•	Highest number of losses in a season 28 by Tasmania Berlin (1965–66)\n
+•	Highest number of losses in a season opening half: 15 by Tasmania Berlin (1965–66)\n
+•	Highest number of losses in a season closing half: 13 by Tasmania Berlin (1965–66) and FC St. Pauli (1996–97)\n
+•	Highest number of losses in a season at home: 13 by SpVgg Greuther Fürth (2012–13)\n
+•	Highest number of losses in a season away: 17 by 1. FC Nürnberg (1983–84)\n
+•	Lowest number of wins in a season: 2 by Tasmania Berlin (1965–66) and Wuppertaler SV (1974–75)\n
+•	Lowest number of wins in a season opening half: 0 by 1. FC Nürnberg (2013–14)\n
+•	Lowest number of wins in a season closing half: 0 by Wuppertaler SV (1974–75) and Hannover 96 (1985–86)\n
+•	Lowest number of wins in a season at home: 0 by SpVgg Greuther Fürth (2012–13)\n
+•	Lowest number of wins in a season away: 0 by Tasmania Berlin (1965–66), Karlsruher SC (1965–66, 1967–68 and 1976–77), Borussia Neunkirchen (1967–68),Borussia Dortmund (1967–68 and 1978–79), Hannover 96 (1969–70 and 1971–72), Alemannia Aachen (1969–70), Arminia Bielefeld (1971–72), Rot-Weiß Oberhausen (1972–73), Hertha Berlin (1972–73 and 1982–83) Wuppertaler SV (1974–75), VfB Stuttgart (1974–75 and 2000–01), VfL Bochum (1975–76), Tennis Borussia Berlin (1976–77), Rot-Weiß Essen (1976–77), Bayern Munich (1977–78), Eintracht Braunschweig (1979–80), Bayer 05 Uerdingen (1980–81), Fortuna Düsseldorf (1981–82),\n
+ MSV Duisburg (1981–82), 1. FC Nürnberg (1983–84), Kickers Offenbach (1983–84), Eintracht Frankfurt (1986–87 and 1995–96), FC 08 Homburg (1986–87), SV Waldhof Mannheim (1986–87), FC St. Pauli (1988–89 and 2001–02), Dynamo Dresden (1992–93), SG Wattenscheid 09 (1993–94), Borussia Mönchengladbach (1998–99 and 2004–05), 1. FC Köln (2003–04) and SC Freiburg (2003–04)\n
+•	Highest winning percentage: 58.54 by Bayern Munich (1015 wins in 1734 games)\n
+•	Highest losing percentage: 82.35 by Tasmania Berlin (28 losses in 34 games)\n
+•	Highest percentage of wins in a season: 85.29 by Bayern Munich (2012–13 and 2013–14) (29 wins in 34 games)\n
+•	Highest percentage of wins in a season opening half: 88.24 by Bayern Munich (2013–14 and 2015–16) (15 wins in 17 games)\n
+•	Highest percentage of wins in a season closing half: 94.12 by Bayern Munich (2012–13) (16 wins in 17 games)\n
+•	Highest number of wins in a debut season: 20 by Bayern Munich (1965–66)\n
+•	Highest number of wins in a calendar year: 30 by Bayern Munich (2013)\n
+•	Highest percentage of wins in a calendar year: 90.90 by Bayern Munich (2013) (30 wins in 33 games)\n
+•	Lowest number of losses in a calendar year: 0 by Bayern Munich (2013)\n
+    </string>
+
+    <string name="german_records_title6">
+       Goals\n
+    </string>
+
+    <string name="german_records5">
+•	Highest number of scored goals in a season: 101 by Bayern Munich (1971–72)\n
+•	Highest number of scored goals in a season opening half: 50 by Hamburger SV (1981–82)\n
+•	Highest number of scored goals in a season closing half: 54 by Bayern Munich (1971–72 and 2012–13)\n
+•	Highest number of scored goals in a season at home: 69 by Bayern Munich (1971–72)\n
+•	Highest number of scored goals in a season away: 46 by Bayern Munich (2013–14)\n
+•	Lowest number of conceded goals in a season: 18 by Bayern Munich (2012–13 and 2014–15)\n
+•	Lowest number of conceded goals in a season away: 7 by Bayern Munich (2012–13)\n
+•	Lowest number of conceded goals in a season at home: 5 by Werder Bremen (1992–93)\n
+•	Lowest number of conceded goals in a season opening half: 4 by Bayern Munich (2014–15)\n
+•	Lowest number of conceded goals in a season closing half: 10 by Borussia Mönchengladbach (2014–15)\n
+•	Best goal difference in a season: +80 by Bayern Munich (2012–13)\n
+•	Best goal difference in a season away: +38 by Bayern Munich (2013–14)\n
+•	Best goal difference in a season at home: +49 by Bayern Munich (1972–73)\n
+•	Best goal difference in a season opening half: +38 by Bayern Munich (2015–16)\n
+•	Best goal difference in a season closing half: +43 by Bayern Munich (2012–13)\n
+•	Lowest number of scored goals in a season: 15 by Tasmania Berlin (1965–66)\n
+•	Lowest number of scored goals in a season away: 7 by Tasmania Berlin (1965–66)\n
+•	Lowest number of scored goals in a season at home: 8 by Tasmania Berlin (1965–66)\n
+•	Lowest number of scored goals in a season opening half: 8 by Tasmania Berlin (1965–66) and Eintracht Frankfurt (1988–89)\n
+•	Lowest number of scored goals in a season closing half: 7 by Tasmania Berlin (1965–66)\n
+•	Highest number of conceded goals in a season: 108 by Tasmania Berlin (1965–66)\n
+•	Highest number of conceded goals in a season away: 70 by Kickers Offenbach (1983–84)\n
+•	Highest number of conceded goals in a season at home: 46 by Tasmania Berlin (1965–66)\n
+•	Highest number of conceded goals in a season opening half: 58 by Tasmania Berlin (1965–66)\n
+•	Highest number of conceded goals in a season closing half: 53 by Kickers Offenbach and Fortuna Düsseldorf (both 1983–84)\n
+•	Worst goal difference in a season: -93 by Tasmania Berlin (1965–66)\n
+•	Worst goal difference in a season away: -55 by Tasmania Berlin (1965–66) and Kickers Offenbach (1983–84)\n
+•	Worst goal difference in a season at home: -38 by Tasmania Berlin (1965–66)\n
+•	Worst goal difference in a season opening half: -50 by Tasmania Berlin (1965–66)\n
+•	Worst goal difference in a season closing half: -43 by Tasmania Berlin (1965–66)\n
+    </string>
+
+    <string name="german_records_title7">
+       Player records\n
+    </string>
+
+     <string name="german_records_title8">
+       Championships\n
+    </string>
+
+    <string name="german_records6">
+•	Highest number of won championships overall: 8 by Udo Lattek (1971–72 to 1973–74, 1984–85 to 1986–87 with Bayern Munich and 1975–76 and 1976–77 withBorussia Mönchengladbach), Mehmet Scholl (1993–94, 1996–97, 1998–99 to 2000–01, 2002–03, 2004–05 and 2005–06 with Bayern Munich), Oliver Kahn (1996–97,1998–99 to 2000–01, 2002–03, 2004–05, 2005–06 and 2007–08 with Bayern Munich) and Bastian Schweinsteiger (2002–03, 2004–05, 2005–06, 2007–08, 2009–10and 2012–13 to 2014–15 with Bayern Munich)\n
+    </string>
+
+    <string name="german_records_title9">
+       Goals\n
+    </string>
+
+     <string name="german_records7">
+•	Highest number of scored goals: 365 by Gerd Müller\n
+•	Highest number of scored goals for one club: 365 by Gerd Müller for Bayern Munich\n
+•	Highest number of scored goals for one club, playing for no other club: 365 by Gerd Müller for Bayern Munich\n
+•	Highest number of scored goals in a season: 40 by Gerd Müller for Bayern Munich (1971–72)\n
+•	Highest number of scored goals in a game: 6 by Dieter Müller for 1. FC Köln (matchday 3 of 1977–78)\n
+•	Highest number of scored goals in a game by a substitute: 5 by Robert Lewandowski for Bayern Munich (matchday 6 of 2015–16)\n
+•	Highest number of topscorer awards: 7 by Gerd Müller for Bayern Munich (1966–67, 1968–69, 1969–70, 1971–72 to 1973–74 and 1977–78)\n
+•	Highest number of scored goals by a foreign player: 189 by Claudio Pizarro for Werder Bremen and Bayern Munich (1999 to 2007 and 2008 to 2016)\n
+•	Shortest elapsed timespan before a scored goal: 9 seconds by: Karim Bellarabi for Bayer Leverkusen (matchday 1 of 2014–15) and Kevin Volland for 1899 Hoffenheim (matchday 2 of 2015–16)\n
+    </string>
+
+    <string name="german_records_10">
+1	Gerd Müller Bayern München games 427	goals 365\n
+2	Klaus Fischer TSV 1860 München FC Schalke 04 FC Köln VfL Bochum games 535	goals 268\n
+3	Jupp Heynckes Hannover 96 Bor. Mönchengladbach games 369	goals 220\n
+4	Manfred Burgsmüller Werder Bremen Borussia Dortmund FC NürnbergRot-Weiss Essen games 447	goals 213\n
+5	Claudio Pizarro Werder Bremen Bayern München games 409	goals 190\n
+6	Ulf Kirsten Bayer Leverkusen games 350	goals 182\n
+7	Stefan Kuntz FC KaiserslauternArminia BielefeldVfL Bochum KFC Uerdingen 05 games 449	goals 179\n
+8	Klaus Allofs Werder BremenFC Köln Fortuna Düsseldorf games 424	goals 177\n
+9	Dieter Müller FC Saarbrücken FC KölnVfB Stuttgart games 303	goals 177\n
+10	Hannes Löhr FC Köln games 381	goals 166
     </string>
 
 </resources>

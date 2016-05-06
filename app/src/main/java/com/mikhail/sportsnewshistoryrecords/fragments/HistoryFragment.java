@@ -77,6 +77,7 @@ public class HistoryFragment extends Fragment {
                 setItalianSoccerHistory();
                 break;
             case R.id.german_soccer:
+                setGermanSoccerHistory();
                 break;
         }
     }
@@ -125,9 +126,17 @@ public class HistoryFragment extends Fragment {
                 getString(R.string.english_history5));
     }
 
+    private void setGermanSoccerHistory() {
+
+        imageView.setImageResource(R.drawable.logo_german);
+        textView.setText(getString(R.string.german_history_1) + "\n"+ "\n" +
+                getString(R.string.german_history_title1).toUpperCase() +"\n"+
+                getString(R.string.german_history_title2) + "\n" +
+                getString(R.string.german_history_2) + "\n" +
+                getString(R.string.german_history_title3) + "\n" +
+                getString(R.string.german_history_3));
+    }
 }
-
-
 
 
 
