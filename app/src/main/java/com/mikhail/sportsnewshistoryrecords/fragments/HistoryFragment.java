@@ -48,7 +48,7 @@ public class HistoryFragment extends Fragment {
 
     public void setFragmentType(int type) {
         mFragmentType = type;
-        if (v != null){
+        if (v != null) {
             setHistoryFragmentData();
 
         }
@@ -68,6 +68,7 @@ public class HistoryFragment extends Fragment {
             case R.id.mls:
                 break;
             case R.id.english_soccer:
+                setEnglishSoccerHistory();
                 break;
             case R.id.spanish_soccer:
                 setSpanishSoccerHistory();
@@ -111,6 +112,22 @@ public class HistoryFragment extends Fragment {
                 getString(R.string.la_liga_title8) + "\n" +
                 getString(R.string.la_liga_10) + "\n");
     }
+
+    private void setEnglishSoccerHistory() {
+
+        imageView.setImageResource(R.drawable.premier_league_logo);
+        textView.setText(getString(R.string.english_history1) +
+                "\n" + getString(R.string.english_history_title1).toUpperCase() + "\n" +
+                getString(R.string.english_history_title2) + "\n" +
+                getString(R.string.english_history2) + "\n" +
+                getString(R.string.english_history3) + "\n" +
+                getString(R.string.english_history4) + "\n" +
+                getString(R.string.english_history5));
+    }
+
 }
+
+
+
 
 

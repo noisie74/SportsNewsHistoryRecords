@@ -344,7 +344,7 @@ Team\n
     </string>
 
     <string name="english_history1">
-        The Premier League is an English professional league for men\'s association football clubs. At the top of the English football league system, it is the country\'s primary football competition. Contested by 20 clubs, it operates on a system of promotion and relegation with the Football League. Welsh clubs that compete in the English football league system can also qualify.\n
+The Premier League is an English professional league for men\'s association football clubs. At the top of the English football league system, it is the country\'s primary football competition. Contested by 20 clubs, it operates on a system of promotion and relegation with the Football League. Welsh clubs that compete in the English football league system can also qualify.\n
 The Premier League is a corporation in which the 20 member clubs act as shareholders. Seasons run from August to May. Teams play 38 matches each (playing each team in the league twice, home and away), totalling 380 matches in the season. Most games are played on Saturday and Sunday afternoons; others during weekday evenings. It is currently sponsored by Barclays Bank and thus officially known as the Barclays Premier League and is colloquially known as the Premiership. Outside the UK it is commonly referred to as the English Premier League (EPL).\n
 The competition formed as the FA Premier League on 20 February 1992 following the decision of clubs in the Football League First Division to break away from the Football League, which was originally founded in 1888, and take advantage of a lucrative television rights deal.\n
     </string>
@@ -358,29 +358,206 @@ The competition formed as the FA Premier League on 20 February 1992 following th
     </string>
 
       <string name="english_history2">
-       Despite significant European success in the 1970s and early 1980s, the late 80s marked a low point for English football. Stadiums were crumbling, supporters endured poor facilities, hooliganism was rife, and English clubs banned from European competition for five years following the Heysel Stadium disaster in 1985.The Football League First Division, the top level of English football since 1888, was behind leagues such as Italy\'s Serie A and Spain\'s La Liga in attendances and revenues, and several top English players had moved abroad.\n
-By the turn of the 1990s the downward trend was starting to reverse: at the 1990 FIFA World Cup, England reached the semi-finals; UEFA, European football's governing body, lifted the five-year ban on English clubs playing in European competitions in 1990, resulting in Manchester United lifting the UEFA Cup Winners\' Cup in 1991, and the Taylor Report on stadium safety standards, which proposed expensive upgrades to create all-seater stadiums in the aftermath of the Hillsborough disaster, was published in January of that year.\n
-Television money also become more important: the Football League received £6.3 million for a two-year agreement in 1986, but when that deal was renewed in 1988, the price rose to £44 million over four years. The 1988 negotiations were the first signs of a breakaway league: ten clubs threatened to leave and form a "super league", but were eventually persuaded to stay.As stadiums improved and match attendance and revenues rose, the country\'s top teams again considered leaving the Football League in order to capitalise on the influx of money into the sport.\n
+Despite significant European success in the 1970s and early 1980s, the late 80s marked a low point for English football.
+Stadiums were crumbling, supporters endured poor facilities, hooliganism was rife, and English clubs banned from European competition for five years following the Heysel Stadium disaster in 1985.
+The Football League First Division, the top level of English football since 1888, was behind leagues such as Italy\'s Serie A and Spain\'s La Liga in attendances and revenues, and several top English players had moved abroad.\n
+By the turn of the 1990s the downward trend was starting to reverse: at the 1990 FIFA World Cup, England reached the semi-finals;
+UEFA, European football\'s governing body, lifted the five-year ban on English clubs playing in European competitions in 1990, resulting in Manchester United lifting the UEFA Cup Winners\' Cup in 1991,
+          and the Taylor Report on stadium safety standards, which proposed expensive upgrades to create all-seater stadiums in the aftermath of the Hillsborough disaster, was published in January of that year.\n
+Television money also become more important: the Football League received £6.3 million for a two-year agreement in 1986, but when that deal was renewed in 1988, the price rose to £44 million over four years.
+The 1988 negotiations were the first signs of a breakaway league: ten clubs threatened to leave and form a "super league",
+          but were eventually persuaded to stay.As stadiums improved and match attendance and revenues rose, the country\'s top teams again considered leaving the Football League in order to capitalise on the influx of money into the sport.\n
 
     </string>
 
       <string name="english_history3">
-At the close of the 1991 season, a proposal was tabled for the establishment of a new league that would bring more money into the game overall. The Founder Members Agreement, signed on 17 July 1991 by the game\'s top-flight clubs, established the basic principles for setting up the FA Premier League. The newly formed top division would have commercial independence from The Football Association and the Football League, giving the FA Premier League licence to negotiate its own broadcast and sponsorship agreements.\n
-          The argument given at the time was that the extra income would allow English clubs to compete with teams across Europe.
+At the close of the 1991 season, a proposal was tabled for the establishment of a new league that would bring more money into the game overall. The Founder Members Agreement,
+          signed on 17 July 1991 by the game\'s top-flight clubs, established the basic principles for setting up the FA Premier League. The newly formed top division would have commercial independence from The Football Association and the Football League, giving the FA Premier League licence to negotiate its own broadcast and sponsorship agreements.\n
+The argument given at the time was that the extra income would allow English clubs to compete with teams across Europe.
 The managing director of London Weekend Television (LWT), Greg Dyke, met with the representatives of the "big five” football clubs in England in 1990. The meeting was to pave the way for a break away from The Football League.\n
-          Dyke believed that it would be more lucrative for LWT if only the larger clubs in the country were featured on national television and wanted to establish whether the clubs would be interested in a larger share of television rights money. The five clubs decided it was a good idea and decided to press ahead with it; however, the league would have no credibility without the backing of The Football Association and so David Dein of Arsenal held talks to see whether the FA were receptive to the idea.\n
-          The FA did not enjoy an amicable relationship with the Football League at the time and considered it as a way to weaken the Football League\'s position.\n
+Dyke believed that it would be more lucrative for LWT if only the larger clubs in the country were featured on national television and wanted to establish whether the clubs would be interested in a larger share of television rights money. The five clubs decided it was a good idea and decided to press ahead with it; however, the league would have no credibility without the backing of The Football Association and so David Dein of Arsenal held talks to see whether the FA were receptive to the idea.\n
+The FA did not enjoy an amicable relationship with the Football League at the time and considered it as a way to weaken the Football League\'s position.\n
 In 1992, the First Division clubs resigned from the Football League en masse and on 27 May 1992 the FA Premier League was formed as a limited company working out of an office at the Football Association's then headquarters in Lancaster Gate.\n
-          This meant a break-up of the 104-year-old Football League that had operated until then with four divisions; the Premier League would operate with a single division and the Football League with three. There was no change in competition format; the same number of teams competed in the top flight, and promotion and relegation between the Premier League and the new First Division remained the same as the old First and Second Divisions with three teams relegated from the league and three promoted.\n
+This meant a break-up of the 104-year-old Football League that had operated until then with four divisions; the Premier League would operate with a single division and the Football League with three. There was no change in competition format; the same number of teams competed in the top flight, and promotion and relegation between the Premier League and the new First Division remained the same as the old First and Second Divisions with three teams relegated from the league and three promoted.\n
 The league held its first season in 1992–93 and was originally composed of 22 clubs. The first ever Premier League goal was scored by Brian Deane of Sheffield United in a 2–1 win against Manchester United.The 22 inaugural members of the new Premier League were Arsenal, Aston Villa, Blackburn Rovers, Chelsea, Coventry City,Crystal Palace, Everton, Ipswich Town, Leeds United, Liverpool, Manchester City, Manchester United, Middlesbrough, Norwich City, Nottingham Forest, Oldham Athletic,Queens Park Rangers, Sheffield United, Sheffield Wednesday, Southampton, Tottenham Hotspur, and Wimbledon. Luton Town, Notts County and West Ham Unitedwere the three teams relegated from the old first division at the end of the 1991–92 season, and did not take part in the inaugural Premier League season.\n
     </string>
 
  <string name="english_history4">
-        One significant feature of the Premier League in the mid-2000s was the dominance of the so-called "Big Four" clubs: Arsenal, Chelsea, Liverpool and Manchester United. During this decade, and particularly from 2002 to 2009, they dominated the top four spots, which came with UEFA Champions League qualification, taking all top four places in 5 out of 6 seasons from 2003–04 to 2008–09 inclusive, with Arsenal going as far as winning the league without losing a single game in 2003–04, the only time it has ever happened in the Premier League. In May 2008 Kevin Keegan stated that "Big Four" dominance threatened the division, "This league is in danger of becoming one of the most boring but great leagues in the world.Premier League chief executive Richard Scudamore said in defence: "There are a lot of different tussles that go on in the Premier League depending on whether you're at the top, in the middle or at the bottom that make it interesting.\n
+One significant feature of the Premier League in the mid 2000s was the dominance of "Big Four" clubs Arsenal, Chelsea, Liverpool and Manchester United. During this decade, and particularly from 2002 to 2009, they dominated the top four spots,
+     which came with UEFA Champions League qualification, taking all top four places in 5 out of 6 seasons from 2003–04 to 2008–09 inclusive, with Arsenal going as far as winning the league without losing a single game in 2003–04,
+     the only time it has ever happened in the Premier League. In May 2008 Kevin Keegan stated that "Big Four" dominance threatened the division, "This league is in danger of becoming one of the most boring but great leagues in the world. Premier League chief executive Richard Scudamore said in defence: There are a lot of different tussles that go on in the Premier League depending on whether you\'re at the top, in the middle or at the bottom that make it interesting.\n
     </string>
 
      <string name="english_history5">
-       The years following 2009 marked a shift in the structure of the "Big Four" with Tottenham Hotspur and Manchester City both breaking into the top four. In the 2009–10 season, Tottenham finished fourth and became the first team to break the top four since Everton in 2005. Criticism of the gap between an elite group of "super clubs" and the majority of the Premier League has continued, nevertheless, due to their increasing ability to spend more than the other Premier League clubs. Manchester City won the title in the 2011–12 season, becoming the first club outside the "Big Four" to win since 1994–95. That season also saw two of the Big Four (Chelsea and Liverpool) finish outside the top four places for the first time since 1994–95\n
+The years following 2009 marked a shift in the structure of the "Big Four" with Tottenham Hotspur and Manchester City both breaking into the top four. In the 2009–10 season, Tottenham finished fourth and became the first team to break the top four since Everton in 2005. Criticism of the gap between an elite group of "super clubs" and the majority of the Premier League has continued, nevertheless, due to their increasing ability to spend more than the other Premier League clubs. Manchester City won the title in the 2011–12 season, becoming the first club outside the "Big Four" to win since 1994–95. That season also saw two of the Big Four (Chelsea and Liverpool) finish outside the top four places for the first time since 1994–95\n
+    </string>
+
+
+     <string name="english_records_title1">
+       League\n
+    </string>
+
+     <string name="english_records_title2">
+       Titles\n
+    </string>
+
+     <string name="english_records1">
+•	Most League titles: 20, Manchester United\n
+•	Most consecutive League titles: 3, joint record:\n
+•	Huddersfield Town (1923–24, 1924–25, 1925–26)\n
+•	Arsenal (1932–33, 1933–34, 1934–35)\n
+•	Liverpool (1981–82, 1982–83, 1983–84)\n
+•	Manchester United (twice): (1998–99, 1999–00, 2000–01) and (2006–07, 2007–08, 2008–09)\n
+    </string>
+
+     <string name="english_records_title3">
+       Top-flight appearances\n
+    </string>
+
+     <string name="english_records2">
+•	Most consecutive seasons in top flight: 90 seasons, Arsenal (1919–present, though no League football was played due to second world war between 1939 and 1945–46;)\n
+•	Most seasons in top flight overall: 113 seasons, Everton\n
+•	Fewest seasons in top flight overall: 1 season, joint record, Glossop, Leyton Orient, Northampton, Carlisle United, Swindon and Barnsley have completed only one season in top flight in their history.\n
+    </string>
+
+     <string name="english_records_title4">
+       Wins\n
+    </string>
+
+     <string name="english_records3">
+•	Most wins overall: 2096, Manchester United\n
+•	Most wins in the top-flight overall: 1803, Liverpool\n
+•	Most wins at home overall: 1341, Manchester United\n
+•	Most wins at home in top-flight overall: 1174, Everton\n
+•	Most wins away overall: 755, Manchester United\n
+•	Most wins away in top-flight overall: 638, Arsenal\n
+•	Most wins in a season: 33, Doncaster Rovers (Third Division North, 1946–47; )\n
+•	Most wins in a top flight season: 31, Tottenham Hotspur (First Division, 1960–61)\n
+•	Most consecutive wins: 14, joint record:\n
+•	Arsenal (Premier League between 10 February 2002 and 24 August 2002) (Top-flight record)\n
+•	Manchester United (Second Division, 1904–05)\n
+•	Bristol City (Second Division, 1905–06)\n
+•	Preston North End (Second Division, 1950–51)\n
+•	Most consecutive wins without conceding a goal: 9, Stockport County (League Two between January 13, 2007 and March 3, 2007)\n
+•	Most consecutive home wins: 25, Bradford Park Avenue (Third Division North, 1926–27)\n
+•	Most consecutive home wins top flight: 21, Liverpool (1972)\n
+•	Most consecutive away wins in top flight: 12 Arsenal (Premier League between March 3, 2013 and October 26, 2013)\n
+•	Fewest wins in a season: 1, joint record:\n
+•	Derby County (Premier League, 2007–08))\n
+•	Loughborough (Second Division, 1899–1900))\n
+•	100%home win record in a season:\n
+•	Sunderland (13 games; First Division, 1891–92)\n
+•	Liverpool (14 games; Second Division, 1893–94)\n
+•	Bury (15 games; Second Division, 1894–95)\n
+•	Sheffield Wednesday (17 games; Second Division, 1899–1900)\n
+•	Small Heath (17 games; Second Division, 1902–03)\n
+•	Brentford (21 games; Third Division South, 1929–30)\n
+    </string>
+
+     <string name="english_history_title5">
+       Draws\n
+    </string>
+
+     <string name="english_records4">
+•	Most draws overall in the top flight: 1069, Everton\n
+•	Most draws in a season: 23, joint record\n
+•	Norwich City (from 42 games, First Division, 1978–79)\n
+•	Exeter City (from 46 games, Fourth Division, 1986–87)\n
+•	Hartlepool United (from 46 games, Third Division, 1997–98)\n
+•	Cardiff City (from 46 games, Third Division, 1997–98)\n
+    </string>
+
+     <string name="english_history_title6">
+       Losses\n
+    </string>
+
+     <string name="english_records5">
+•	Most losses overall in the top flight: 1470, Everton\n
+•	Most losses in a season: 34, Doncaster Rovers, (Third Division, 1997–98; )\n
+•	Fewest losses: 0, joint record:\n
+•	Preston North End (First Division, 1888–89; final record P22 W18 D4 L0)\n
+•	Arsenal (Premier League, 2003–04; final record P38 W26 D12 L0)\n
+•	Liverpool (Second Division, 1893-94; final record P28 W22 D6 L0)\n
+•	Most consecutive losses\n
+•	18, Darwen, 1898–1899 (Second Division)\n
+•	17, Rochdale, 1931–32 (Division 3 North)\n
+•	17, Sunderland, 2002-2003 (15 in top tier)\n
+
+    </string>
+
+     <string name="english_history_title7">
+       Points\n
+    </string>
+
+     <string name="english_records6">
+•	Most points overall in the top flight: Liverpool\n
+•	Most points in a season (2 points for a win): 74, Lincoln City (Fourth Division, 1975–76)\n
+•	Most points in a season (3 points for a win): 106, Reading (Championship, 2005–06)\n
+•	Most points in a season for a top-flight team (2 points for a win, 42 games): 68 (30 wins 8 draws), Liverpool (First Division, 1978–79)\n
+•	Most points in a season for a top-flight team (3 points for a win, 38 games): 95 (29 wins 8 draws), Chelsea (Premier League, 2004–05)\n
+•	Fewest points in a season (2 points for a win): 8, joint record:\n
+•	Loughborough (Second Division, 1899–1900)\n
+•	Doncaster Rovers (Second Division, 1904–05)\n
+•	Fewest points in a season (3 points for a win): 11, Derby County (Premier League, 2007–08)\n
+•	Most points in a season while being relegated (3 points for a win): 54, joint record:\n
+•	Southend United (Third Division, 21st of 24; 1988–89)\n
+•	Peterborough United (Championship, 22nd of 24; 2012-13\n
+    </string>
+
+    <string name="english_history_title8">
+       Goals\n
+    </string>
+
+    <string name="english_records7">
+•	Most league goals scored in a season: (134) Peterborough United (Fourth Division, 1960–61)\n
+•	Most top-flight goals scored in a season (42 games): 128, Aston Villa (First Division, 1930–31)\n
+•	Most top flight goals scored in total: 6699, Everton.\n
+•	Most home league goals scored in a season: 87, Millwall (Third Division South, 1927–28)\n
+•	Most away league goals scored in a season: 60, Arsenal (First Division, 1930–31)\n
+•	Most consecutive games scoring: 55, Arsenal (Premier League 19 May 2001 – 30 November 2002)\n
+•	Most consecutive games without scoring: 11, Coventry\n
+    </string>
+
+    <string name="english_records8">
+•	Most titles won by an individual player: 13, Ryan Giggs\n
+•	Most career league appearances: 1,005 (849 in First Division), Peter Shilton (1966 to 1997)\n
+•	Most career league appearances by an outfield player: 931, Tony Ford (1975 to 2002)\n
+•	Most career league appearances at one club: 770, John Trollope (Swindon Town, 1960 to 1980)\n
+•	Most career top flight league appearances at one club: 672, Ryan Giggs (Manchester United, 1991 to 6 May 2014)\n
+•	Most career consecutive league appearances: 375, Harold Bell (Tranmere Rovers), 1946 to 1955 (401 consecutive club games including 26 FA Cup appearances)\n
+•	Oldest player: Neil McBain, 51 years and 20 days (for New Brighton v. Hartlepool United, 1947)\n
+•	Youngest player: Reuben Noble-Lazarus, 15 years and 45 days (for Barnsley v. Ipswich Town, 30 September 2008)\n
+    </string>
+
+    <string name="english_history_title9">
+       Goals\n
+    </string>
+
+    <string name="english_records9">
+•	Most career league goals: 434, Arthur Rowley (619 matches, for West Bromwich Albion, Fulham, Leicester City and Shrewsbury Town, 1946 to 1965)\n
+•	Most career top-flight goals: 357, Jimmy Greaves (516 matches, for Chelsea, Tottenham Hotspur and West Ham United, 1957 to 1971)\n
+•	Most consecutive top flight league matches scored in: 12, Jimmy Dunne, for Sheffield United between 24-October-1931 and 1-January-1932, 18 goals in all.\n
+•	Most goals in a season: 60, Dixie Dean (39 matches, for Everton 1927–28)\n
+•	Most goals in a game: 10, Joe Payne (for Luton Town v. Bristol Rovers, 13 April 1936)\n
+•	Most goals in a top flight game: 7, Ted Drake for Arsenal v. Aston Villa (away), 14 December 1935\n
+•	Fastest goal: 3.5 seconds, Colin Cowperthwaite (for Barrow v. Kettering Town, 1979)\n
+•	Fastest goal on a League debut: 7 seconds, Freddy Eastwood (for Southend United v. Swansea City, 16 October 2004)\n
+•	Fastest hat-trick (time between first and third goals): 2 minutes 20 seconds, James Hayter (for AFC Bournemouth v. Wrexham, 23 February 2004)\n
+•	Fastest goal by a substitute: 1.8 seconds, Nicklas Bendtner (for Arsenal v. Tottenham Hotspur, 22 December 2007)\n
+•	Most own goals in one season: 5, Bobby Stuart (Middlesbrough, 1934–35)\n
+    </string>
+
+     <string name="english_records10">
+1	  Alan Shearer Blackburn Rovers, Newcastle United 260 goals\n
+2	  Wayne Rooney Everton, Manchester United 192 goals\n
+3	  Andy Cole Newcastle United, Manchester United, Blackburn Rovers, Fulham, Manchester City,Portsmouth 187 goals\n
+4	  Frank Lampard West Ham United, Chelsea, Manchester City 177 goals\n
+5	  Thierry Henry Arsenal 175 goals\n
+6	  Robbie Fowler Liverpool, Leeds United, Manchester City 163 goals\n
+7	  Michael Owen Liverpool, Newcastle United, Manchester United, Stoke City 150 goals\n
+8	  Les Ferdinand Queens Park Rangers, Newcastle United, Tottenham Hotspur, West Ham United,Leicester City, Bolton Wanderers 149 goals\n
+9	  Teddy Sheringham Nottingham Forest, Tottenham Hotspur, Manchester United, Portsmouth, West Ham United 146 goals\n
+10	  Robin van Persie Arsenal, Manchester United 144 goals\n
     </string>
 
 </resources>

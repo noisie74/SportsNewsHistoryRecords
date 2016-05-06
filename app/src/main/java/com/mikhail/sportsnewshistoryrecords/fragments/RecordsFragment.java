@@ -44,7 +44,7 @@ public class RecordsFragment extends Fragment {
     }
 
     public void setFragmentType(int type) {
-        Log.d("RecordFragment","Fragmetn set!");
+        Log.d("RecordFragment", "Fragmetn set!");
         mFragmentType = type;
         if (v != null) {
             setRecordsFragmentData();
@@ -65,6 +65,7 @@ public class RecordsFragment extends Fragment {
             case R.id.mls:
                 break;
             case R.id.english_soccer:
+                setEnglishSoccerRecords();
                 break;
             case R.id.spanish_soccer:
                 setSpanishSoccerRecords();
@@ -91,8 +92,8 @@ public class RecordsFragment extends Fragment {
 
     private void setSpanishSoccerRecords() {
 
-        imageView.setImageResource(R.drawable.la_liga_records);
-        textView.setText(getString(R.string.la_liga_records_title) + "\n" +
+        imageView.setImageResource(R.drawable.laliga_records);
+        textView.setText(getString(R.string.la_liga_records_title).toUpperCase() + "\n" +
                 getString(R.string.la_liga_records_team1) + "\n" +
                 getString(R.string.la_liga_records_team2) + "\n" +
                 getString(R.string.la_liga_records_team3) + "\n" +
@@ -104,6 +105,32 @@ public class RecordsFragment extends Fragment {
                 getString(R.string.top_scorers_title).toUpperCase() + "\n" +
                 getString(R.string.la_liga_scorers));
     }
-}
 
+    private void setEnglishSoccerRecords() {
+
+        imageView.setImageResource(R.drawable.premier_eague_rec);
+        textView.setText(getString(R.string.english_records_title1).toUpperCase() + "\n" +
+                getString(R.string.english_records_title2) + "\n" +
+                getString(R.string.english_records1) + "\n" +
+                getString(R.string.english_records_title3) + "\n" +
+                getString(R.string.english_records2) + "\n" +
+                getString(R.string.english_records_title4) + "\n" +
+                getString(R.string.english_records3) + "\n" +
+                getString(R.string.english_history_title5) + "\n" +
+                getString(R.string.english_records4) + "\n" +
+                getString(R.string.english_history_title6) + "\n" +
+                getString(R.string.english_records5) + "\n" +
+                getString(R.string.english_history_title7) + "\n" +
+                getString(R.string.english_records6) + "\n" +
+                getString(R.string.english_history_title8) + "\n" +
+                getString(R.string.english_records7) + "\n" +
+                getString(R.string.english_records8) + "\n" +
+                getString(R.string.english_records6) + "\n" +
+                getString(R.string.english_history_title9) + "\n" +
+                getString(R.string.individual_records_title) + "\n" +
+                getString(R.string.english_records9) + "\n" +
+                getString(R.string.top_scorers_title).toUpperCase() + "\n" +
+                getString(R.string.english_records10));
+    }
+}
 
