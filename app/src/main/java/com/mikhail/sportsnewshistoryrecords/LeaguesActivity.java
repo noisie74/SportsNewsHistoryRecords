@@ -58,6 +58,7 @@ public class LeaguesActivity extends AppCompatActivity implements NavigationView
         viewPagerAdapter = new ViewPagerAdapter
                 (getSupportFragmentManager(), tabLayout.getTabCount());
         viewPagerAdapter.setFragmentType(key);
+        viewPager.setOffscreenPageLimit(2);
 
         Log.d("MainActivity", "Tab!" + tabLayout.getTabCount());
         viewPager.setAdapter(viewPagerAdapter);

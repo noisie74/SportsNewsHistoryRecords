@@ -17,12 +17,13 @@ import com.mikhail.sportsnewshistoryrecords.fragments.RecordsFragment;
 /**
  * Created by Mikhail on 4/29/16.
  */
-public class ViewPagerAdapter extends FragmentStatePagerAdapter{
+public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     int fragmentType;
     int mNumOfTabs;
     private LeaguesFragment leaguesFragment;
-
+    private HistoryFragment historyFragment;
+    private RecordsFragment recordsFragment;
 
 
     public ViewPagerAdapter(FragmentManager fm, int NumOfTabs) {
@@ -34,9 +35,15 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter{
         this.fragmentType = fragmentType;
     }
 
-    public void refreshData(){
-        if (leaguesFragment != null){
+    public void refreshData() {
+        if (leaguesFragment != null) {
             leaguesFragment.setFragmentType(fragmentType);
+        }
+        if (historyFragment != null) {
+            historyFragment.setFragmentType(fragmentType);
+        }
+        if (recordsFragment != null) {
+            recordsFragment.setFragmentType(fragmentType);
         }
     }
 
@@ -47,7 +54,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter{
         switch (position) {
             case 0:
                 Log.d("ViewPager", "in Tab 1");
-                if (leaguesFragment == null){
+                if (leaguesFragment == null) {
                     leaguesFragment = new LeaguesFragment();
                 }
                 leaguesFragment.setFragmentType(fragmentType);
@@ -55,15 +62,21 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter{
                 break;
             case 1:
                 Log.d("ViewPager", "in Tab 2");
-                HistoryFragment tab2 = new HistoryFragment();
-                fragment = tab2;
+
+                if (historyFragment == null) {
+                    historyFragment = new HistoryFragment();
+                }
+                historyFragment.setFragmentType(fragmentType);
+                fragment = historyFragment;
                 break;
             case 2:
                 Log.d("ViewPager", "in Tab 3");
-                RecordsFragment tab3 = new RecordsFragment();
-                fragment = tab3;
+                if (recordsFragment == null) {
+                    recordsFragment = new RecordsFragment();
+                }
+                recordsFragment.setFragmentType(fragmentType);
+                fragment = recordsFragment;
                 break;
-
         }
         return fragment;
     }

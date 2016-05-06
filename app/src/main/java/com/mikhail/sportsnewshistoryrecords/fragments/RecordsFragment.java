@@ -3,6 +3,7 @@ package com.mikhail.sportsnewshistoryrecords.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,13 +20,13 @@ public class RecordsFragment extends Fragment {
     ImageView imageView;
     TextView textView;
     private int mFragmentType;
-
+    View v;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View v = inflater.inflate(R.layout.records_layout, container, false);
+        v = inflater.inflate(R.layout.records_layout, container, false);
 
         imageView = (ImageView) v.findViewById(R.id.league_records_logo);
         textView = (TextView) v.findViewById(R.id.league_records_text);
@@ -35,13 +36,22 @@ public class RecordsFragment extends Fragment {
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        setRecordsFragmentData();
 
-    public void setFragmentType(int type) {
-        mFragmentType = type;
-        setHistoryFragmentData();
     }
 
-    private void setHistoryFragmentData() {
+    public void setFragmentType(int type) {
+        Log.d("RecordFragment","Fragmetn set!");
+        mFragmentType = type;
+        if (v != null) {
+            setRecordsFragmentData();
+        }
+    }
+
+    private void setRecordsFragmentData() {
 
         switch (mFragmentType) {
             case R.id.nfl:
@@ -57,10 +67,10 @@ public class RecordsFragment extends Fragment {
             case R.id.english_soccer:
                 break;
             case R.id.spanish_soccer:
-                setSpanishSoccerHistory();
+                setSpanishSoccerRecords();
                 break;
             case R.id.italian_soccer:
-                setItalianSoccerHistory();
+                setItalianSoccerRecords();
                 break;
             case R.id.german_soccer:
 
@@ -68,7 +78,7 @@ public class RecordsFragment extends Fragment {
         }
     }
 
-    private void setItalianSoccerHistory() {
+    private void setItalianSoccerRecords() {
 
         imageView.setImageResource(R.drawable.serie_a_records_logo);
         textView.setText(getString(R.string.team_recors_title).toUpperCase() +
@@ -79,7 +89,7 @@ public class RecordsFragment extends Fragment {
                 "\n" + getString(R.string.serie_a_scorers));
     }
 
-    private void setSpanishSoccerHistory() {
+    private void setSpanishSoccerRecords() {
 
         imageView.setImageResource(R.drawable.la_liga_records);
         textView.setText(getString(R.string.la_liga_records_title) + "\n" +

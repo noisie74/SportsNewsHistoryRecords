@@ -38,9 +38,20 @@ public class HistoryFragment extends Fragment {
         return v;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        setHistoryFragmentData();
+
+    }
+
+
     public void setFragmentType(int type) {
         mFragmentType = type;
-        setHistoryFragmentData();
+        if (v != null){
+            setHistoryFragmentData();
+
+        }
     }
 
     private void setHistoryFragmentData() {
@@ -65,7 +76,6 @@ public class HistoryFragment extends Fragment {
                 setItalianSoccerHistory();
                 break;
             case R.id.german_soccer:
-
                 break;
         }
     }
@@ -87,6 +97,7 @@ public class HistoryFragment extends Fragment {
                 getString(R.string.la_liga_foundation) + "\n" +
                 getString(R.string.la_liga_title1) + "\n" +
                 getString(R.string.la_liga_30) + "\n" +
+                getString(R.string.la_liga_title2) + "\n" +
                 getString(R.string.la_liga_40) + "\n" +
                 getString(R.string.la_liga_title3) + "\n" +
                 getString(R.string.la_liga_50) + "\n" +
