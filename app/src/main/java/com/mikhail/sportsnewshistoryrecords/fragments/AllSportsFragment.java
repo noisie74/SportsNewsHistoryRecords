@@ -46,6 +46,7 @@ public class AllSportsFragment extends Fragment {
     public static final String NYT_SOCCER = "Soccer";
     NytSportsResults nytSportsResults;
     private View rootView;
+    private boolean recyclerViewIsSet = false;
     Toolbar toolbar;
 
     @Nullable
@@ -55,8 +56,7 @@ public class AllSportsFragment extends Fragment {
 
         setViews(rootView);
         sportsNewsList = new ArrayList<>();
-        allSportsAdapter = new AllSportsAdapter(nytSportsResults);
-        swipeContainer = (SwipeRefreshLayout) rootView.findViewById(R.id.swipeContainer);
+        allSportsAdapter = new AllSportsAdapter();
         setPullRefresh();
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         allSportsAdapterItemClicker();
@@ -64,7 +64,7 @@ public class AllSportsFragment extends Fragment {
         return rootView;
     }
 
-    public void setFragment(int type){
+    public void setFragment(int type) {
         this.mFragmentType = type;
         nytAllSportsNews();
     }
@@ -85,6 +85,7 @@ public class AllSportsFragment extends Fragment {
                         sportsNewsList.get(position).getUrl(),
                         sportsNewsList.get(position).getThumbnail_standard(),
                         sportsNewsList.get(position).getAbstractResult()};
+//                sportsNewsList.get(position).getMultimedia()};
                 article.putStringArray("article", articleDetails);
 
                 Fragment newsDetailsFragment = new NewsDetailsFragment();
@@ -140,11 +141,17 @@ public class AllSportsFragment extends Fragment {
                     @Override
                     public void onNext(NytSportsResults nytSportsResults) {
                         Log.d("MainActivity", "Next!");
+                        if (recyclerViewIsSet) {
+                            allSportsAdapter.updateData(nytSportsResults);
 
-                        allSportsAdapter = new AllSportsAdapter(nytSportsResults);
+                        } else {
+                            allSportsAdapter.updateData(nytSportsResults);
+                            recyclerView.setAdapter(allSportsAdapter);
+                            recyclerViewIsSet = true;
+                        }
                         Collections.addAll(sportsNewsList, nytSportsResults.getResults());
+
                         swipeContainer.setRefreshing(false);
-                        recyclerView.setAdapter(allSportsAdapter);
                     }
                 });
     }
@@ -152,7 +159,7 @@ public class AllSportsFragment extends Fragment {
     public void nytSoccerSportsNews() {
         NytAPI.NytRx nytSports = NytAPI.createRx();
 
-        Observable<NytSportsResults> observable = nytSports.nytSportsResults("all", "sports",NYT_SOCCER);
+        Observable<NytSportsResults> observable = nytSports.nytSportsResults("all", "sports", NYT_SOCCER);
 
         observable.subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -169,10 +176,10 @@ public class AllSportsFragment extends Fragment {
 
                     @Override
                     public void onNext(NytSportsResults nytSportsResults) {
-                        allSportsAdapter = new AllSportsAdapter(nytSportsResults);
+                        allSportsAdapter.updateData(nytSportsResults);
+                        sportsNewsList.clear();
                         Collections.addAll(sportsNewsList, nytSportsResults.getResults());
                         swipeContainer.setRefreshing(false);
-                        recyclerView.setAdapter(allSportsAdapter);
                     }
                 });
     }
@@ -180,7 +187,7 @@ public class AllSportsFragment extends Fragment {
     public void nytFootballSportsNews() {
         NytAPI.NytRx nytSports = NytAPI.createRx();
 
-        Observable<NytSportsResults> observable = nytSports.nytSportsResults("all", "sports",NYT_FOOTBALL);
+        Observable<NytSportsResults> observable = nytSports.nytSportsResults("all", "sports", NYT_FOOTBALL);
 
         observable.subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -196,10 +203,11 @@ public class AllSportsFragment extends Fragment {
 
                     @Override
                     public void onNext(NytSportsResults nytSportsResults) {
-                        allSportsAdapter = new AllSportsAdapter(nytSportsResults);
+//                        allSportsAdapter = new AllSportsAdapter(nytSportsResults);
+                        allSportsAdapter.updateData(nytSportsResults);
+                        sportsNewsList.clear();
                         Collections.addAll(sportsNewsList, nytSportsResults.getResults());
                         swipeContainer.setRefreshing(false);
-                        recyclerView.setAdapter(allSportsAdapter);
                     }
                 });
     }
@@ -207,7 +215,7 @@ public class AllSportsFragment extends Fragment {
     public void nytBaseballSportsNews() {
         NytAPI.NytRx nytSports = NytAPI.createRx();
 
-        Observable<NytSportsResults> observable = nytSports.nytSportsResults("all", "sports",NYT_BASEBALL);
+        Observable<NytSportsResults> observable = nytSports.nytSportsResults("all", "sports", NYT_BASEBALL);
 
         observable.subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -224,10 +232,10 @@ public class AllSportsFragment extends Fragment {
 
                     @Override
                     public void onNext(NytSportsResults nytSportsResults) {
-                        allSportsAdapter = new AllSportsAdapter(nytSportsResults);
+                        allSportsAdapter.updateData(nytSportsResults);
+                        sportsNewsList.clear();
                         Collections.addAll(sportsNewsList, nytSportsResults.getResults());
                         swipeContainer.setRefreshing(false);
-                        recyclerView.setAdapter(allSportsAdapter);
                     }
                 });
     }
@@ -235,7 +243,7 @@ public class AllSportsFragment extends Fragment {
     public void nytBasketballSportsNews() {
         NytAPI.NytRx nytSports = NytAPI.createRx();
 
-        Observable<NytSportsResults> observable = nytSports.nytSportsResults("all", "sports",NYT_BASKETBALL);
+        Observable<NytSportsResults> observable = nytSports.nytSportsResults("all", "sports", NYT_BASKETBALL);
 
         observable.subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -252,10 +260,10 @@ public class AllSportsFragment extends Fragment {
 
                     @Override
                     public void onNext(NytSportsResults nytSportsResults) {
-                        allSportsAdapter = new AllSportsAdapter(nytSportsResults);
+                        allSportsAdapter.updateData(nytSportsResults);
+                        sportsNewsList.clear();
                         Collections.addAll(sportsNewsList, nytSportsResults.getResults());
                         swipeContainer.setRefreshing(false);
-                        recyclerView.setAdapter(allSportsAdapter);
                     }
                 });
     }
@@ -263,7 +271,7 @@ public class AllSportsFragment extends Fragment {
     public void nytHockeySportsNews() {
         NytAPI.NytRx nytSports = NytAPI.createRx();
 
-        Observable<NytSportsResults> observable = nytSports.nytSportsResults("all", "sports",NYT_HOCKEY);
+        Observable<NytSportsResults> observable = nytSports.nytSportsResults("all", "sports", NYT_HOCKEY);
 
         observable.subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -280,16 +288,16 @@ public class AllSportsFragment extends Fragment {
 
                     @Override
                     public void onNext(NytSportsResults nytSportsResults) {
-                        allSportsAdapter = new AllSportsAdapter(nytSportsResults);
+                        allSportsAdapter.updateData(nytSportsResults);
+                        sportsNewsList.clear();
                         Collections.addAll(sportsNewsList, nytSportsResults.getResults());
                         swipeContainer.setRefreshing(false);
-                        recyclerView.setAdapter(allSportsAdapter);
                     }
                 });
     }
 
     public void setViews(View v) {
-
+        swipeContainer = (SwipeRefreshLayout) rootView.findViewById(R.id.swipeContainer);
         recyclerView = (RecyclerView) v.findViewById(R.id.recycle_view);
 
     }

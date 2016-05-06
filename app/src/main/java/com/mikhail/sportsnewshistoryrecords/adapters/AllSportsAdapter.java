@@ -21,15 +21,22 @@ public class AllSportsAdapter extends RecyclerView.Adapter<AllSportsAdapter.View
     public int fragmentType;
     public NytSportsResults nytSportsResults;
     private static OnItemClickListener listener;
-
     Context context;
 
     public AllSportsAdapter(NytSportsResults nytSportsResults) {
         this.nytSportsResults = nytSportsResults;
     }
 
+    public AllSportsAdapter() {
+    }
+
     public interface OnItemClickListener {
         void onItemClick(View itemView, int position);
+    }
+
+    public void updateData(NytSportsResults results){
+        this.nytSportsResults = results;
+        notifyDataSetChanged();
     }
 
     public void setFragmentType(int fragmentType) {
