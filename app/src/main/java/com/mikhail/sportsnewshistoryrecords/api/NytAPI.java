@@ -9,6 +9,7 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 import rx.Observable;
 
+import com.google.gson.Gson;
 import com.mikhail.sportsnewshistoryrecords.api.keys.NytKeys;
 import com.mikhail.sportsnewshistoryrecords.model.NytSportsObjects;
 import com.mikhail.sportsnewshistoryrecords.model.NytSportsResults;
@@ -23,21 +24,22 @@ import java.util.List;
 public class NytAPI {
 
     public static final String NYT_API_URL = "http://api.nytimes.com/svc/news/v3/content/";
+    public static Gson gson = new Gson();
 
-
+//    http://api.nytimes.com/svc/news/v3/content/all/sports/.json?api-key=sample-key&subsection=Pro%20Football
     public interface NytRx {
         @GET("{source}/{section}/{subsection}/1.json?&api-key=" + NytKeys.newsWireKey)
         Observable<NytSportsResults> nytSportsResults(
                 @Path("source") String source,
                 @Path("section") String section,
                 @Query("subsection") String subsection);
-        @GET("all/sports/1.json?&api-key=" + NytKeys.newsWireKey)
-        Observable<NytSportsResults> nytSportsResults(
-                @Query("subsection") String subsection);
+//        @GET("all/sports/1.json?&api-key=" + NytKeys.newsWireKey + "&subsection=")
+//        Observable<NytSportsResults> nytSportsResults(
+//                @Query("subsection") String subsection);
 //        @GET("articlesearch.json?&sort=newest&api-key=" + NytKeys.nyTimesFullSearchQueryKey)
 //        Observable<ArticleSearch> response(
 //                @Query("q") String q);
-
+//    http://api.nytimes.com/svc/news/v3/content/all/sports/.json?api-key=sample-key&subsection=soccer
 
 //        @GET("/users/{owner}/repos")
 //        Observable<List<Repo>> repos(
@@ -61,7 +63,7 @@ public class NytAPI {
         return new Retrofit.Builder()
                 .baseUrl(NYT_API_URL)
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .build()
                 .create(NytAPI.NytRx.class);
     }

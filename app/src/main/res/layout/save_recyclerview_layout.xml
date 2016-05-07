@@ -1,0 +1,69 @@
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/saved_card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
+    android:layout_margin="8dp">
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector">
+
+        <ImageView
+            android:id="@+id/saved_cardView_image"
+            android:paddingBottom="4dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:paddingTop="4dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentTop="true" />
+
+
+        <TextView
+            android:id="@+id/saved_headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:paddingTop="4dp"
+            android:text="title"
+            android:textColor="#222"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:layout_toRightOf="@+id/saved_cardView_image"
+            />
+        <TextView
+            android:id="@+id/saved_ago"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/saved_headline"
+            android:layout_toRightOf="@id/saved_cardView_image"
+            android:maxLines="1"
+            android:paddingLeft="4dp"
+            android:text="elapsed"
+            android:textColor="#99666666"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/saved_article_info_cardview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/saved_ago"
+            android:layout_toRightOf="@id/saved_cardView_image"
+            android:maxLines="3"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:paddingBottom="4dp"
+            android:text="description"
+            android:textColor="#666"
+            android:textSize="12sp" />
+
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
+

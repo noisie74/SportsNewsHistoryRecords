@@ -2,6 +2,7 @@ package com.mikhail.sportsnewshistoryrecords.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import com.mikhail.sportsnewshistoryrecords.model.search.Response;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Mikhail on 4/28/16.
@@ -24,22 +26,53 @@ import java.util.ArrayList;
 public class LeaguesNewsAdapter extends RecyclerView.Adapter<LeaguesNewsAdapter.ViewHolder> {
 
     Context context;
-    public ArticleSearch leaguesSearchResults;
+    public ArrayList<Doc> leaguesSearchResults;
+    public static OnItemClickListener listener;
 
-    public LeaguesNewsAdapter(ArticleSearch leaguesSearchResults) {
+    public LeaguesNewsAdapter(ArrayList<Doc> leaguesSearchResults) {
         this.leaguesSearchResults = leaguesSearchResults;
+    }
+
+    public LeaguesNewsAdapter(){
+    }
+
+    public void updateData(ArrayList<Doc> results){
+        this.leaguesSearchResults = results;
+        notifyDataSetChanged();
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(View itemView, int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
+
+    public void setArticles(ArrayList<Doc> results){
+        this.leaguesSearchResults = results;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView headline;
         public TextView articleInfo;
         public ImageView articleImage;
+//        Doc doc;
 
         public ViewHolder(final View itemView) {
             super(itemView);
             headline = (TextView) itemView.findViewById(R.id.headline);
             articleInfo = (TextView) itemView.findViewById(R.id.article_info);
             articleImage = (ImageView) itemView.findViewById(R.id.cardView_image);
+//            doc = new Doc();
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listener != null)
+                        listener.onItemClick(itemView, getLayoutPosition());
+                }
+            });
         }
 
     }
@@ -57,11 +90,12 @@ public class LeaguesNewsAdapter extends RecyclerView.Adapter<LeaguesNewsAdapter.
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        holder.headline.setText(leaguesSearchResults.getResponse().getDocs()[position].getHeadline().getMain());
-        holder.articleInfo.setText(leaguesSearchResults.getResponse().getDocs()[position].getLead_paragraph());
+        holder.headline.setText(leaguesSearchResults.get(position).getHeadline().getMain());
+        holder.articleInfo.setText(leaguesSearchResults.get(position).getLead_paragraph());
         String imageURI = null;
-        Multimedia[] multiMedia = leaguesSearchResults.getResponse().getDocs()[position].getMultimedia();
+        Multimedia[] multiMedia = leaguesSearchResults.get(position).getMultimedia();
         if (multiMedia != null && multiMedia.length > 0) {
+
             imageURI = multiMedia[0].getUrl();
         }
         if (imageURI == null){
@@ -71,13 +105,20 @@ public class LeaguesNewsAdapter extends RecyclerView.Adapter<LeaguesNewsAdapter.
         Picasso.with(context)
                 .load("http://nytimes.com/" + imageURI)
                 .placeholder(R.drawable.nyt_icon)
-                .resize(100, 100)
+                .resize(200, 180)
                 .centerCrop()
                 .into(holder.articleImage);
     }
 
     @Override
     public int getItemCount() {
-        return leaguesSearchResults.getResponse().getDocs().length;
+        return leaguesSearchResults.size();
     }
 }
+
+
+//public List<Doc> docs;
+//
+//    public LeaguesNewsAdapter(List<Doc>docs) {
+//        this.docs = docs;
+//    }

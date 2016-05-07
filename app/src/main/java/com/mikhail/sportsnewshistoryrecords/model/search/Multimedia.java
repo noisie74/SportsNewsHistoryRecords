@@ -8,7 +8,8 @@ public class Multimedia {
     String url;
 
     public String getUrl() {
-        return url;
+        return  url;
     }
 
+//    "https://static01.nyt.com/"
 }

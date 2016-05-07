@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+
+
+    <item
+        android:id="@+id/football"
+        android:title="Football" />
+    <item
+        android:id="@+id/basketball"
+        android:title="Basketball" />
+    <item
+        android:id="@+id/baseball"
+        android:title="Baseball" />
+    <item
+        android:id="@+id/hockey"
+        android:title="Hockey" />
+    <item
+        android:id="@+id/soccer"
+        android:title="Soccer" />
+
+
+</menu>
