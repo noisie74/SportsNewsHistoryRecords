@@ -281,6 +281,7 @@ public class LeaguesFragment extends Fragment {
             public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
                 ArticleSearch nytSportsSearch = response.body();
                 handleData(nytSportsSearch.getResponse().getDocs());
+                leaguesNewsAdapter.updateData(nytSportsSearch.getResponse().getDocs());
             }
 
             @Override
@@ -329,6 +330,8 @@ public class LeaguesFragment extends Fragment {
             public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
                 ArticleSearch nytSportsSearch = response.body();
                 handleData(nytSportsSearch.getResponse().getDocs());
+                leaguesNewsAdapter.updateData(nytSportsSearch.getResponse().getDocs());
+
             }
 
             @Override

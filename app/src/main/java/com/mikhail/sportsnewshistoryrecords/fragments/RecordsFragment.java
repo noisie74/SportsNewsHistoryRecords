@@ -63,6 +63,7 @@ public class RecordsFragment extends Fragment {
             case R.id.nhl:
                 break;
             case R.id.mls:
+                setMLSSoccerRecords();
                 break;
             case R.id.english_soccer:
                 setEnglishSoccerRecords();
@@ -74,7 +75,7 @@ public class RecordsFragment extends Fragment {
                 setItalianSoccerRecords();
                 break;
             case R.id.german_soccer:
-                setGermanESoccerRecords();
+                setGermanSoccerRecords();
                 break;
         }
     }
@@ -133,7 +134,7 @@ public class RecordsFragment extends Fragment {
                 getString(R.string.english_records10));
     }
 
-    private void setGermanESoccerRecords() {
+    private void setGermanSoccerRecords() {
 
         imageView.setImageResource(R.drawable.logo_german);
         textView.setText(getString(R.string.german_records_title1).toUpperCase() + "\n" +
@@ -156,4 +157,10 @@ public class RecordsFragment extends Fragment {
                 getString(R.string.german_records_10));
     }
 
+    private void setMLSSoccerRecords() {
+
+        imageView.setImageResource(R.drawable.mls_logo);
+        textView.setText(getString(R.string.top_scorers_title).toUpperCase() + "\n" +
+                getString(R.string.mls_records));
+    }
 }

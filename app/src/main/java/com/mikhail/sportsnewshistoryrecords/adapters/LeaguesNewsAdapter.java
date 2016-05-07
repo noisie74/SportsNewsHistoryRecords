@@ -33,8 +33,13 @@ public class LeaguesNewsAdapter extends RecyclerView.Adapter<LeaguesNewsAdapter.
         this.leaguesSearchResults = leaguesSearchResults;
     }
 
-//    public LeaguesNewsAdapter(){
-//    }
+    public LeaguesNewsAdapter(){
+    }
+
+    public void updateData(Doc[] results){
+        this.leaguesSearchResults = results;
+        notifyDataSetChanged();
+    }
 
     public interface OnItemClickListener {
         void onItemClick(View itemView, int position);

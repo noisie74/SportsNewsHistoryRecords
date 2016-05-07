@@ -26,8 +26,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.mikhail.sportsnewshistoryrecords.R;
-import com.mikhail.sportsnewshistoryrecords.datbase.ArticleSaveForLater;
-import com.mikhail.sportsnewshistoryrecords.datbase.SaveSQLiteHelper;
+import com.mikhail.sportsnewshistoryrecords.database.ArticleSaveForLater;
+import com.mikhail.sportsnewshistoryrecords.database.SaveSQLiteHelper;
 
 /**
  * Created by Mikhail on 4/29/16.

@@ -767,4 +767,59 @@ At the time, there were five Oberligen (Premier Leagues) in place representing W
 10	Hannes Löhr FC Köln games 381	goals 166
     </string>
 
+      <string name="mls_history1">
+Major League Soccer (MLS) is a men\’s professional soccer league, sanctioned by U.S. Soccer, that represents the sport\'s highest level in both the United States and Canada. MLS is sometimes considered one of the major professional sports leagues of the United States and Canada.\n
+The league is composed of 20 teams—17 in the U.S. and 3 in Canada. The MLS regular season runs from March to October, with each team playing 34 games; the team with the best record is awarded the Supporters Shield. The post season includes twelve teams competing in the MLS Cup Playoffs through November and December, culminating in the championship game, the MLS Cup.MLS teams also play in other domestic competitions against teams from other divisions in the U.S.\n
+Open Cup and in the Canadian Championship. MLS teams also compete against continental rivals in the CONCACAF Champions League.
+Major League Soccer was founded in 1993 as part of the United States successful bid to host the 1994 FIFA World Cup.\n
+The first season took place in 1996 with ten teams. MLS experienced financial and operational struggles in its first few years: The league lost millions of dollars, teams played in mostly empty American football stadiums, and two teams folded in 2002. Since then, MLS has expanded to 20 teams, owners built soccer-specific stadiums, average MLS attendance exceeds that of the National Hockey League(NHL) and National Basketball Association (NBA),
+MLS secured national TV contracts, and the league is now profitable.
+</string>
+
+ <string name="mls_history4">
+Instead of operating as an association of independently owned teams, MLS is a single entity in which each team is owned and controlled by the league\’s investors.
+The investor-operators control their teams as owners control teams in other leagues, and are commonly (but inaccurately) referred to as the team\'s owners. The league has a fixed membership, like most sports leagues in the United States and Canada, which makes it one of the world\'s few soccer leagues that does not use promotion and relegation, a practice that is uncommon in the two countries. MLS headquarters is located in New York City.\n
+Major League Soccer\’s regular season runs from March to October. Teams are divided into the Eastern and Western Conferences. Teams play 34 games in an unbalanced schedule: 24 matches against teams within their conference, plus 10 matches against teams from the other conference.Midway through the season, teams break for the annual All-Star Game, a friendly game between the league\'s finest players and a major club from a different league.
+At the end of the regular season, the team with the highest point total is awarded the Supporters Shield.\n
+Unlike other soccer leagues around the world, the MLS regular season is followed by the 12-team MLS Cup Playoffs in November, ending with the MLS Cup championship final in early December.
+Although some commentators have argued that playoffs reduce the importance of the regular season, Commissioner Don Garber has explained "Our purpose is to have a valuable competition, and that includes having playoffs that are more meaningful.
+Major League Soccer\’s spring-to-autumn schedule results in scheduling conflicts with the FIFA calendar and with summertime international tournaments such as the World Cup and the Gold Cup, causing several players to miss some MLS matches.
+While MLS has looked into changing to an autumn-to-spring format, there are no current plans to do so. If the league were to change its schedule, a winter break would be needed, especially with several teams in colder climates, which some believe would lead to a disadvantage. It would also have to compete with the more popular National Football League (NFL), National Hockey League (NHL), andNational Basketball Association (NBA).\n
+      </string>
+
+      <string name="mls_title1">
+       History\n
+    </string>
+
+      <string name="mls_history2">
+   Major League Soccer is the most recent of a series of men\’s premier professional national soccer leagues established in the United States and Canada.
+   The predecessor of MLS was the North American Soccer League (NASL), which played from 1968 until 1984.\n
+    </string>
+      <string name="mls_title2">
+       Establishment\n
+    </string>
+      <string name="mls_history3">
+In 1988, in exchange for FIFA awarding the right to host the 1994 World Cup, U.S. Soccer promised to establish a Division 1 professional soccer league. In 1993, U.S. Soccer selected Major League Professional Soccer (the precursor to MLS) as the exclusive Division 1 professional soccer league. Major League Soccer was officially formed in February 1995 as a limited liability company.\n
+MLS began play in 1996 with ten teams. The first game was held on April 6, 1996, as the San Jose Clash defeated D.C. United before 31,000 fans at Spartan Stadium in San Jose in a game broadcast on ESPN. The league had generated some buzz by managing to lure some marquee players from the 1994 World Cup to play in MLS—including U.S. stars such as Alexi Lalas, Tony Meola and Eric Wynalda, and foreign players such as Mexico\’s Jorge Campos and Colombia\'s Carlos Valderrama. D.C. United won the MLS Cup in three of the league\’s first four seasons.
+The league added its first two expansion teams in 1998—the Miami Fusion and the Chicago Fire; the Chicago Fire won its first title in its inaugural season.
+After its first season, MLS suffered from a decline in attendance. The league\’s low attendance was all the more apparent in light of the fact that eight of the original ten teams played in large American football stadiums. One aspect that had alienated fans was that MLS experimented with rules deviations in its early years in an attempt to "Americanize" the sport. The league implemented the use of shootouts to resolve tie games.MLS also used a countdown clock and halves ended when the clock reached 0:00.\n
+The league realized that the rule changes had alienated some traditional soccer fans while failing to draw new American sports fans, and the shootout and countdown clock were eliminated after the 1999 season. The league\’s quality was cast into doubt when the U.S. men\'s national team, which was made up largely of MLS players, finished in last place at the 1998 World Cup.
+Major League Soccer lost an estimated $250 million during its first five years, and more than $350 million between its founding and 2004. The league\'s financial problems led to Commissioner Doug Logan being replaced by Garber, a former NFL executive, in August 1999. MLS announced in January 2002 that it had decided to contract the Tampa Bay Mutiny and Miami Fusion, leaving the league with ten teams.
+Despite the financial problems, though, MLS did have some accomplishments that would set the stage for the league\’s resurgence. Columbus Crew Stadium was built in 1999, becoming MLS\’s first soccer-specific stadium. This began a trend among MLS teams to construct their own venues instead of leasing American football stadiums. In 2000, the league won an antitrust lawsuit, Fraser v. Major League Soccer, that the players had filed in 1996. The court ruled that MLS\’s policy of centrally contracting players and limiting player salaries through a salary cap and other restrictions were a legal method for the league to maintain solvency and competitive parity.
+    </string>
+      <string name="mls_records">
+1	United States Landon Donovan	games 144	goals 334\n
+2	United States Jeff Cunningham	games 134	goals 365\n
+3	Bolivia Jaime Moreno	games 133	goals 340\n
+4	United States Chris Wondolowski	games 116	goals 237\n
+5	United States Ante Razov	games 114	goals 262\n
+6	United States Jason Kreis	games 108	goals 305\n
+7	Canada Dwayne De Rosario	games 104	goals 343\n
+8	United States Taylor Twellman	games 101	goals 174\n
+9	United States Edson Buddle	games 100	goals 304\n
+10	United States Roy Lassiter	games 88	goals 179\n
+10	Guatemala Carlos Ruiz	games 88	goals 182\n
+    </string>
+
+
 </resources>

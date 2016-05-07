@@ -1,4 +1,4 @@
-package com.mikhail.sportsnewshistoryrecords.datbase;
+package com.mikhail.sportsnewshistoryrecords.database;
 
 /**
  * Created by Mikhail on 5/6/16.

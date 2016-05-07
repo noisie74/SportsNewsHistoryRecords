@@ -45,15 +45,11 @@ public class MainActivity extends AppCompatActivity
     private int mNavigationItemId;
     Toolbar toolbar;
     private static final String[] paths = {"Top News", "Football", "Basketball", "Baseball", "Hockey", "Soccer"};
-    TabLayout tabLayout;
     NewsDetailsFragment newsDetailsFragment;
     LeaguesFragment leaguesFragment;
     public static final String KEY = "KEY";
-
     Spinner spinner;
-
     String[] articleDetails;
-
     Intent intent;
 
     @Override
@@ -84,11 +80,10 @@ public class MainActivity extends AppCompatActivity
         }
         if (articleDetails != null) {
             // TODO you have to load detail fragment because we come from leagues fragment
-
             newsDetailsFragment = new NewsDetailsFragment();
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.frag_container, newsDetailsFragment);
+            fragmentTransaction.add(R.id.frag_container, newsDetailsFragment);
             fragmentTransaction.commit();
         }
 

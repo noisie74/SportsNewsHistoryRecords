@@ -1,4 +1,4 @@
-package com.mikhail.sportsnewshistoryrecords.datbase;
+package com.mikhail.sportsnewshistoryrecords.database;
 
 import android.content.Context;
 import android.database.Cursor;
