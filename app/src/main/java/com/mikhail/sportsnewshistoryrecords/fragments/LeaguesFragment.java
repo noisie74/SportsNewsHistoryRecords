@@ -1,9 +1,11 @@
 package com.mikhail.sportsnewshistoryrecords.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +14,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.mikhail.sportsnewshistoryrecords.LeaguesActivity;
+import com.mikhail.sportsnewshistoryrecords.MainActivity;
 import com.mikhail.sportsnewshistoryrecords.R;
 import com.mikhail.sportsnewshistoryrecords.adapters.LeaguesNewsAdapter;
 import com.mikhail.sportsnewshistoryrecords.api.NytSearchAPI;
@@ -52,38 +56,53 @@ public class LeaguesFragment extends Fragment {
     public static final String NYT_GERMAN = "Bundesliga";
 
     LeaguesNewsAdapter leaguesNewsAdapter;
+    NewsDetailsFragment newsDetailsFragment;
+    View v;
+    ArticleSearch nytSportsSearch;
 
-
-    TabLayout tabLayout;
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.recycleview_activity_fragment, container, false);
+        v = inflater.inflate(R.layout.recycleview_activity_fragment, container, false);
         recyclerView = (RecyclerView) v.findViewById(R.id.recycle_view);
         searchSportsResults = new ArrayList<>();
         swipeContainer = (SwipeRefreshLayout) v.findViewById(R.id.swipeContainer);
-//        tabLayout = (TabLayout) v.findViewById(R.id.tab_layout);
-//        tabLayout.addTab(tabLayout.newTab().setText("Articles"));
-//        tabLayout.addTab(tabLayout.newTab().setText("History"));
-//        tabLayout.addTab(tabLayout.newTab().setText("Records"));
-//        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         setPullRefresh();
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+//        leaguesNewsAdapter = new LeaguesNewsAdapter();
+//        leaguesFragmentSetOnItemClickListener();
 
         return v;
     }
 
 
-
-//    @Override
-//    public void setUserVisibleHint(boolean isVisibleToUser) {
-//        super.setUserVisibleHint(isVisibleToUser);
+//    private void leaguesFragmentSetOnItemClickListener() {
 //
-//        if (isVisibleToUser) {
-//            apiCall();
-//        }
+//        leaguesNewsAdapter.setOnItemClickListener(new LeaguesNewsAdapter.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(View view, int position) {
+//                Bundle article = new Bundle(); //will bundle the 5 fields of articleSearchObjects in a string array
+//                String[] articleDetails = {searchSportsResults.get(position).getHeadline().getMain(),
+//                        searchSportsResults.get(position).getWeb_url(),
+//                        searchSportsResults.get(position).getMultimedia().toString(),
+//                        searchSportsResults.get(position).getLead_paragraph()};
+//                article.putStringArray("searchedArticle", articleDetails);
+//
+//                Intent intent = new Intent(getActivity(), MainActivity.class);
+//                intent.putExtras(article);
+//                getActivity().startActivity(intent);
+//
+////                newsDetailsFragment = new NewsDetailsFragment();
+////                newsDetailsFragment.setArguments(article);
+////                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+////                transaction.replace(R.id.frag_container, newsDetailsFragment);
+////                transaction.addToBackStack(null);
+////                transaction.commit();
+//            }
+//        });
+//
 //    }
 
     private void setPullRefresh() {
@@ -109,8 +128,11 @@ public class LeaguesFragment extends Fragment {
         call.enqueue(new Callback<ArticleSearch>() {
             @Override
             public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
-                 ArticleSearch nytSportsSearch = response.body();
-                 handleData(nytSportsSearch);
+                ArticleSearch nytSportsSearch = response.body();
+                handleData(nytSportsSearch.getResponse().getDocs());
+                searchSportsResults.clear();
+                Collections.addAll(searchSportsResults, nytSportsSearch.getResponse().getDocs());
+
             }
 
             @Override
@@ -131,7 +153,7 @@ public class LeaguesFragment extends Fragment {
             @Override
             public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
                 ArticleSearch nytSportsSearch = response.body();
-                handleData(nytSportsSearch);
+                handleData(nytSportsSearch.getResponse().getDocs());
             }
 
             @Override
@@ -141,6 +163,7 @@ public class LeaguesFragment extends Fragment {
         });
 
     }
+
     private void mlsSearch() {
 
         NytSearchAPI.NytAPIRetrofitSimple nytSportsSearch = NytSearchAPI.create();
@@ -151,7 +174,7 @@ public class LeaguesFragment extends Fragment {
             @Override
             public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
                 ArticleSearch nytSportsSearch = response.body();
-                handleData(nytSportsSearch);
+                handleData(nytSportsSearch.getResponse().getDocs());
             }
 
             @Override
@@ -172,7 +195,7 @@ public class LeaguesFragment extends Fragment {
             @Override
             public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
                 ArticleSearch nytSportsSearch = response.body();
-                handleData(nytSportsSearch);
+                handleData(nytSportsSearch.getResponse().getDocs());
             }
 
             @Override
@@ -194,7 +217,7 @@ public class LeaguesFragment extends Fragment {
             public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
                 ArticleSearch nytSportsSearch = response.body();
                 setPullRefresh();
-                handleData(nytSportsSearch);
+                handleData(nytSportsSearch.getResponse().getDocs());
             }
 
             @Override
@@ -215,7 +238,7 @@ public class LeaguesFragment extends Fragment {
             @Override
             public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
                 ArticleSearch nytSportsSearch = response.body();
-                handleData(nytSportsSearch);
+                handleData(nytSportsSearch.getResponse().getDocs());
             }
 
             @Override
@@ -236,7 +259,7 @@ public class LeaguesFragment extends Fragment {
             @Override
             public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
                 ArticleSearch nytSportsSearch = response.body();
-                handleData(nytSportsSearch);
+                handleData(nytSportsSearch.getResponse().getDocs());
             }
 
             @Override
@@ -257,7 +280,7 @@ public class LeaguesFragment extends Fragment {
             @Override
             public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
                 ArticleSearch nytSportsSearch = response.body();
-                handleData(nytSportsSearch);
+                handleData(nytSportsSearch.getResponse().getDocs());
             }
 
             @Override
@@ -305,7 +328,7 @@ public class LeaguesFragment extends Fragment {
             @Override
             public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
                 ArticleSearch nytSportsSearch = response.body();
-                handleData(nytSportsSearch);
+                handleData(nytSportsSearch.getResponse().getDocs());
             }
 
             @Override
@@ -355,7 +378,7 @@ public class LeaguesFragment extends Fragment {
     }
 
 
-    private void handleData(ArticleSearch response) {
+    private void handleData(Doc[] response) {
         if (leaguesNewsAdapter == null && recyclerView != null) {
             leaguesNewsAdapter = new LeaguesNewsAdapter(response);
             recyclerView.setAdapter(leaguesNewsAdapter);

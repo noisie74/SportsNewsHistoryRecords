@@ -1,6 +1,7 @@
 package com.mikhail.sportsnewshistoryrecords.fragments;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -43,7 +44,8 @@ public class NewsDetailsFragment extends Fragment {
     public SQLiteDatabase db;
     Toolbar toolbar;
     Spinner spinner;
-
+    ControlToolbar controlToolbar;
+    String[] leaguesArticleDetails;
 
 
     @Nullable
@@ -54,14 +56,14 @@ public class NewsDetailsFragment extends Fragment {
         historyWebView = (WebView) v.findViewById(R.id.article_web_view);
 
         Bundle article = getArguments();
-
         articleDetails = article.getStringArray("article");
 
-        toolbar = (Toolbar)v.findViewById(R.id.toolbar);
-        spinner = (Spinner)v.findViewById(R.id.app_bar_spinner);
-        if (spinner != null){
-            spinner.setVisibility(View.GONE);
-        }
+        Bundle leaguesNewsDetails = getArguments();
+        leaguesArticleDetails = leaguesNewsDetails.getStringArray("searchedArticle");
+
+
+        controlToolbar.showSpinner(false);
+        controlToolbar.showTitle(false);
 
         progress = (ProgressBar) v.findViewById(R.id.progress_bar);
 
@@ -70,13 +72,38 @@ public class NewsDetailsFragment extends Fragment {
         webSettings.setJavaScriptEnabled(true); //turn js on for hacking and giving better ux
         historyWebView.addJavascriptInterface(new MyJavaScriptInterface(), "HTMLOUT");
 
-        historyWebView.loadUrl(articleDetails[2]);
+        if (leaguesArticleDetails == null){
+            historyWebView.loadUrl(articleDetails[2]);
+
+        }
+        if (articleDetails == null){
+            historyWebView.loadUrl(leaguesArticleDetails[1]);
+        }
 
         setHasOptionsMenu(true);
 
         return v;
 
     }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            controlToolbar = (ControlToolbar) getActivity();
+        }catch (ClassCastException ex){
+            throw new ClassCastException();
+        }
+
+    }
+
+
+    public interface ControlToolbar {
+        void showSpinner(boolean visible);
+
+        void showTitle(boolean visible);
+    }
+
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {

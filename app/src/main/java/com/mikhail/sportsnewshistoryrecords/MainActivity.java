@@ -35,7 +35,7 @@ import com.mikhail.sportsnewshistoryrecords.fragments.NewsDetailsFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.RecordsFragment;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, NewsDetailsFragment.ControlToolbar {
 
     protected RecyclerView recyclerView;
     private FragmentManager fragmentManager;
@@ -51,8 +51,8 @@ public class MainActivity extends AppCompatActivity
     public static final String KEY = "KEY";
 
     Spinner spinner;
-    ViewPager viewPager;
-    ViewPagerAdapter viewPagerAdapter;
+
+    String[] articleDetails;
 
     Intent intent;
 
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity
         toolbar.setTitle("Sports News");
 
 
-         spinner = (Spinner) toolbar.findViewById(R.id.app_bar_spinner);
+        spinner = (Spinner) toolbar.findViewById(R.id.app_bar_spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 R.layout.support_simple_spinner_dropdown_item, paths);
         spinner.setAdapter(adapter);
@@ -76,6 +76,23 @@ public class MainActivity extends AppCompatActivity
         intent = new Intent(MainActivity.this, LeaguesActivity.class);
         int key = getIntent().getIntExtra("backToMainActivity", 0);
         allSportsFragment.setFragment(key);
+
+
+
+        if (articleDetails != null){
+            articleDetails = getIntent().getExtras().getStringArray("searchedArticle");
+        }
+        if (articleDetails != null) {
+            // TODO you have to load detail fragment because we come from leagues fragment
+
+            newsDetailsFragment = new NewsDetailsFragment();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.frag_container, newsDetailsFragment);
+            fragmentTransaction.commit();
+        }
+
+
 
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -116,6 +133,7 @@ public class MainActivity extends AppCompatActivity
 
             }
         });
+
 
 //        historyAdapter = new HistoryAdapter();
 //
@@ -191,6 +209,25 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    public void showSpinner(boolean visible) {
+        if (visible) {
+            spinner.setVisibility(View.VISIBLE);
+        } else {
+            spinner.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
+    public void showTitle(boolean visible) {
+
+        if (visible) {
+            toolbar.setTitle("");
+        } else {
+            toolbar.setTitle("Sports News");
+        }
     }
 
     private void setViews() {
