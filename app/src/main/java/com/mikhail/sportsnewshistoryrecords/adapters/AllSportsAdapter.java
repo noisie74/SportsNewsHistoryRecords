@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mikhail.sportsnewshistoryrecords.R;
+import com.mikhail.sportsnewshistoryrecords.model.NytSportsMultimedia;
 import com.mikhail.sportsnewshistoryrecords.model.NytSportsResults;
 import com.squareup.picasso.Picasso;
 
@@ -17,12 +18,33 @@ import com.squareup.picasso.Picasso;
  */
 public class AllSportsAdapter extends RecyclerView.Adapter<AllSportsAdapter.ViewHolder> {
 
+    public int fragmentType;
     public NytSportsResults nytSportsResults;
-
+    private static OnItemClickListener listener;
     Context context;
 
     public AllSportsAdapter(NytSportsResults nytSportsResults) {
         this.nytSportsResults = nytSportsResults;
+    }
+
+    public AllSportsAdapter() {
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(View itemView, int position);
+    }
+
+    public void updateData(NytSportsResults results){
+        this.nytSportsResults = results;
+        notifyDataSetChanged();
+    }
+
+    public void setFragmentType(int fragmentType) {
+        this.fragmentType = fragmentType;
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -36,6 +58,14 @@ public class AllSportsAdapter extends RecyclerView.Adapter<AllSportsAdapter.View
             headline = (TextView) itemView.findViewById(R.id.headline);
             articleInfo = (TextView) itemView.findViewById(R.id.article_info);
             articleImage = (ImageView) itemView.findViewById(R.id.cardView_image);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listener != null)
+                        listener.onItemClick(itemView, getLayoutPosition());
+                }
+            });
         }
 
     }
@@ -56,18 +86,27 @@ public class AllSportsAdapter extends RecyclerView.Adapter<AllSportsAdapter.View
         holder.headline.setText(nytSportsResults.getResults()[position].getTitle());
         holder.articleInfo.setText(nytSportsResults.getResults()[position].getAbstractResult());
 
-        String imageURI = nytSportsResults.getResults()[position].getThumbnail_standard();
-        if (imageURI.isEmpty()) {
-            imageURI = "R.drawable.nyt_icon";
-        }
+        NytSportsMultimedia[] nytSportsMultimedias = nytSportsResults.getResults()[position].getMultimedia();
+        String imageURI;
+        if (nytSportsMultimedias.length > 0) {
+           imageURI  = nytSportsMultimedias[nytSportsMultimedias.length-1].getUrl();
+            if (imageURI.isEmpty()) {
+                imageURI = "R.drawable.nyt_icon";
+            }
 
+        }else{
+
+            imageURI = "R.drawable.nyt_icon";
+
+        }
         Picasso.with(context)
                 .load(imageURI)
                 .placeholder(R.drawable.nyt_icon)
-                .resize(200, 190)
+                .resize(250, 180)
                 .centerCrop()
                 .into(holder.articleImage);
     }
+
 
     @Override
     public int getItemCount() {

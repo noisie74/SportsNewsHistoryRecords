@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -13,8 +13,24 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:actionBarPopupTheme">@style/popupNew</item>
+    </style>
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="CustomActionBarTheme" parent="@style/Theme.AppCompat.Light">
+        <item name="android:popupMenuStyle">@style/AppTheme.AppBarOverlay</item>
+        <item name="popupMenuStyle">@style/AppTheme.PopupOverlay</item>
+    </style>
+
+    <style name="popupNew" parent="android:ThemeOverlay.Material.Light">
+        <item name="android:colorBackground">@color/colorPrimary</item>
+    </style>
+
+    <style name="MyTheme" parent="@android:style/Theme.Holo">
+        <item name="android:listPreferredItemHeightSmall">72dp</item>
+    </style>
+
 
 </resources>
