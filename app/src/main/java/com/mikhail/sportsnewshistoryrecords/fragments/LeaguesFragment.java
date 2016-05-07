@@ -61,49 +61,57 @@ public class LeaguesFragment extends Fragment {
     ArticleSearch nytSportsSearch;
 
 
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.recycleview_activity_fragment, container, false);
         recyclerView = (RecyclerView) v.findViewById(R.id.recycle_view);
+
         searchSportsResults = new ArrayList<>();
+
         swipeContainer = (SwipeRefreshLayout) v.findViewById(R.id.swipeContainer);
         setPullRefresh();
+
+        leaguesNewsAdapter = new LeaguesNewsAdapter(searchSportsResults);
+//        italianSoccerSearch();
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-//        leaguesNewsAdapter = new LeaguesNewsAdapter();
-//        leaguesFragmentSetOnItemClickListener();
+
+        leaguesFragmentSetOnItemClickListener();
 
         return v;
     }
 
 
-//    private void leaguesFragmentSetOnItemClickListener() {
-//
-//        leaguesNewsAdapter.setOnItemClickListener(new LeaguesNewsAdapter.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(View view, int position) {
-//                Bundle article = new Bundle(); //will bundle the 5 fields of articleSearchObjects in a string array
-//                String[] articleDetails = {searchSportsResults.get(position).getHeadline().getMain(),
-//                        searchSportsResults.get(position).getWeb_url(),
-//                        searchSportsResults.get(position).getMultimedia().toString(),
-//                        searchSportsResults.get(position).getLead_paragraph()};
-//                article.putStringArray("searchedArticle", articleDetails);
-//
-//                Intent intent = new Intent(getActivity(), MainActivity.class);
-//                intent.putExtras(article);
-//                getActivity().startActivity(intent);
-//
-////                newsDetailsFragment = new NewsDetailsFragment();
-////                newsDetailsFragment.setArguments(article);
-////                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-////                transaction.replace(R.id.frag_container, newsDetailsFragment);
-////                transaction.addToBackStack(null);
-////                transaction.commit();
-//            }
-//        });
-//
-//    }
+    public void leaguesFragmentSetOnItemClickListener() {
+
+        if (leaguesNewsAdapter != null) {
+            leaguesNewsAdapter.setOnItemClickListener(new LeaguesNewsAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(View view, int position) {
+                    searchSportsResults.get(position);
+                    Bundle article = new Bundle(); //will bundle the 5 fields of articleSearchObjects in a string array
+                    String[] articleDetails = {searchSportsResults.get(position).getHeadline().getMain(),
+                            searchSportsResults.get(position).getWeb_url(),
+                            searchSportsResults.get(position).getMultimedia().toString(),
+                            searchSportsResults.get(position).getLead_paragraph()};
+                    article.putStringArray("searchedArticle", articleDetails);
+
+                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                    intent.putExtras(article);
+                    getActivity().startActivity(intent);
+
+//                    newsDetailsFragment = new NewsDetailsFragment();
+//                    newsDetailsFragment.setArguments(article);
+//                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//                    transaction.replace(R.id.frag_container_leagues, newsDetailsFragment);
+//                    transaction.addToBackStack(null);
+//                    transaction.commit();
+                }
+            });
+        }
+
+
+    }
 
     private void setPullRefresh() {
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -128,10 +136,27 @@ public class LeaguesFragment extends Fragment {
         call.enqueue(new Callback<ArticleSearch>() {
             @Override
             public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
+
                 ArticleSearch nytSportsSearch = response.body();
-                handleData(nytSportsSearch.getResponse().getDocs());
+                if (nytSportsSearch == null) {
+                    return;
+                }
                 searchSportsResults.clear();
                 Collections.addAll(searchSportsResults, nytSportsSearch.getResponse().getDocs());
+                if (recyclerView != null) {
+                    recyclerView.setAdapter(leaguesNewsAdapter);
+                }
+
+
+//                ArticleSearch nytSportsSearch = response.body();
+//
+//                if (nytSportsSearch == null) {
+//                    return;
+//                }
+//                searchSportsResults.clear();
+//                Collections.addAll(searchSportsResults, nytSportsSearch.getResponse().getDocs());
+//                handleData(nytSportsSearch.getResponse().getDocs());
+//                //                leaguesNewsAdapter.updateData(searchSportsResults);
 
             }
 
@@ -153,7 +178,14 @@ public class LeaguesFragment extends Fragment {
             @Override
             public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
                 ArticleSearch nytSportsSearch = response.body();
-                handleData(nytSportsSearch.getResponse().getDocs());
+//                handleData(nytSportsSearch.getResponse().getDocs());
+                searchSportsResults.clear();
+                Collections.addAll(searchSportsResults, nytSportsSearch.getResponse().getDocs());
+//                leaguesNewsAdapter.updateData(searchSportsResults);
+                if (recyclerView != null) {
+                    recyclerView.setAdapter(leaguesNewsAdapter);
+                }
+
             }
 
             @Override
@@ -174,7 +206,14 @@ public class LeaguesFragment extends Fragment {
             @Override
             public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
                 ArticleSearch nytSportsSearch = response.body();
-                handleData(nytSportsSearch.getResponse().getDocs());
+//                handleData(nytSportsSearch.getResponse().getDocs());
+                searchSportsResults.clear();
+                Collections.addAll(searchSportsResults, nytSportsSearch.getResponse().getDocs());
+//                leaguesNewsAdapter.updateData(searchSportsResults);
+                if (recyclerView != null) {
+                    recyclerView.setAdapter(leaguesNewsAdapter);
+                }
+
             }
 
             @Override
@@ -184,7 +223,6 @@ public class LeaguesFragment extends Fragment {
         });
 
     }
-
     private void bundesligaSearch() {
 
         NytSearchAPI.NytAPIRetrofitSimple nytSportsSearch = NytSearchAPI.create();
@@ -195,7 +233,14 @@ public class LeaguesFragment extends Fragment {
             @Override
             public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
                 ArticleSearch nytSportsSearch = response.body();
-                handleData(nytSportsSearch.getResponse().getDocs());
+//                handleData(nytSportsSearch.getResponse().getDocs());
+                searchSportsResults.clear();
+                Collections.addAll(searchSportsResults, nytSportsSearch.getResponse().getDocs());
+//                leaguesNewsAdapter.updateData(searchSportsResults);
+                if (recyclerView != null) {
+                    recyclerView.setAdapter(leaguesNewsAdapter);
+                }
+
             }
 
             @Override
@@ -217,7 +262,14 @@ public class LeaguesFragment extends Fragment {
             public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
                 ArticleSearch nytSportsSearch = response.body();
                 setPullRefresh();
-                handleData(nytSportsSearch.getResponse().getDocs());
+//                handleData(nytSportsSearch.getResponse().getDocs());
+                searchSportsResults.clear();
+                Collections.addAll(searchSportsResults, nytSportsSearch.getResponse().getDocs());
+//                leaguesNewsAdapter.updateData(searchSportsResults);
+                if (recyclerView != null) {
+                    recyclerView.setAdapter(leaguesNewsAdapter);
+                }
+
             }
 
             @Override
@@ -238,7 +290,14 @@ public class LeaguesFragment extends Fragment {
             @Override
             public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
                 ArticleSearch nytSportsSearch = response.body();
-                handleData(nytSportsSearch.getResponse().getDocs());
+//                handleData(nytSportsSearch.getResponse().getDocs());
+                searchSportsResults.clear();
+                Collections.addAll(searchSportsResults, nytSportsSearch.getResponse().getDocs());
+//                leaguesNewsAdapter.updateData(searchSportsResults);
+                if (recyclerView != null) {
+                    recyclerView.setAdapter(leaguesNewsAdapter);
+                }
+
             }
 
             @Override
@@ -259,7 +318,14 @@ public class LeaguesFragment extends Fragment {
             @Override
             public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
                 ArticleSearch nytSportsSearch = response.body();
-                handleData(nytSportsSearch.getResponse().getDocs());
+//                handleData(nytSportsSearch.getResponse().getDocs());
+                searchSportsResults.clear();
+                Collections.addAll(searchSportsResults, nytSportsSearch.getResponse().getDocs());
+//                leaguesNewsAdapter.updateData(searchSportsResults);
+                if (recyclerView != null) {
+                    recyclerView.setAdapter(leaguesNewsAdapter);
+                }
+
             }
 
             @Override
@@ -280,9 +346,15 @@ public class LeaguesFragment extends Fragment {
             @Override
             public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
                 ArticleSearch nytSportsSearch = response.body();
-                handleData(nytSportsSearch.getResponse().getDocs());
-                leaguesNewsAdapter.updateData(nytSportsSearch.getResponse().getDocs());
+//                handleData(nytSportsSearch.getResponse().getDocs());
+                searchSportsResults.clear();
+                Collections.addAll(searchSportsResults, nytSportsSearch.getResponse().getDocs());
+//                leaguesNewsAdapter.updateData(searchSportsResults);
+                if (recyclerView != null) {
+                    recyclerView.setAdapter(leaguesNewsAdapter);
+                }
             }
+
 
             @Override
             public void onFailure(Call<ArticleSearch> call, Throwable t) {
@@ -292,32 +364,6 @@ public class LeaguesFragment extends Fragment {
 
     }
 
-//    public void englishSoccerSearch() {
-//        NytSearchAPI.NytRx nytSports = NytSearchAPI.createRx();
-//
-//        Observable<ArticleSearch> observable = nytSports.response(NYT_ENGLISH);
-//
-//        observable.subscribeOn(Schedulers.newThread())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(new Subscriber<ArticleSearch>() {
-//                    @Override
-//                    public void onCompleted() {
-//
-//                        Log.d("LeaguesFragment", "Query Succes!");
-//                    }
-//
-//                    @Override
-//                    public void onError(Throwable e) {
-//                        Log.d("LeaguesFragment", "Error!");
-//                    }
-//
-//                    @Override
-//                    public void onNext(ArticleSearch response) {
-//                        ArticleSearch nytSportsSearch = response.body();
-//                        handleData(nytSportsSearch);
-//                    }
-//                });
-//    }
 
     private void englishSoccerSearch() {
 
@@ -330,7 +376,12 @@ public class LeaguesFragment extends Fragment {
             public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
                 ArticleSearch nytSportsSearch = response.body();
                 handleData(nytSportsSearch.getResponse().getDocs());
-                leaguesNewsAdapter.updateData(nytSportsSearch.getResponse().getDocs());
+                searchSportsResults.clear();
+                Collections.addAll(searchSportsResults, nytSportsSearch.getResponse().getDocs());
+//                leaguesNewsAdapter.updateData(searchSportsResults);
+                if (recyclerView != null) {
+                    recyclerView.setAdapter(leaguesNewsAdapter);
+                }
 
             }
 
@@ -383,13 +434,13 @@ public class LeaguesFragment extends Fragment {
 
     private void handleData(Doc[] response) {
         if (leaguesNewsAdapter == null && recyclerView != null) {
-            leaguesNewsAdapter = new LeaguesNewsAdapter(response);
+            leaguesNewsAdapter = new LeaguesNewsAdapter(searchSportsResults);
             recyclerView.setAdapter(leaguesNewsAdapter);
         } else if (leaguesNewsAdapter != null) {
-            leaguesNewsAdapter.setArticles(response);
+            leaguesNewsAdapter.setArticles(searchSportsResults);
             leaguesNewsAdapter.notifyDataSetChanged();
         } else {
-            leaguesNewsAdapter = new LeaguesNewsAdapter(response);
+            leaguesNewsAdapter = new LeaguesNewsAdapter(searchSportsResults);
         }
     }
 }
@@ -411,3 +462,30 @@ public class LeaguesFragment extends Fragment {
 //        docsWithImages.add(doc);
 //        }
 //        }
+
+//    public void englishSoccerSearch() {
+//        NytSearchAPI.NytRx nytSports = NytSearchAPI.createRx();
+//
+//        Observable<ArticleSearch> observable = nytSports.response(NYT_ENGLISH);
+//
+//        observable.subscribeOn(Schedulers.newThread())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Subscriber<ArticleSearch>() {
+//                    @Override
+//                    public void onCompleted() {
+//
+//                        Log.d("LeaguesFragment", "Query Succes!");
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                        Log.d("LeaguesFragment", "Error!");
+//                    }
+//
+//                    @Override
+//                    public void onNext(ArticleSearch response) {
+//                        ArticleSearch nytSportsSearch = response.body();
+//                        handleData(nytSportsSearch);
+//                    }
+//                });
+//    }

@@ -26,17 +26,17 @@ import java.util.List;
 public class LeaguesNewsAdapter extends RecyclerView.Adapter<LeaguesNewsAdapter.ViewHolder> {
 
     Context context;
-    public Doc[] leaguesSearchResults;
+    public ArrayList<Doc> leaguesSearchResults;
     public static OnItemClickListener listener;
 
-    public LeaguesNewsAdapter(Doc[] leaguesSearchResults) {
+    public LeaguesNewsAdapter(ArrayList<Doc> leaguesSearchResults) {
         this.leaguesSearchResults = leaguesSearchResults;
     }
 
     public LeaguesNewsAdapter(){
     }
 
-    public void updateData(Doc[] results){
+    public void updateData(ArrayList<Doc> results){
         this.leaguesSearchResults = results;
         notifyDataSetChanged();
     }
@@ -49,7 +49,7 @@ public class LeaguesNewsAdapter extends RecyclerView.Adapter<LeaguesNewsAdapter.
         this.listener = listener;
     }
 
-    public void setArticles(Doc[] results){
+    public void setArticles(ArrayList<Doc> results){
         this.leaguesSearchResults = results;
     }
 
@@ -57,12 +57,14 @@ public class LeaguesNewsAdapter extends RecyclerView.Adapter<LeaguesNewsAdapter.
         public TextView headline;
         public TextView articleInfo;
         public ImageView articleImage;
+//        Doc doc;
 
         public ViewHolder(final View itemView) {
             super(itemView);
             headline = (TextView) itemView.findViewById(R.id.headline);
             articleInfo = (TextView) itemView.findViewById(R.id.article_info);
             articleImage = (ImageView) itemView.findViewById(R.id.cardView_image);
+//            doc = new Doc();
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -88,10 +90,10 @@ public class LeaguesNewsAdapter extends RecyclerView.Adapter<LeaguesNewsAdapter.
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        holder.headline.setText(leaguesSearchResults[position].getHeadline().getMain());
-        holder.articleInfo.setText(leaguesSearchResults[position].getLead_paragraph());
+        holder.headline.setText(leaguesSearchResults.get(position).getHeadline().getMain());
+        holder.articleInfo.setText(leaguesSearchResults.get(position).getLead_paragraph());
         String imageURI = null;
-        Multimedia[] multiMedia = leaguesSearchResults[position].getMultimedia();
+        Multimedia[] multiMedia = leaguesSearchResults.get(position).getMultimedia();
         if (multiMedia != null && multiMedia.length > 0) {
 
             imageURI = multiMedia[0].getUrl();
@@ -110,7 +112,7 @@ public class LeaguesNewsAdapter extends RecyclerView.Adapter<LeaguesNewsAdapter.
 
     @Override
     public int getItemCount() {
-        return leaguesSearchResults.length;
+        return leaguesSearchResults.size();
     }
 }
 
