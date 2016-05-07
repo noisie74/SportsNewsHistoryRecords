@@ -15,10 +15,13 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.mikhail.sportsnewshistoryrecords.adapters.ViewPagerAdapter;
+import com.mikhail.sportsnewshistoryrecords.fragments.SportsLeaguesArticleDetailViewFragment;
 
-public class LeaguesActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class LeaguesActivity extends AppCompatActivity implements
+        NavigationView.OnNavigationItemSelectedListener, SportsLeaguesArticleDetailViewFragment.ControlLeaguesActivityLayout {
 
     Toolbar toolbar;
     private int mNavigationItemId;
@@ -120,6 +123,26 @@ public class LeaguesActivity extends AppCompatActivity implements NavigationView
             startActivity(intent);
         } else {
             super.onBackPressed();
+        }
+    }
+
+
+    @Override
+    public void showViewPager(boolean visible) {
+        if (visible) {
+            viewPager.setVisibility(View.VISIBLE);
+        } else {
+            viewPager.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
+    public void showTabLayout(boolean visible) {
+
+        if (visible) {
+            tabLayout.setVisibility(View.VISIBLE);
+        } else {
+            tabLayout.setVisibility(View.GONE);
         }
     }
 

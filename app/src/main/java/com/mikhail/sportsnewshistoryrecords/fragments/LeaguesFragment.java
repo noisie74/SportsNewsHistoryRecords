@@ -56,9 +56,10 @@ public class LeaguesFragment extends Fragment {
     public static final String NYT_GERMAN = "Bundesliga";
 
     LeaguesNewsAdapter leaguesNewsAdapter;
-    NewsDetailsFragment newsDetailsFragment;
+//    NewsDetailsFragment newsDetailsFragment;
     View v;
     ArticleSearch nytSportsSearch;
+    SportsLeaguesArticleDetailViewFragment sportsLeaguesArticleDetailViewFragment;
 
 
     @Nullable
@@ -96,16 +97,16 @@ public class LeaguesFragment extends Fragment {
                             searchSportsResults.get(position).getLead_paragraph()};
                     article.putStringArray("searchedArticle", articleDetails);
 
-                    Intent intent = new Intent(getActivity(), MainActivity.class);
-                    intent.putExtras(article);
-                    getActivity().startActivity(intent);
+//                    Intent intent = new Intent(getActivity(), MainActivity.class);
+//                    intent.putExtras(article);
+//                    getActivity().startActivity(intent);
 
-//                    newsDetailsFragment = new NewsDetailsFragment();
-//                    newsDetailsFragment.setArguments(article);
-//                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
-//                    transaction.replace(R.id.frag_container_leagues, newsDetailsFragment);
-//                    transaction.addToBackStack(null);
-//                    transaction.commit();
+                    sportsLeaguesArticleDetailViewFragment = new SportsLeaguesArticleDetailViewFragment();
+                    sportsLeaguesArticleDetailViewFragment.setArguments(article);
+                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frag_container_leagues, sportsLeaguesArticleDetailViewFragment);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
                 }
             });
         }

@@ -6,10 +6,11 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.Toolbar;
+import android.support.v7.view.menu.ActionMenuItemView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -22,63 +23,56 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.mikhail.sportsnewshistoryrecords.R;
 import com.mikhail.sportsnewshistoryrecords.database.ArticleSaveForLater;
 import com.mikhail.sportsnewshistoryrecords.database.SaveSQLiteHelper;
 
-/**
- * Created by Mikhail on 4/29/16.
- */
-public class NewsDetailsFragment extends Fragment {
 
-    private View v;
-    private WebView historyWebView;
+public class SportsLeaguesArticleDetailViewFragment extends Fragment {
     String[] articleDetails;
-    public MenuItem saveLater;
-    public ProgressBar progress;
-    private static final String TAG = "ArticleStory Fragment";
-    public String htmlSaveForLater;
-    public SQLiteDatabase db;
-    Toolbar toolbar;
-    Spinner spinner;
-    ControlToolbar controlToolbar;
-    String[] leaguesArticleDetails;
+    View v;
 
+    private static final String TAG = "ArticleStory Fragment";
+    private ProgressBar progress;
+    private WebView articleWebView;
+    private String htmlSaveForLater;
+    private SQLiteDatabase db;
+    private MenuItem saveLater;
+    ControlLeaguesActivityLayout controlLeaguesActivityLayout;
+
+    /**
+     * user interface to callback for fragment
+     */
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         v = inflater.inflate(R.layout.histoy_web_view, container, false);
-        historyWebView = (WebView) v.findViewById(R.id.article_web_view);
+        articleWebView = (WebView) v.findViewById(R.id.article_web_view);
+
 
         Bundle article = getArguments();
-        articleDetails = article.getStringArray("article");
 
-//        Bundle leaguesNewsDetails = getArguments();
-//        leaguesArticleDetails = leaguesNewsDetails.getStringArray("searchedArticle");
+        articleDetails = article.getStringArray("searchedArticle");
 
-
-        controlToolbar.showSpinner(false);
-        controlToolbar.showTitle(false);
+        controlLeaguesActivityLayout.showViewPager(false);
+        controlLeaguesActivityLayout.showTabLayout(false);
 
         progress = (ProgressBar) v.findViewById(R.id.progress_bar);
 
-        WebSettings webSettings = historyWebView.getSettings();
-        historyWebView.setWebViewClient(new WebViewClientDemo()); //opens url in app, not in default browser
+        WebSettings webSettings = articleWebView.getSettings();
+        articleWebView.setWebViewClient(new WebViewClientDemo()); //opens url in app, not in default browser
         webSettings.setJavaScriptEnabled(true); //turn js on for hacking and giving better ux
-        historyWebView.addJavascriptInterface(new MyJavaScriptInterface(), "HTMLOUT");
+        articleWebView.addJavascriptInterface(new htmlJavaScriptInterface(), "HTMLOUT");
 
-//        if (leaguesArticleDetails == null){
-            historyWebView.loadUrl(articleDetails[2]);
-//
-//        }
-//        if (articleDetails == null){
-//            historyWebView.loadUrl(leaguesArticleDetails[1]);
-//        }
+        articleWebView.loadUrl(articleDetails[1]);
+        SaveSQLiteHelper mDbHelper = SaveSQLiteHelper.getInstance(getContext());
+        db = mDbHelper.getWritableDatabase();
+
+        Log.i(TAG, articleDetails[1]);
 
         setHasOptionsMenu(true);
 
@@ -90,26 +84,23 @@ public class NewsDetailsFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         try {
-            controlToolbar = (ControlToolbar) getActivity();
-        }catch (ClassCastException ex){
+            controlLeaguesActivityLayout = (ControlLeaguesActivityLayout) getActivity();
+        } catch (ClassCastException ex) {
             throw new ClassCastException();
         }
 
     }
 
+    public interface ControlLeaguesActivityLayout {
+        void showViewPager(boolean visible);
 
-    public interface ControlToolbar {
-        void showSpinner(boolean visible);
-
-        void showTitle(boolean visible);
+        void showTabLayout(boolean visible);
     }
-
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_fragment, menu);
         saveLater = (MenuItem) menu.findItem(R.id.save_later);
-
     }
 
     @Override
@@ -121,13 +112,13 @@ public class NewsDetailsFragment extends Fragment {
 
             Intent intent = new Intent(Intent.ACTION_SEND);
             intent.setType("text/plain");
-            intent.putExtra(Intent.EXTRA_TEXT, articleDetails[2]);
-            intent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Check out this site!");
+            intent.putExtra(Intent.EXTRA_TEXT, articleDetails[1]);
+            intent.putExtra(Intent.EXTRA_SUBJECT, "Check out this site!");
             startActivity(Intent.createChooser(intent, "Share"));
             return true;
         } else if (id == R.id.save_later) {
-            ArticleSaveForLater article = new ArticleSaveForLater(htmlSaveForLater, articleDetails[1], articleDetails[4], articleDetails[2], articleDetails[3]);
-            insertIntoDbFromArticle(article);
+            ArticleSaveForLater article = new ArticleSaveForLater(htmlSaveForLater, articleDetails[0], articleDetails[3], articleDetails[1], articleDetails[2]);
+            insertIntoDbFromSearchArticle(article);
             return true;
         }
 
@@ -135,10 +126,11 @@ public class NewsDetailsFragment extends Fragment {
 
     }
 
+
     private class WebViewClientDemo extends WebViewClient {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-
+            progress.setVisibility(View.VISIBLE);
             view.loadUrl(url);
             return true;
         }
@@ -146,7 +138,7 @@ public class NewsDetailsFragment extends Fragment {
         @Override
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
-            historyWebView.loadUrl("javascript:window.HTMLOUT.showHTML('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>');");
+            articleWebView.loadUrl("javascript:window.HTMLOUT.showHTML('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>');");
             progress.setVisibility(View.GONE);
             saveLater.setVisible(true);
         }
@@ -159,14 +151,16 @@ public class NewsDetailsFragment extends Fragment {
         }
     }
 
-    public class MyJavaScriptInterface {
+    public class htmlJavaScriptInterface {
         @JavascriptInterface
         @SuppressWarnings("unused")
         public void showHTML(String html) {
+            htmlSaveForLater = html;
         }
     }
 
-    private long insertIntoDbFromArticle(ArticleSaveForLater article) {
+
+    private long insertIntoDbFromSearchArticle(ArticleSaveForLater article) {
         long newRowId = 0l;
 
         Cursor cursor;
@@ -192,5 +186,4 @@ public class NewsDetailsFragment extends Fragment {
         return newRowId;
 
     }
-
 }

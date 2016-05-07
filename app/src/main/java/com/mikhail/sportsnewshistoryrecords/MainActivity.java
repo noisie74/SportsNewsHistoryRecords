@@ -74,18 +74,18 @@ public class MainActivity extends AppCompatActivity
         allSportsFragment.setFragment(key);
 
 
-
-        if (articleDetails != null){
-            articleDetails = getIntent().getExtras().getStringArray("searchedArticle");
-        }
-        if (articleDetails != null) {
-            // TODO you have to load detail fragment because we come from leagues fragment
-            newsDetailsFragment = new NewsDetailsFragment();
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.add(R.id.frag_container, newsDetailsFragment);
-            fragmentTransaction.commit();
-        }
+//
+//        if (articleDetails != null){
+//            articleDetails = getIntent().getExtras().getStringArray("searchedArticle");
+//        }
+//        if (articleDetails != null) {
+//            // TODO you have to load detail fragment because we come from leagues fragment
+//            newsDetailsFragment = new NewsDetailsFragment();
+//            FragmentManager fragmentManager = getSupportFragmentManager();
+//            fragmentTransaction = fragmentManager.beginTransaction();
+//            fragmentTransaction.add(R.id.frag_container, newsDetailsFragment);
+//            fragmentTransaction.commit();
+//        }
 
 
 
