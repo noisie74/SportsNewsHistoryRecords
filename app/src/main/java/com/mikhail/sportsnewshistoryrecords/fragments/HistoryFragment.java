@@ -12,8 +12,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 import com.mikhail.sportsnewshistoryrecords.R;
-import com.mikhail.sportsnewshistoryrecords.adapters.HistoryAdapter;
 
 import java.util.ArrayList;
 
@@ -26,6 +29,7 @@ public class HistoryFragment extends Fragment {
     TextView textView;
     private int mFragmentType;
     private View v;
+    Firebase firebaseRef;
 
     @Nullable
     @Override
@@ -34,7 +38,7 @@ public class HistoryFragment extends Fragment {
         v = inflater.inflate(R.layout.history_layout, container, false);
         imageView = (ImageView) v.findViewById(R.id.league_logo);
         textView = (TextView) v.findViewById(R.id.league_history_text);
-
+        firebaseRef = new Firebase("https://sportsnewsstatsrec.firebaseio.com/");
         return v;
     }
 
@@ -42,9 +46,7 @@ public class HistoryFragment extends Fragment {
     public void onResume() {
         super.onResume();
         setHistoryFragmentData();
-
     }
-
 
     public void setFragmentType(int type) {
         mFragmentType = type;
@@ -60,6 +62,7 @@ public class HistoryFragment extends Fragment {
             case R.id.nfl:
                 break;
             case R.id.nba:
+                setNBAHistory();
                 break;
             case R.id.mlb:
                 break;
@@ -130,8 +133,8 @@ public class HistoryFragment extends Fragment {
     private void setGermanSoccerHistory() {
 
         imageView.setImageResource(R.drawable.logo_german);
-        textView.setText(getString(R.string.german_history_1) + "\n"+ "\n" +
-                getString(R.string.german_history_title1).toUpperCase() +"\n"+
+        textView.setText(getString(R.string.german_history_1) + "\n" + "\n" +
+                getString(R.string.german_history_title1).toUpperCase() + "\n" +
                 getString(R.string.german_history_title2) + "\n" +
                 getString(R.string.german_history_2) + "\n" +
                 getString(R.string.german_history_title3) + "\n" +
@@ -141,12 +144,47 @@ public class HistoryFragment extends Fragment {
     private void setMLSSoccerHistory() {
 
         imageView.setImageResource(R.drawable.mls_logo);
-        textView.setText(getString(R.string.mls_history1) + "\n"+
-                getString(R.string.mls_history4)+"\n"+
-                getString(R.string.mls_title1).toUpperCase() + "\n"+
+        textView.setText(getString(R.string.mls_history1) + "\n" +
+                getString(R.string.mls_history4) + "\n" +
+                getString(R.string.mls_title1).toUpperCase() + "\n" +
                 getString(R.string.mls_history2) + "\n" +
                 getString(R.string.mls_title2) + "\n" +
                 getString(R.string.mls_history3));
+    }
+
+    private void setNBAHistory() {
+        imageView.setImageResource(R.drawable.nba_logo_history);
+
+        firebaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String s1 = dataSnapshot.child("nba3").getValue(String.class);
+                String s2 = dataSnapshot.child("nba1").getValue(String.class);
+                String s3 = dataSnapshot.child("nba2").getValue(String.class);
+                String s4 = dataSnapshot.child("nba12").getValue(String.class);
+                String s5 = dataSnapshot.child("nba4").getValue(String.class);
+                String s6 = dataSnapshot.child("nba5").getValue(String.class);
+                String s7 = dataSnapshot.child("nba6").getValue(String.class);
+                String s8 = dataSnapshot.child("nba7").getValue(String.class);
+                String s9 = dataSnapshot.child("nba8").getValue(String.class);
+                String s10 = dataSnapshot.child("nba9").getValue(String.class);
+                String s11 = dataSnapshot.child("nba10").getValue(String.class);
+                String s12 = dataSnapshot.child("nba11").getValue(String.class);
+
+                textView.setText(s4 + "\n" + "\n" + s2 + "\n" + "\n" +
+                        s3 + "\n" + "\n" + s1 + "\n" + "\n" + s5 + "\n"
+                        + "\n" + s6 + "\n" + "\n" + s7 + "\n" + "\n" + s8
+                        + "\n" + "\n" + s9 + "\n" + "\n" + s10 + "\n" + "\n"
+                        + s11 + "\n" + "\n" + s12);
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+
     }
 }
 

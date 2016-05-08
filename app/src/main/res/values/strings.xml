@@ -822,4 +822,21 @@ Despite the financial problems, though, MLS did have some accomplishments that w
     </string>
 
 
+    <string name="nba_records_title">
+        RECORDS\n
+    </string>
+
+          <string name="nba_records">
+•	Most minutes in a game\n
+	•	69 by Dale Ellis, Seattle SuperSonics (at Milwaukee Bucks) on November 9, 1989 (5 OT)\n
+	•	Most points in a game\n
+	•	100 by Wilt Chamberlain, Philadelphia Warriors (vs. New York Knicks) on March 2, 1962\n
+	•	Most points in a half\n
+	•	59 by Wilt Chamberlain, Philadelphia Warriors (vs. New York Knicks) on March 2, 1962 (2nd)\n
+	•	Most points in a quarter\n
+	•	37 by Klay Thompson, Golden State Warriors (vs. Sacramento Kings) on January 23, 2015 (3rd)\n
+	•	Most points in an overtime period\n
+	•	16 by Gilbert Arenas, Washington Wizards (vs. Los Angeles Lakers) on December 17, 2006\n
+    </string>
+
 </resources>

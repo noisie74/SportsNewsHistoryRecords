@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mikhail.sportsnewshistoryrecords.R;
+import com.squareup.picasso.Picasso;
 
 /**
  * Created by Mikhail on 5/2/16.
@@ -57,6 +58,7 @@ public class RecordsFragment extends Fragment {
             case R.id.nfl:
                 break;
             case R.id.nba:
+                setNBARecords();
                 break;
             case R.id.mlb:
                 break;
@@ -109,7 +111,7 @@ public class RecordsFragment extends Fragment {
 
     private void setEnglishSoccerRecords() {
 
-        imageView.setImageResource(R.drawable.premier_eague_rec);
+        imageView.setImageResource(R.drawable.premier_league_logo);
         textView.setText(getString(R.string.english_records_title1).toUpperCase() + "\n" +
                 getString(R.string.english_records_title2) + "\n" +
                 getString(R.string.english_records1) + "\n" +
@@ -163,4 +165,12 @@ public class RecordsFragment extends Fragment {
         textView.setText(getString(R.string.top_scorers_title).toUpperCase() + "\n" +
                 getString(R.string.mls_records));
     }
+
+    private void setNBARecords() {
+
+        imageView.setImageResource(R.drawable.nba_logo_history);
+        textView.setText(getString(R.string.nba_records_title).toUpperCase() + "\n" +
+                getString(R.string.nba_records_title));
+    }
+
 }

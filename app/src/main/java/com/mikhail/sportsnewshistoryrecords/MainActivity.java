@@ -25,9 +25,6 @@ import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
-
-import com.mikhail.sportsnewshistoryrecords.adapters.HistoryAdapter;
-import com.mikhail.sportsnewshistoryrecords.adapters.ViewPagerAdapter;
 import com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.HistoryFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.LeaguesFragment;
