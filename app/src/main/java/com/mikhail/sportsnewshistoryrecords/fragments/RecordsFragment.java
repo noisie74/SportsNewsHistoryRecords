@@ -170,7 +170,9 @@ public class RecordsFragment extends Fragment {
 
         imageView.setImageResource(R.drawable.nba_logo_history);
         textView.setText(getString(R.string.nba_records_title).toUpperCase() + "\n" +
-                getString(R.string.nba_records_title));
+                getString(R.string.nba_records) + "\n" + getString(R.string.nba_records1)
+                + "\n" + getString(R.string.nba_records3)
+                + "\n" + getString(R.string.nba_records4));
     }
 
 }
