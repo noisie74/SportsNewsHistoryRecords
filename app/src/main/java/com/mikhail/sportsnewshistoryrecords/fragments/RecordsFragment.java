@@ -56,6 +56,7 @@ public class RecordsFragment extends Fragment {
 
         switch (mFragmentType) {
             case R.id.nfl:
+                setNFLRecords();
                 break;
             case R.id.nba:
                 setNBARecords();
@@ -170,10 +171,25 @@ public class RecordsFragment extends Fragment {
 
         imageView.setImageResource(R.drawable.nba_logo_history);
         textView.setText(getString(R.string.nba_records_title).toUpperCase() + "\n" +
-                getString(R.string.nba_records) + "\n" + getString(R.string.nba_records1)
+                getString(R.string.nba_records)
+                + "\n" + getString(R.string.nba_records1)
                 + "\n" + getString(R.string.nba_records3)
                 + "\n" + getString(R.string.nba_records4)
                 + "\n" + getString(R.string.nba_records5) );
     }
 
+    private void setNFLRecords() {
+
+        imageView.setImageResource(R.drawable.nfl_l);
+        textView.setText(getString(R.string.nfl_records_title1).toUpperCase() + "\n" +
+                getString(R.string.nfl_records1) + "\n"
+                + getString(R.string.nfl_records_title2)
+                + "\n" + getString(R.string.nfl_records2)
+                + "\n" + getString(R.string.nfl_records_title3)
+                + "\n" + getString(R.string.nfl_records3)
+                + "\n" + getString(R.string.nfl_records_title4)
+                + "\n" + getString(R.string.nfl_records4)
+                + "\n" + getString(R.string.nfl_records_title5)
+                + "\n" + getString(R.string.nfl_records5));
+    }
 }

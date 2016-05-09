@@ -1048,4 +1048,297 @@ Despite the financial problems, though, MLS did have some accomplishments that w
 	•	Most 10+ point games\n
     </string>
 
+     <string name="nfl_records_title1">
+        Championships\n
+    </string>
+
+     <string name="nfl_records1">
+•	Most Super Bowl Wins, 6\n
+Pittsburgh Steelers\n
+	•	Most Super Bowl Appearances, 8\n
+Dallas Cowboys 1970, 1971, 1975, 1977, 1978, 1992, 1993, 1995\n
+Pittsburgh Steelers 1974, 1975, 1978, 1979, 1995, 2005, 2008, 2010\n
+New England Patriots 1985, 1996, 2001, 2003, 2004, 2007, 2011, 2014\n
+Denver Broncos 1977, 1986, 1987, 1989, 1997, 1998, 2013, 2015\n
+	•	Most League Championships, 13\n
+Green Bay Packers 1929–1931, 1936, 1939, 1944, 1961–62, 1965–67, 1996, 2010\n
+	•	Most Conference Championship Game Appearances, 15\n
+Pittsburgh Steelers 1972, 1974-76, 1978-79, 1984, 1994-1995, 1997, 2001, 2004-2005, 2008, 2010\n
+San Francisco 49ers 1970-1971, 1981, 1983-1984, 1988-1990, 1992-1994, 1997, 2011-2013\n
+	•	Most Consecutive League Championships, 3\n
+Green Bay Packers 1929–31, 1965–67\n
+	•	Most Consecutive Times Finishing First in a Division, Regular Season, 7\n
+Los Angeles Rams 1973–79\n
+New England Patriots 2009-2015\n
+    </string>
+
+     <string name="nfl_records_title2">
+        Games Won\n
+    </string>
+
+     <string name="nfl_records2">
+•	Highest Winning Percentage for Regular Season, .570 (741-555-42)\n
+Chicago Bears 1960–2015\n
+	•	Highest Winning Percentage for Post Season, .682 (15–7)\n
+Baltimore Ravens 2000–2014\n
+	•	Most Games Won (regular season only), Franchise History, 741\n
+Chicago Bears 1919–2015\n
+	•	Most Games Won (including playoffs), Franchise History, 758\n
+Chicago Bears 1919–2015\n
+	•	Most Games Won (regular season only), since 1970 merger, 433\n
+Pittsburgh Steelers: 1970–2015\n
+	•	Most Games Won (including playoffs), since 1970 merger, 467\n
+Pittsburgh Steelers 1970–2015\n
+	•	Most Consecutive Games Won (including playoffs), 21\n
+New England Patriots 2003–2004\n
+	•	Most Consecutive Games Won (regular season only), 23\n
+Indianapolis Colts 2008–2009\n
+	•	Most Consecutive Games Without Defeat, 25\n
+Canton Bulldogs 1921–1923\n
+	•	Most Games Won, Regular Season, 16\n
+New England Patriots, 2007\n
+	•	Most Consecutive Winning Seasons, Franchise History, 20\n
+Dallas Cowboys 1966–1985\n
+	•	Most Consecutive Home Games Won, 27\n
+Miami Dolphins 1971-1974\n
+	•	Most Consecutive Home Games Won (including playoffs), 31\n
+Miami Dolphins 1971–1974\n
+	•	Most Consecutive Home Games Without Defeat, 30\n
+Green Bay Packers 1928–1933\n
+	•	Most Consecutive Road Games Won, 18\n
+San Francisco 49ers 1988–1990\n
+	•	Most Consecutive Road Games Without Defeat, 18\n
+San Francisco 49ers 1988–1990\n
+	•	Most Shutout Games Won or Tied, Season, 11\n
+Pottsville Maroons: 1926\n
+	•	Most Consecutive Shutout Games Won or Tied, 13\n
+Akron Pros, 1920–1921\n
+	•	Most Total Wins Over 2 Consecutive Seasons, 34 (28 Regular Season and 6 Post Season)\n
+New England Patriots 2003–2004\n
+	•	Most Total Wins Over 3 Consecutive Seasons, 46 (39 Regular Season and 7 Post Season)\n
+Denver Broncos 1996–1998\n
+    </string>
+
+     <string name="nfl_records_title3">
+        Losses\n
+    </string>
+
+     <string name="nfl_records3">
+•	Lowest All-time Winning Percentage for Regular Season, current franchises, .385 (241–386-1)\n
+Tampa Bay Buccaneers, 1976–2015\n
+	•	Lowest All-time Winning Percentage for Post Season, .263 (5–14)\n
+Cincinnati Bengals, 1970–2015\n
+	•	Lowest All-time Winning Percentage, combined Regular Season and Post Season, .385 (247–395–1)\n
+Tampa Bay Buccaneers, 1976–2015\n
+	•	Most Consecutive Post Season Losses, 8\n
+Detroit Lions, Jan. 12, 1992-ongoing\n
+Kansas City Chiefs, Jan. 23, 1994-2016\n
+Cincinnati Bengals, 1990-ongoing\n
+	•	Longest Losing Streak, Multiple seasons, 26 games\n
+Tampa Bay Buccaneers: 1976–1977\n
+	•	Most Losses, Season / Longest Losing Streak in a Season, 16 games (in 16 games season)\n
+Detroit Lions: 2008\n
+	•	Most consecutive losing seasons, 14 seasons\n
+Tampa Bay Buccaneers: 1983–1996\n
+	•	Most consecutive seasons without a winning record, 20 seasons\n
+New Orleans Saints: 1967–1986\n
+	•	Longest Home Game Losing Streak, 14 games\n
+Dallas Cowboys: 1988–1989\n
+St. Louis Rams: 2008–2010\n
+	•	Longest Road Game Losing Streak, 26 games\n
+Detroit Lions: 2007–2010\n
+	•	Longest Road Streak Without Win (Losses or Ties), 26 games\n
+Detroit Lions 2007–2010\n
+	•	Most Shutout Losses or Ties in a Season, 8\n
+Frankford Yellow Jackets (lost 6, tied 2) 1927\n
+Brooklyn Dodgers (lost 8) 1931\n
+	•	Most Consecutive Shutout Losses or Ties, 8\n
+Rochester Jeffersons (lost 6) 1922–1924\n
+    </string>
+
+     <string name="nfl_records_title4">
+        Scoring\n
+    </string>
+
+    <string name="nfl_records4">
+        •	Most Seasons Leading League Scoring, 10\n
+Chicago Bears: 1932, 1934–35, 1939, 1941–43, 1946–47, 1956\n
+	•	Most Consecutive Seasons Leading League Scoring, 4\n
+San Francisco 49ers: 1992–95\n
+	•	Most Points, Season, 606\n
+Denver Broncos: 2013\n
+	•	Most Points at Home, Season, 329\n
+New Orleans Saints: 2011\n
+	•	Most Points on the Road, Season, 314\n
+New England Patriots: 2007\n
+	•	Fewest Points at Home, Season, since 1940, 20\n
+Tampa Bay Buccaneers: 1977, (7 games)\n
+	•	Fewest Points on the Road, 8-road game season, since, 1940, 41\n
+Cincinnati Bengals: 2000\n
+	•	Most Points per Game, Season (Min 10 games), 38.83\n
+Los Angeles Rams: 1950 (466 points in 12 games)\n
+	•	Most Points per Home Game, Season, 41.1\n
+New Orleans Saints: 2011\n
+	•	Fewest Points, Season, 37\n
+Cincinnati Reds/St. Louis Gunners: 1934\n
+	•	Fewest Points, 14 game season, 103\n
+Tampa Bay Buccaneers: 1977\n
+	•	Fewest Points, 16 game season, 140\n
+Seattle Seahawks: 1992\n
+	•	Games Scoring 50+ Points, Season, 3\n
+New York Giants: 1950\n
+Los Angeles Rams: 1950\n
+San Diego Chargers: 1963 (including a postseason win)\n
+Dallas Cowboys: 1966\n
+Minnesota Vikings: 1969\n
+Denver Broncos: 2013\n
+	•	Most Games Scoring 30+ Points, Season, 13\n
+Denver Broncos: 2013\n
+	•	Most consecutive games scoring 10+ points, 110\n
+Indianapolis Colts, 2003-2009\n
+	•	Most consecutive games scoring 20+ points, 30\n
+Denver Broncos, 2012-2014\n
+	•	Most consecutive games scoring 30+ points, 14\n
+St. Louis Rams, Nov. 28, 1999-Oct. 29, 2000\n
+	•	Most consecutive games scoring 40+ points, 4\n
+Indianapolis Colts, Nov. 14, 2004-Dec. 5, 2004\n
+St. Louis Rams, Sept. 17, 2000-Oct. 15, 2000\n
+	•	Most Points, Single Team, Game, 73\n
+Chicago Bears (73) (vs Washington Redskins (0)), Dec 9, 1940, (Championship Game)\n
+	•	Most Points, Single Team, Regular Season Game, 72\n
+Washington Redskins (vs New York Giants) Nov 27, 1966\n
+	•	Most Points, Single Team, Game, Since AFL/NFL Merger, 62\n
+New York Giants (vs Philadelphia Eagles) Nov 26, 1972\n
+Atlanta Falcons (vs New Orleans Saints) Sep 16, 1973\n
+New York Jets (vs Tampa Bay Buccaneers) Nov 17, 1985\n
+Jacksonville Jaguars (vs Miami Dolphins) Jan 15, 2000 (Postseason)\n
+New Orleans Saints (vs Indianapolis Colts) Oct 23, 2011\n
+	•	Most Points, Both Teams, Game, 113\n
+Washington Redskins (72) vs New York Giants (41), Nov 27, 1966\n
+	•	Most Points, Both Teams, Game, Since AFL/NFL Merger, 106\n
+Cincinnati Bengals (58) vs Cleveland Browns (48), Nov 28, 2004\n
+	•	Most Points, Shutout Victory, Game, 73\n
+Chicago Bears vs Washington Redskins, Dec 9, 1940 (Championship Game)\n
+	•	Most Points, Shutout Victory, Game, Since AFL/NFL Merger, 59\n
+Los Angeles Rams vs Atlanta Falcons, Dec 4, 1976\n
+New England Patriots vs Tennessee Titans, Oct 18, 2009\n
+	•	Fewest Points, Both Teams, Game, 0\n
+In many games; last: New York Giants vs Detroit Lions, Nov 7, 1943\n
+	•	Fewest Points, Shutout Victory, Game, 2\n
+Akron Pros vs Buffalo All-Americans, Nov 29, 1923\n
+Kansas City Cowboys vs Buffalo Rangers, Nov 21, 1926\n
+Frankford Yellow Jackets vs Green Bay Packers, Nov 29, 1928\n
+Green Bay Packers vs Chicago Bears, Oct 16, 1932\n
+Chicago Bears vs Green Bay Packers, Sep 18, 1938\n
+	•	Fewest Points, Shutout Victory, Game, Since AFL/NFL Merger, 3\n
+Minnesota Vikings vs Green Bay Packers, Nov 14, 1971\n
+Buffalo Bills vs Atlanta Falcons, Oct 16, 1977\n
+Tampa Bay Buccaneers vs Kansas City Chiefs, Dec 16, 1979\n
+New England Patriots vs Miami Dolphins, Dec 12, 1982\n
+New York Jets vs Washington Redskins, Dec 11, 1993\n
+Pittsburgh Steelers vs Miami Dolphins, Nov 26, 2007\n
+	•	Most Points Overcome to Win Game, 32\n
+Buffalo Bills vs Houston Oilers, Jan 3, 1993, (trailed 3–35, won 41–38, OT) (Playoff Game)\n
+	•	Most Points Overcome to Win Regular Season Game, 28\n
+San Francisco 49ers vs New Orleans Saints, Dec 7, 1980, (OT) (trailed 7–35, won 38–35)\n
+	•	Most Points Overcome to Win Game on the Road, 25\n
+Cleveland Browns vs Tennessee Titans, Oct 5, 2014, (trailed 3–28, won 29-28)\n
+	•	Most Points Overcome to Tie a Game,\n
+Denver Broncos vs Buffalo Bills, Nov 27, 1960 (trailed 7–38, tied 38–38)\n
+	•	Largest First Quarter Deficit Overcome to Win Game, 21\n
+Miami Dolphins vs New England Patriots, Dec 15, 1974 (trailed 0–21, won 34–27)\n
+Cincinnati Bengals vs Seattle Seahawks, Sep 6, 1981 (trailed 0–21, won 27–21)\n
+Arizona Cardinals vs Philadelphia Eagles, Sep 12, 1999 (trailed 0–21, won 25–24)\n
+Washington Redskins vs Carolina Panthers, Oct 3, 1999 (trailed 0–21, won 38–36)\n
+Tennessee Titans vs Atlanta Falcons, Nov 23, 2003 (trailed 0–21, won 38–31)\n
+Miami Dolphins vs Buffalo Bills, Dec 4, 2005 (trailed 0–21, won 24–23)\n
+San Diego Chargers vs Cincinnati Bengals, Nov 12, 2006 (trailed 0–21, won 49–41)\n
+New England Patriots vs Buffalo Bills, Jan 1, 2012 (trailed 0–21, won 49–21)\n
+	•	Largest Halftime Deficit Overcome to Win Game, 28\n
+San Francisco 49ers vs New Orleans Saints, Dec 7, 1980, (OT) (trailed 7–35, won 38–35)\n
+	•	Largest Halftime Deficit Overcome to Win Game in Regulation Time, 24\n
+Philadelphia Eagles vs Washington Redskins, Oct 27, 1946 (trailed 0–24, won 28–24)\n
+Los Angeles Rams vs Tampa Bay Buccaneers, Dec 6, 1992 (trailed 3–27, won 31–27)\n
+Denver Broncos vs San Diego Chargers, Oct 15, 2012 (trailed 0–24, won 35–24)\n
+	•	Largest Third Quarter Deficit Overcome to Win Game, 25\n
+St. Louis Cardinals vs Tampa Bay Buccaneers, Nov 8, 1987 (trailed 3–28, won 31–28)\n
+    </string>
+
+    <string name="nfl_records_title5">
+        Touchdowns\n
+    </string>
+
+    <string name="nfl_records5">
+•	Most Touchdowns, season, 76\n
+Denver Broncos: 2013\n
+	•	Fewest Touchdowns, season, since 1946, 11\n
+Tampa Bay Buccaneers: 1977\n
+	•	Fewest Offensive Touchdowns, season, since 1943, 7\n
+Tampa Bay Buccaneers: 1977\n
+	•	Most Touchdowns, Single Team, Regular Season, game, 10\n
+Washington Redskins (vs. New York Giants), Nov. 27, 1966\n
+	•	Most Touchdowns, Both Teams, game, 16\n
+Washington Redskins (vs. New York Giants), Nov. 27, 1966\n
+	•	Most Touchdowns, Single Team, Post Season, game, 11\n
+Chicago Bears (vs. Washington Redskins), Dec. 8, 1940\n
+	•	Most consecutive games scoring 1+ touchdowns, 166\n
+Cleveland Browns: 1957-1969\n
+	•	Most consecutive games scoring 2+ touchdowns, 47\n
+New England Patriots: September 27, 2009-September 9, 2012\n
+	•	Most consecutive games scoring 3+ touchdowns, 21\n
+Miami Dolphins: November 20, 1983-December 17, 1984\n
+	•	Most consecutive games scoring 4+ touchdowns, 12\n
+Denver Broncos: Dec. 16, 2012-Nov. 10, 2013\n
+New England Patriots: Nov. 14, 2010-Oct. 2, 2011\n
+	•	Most consecutive games scoring 5+ touchdowns, 5\n
+4 times, most recently\n
+St. Louis Rams: Sept. 17, 2000-Oct. 22, 2000\n
+	•	Most consecutive games scoring 6+ touchdowns (since 1940), 3\n
+8 times, most recently\n
+New Orleans Saints: Dec. 18, 2011-Jan. 1, 2012\n
+	•	Most consecutive games scoring 7+ touchdowns (since 1940), 3\n
+Chicago Bears: Oct. 5, 1941-Oct. 19, 1941\n
+	•	Most consecutive games scoring 8+ touchdowns, 2\n
+Los Angeles Rams: Oct. 22, 1950-Oct. 29, 1950\n
+	•	Most consecutive games scoring 9+ touchdowns, 2\n
+Los Angeles Rams: Oct. 22, 1950-Oct. 29, 1950\n
+	•	Most consecutive road games scoring 1+ touchdown, since AFL-NFL Merger, 82\n
+New Orleans Saints: Oct. 23, 2005-Nov. 15, 2015\n
+	•	Most consecutive road games scoring 1+ touchdown, 85\n
+Cleveland Browns: 1956-1969\n
+	•	Most consecutive road games scoring 2+ touchdowns, 33\n
+New England Patriots: Oct. 11, 2009-Sept. 29, 2013\n
+	•	Most consecutive road games scoring 3+ touchdowns, 13\n
+Chicago Bears: Sept. 28, 1941-Nov. 14, 1943\n
+San Francisco 49ers: Sept. 2, 1984-Oct. 27, 1985\n
+	•	Most consecutive road games scoring 4+ touchdowns, 12\n
+Cleveland Browns: Nov. 21, 1948-Oct. 7, 1950\n
+	•	Most consecutive road games scoring 5+ touchdowns (since 1940), 3\n
+15 times, most recently\n
+Dallas Cowboys: Dec. 4, 2014-Dec. 28, 2014\n
+	•	Most consecutive road games scoring 6+ touchdowns (since 1940), 3\n
+Houston Oilers: Nov. 5, 1961-Dec. 17, 1961\n
+	•	Most consecutive road games scoring 7+ touchdowns (since 1940), 2\n
+Cleveland Browns: Dec. 8, 1946-Sept. 12, 1947\n
+	•	Most consecutive home games scoring 1+ touchdowns, 112\n
+Cleveland/Los Angeles Rams: Sept. 20, 1942-Oct. 21, 1962\n
+Indianapolis Colts: Nov. 2, 1997-Nov. 6, 2011\n
+	•	Most consecutive home games scoring 2+ touchdowns, 42\n
+Miami Dolphins: Sept. 9, 1982-Dec. 10, 1987\n
+	•	Most consecutive home games scoring 3+ touchdowns, 21\n
+Miami Dolphins: Oct. 9, 1983-Sept. 14, 1986\n
+	•	Most consecutive home games scoring 4+ touchdowns, 12\n
+Oakland Raiders: Sept. 24, 2000-Dec. 9, 2001\n
+	•	Most consecutive home games scoring 5+ touchdowns, 5\n
+5 times, most recently,\n
+Green Bay Packers: Nov. 14, 2011-Jan. 1, 2012\n
+	•	Most consecutive home games scoring 6+ touchdowns, 4\n
+San Francisco 49ers: Sept. 4, 1949-Oct. 16, 1949\n
+	•	Most consecutive home games scoring 8+ touchdowns, 2\n
+Los Angeles Rams: Oct. 22, 1950-Oct. 29, 1950\n
+	•	Most consecutive home games scoring 9+ touchdowns, 2\n
+Los Angeles Rams: Oct. 22, 1950-Oct. 29, 1950
+    </string>
+
+
 </resources>
