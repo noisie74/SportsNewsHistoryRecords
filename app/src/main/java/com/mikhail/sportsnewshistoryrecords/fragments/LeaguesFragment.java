@@ -1,5 +1,6 @@
 package com.mikhail.sportsnewshistoryrecords.fragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -60,6 +61,7 @@ public class LeaguesFragment extends Fragment {
     View v;
     ArticleSearch nytSportsSearch;
     SportsLeaguesArticleDetailViewFragment sportsLeaguesArticleDetailViewFragment;
+    LeaguesActivityControl leaguesActivityControl;
 
 
     @Nullable
@@ -97,21 +99,36 @@ public class LeaguesFragment extends Fragment {
                             searchSportsResults.get(position).getLead_paragraph()};
                     article.putStringArray("searchedArticle", articleDetails);
 
+
+                    leaguesActivityControl.setBundle(article);
+
 //                    Intent intent = new Intent(getActivity(), MainActivity.class);
 //                    intent.putExtras(article);
 //                    getActivity().startActivity(intent);
 
-                    sportsLeaguesArticleDetailViewFragment = new SportsLeaguesArticleDetailViewFragment();
-                    sportsLeaguesArticleDetailViewFragment.setArguments(article);
-                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frag_container_leagues, sportsLeaguesArticleDetailViewFragment);
-                    transaction.addToBackStack(null);
-                    transaction.commit();
+                    // todo all this code below goes into LeaguesActivity and will be called when
+                    // todo interface pases the bundle in
+
                 }
             });
         }
 
 
+    }
+
+    public interface LeaguesActivityControl{
+        void setBundle(Bundle article);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        try { leaguesActivityControl = (LeaguesActivityControl) getActivity();
+
+        }catch (ClassCastException ex ){
+            throw ex;
+        }
     }
 
     private void setPullRefresh() {

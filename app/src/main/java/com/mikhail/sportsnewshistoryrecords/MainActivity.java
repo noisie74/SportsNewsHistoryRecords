@@ -2,10 +2,8 @@ package com.mikhail.sportsnewshistoryrecords;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,24 +11,19 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
-import android.widget.PopupMenu;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 import com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment;
-import com.mikhail.sportsnewshistoryrecords.fragments.HistoryFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.LeaguesFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.NewsDetailsFragment;
-import com.mikhail.sportsnewshistoryrecords.fragments.RecordsFragment;
-import com.mikhail.sportsnewshistoryrecords.fragments.SavedArticleRecycleView;
+import com.mikhail.sportsnewshistoryrecords.fragments.SavedArticleDetailsFragment;
+import com.mikhail.sportsnewshistoryrecords.fragments.SavedArticleFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, NewsDetailsFragment.ControlToolbar {
@@ -49,8 +42,10 @@ public class MainActivity extends AppCompatActivity
     Spinner spinner;
     String[] articleDetails;
     Intent intent;
-    SavedArticleRecycleView savedFrag;
+    SavedArticleFragment savedArticleFragment;
     private int key;
+    SavedArticleDetailsFragment savedArticleDetailsFragment;
+    int spinnerPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,8 +87,7 @@ public class MainActivity extends AppCompatActivity
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                int spinnerPosition = spinner.getSelectedItemPosition();
-
+                spinnerPosition = spinner.getSelectedItemPosition();
                 switch (spinnerPosition) {
                     case 0:
                         allSportsFragment.nytAllSportsNews();
@@ -243,9 +237,9 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.commit();
             allSportsFragment.setFragment(key);
         }else if (key == R.id.favorites){
-            savedFrag = new SavedArticleRecycleView();
+            savedArticleFragment = new SavedArticleFragment();
             fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.frag_container, savedFrag);
+            fragmentTransaction.replace(R.id.frag_container, savedArticleFragment);
             fragmentTransaction.commit();
             toolbar.setTitle("Saved stories");
             if (spinner != null){
@@ -260,11 +254,36 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
+        } else if (newsDetailsFragment != null) {
+            allSportsFragment = new AllSportsFragment();
+            allSportsFragment.nytAllSportsNews();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.frag_container, allSportsFragment);
+            fragmentTransaction.commit();
+            toolbar.setTitle("Sports News");
+            toolbar.getChildAt(1).setVisibility(View.VISIBLE);
+            if (spinner != null){
+                spinner.setSelection(0);
+            }
+            // TODO if current fragment is already AllSportsFragment, do NOTHING
+
+        }else if (savedArticleDetailsFragment != null){
+            savedArticleFragment = new SavedArticleFragment();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.frag_container, savedArticleFragment);
+            fragmentTransaction.commit();
+            toolbar.setTitle("Saved stories");
+            if (spinner != null){
+                spinner.setVisibility(View.GONE);
+            }else {
+                super.onBackPressed();
+//                if (spinner != null){
+//                    spinner.setSelection(0);
+//                } finish();
+
+            }
         }
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -550,9 +569,9 @@ public class MainActivity extends AppCompatActivity
 //                toolbar.setTitle(getString(R.string.world));
                 break;
             case R.id.favorites:
-                savedFrag = new SavedArticleRecycleView();
+                savedArticleFragment = new SavedArticleFragment();
                 fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frag_container, savedFrag);
+                fragmentTransaction.replace(R.id.frag_container, savedArticleFragment);
                 fragmentTransaction.commit();
                 toolbar.setTitle("Saved stories");
                 if (spinner != null){

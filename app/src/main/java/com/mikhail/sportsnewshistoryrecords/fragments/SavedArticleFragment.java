@@ -23,7 +23,7 @@ import java.util.ArrayList;
 /**
  * Created by Mikhail on 5/6/16.
  */
-public class SavedArticleRecycleView extends Fragment {
+public class SavedArticleFragment extends Fragment {
     public final static int savedArticleLimit = 15;
     public ArrayList<ArticleSaveForLater> articleLists;
 
@@ -57,7 +57,10 @@ public class SavedArticleRecycleView extends Fragment {
                         String.valueOf(articleLists.get(position).getId())};
                 article.putStringArray("article", articleDetails);
 
-                Fragment savedArticleStory = new SavedArticleStory();
+                Log.d("Saved Article View", articleLists.get(position).getImage() + "");
+
+
+                Fragment savedArticleStory = new SavedArticleDetailsFragment();
                 savedArticleStory.setArguments(article);
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.frag_container, savedArticleStory);

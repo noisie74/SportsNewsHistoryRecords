@@ -27,7 +27,7 @@ import com.mikhail.sportsnewshistoryrecords.database.ArticleSaveForLater;
 import com.mikhail.sportsnewshistoryrecords.database.SaveSQLiteHelper;
 
 
-public class SavedArticleStory extends Fragment {
+public class SavedArticleDetailsFragment extends Fragment {
 
     //region private variables
     private String[] articleDetails;

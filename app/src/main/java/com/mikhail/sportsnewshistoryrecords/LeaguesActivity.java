@@ -16,13 +16,16 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
 
 import com.mikhail.sportsnewshistoryrecords.adapters.ViewPagerAdapter;
-import com.mikhail.sportsnewshistoryrecords.fragments.SavedArticleRecycleView;
+import com.mikhail.sportsnewshistoryrecords.fragments.LeaguesFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.SportsLeaguesArticleDetailViewFragment;
 
 public class LeaguesActivity extends AppCompatActivity implements
-        NavigationView.OnNavigationItemSelectedListener, SportsLeaguesArticleDetailViewFragment.ControlLeaguesActivityLayout {
+        NavigationView.OnNavigationItemSelectedListener,
+        SportsLeaguesArticleDetailViewFragment.ControlLeaguesActivityLayout,
+        LeaguesFragment.LeaguesActivityControl {
 
     Toolbar toolbar;
     private int mNavigationItemId;
@@ -34,6 +37,8 @@ public class LeaguesActivity extends AppCompatActivity implements
     NavigationView navigationView;
     Intent intent;
     public static final String RETURN_TO_MAIN_ACTIVITY = "backToMainActivity";
+    SportsLeaguesArticleDetailViewFragment sportsLeaguesArticleDetailViewFragment;
+    FrameLayout frameLayout;
 
 
     @Override
@@ -55,6 +60,7 @@ public class LeaguesActivity extends AppCompatActivity implements
         tabLayout.addTab(tabLayout.newTab().setText("Records"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
+        frameLayout = (FrameLayout) findViewById(R.id.frag_container_leagues);
 
         fragmentManager = getSupportFragmentManager();
 
@@ -115,15 +121,39 @@ public class LeaguesActivity extends AppCompatActivity implements
     }
 
     @Override
+    public void setBundle(Bundle article) {
+        sportsLeaguesArticleDetailViewFragment = new SportsLeaguesArticleDetailViewFragment();
+        sportsLeaguesArticleDetailViewFragment.setArguments(article);
+        android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frag_container_leagues, sportsLeaguesArticleDetailViewFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+        viewPager.setVisibility(View.GONE);
+        frameLayout.setVisibility(View.VISIBLE);
+    }
+
+    @Override
     public void onBackPressed() {
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_leagues);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
 //            intent.putExtra(RETURN_TO_MAIN_ACTIVITY, R.id.top_news);
-            startActivity(intent);
-        } else {
-            super.onBackPressed();
+//            startActivity(intent);
+        } else if (sportsLeaguesArticleDetailViewFragment != null){
+            if (frameLayout.getVisibility() == View.VISIBLE){
+                frameLayout.setVisibility(View.GONE);
+                viewPager.setVisibility(View.VISIBLE);
+                tabLayout.setVisibility(View.VISIBLE);
+//                toolbar.getChildAt(2).setVisibility(View.INVISIBLE);
+            } else {
+                int pos = viewPager.getCurrentItem();
+                if (pos > 0) {
+                    viewPager.setCurrentItem(pos - 1);
+                } else {
+                    finish();
+                }
+            }
         }
     }
 
@@ -159,18 +189,7 @@ public class LeaguesActivity extends AppCompatActivity implements
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-//        int mNavigationItemId = item.getItemId();
-//
-//        if (mNavigationItemId == R.mNavigationItemId.action_settings) {
-//
-//            root_layout.addView(spinner);
-//            spinner.setAdapter(new ArrayAdapter<>(this,
-//                    android.R.layout.simple_spinner_dropdown_item,paths));
-//
-//
-////            popup();
-//        }
-
+        int mNavigationItemId = item.getItemId();
 
         return super.onOptionsItemSelected(item);
     }

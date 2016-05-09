@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 
-import com.mikhail.sportsnewshistoryrecords.fragments.SavedArticleRecycleView;
+import com.mikhail.sportsnewshistoryrecords.fragments.SavedArticleFragment;
 
 
 /**
@@ -111,7 +111,7 @@ public class SaveSQLiteHelper extends SQLiteOpenHelper implements BaseColumns {
             }
             cursor.moveToNext();
         }
-        if(count == SavedArticleRecycleView.savedArticleLimit){
+        if(count == SavedArticleFragment.savedArticleLimit){
             return -1;
         }
         return 0;
