@@ -23,10 +23,10 @@ public class NytSportsObjects {
         return multimedia;
     }
 
-    @Override
-    public String toString() {
-        return String.format("%s", title, abstractResult);
-    }
+//    @Override
+//    public String toString() {
+//        return String.format("%s", title, abstractResult);
+//    }
 
     public String getSection() {
         return section;
@@ -83,4 +83,6 @@ public class NytSportsObjects {
     public void setCreated_date(String created_date) {
         this.created_date = created_date;
     }
+
+
 }

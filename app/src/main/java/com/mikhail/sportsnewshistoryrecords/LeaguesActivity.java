@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.mikhail.sportsnewshistoryrecords.adapters.ViewPagerAdapter;
+import com.mikhail.sportsnewshistoryrecords.fragments.SavedArticleRecycleView;
 import com.mikhail.sportsnewshistoryrecords.fragments.SportsLeaguesArticleDetailViewFragment;
 
 public class LeaguesActivity extends AppCompatActivity implements
@@ -222,6 +223,12 @@ public class LeaguesActivity extends AppCompatActivity implements
             case R.id.german_soccer:
                 toolbar.setTitle("German Soccer");
                 viewPagerAdapter.refreshData();
+                break;
+            case R.id.favorites:
+//                TODO open saved articles fragment
+                intent.putExtra(RETURN_TO_MAIN_ACTIVITY, R.id.favorites);
+                startActivity(intent);
+//                toolbar.setTitle("Saved stories");
                 break;
 
         }

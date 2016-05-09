@@ -6,7 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 
-//import com.mikhail.sportsnewshistoryrecords.fragments.SavedArticleRecycleView;
+import com.mikhail.sportsnewshistoryrecords.fragments.SavedArticleRecycleView;
+
 
 /**
  * Created by Mikhail on 5/6/16.
@@ -110,9 +111,9 @@ public class SaveSQLiteHelper extends SQLiteOpenHelper implements BaseColumns {
             }
             cursor.moveToNext();
         }
-//        if(count == SavedArticleRecycleView.savedArticleLimit){
-//            return -1;
-//        }
+        if(count == SavedArticleRecycleView.savedArticleLimit){
+            return -1;
+        }
         return 0;
     }
 }

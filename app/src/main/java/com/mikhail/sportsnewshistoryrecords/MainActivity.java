@@ -30,6 +30,7 @@ import com.mikhail.sportsnewshistoryrecords.fragments.HistoryFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.LeaguesFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.NewsDetailsFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.RecordsFragment;
+import com.mikhail.sportsnewshistoryrecords.fragments.SavedArticleRecycleView;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, NewsDetailsFragment.ControlToolbar {
@@ -48,6 +49,8 @@ public class MainActivity extends AppCompatActivity
     Spinner spinner;
     String[] articleDetails;
     Intent intent;
+    SavedArticleRecycleView savedFrag;
+    private int key;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,12 +66,11 @@ public class MainActivity extends AppCompatActivity
                 R.layout.support_simple_spinner_dropdown_item, paths);
         spinner.setAdapter(adapter);
 
+        key = getIntent().getIntExtra("backToMainActivity", R.id.top_news);
         setViews();
         setFragment();
 
         intent = new Intent(MainActivity.this, LeaguesActivity.class);
-        int key = getIntent().getIntExtra("backToMainActivity", 0);
-        allSportsFragment.setFragment(key);
 
 
 //
@@ -234,9 +236,23 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void setFragment() {
-        fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.frag_container, allSportsFragment);
-        fragmentTransaction.commit();
+
+        if (key == R.id.top_news ){
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.add(R.id.frag_container, allSportsFragment);
+            fragmentTransaction.commit();
+            allSportsFragment.setFragment(key);
+        }else if (key == R.id.favorites){
+            savedFrag = new SavedArticleRecycleView();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.frag_container, savedFrag);
+            fragmentTransaction.commit();
+            toolbar.setTitle("Saved stories");
+            if (spinner != null){
+                spinner.setVisibility(View.GONE);
+            }
+        }
+
     }
 
     @Override
@@ -532,6 +548,16 @@ public class MainActivity extends AppCompatActivity
 //                    tabLayout.setVisibility(View.VISIBLE);
 //                }
 //                toolbar.setTitle(getString(R.string.world));
+                break;
+            case R.id.favorites:
+                savedFrag = new SavedArticleRecycleView();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.frag_container, savedFrag);
+                fragmentTransaction.commit();
+                toolbar.setTitle("Saved stories");
+                if (spinner != null){
+                    spinner.setVisibility(View.GONE);
+                }
                 break;
 
         }

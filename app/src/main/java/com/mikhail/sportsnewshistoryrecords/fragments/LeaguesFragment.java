@@ -147,7 +147,7 @@ public class LeaguesFragment extends Fragment {
                 if (recyclerView != null) {
                     recyclerView.setAdapter(leaguesNewsAdapter);
                 }
-
+                swipeContainer.setRefreshing(false);
 
 //                ArticleSearch nytSportsSearch = response.body();
 //

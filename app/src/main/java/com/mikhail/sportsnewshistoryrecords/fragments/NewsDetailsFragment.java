@@ -42,8 +42,6 @@ public class NewsDetailsFragment extends Fragment {
     private static final String TAG = "ArticleStory Fragment";
     public String htmlSaveForLater;
     public SQLiteDatabase db;
-    Toolbar toolbar;
-    Spinner spinner;
     ControlToolbar controlToolbar;
     String[] leaguesArticleDetails;
 
@@ -75,6 +73,9 @@ public class NewsDetailsFragment extends Fragment {
 //        if (leaguesArticleDetails == null){
             historyWebView.loadUrl(articleDetails[2]);
 //
+        SaveSQLiteHelper mDbHelper = SaveSQLiteHelper.getInstance(getContext());
+        db = mDbHelper.getWritableDatabase();
+
 //        }
 //        if (articleDetails == null){
 //            historyWebView.loadUrl(leaguesArticleDetails[1]);
@@ -163,6 +164,7 @@ public class NewsDetailsFragment extends Fragment {
         @JavascriptInterface
         @SuppressWarnings("unused")
         public void showHTML(String html) {
+            htmlSaveForLater = html;
         }
     }
 
