@@ -45,7 +45,6 @@ public class RecordsFragment extends Fragment {
     }
 
     public void setFragmentType(int type) {
-        Log.d("RecordFragment", "Fragmetn set!");
         mFragmentType = type;
         if (v != null) {
             setRecordsFragmentData();
@@ -65,6 +64,7 @@ public class RecordsFragment extends Fragment {
                 setMLBRecords();
                 break;
             case R.id.nhl:
+                setNHLRecords();
                 break;
             case R.id.mls:
                 setMLSSoccerRecords();
@@ -209,5 +209,26 @@ public class RecordsFragment extends Fragment {
                 + "\n" + getString(R.string.mlb_records4)
                 + "\n" + getString(R.string.mlb_records_title5)
                 + "\n" + getString(R.string.mlb_records5));
+    }
+
+    private void setNHLRecords() {
+
+        imageView.setImageResource(R.drawable.nhl_logo);
+        textView.setText(getString(R.string.nhl_records_title).toUpperCase() + "\n" +
+                getString(R.string.nhl_records_title1) + "\n"
+                + getString(R.string.nhl_records)
+                + "\n" + getString(R.string.nhl_records_title2)
+                + "\n" + getString(R.string.nhl_records_title3)
+                + "\n" + getString(R.string.nhl_records2)
+                + "\n" + getString(R.string.nhl_records_title4)
+                + "\n" + getString(R.string.nhl_records3)
+                + "\n" + getString(R.string.nhl_records_title5)
+                + "\n" + getString(R.string.nhl_records4)
+                + "\n" + getString(R.string.nhl_records_title6)
+                + "\n" + getString(R.string.nhl_records5)
+                + "\n" + getString(R.string.nhl_records_title7)
+                + "\n" + getString(R.string.nhl_records6)
+                + "\n" + getString(R.string.nhl_records_title8)
+                + "\n" + getString(R.string.nhl_records7));
     }
 }

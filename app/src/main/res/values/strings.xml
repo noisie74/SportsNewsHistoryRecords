@@ -1439,6 +1439,176 @@ Most runs created	Barry Bonds	2,892\n
 Most games played	Pete Rose	3,562\n
     </string>
 
-    
+     <string name="nhl_records_title">
+    Team Records\n
+    </string>
+
+      <string name="nhl_records_title1">
+     Season records\n
+    </string>
+
+      <string name="nhl_records">
+Most Points in 70 or More Games: 132, by the 1976–77 Montreal Canadiens\n
+Most Points in 44–60 Games: 83, by the 1943–44 Montreal Canadiens\n
+Most Points in 36 or Fewer Games: 52, by the 1925–26 Ottawa Senators\n
+Fewest Points in 70 or More Games: 21, by the 1974–75 Washington Capitals\n
+Fewest Points in 44–60 Games: 12, by the 1930–31 Philadelphia Quakers\n
+Fewest Points in 36 or Fewer Games: 8, by the 1919–20 Quebec Bulldogs\n
+Most Wins in 70 or More Games: 62, by the 1995–96 Detroit Red Wings\n
+Most Wins in 44–60 Games: 38, by the 1943–44 Montreal Canadiens and 1944–45 Montreal Canadiens\n
+Most Wins in 36 or Fewer Games: 24, by the 1925–26 Ottawa Senators\n
+Fewest Wins in 70 or More Games: 8, by the 1974–75 Washington Capitals\n
+Fewest Wins in 44–60 Games: 4, by the 1930–31 Philadelphia Quakers\n
+Fewest Wins in 36 or Fewer Games: 4, by the 1919–20 Quebec Bulldogs\n
+Most Ties in 70 or More Games: 24, by the 1969–70 Philadelphia Flyers\n
+Most Ties in 44–60 Games: 15, by the 1928–29 Montreal Canadiens and 1942–43 Chicago Blackhawks\n
+Most Ties in 36 or Fewer Games: 5, by 1925–26 Montreal Maroons\n
+Fewest Ties in 70 or More Games: 2, by the 1992–93 San Jose Sharks\n
+Fewest Ties in 44–60 Games: 1, by the 1929–30 Boston Bruins\n
+Most Shootout Wins: 15, by the 2007–08 Edmonton Oilers\n
+Most Shootout Losses: 13, by the 2013–14 New Jersey Devils\n
+Most Losses in 70 or More Games: 71, by the 1992–93 San Jose Sharks\n
+Most Losses in 44–60 Games: 39, by 1943–44 New York Rangers\n
+Most Losses in 36 or Fewer Games: 24, by the 1924–25 Boston Bruins\n
+Fewest Losses in 70 or More Games: 8, by the 1976–77 Montreal Canadiens\n
+Fewest Losses in 44–60 Games: 5, by the 1943–44 Montreal Canadiens and 1929–30 Boston Bruins\n
+Fewest Losses in 36 or Fewer Games: 5 by the 1919–20 Ottawa Senators\n
+Most Goals in 70 or More Games: 446, by the 1983–84 Edmonton Oilers\n
+Most Goals in 44–60 Games: 234, by the 1943–44 Montreal Canadiens\n
+Most Goals in 36 or Fewer Games: 129, by the 1919–20 Montreal Canadiens\n
+Fewest Goals in 70 or More Games: 133, by the 1953–54 Chicago Blackhawks\n
+Fewest Goals in 44–60 Games: 33, by the 1928–29 Chicago Blackhawks\n
+Fewest Goals in 36 or Fewer Games: 45, by the 1924–25 Montreal Canadiens\n
+Most Goals Against in 70 or More Games: 446, by the 1974–75 Washington Capitals\n
+Most Goals Against in 44–60 Games: 310, by the 1943–44 New York Rangers\n
+Most Goals Against in 36 or Fewer Games: 177, by the 1919–20 Quebec Bulldogs\n
+Fewest Goals Against in 70 or More Games: 131, by the 1953–54 Toronto Maple Leafs and 1955–56 Montreal Canadiens\n
+Fewest Goals Against in 44–60 Games: 43 by the 1928–29 Montreal Canadiens\n
+Fewest Goals Against in 36 or Fewer Games: 42, by the 1925–26 Ottawa Senators\n
+Greatest Goal Differential: +216, by the 1976–77 Montreal Canadiens\n
+Lowest Goal Differential: -265, by the 1974–75 Washington Capitals\n
+Best Power Play Percentage in a Season: 31.88 percent, by the 1977–78 Montreal Canadiens\n
+Worst Power Play Percentage in a Season: 9.35 percent, by the 1997–98 Tampa Bay Lightning\n
+Best Penalty Kill Percentage in a Season: 89.58 percent, by the 2011–12 New Jersey Devils\n
+Worst Penalty Kill Percentage in a Season: 67.70 percent, by the 1979–80 Los Angeles Kings\n
+Best Home Record: 36–2–2 by the 1975–76 Philadelphia Flyers\n
+Worst Home Record: 7–28–5 by the 1974–75 Washington Capitals\n
+Best Away Record: 31–7–3 by the 2005–06 Detroit Red Wings\n
+Worst Away Record: 1–41–0, by the 1992–93 Ottawa Senators\n
+Most Shutout Wins in a Season: 22 of 44 games played (50.0 percent), by the 1928–29 Montreal Canadiens\n
+Most Shutout Losses in a Season: 20 of 44 games played (45.5 percent), by the 1928–29 Chicago Blackhawks\n
+    </string>
+
+ <string name="nhl_records_title2">
+     Individual records\n
+    </string>
+
+     <string name="nhl_records_title3">
+     Seasons\n
+    </string>
+
+ <string name="nhl_records2">
+Most seasons: Gordie Howe, (1946–47 to 1970–1971; 1979–1980), Chris Chelios, (1983–84 to 2009–10, except for the 2004–05 NHL lockout), 26\n
+Most playoff seasons: Chris Chelios, 24 (1983–84 to 2008–09, except for 1997–98 and the 2004–05 NHL lockout year)\n
+Most consecutive playoff seasons: Larry Robinson, (1972–73 to 1991–92), Nicklas Lidstrom, (1991–92 to 2011–12, except for the 2004–05 NHL lockout), 20\n
+    </string>
+
+     <string name="nhl_records_title4">
+     Games\n
+    </string>
+
+      <string name="nhl_records3">
+Most games: Gordie Howe, 1,767\n
+Most games, including playoffs: Mark Messier, 1,992\n
+Most playoff games: Chris Chelios 266\n
+Most games played in a single NHL season, not including playoffs: Jimmy Carson (1992–93) and Bob Kudelski (1993–94), 86\n
+Most consecutive games: Doug Jarvis, 964 (October 8, 1975 – October 10, 1987)\n
+Most consecutive games by a defenceman: Jay Bouwmeester, 737\n
+Oldest player to play a game: Gordie Howe, 52 years, 11 days\n
+Most games by a coach in the Stanley Cup Final: Dick Irvin (Chicago(5), Toronto(29), Montreal(43), 77\n
+Most games played in the Finals: Red Kelly (Detroit(37), Toronto(28), Henri Richard (Montreal), 65\n
+Most games won by a coach in the Stanley Cup Finals: Scotty Bowman, 36 (Montreal(20), Pittsburgh(4), Detroit(12)\n
+    </string>
+
+      <string name="nhl_records_title5">
+     Stanley Cups\n
+    </string>
+
+      <string name="nhl_records4">
+Most Stanley Cups, as a player: Henri Richard, Montreal Canadiens, 11 (1956, 57, 58, 59, 60, 65, 66, 68, 69, 71, 73)\n
+Most Stanley Cups, as a non-player: Scotty Bowman, 14 - Montreal (1973, 76, 77, 78,79), Pittsburgh (1991, 92), Detroit (1997, 98, 2002, 08), Chicago (2010, 13, 15)\n
+Most Stanley Cups, combined player or non-player: Jean Beliveau, Montreal Canadiens, 17 Player - (1956, 57, 58, 59, 60, 65, 66, 68, 69, 71), Executive - (1973, 76, 77, 78, 79, 86, 93)\n
+    </string>
+
+      <string name="nhl_records_title6">
+     Goals\n
+    </string>
+
+      <string name="nhl_records5">
+Most goals career: Wayne Gretzky, 894\n
+Most goals playoffs career; Wayne Gretzky, 122\n
+Most goals career, including playoffs: Wayne Gretzky, 1,016\n
+Most goals, one season: Wayne Gretzky, 92 (1981–82)\n
+Most goals, in playoffs one season: Reggie Leach (1976) and Jari Kurri (1985), 19\n
+Most goals, one season, including playoffs: Wayne Gretzky, 100 (1983–84)\n
+Most goals, one playoff series: Jari Kurri (6 game series), 12 (1985)\n
+Most goals in a Stanley Cup Final: Cyclone Taylor (1918, 5 games), Frank Foyston (1919, 5 games), Babe Dye (1922, 5 games), 9\n
+Most goals in the Finals, career: Maurice Richard, 34\n
+Most goals, 50 games from start of season: Wayne Gretzky, 61 (1981–82 and 1983–84)\n
+Fastest 50 goals from start of season: Wayne Gretzky, 39 games (Dec. 30, 1981)\n
+Most goals, one game: Joe Malone, 7 (Jan. 31, 1920)\n
+Most goals, one regular season game: Joe Malone, 7 (Jan. 31, 1920)\n
+Most goals, one regular season home game: Joe Malone, 7 (Jan. 31, 1920)\n
+Most goals, one regular season road game: Red Berenson, 6 (Nov. 7, 1968)\n
+Most goals, one playoff game: Newsy Lalonde (Mar. 1, 1919), Maurice Richard (Mar. 23, 1944), Darryl Sittler (Apr. 22, 1976), Reggie Leach (May 6, 1976), Mario Lemieux (Apr. 25, 1989), 5\n
+Most goals, one home playoff game: Maurice Richard (Mar. 23, 1944), Darryl Sittler (Apr. 22, 1976), Reggie Leach (May 6, 1976), Mario Lemieux (Apr. 25, 1989), 5\n
+Most goals, one road playoff game: Newsy Lalonde (Mar. 1, 1919), 5\n
+Most goals, one period: Max Bentley (Jan. 28, 1943), Busher Jackson (Nov. 20, 1934), Clint Smith (Mar. 4, 1945), Red Berenson (Nov. 7, 1968), Wayne Gretzky (Feb. 18, 1981), Grant Mulvey (Feb. 3, 1982), Bryan Trottier (Feb. 13, 1982), Johan Franzen (May 6, 2010), Tim Kerr (Apr. 13, 1985), Al Secord (Jan. 7, 1987), Joe Nieuwendyk (Jan. 11, 1989), Peter Bondra (Feb. 5, 1994), Mario Lemieux (Jan. 26, 1997), 4\n
+Most goals in one period during the finals: Busher Jackson (Apr. 5, 1932), Ted Lindsay (Apr. 5, 1955), Maurice Richard (Apr. 6, 1957), Wayne Gretzky (May 25, 1985), Dirk Graham (June 1, 1992), Peter Forsberg (June 6, 1996), 3\n
+Most game-winning goals in a season: Phil Esposito (1970–71 and 1971–72) and Michel Goulet (1983–84), 16\n
+Most game-winning goals in playoffs one season: Brad Richards (2004), 7\n
+Most game-winning goals in a playoff series: Mike Bossy (6 game series) (1983), 4\n
+Most game-winning goals career: Jaromir Jagr, 124\n
+Most game-winning goals playoffs career: Wayne Gretzky, Brett Hull, 24\n
+    </string>
+
+    <string name="nhl_records_title7">
+    Assists\n
+    </string>
+
+    <string name="nhl_records6">
+Most assists regular season career: Wayne Gretzky, 1,963\n
+Most assists playoffs career: Wayne Gretzky 260\n
+Most assists career, including playoffs: Wayne Gretzky, 2,223\n
+Most assists, one season: Wayne Gretzky, 163 (1985–86)\n
+Most assists, one playoff season: Wayne Gretzky, 31 (1987–88)\n
+Most assists, one season, including playoffs: Wayne Gretzky, 174 (1985–86)\n
+Most assists, playoff series: Rick Middleton (7 game series) (1983), Wayne Gretzky (6 game series) (1985) 14\n
+Most assists, one game: Billy Taylor (Mar. 16, 1947), Wayne Gretzky (Feb. 15, 1980, Dec. 11, 1985, and Feb. 14, 1986), 7\n
+Most assists, one road game: Billy Taylor (Mar. 16, 1947), Wayne Gretzky (Dec. 11, 1985), 7\n
+Most assists, one playoff game: Mikko Leinonen (Apr. 8, 1982), Wayne Gretzky (Apr. 9, 1987), 6\n
+Most assists, one period: Dale Hawerchuk, 5 (Mar. 6, 1984)\n
+    </string>
+
+    <string name="nhl_records_title8">
+    Points\n
+    </string>
+
+    <string name="nhl_records7">
+Most points regular season career: Wayne Gretzky, 2,857\n
+Most points playoff career: Wayne Gretzky, 382\n
+Most points career, including playoffs: Wayne Gretzky, 3,239\n
+Most points, one season: Wayne Gretzky, 215 (1985–86)\n
+Fastest 100 points from the start of a season: Wayne Gretzky, 34 games (Dec. 27, 1981)\n
+Most points, one season, including playoffs: Wayne Gretzky, 255 (1984–85)\n
+Most points, one game: Darryl Sittler, 10 (Feb. 7, 1976)\n
+Most points, one playoff game: Patrik Sundstrom (Apr. 22, 1988) and Mario Lemieux (Apr. 25, 1989), 8\n
+Most points, one road game: Peter Stastny and Anton Stastny,(Feb. 22, 1981), 8\n
+Most points, one period: Bryan Trottier, 6 (December 23, 1978, second period)\n
+Most points, one playoff season: Wayne Gretzky, 47 (1985)\n
+Most points, one playoff series: Rick Middleton (7 game series), 19 (1983)\n
+Most points in the Final, one series: Wayne Gretzky, 13 (1988)\n
+Most points in the Final, career: Jean Beliveau, 62
+    </string>
 
 </resources>
