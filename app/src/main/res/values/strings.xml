@@ -1340,5 +1340,105 @@ Los Angeles Rams: Oct. 22, 1950-Oct. 29, 1950\n
 Los Angeles Rams: Oct. 22, 1950-Oct. 29, 1950
     </string>
 
+     <string name="mlb_records_title">
+        Season records\n
+    </string>
+
+    <string name="mlb_records">
+
+Season	Franchise	League	Wins	Losses	Pct.	Finish\n
+1906	Chicago Cubs	    NL	116	36	.763	Lost 1906 World Series\n
+1902	Pittsburgh Pirates	NL	103	36	.741	National League Champions\n
+1886	Chicago White Stockings	NL	90	34	.726	Lost 1886 World Series\n
+1909	Pittsburgh Pirates	NL	110	42	.724	Won 1909 World Series\n
+1954	Cleveland Indians	AL	111	43	.721	Lost 1954 World Series\n
+2001	Seattle Mariners	AL	116	46	.716	Lost 2001 ALCS\n
+1927	New York Yankees	AL	110	44	.714	Won 1927 World Series\n
+1886	Detroit Wolverines	NL	87	36	.707	2nd place in National League\n
+1897	Boston Beaneaters	NL	93	39	.705	Lost 1897 Temple Cup\n
+1998	New York Yankees	AL	114	48	.704	Won 1998 World Series\n
+1907	Chicago Cubs	NL	107	45	.704	Won 1907 World Series\n
+1931	Philadelphia Athletics	AL	107	45	.704	Lost 1931 World Series\n
+1887	St. Louis Browns	AA	95	40	.704	Lost 1887 World Series\n
+1939	New York Yankees	AL	106	45	.702	Won 1939 World Series\n
+    </string>
+
+     <string name="mlb_records_title1">
+       Hitting records: single game\n
+    </string>
+
+     <string name="mlb_records1">
+Most hits in a nine-inning game: 7 by Wilbert Robinson, June 10, 1892, and Rennie Stennett, September 16, 1975.\n
+Most hits in an extra-inning game: 9, Johnny Burnett, July 10, 1932.\n
+Most total bases in a nine-inning game: 19 (4 home runs, a double and a single), Shawn Green, May 23, 2002.\n
+    </string>
+
+    <string name="mlb_records_title2">
+       Pitching records: single game\n
+    </string>
+
+    <string name="mlb_records2">
+Most home runs allowed: 7, Charlie Sweeney, June 12, 1886\n
+Most strikeouts: 21, Tom Cheney, September 12, 1962 (16 innings)\n
+Most strikeouts in a nine-inning game: 20 by Kerry Wood and Roger Clemens (twice)\n
+Most consecutive home runs allowed: 4 by Paul Foytack, July 31, 1963, Chase Wright, April 22, 2007, and Dave Bush, August 11, 2010\n
+Oldest pitcher to win a game: Age 49, Jamie Moyer, May 16, 2012\n
+    </string>
+
+    <string name="mlb_records_title3">
+      Catcher records: career\n
+    </string>
+
+     <string name="mlb_records3">
+Most runners caught stealing: 810, Gary Carter\n
+Most stolen bases allowed: 1,498, Gary Carter\n
+Most stolen-base attempts: 2,308, Gary Carter\n
+Highest caught-stealing : 57.40, Roy Campanella\n
+Most pick-offs: 81, Ivan Rodriguez\n
+Most no-hitters caught: 4, Jason Varitek\n
+    </string>
+
+    <string name="mlb_records_title4">
+     Catcher records: single season\n
+    </string>
+
+     <string name="mlb_records4">
+Most runners caught stealing: Jody Davis, 89 (1986)\n
+Most stolen bases allowed: Mike Piazza, 155 (1996)\n
+Highest caught-stealing : Mike LaValliere, 72.73 (1993)\n
+Most no-hitters caught: 2, Carlos Ruiz (2010) (List of Major League Baseball no-hitters)\n
+    </string>
+
+     <string name="mlb_records_title5">
+     Batting records: career\n
+    </string>
+
+     <string name="mlb_records5">
+Highest batting average	Ty Cobb	.366\n
+Most singles	Pete Rose	3,215\n
+Most doubles	Tris Speaker	792\n
+Most triples	Sam Crawford	309\n
+Most home runs	Barry Bonds	762\n
+Most grand slams	Alex Rodriguez\n
+Most home runs by a pitcher	Wes Ferrell	38\n
+Most grand slams by a pitcher	Madison Bumgarner	2\n
+Most RBI	Hank Aaron	2,297\n
+Most hits	Pete Rose	4,256\n
+Most runs scored	Rickey Henderson	2,295\n
+Highest on-base percentage	Ted Williams	.482\n
+Most stolen bases	Rickey Henderson	1,406\n
+Most steals of home	Ty Cobb	54\n
+Highest slugging percentage	Babe Ruth	.690\n
+Highest OPS	Babe Ruth	1.164\n
+Most walks	Barry Bonds	2,558\n
+Most intentional walks	Barry Bonds	688\n
+Most strikeouts	Reggie Jackson	2,597\n
+Most at-bats	Pete Rose	14,053\n
+Most total bases	Hank Aaron	6,856\n
+Most runs created	Barry Bonds	2,892\n
+Most games played	Pete Rose	3,562\n
+    </string>
+
+    
 
 </resources>

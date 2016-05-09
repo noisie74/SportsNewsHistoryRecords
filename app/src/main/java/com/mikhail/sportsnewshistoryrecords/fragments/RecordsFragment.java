@@ -62,6 +62,7 @@ public class RecordsFragment extends Fragment {
                 setNBARecords();
                 break;
             case R.id.mlb:
+                setMLBRecords();
                 break;
             case R.id.nhl:
                 break;
@@ -191,5 +192,22 @@ public class RecordsFragment extends Fragment {
                 + "\n" + getString(R.string.nfl_records4)
                 + "\n" + getString(R.string.nfl_records_title5)
                 + "\n" + getString(R.string.nfl_records5));
+    }
+
+    private void setMLBRecords() {
+
+        imageView.setImageResource(R.drawable.mlb_l);
+        textView.setText(getString(R.string.mlb_records_title).toUpperCase() + "\n" +
+                getString(R.string.mlb_records) + "\n"
+                + getString(R.string.mlb_records_title1)
+                + "\n" + getString(R.string.mlb_records1)
+                + "\n" + getString(R.string.mlb_records_title2)
+                + "\n" + getString(R.string.mlb_records2)
+                + "\n" + getString(R.string.mlb_records_title3)
+                + "\n" + getString(R.string.mlb_records3)
+                + "\n" + getString(R.string.mlb_records_title4)
+                + "\n" + getString(R.string.mlb_records4)
+                + "\n" + getString(R.string.mlb_records_title5)
+                + "\n" + getString(R.string.mlb_records5));
     }
 }
