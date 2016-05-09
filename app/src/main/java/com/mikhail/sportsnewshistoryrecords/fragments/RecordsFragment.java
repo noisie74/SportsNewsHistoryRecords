@@ -172,7 +172,8 @@ public class RecordsFragment extends Fragment {
         textView.setText(getString(R.string.nba_records_title).toUpperCase() + "\n" +
                 getString(R.string.nba_records) + "\n" + getString(R.string.nba_records1)
                 + "\n" + getString(R.string.nba_records3)
-                + "\n" + getString(R.string.nba_records4));
+                + "\n" + getString(R.string.nba_records4)
+                + "\n" + getString(R.string.nba_records5) );
     }
 
 }

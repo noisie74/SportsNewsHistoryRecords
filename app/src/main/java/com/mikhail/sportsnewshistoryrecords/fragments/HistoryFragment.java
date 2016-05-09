@@ -60,13 +60,16 @@ public class HistoryFragment extends Fragment {
 
         switch (mFragmentType) {
             case R.id.nfl:
+                setNFLHistory();
                 break;
             case R.id.nba:
                 setNBAHistory();
                 break;
             case R.id.mlb:
+                setMLBHistory();
                 break;
             case R.id.nhl:
+                setNHLHistory();
                 break;
             case R.id.mls:
                 setMLSSoccerHistory();
@@ -176,6 +179,80 @@ public class HistoryFragment extends Fragment {
                         + "\n" + s6 + "\n" + "\n" + s7 + "\n" + "\n" + s8
                         + "\n" + "\n" + s9 + "\n" + "\n" + s10 + "\n" + "\n"
                         + s11 + "\n" + "\n" + s12);
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+
+    }
+
+    private void setNFLHistory() {
+        imageView.setImageResource(R.drawable.nfl_l);
+
+        firebaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String s1 = dataSnapshot.child("nfl1").getValue(String.class);
+                String s2 = dataSnapshot.child("nfl2").getValue(String.class);
+                String s3 = dataSnapshot.child("nfl3").getValue(String.class);
+                String s4 = dataSnapshot.child("nfl4").getValue(String.class);
+                String s5 = dataSnapshot.child("nfl5").getValue(String.class);
+                String s6 = dataSnapshot.child("nfl6").getValue(String.class);
+                String s7 = dataSnapshot.child("nfl7").getValue(String.class);
+                String s8 = dataSnapshot.child("nfl8").getValue(String.class);
+                String s9 = dataSnapshot.child("nfl9").getValue(String.class);
+
+                textView.setText(s1 + "\n" + "\n" + s2 + "\n" + "\n" +
+                        s3 + "\n" + "\n" + s4 + "\n" + "\n" + s5 + "\n"
+                        + "\n" + s6 + "\n" + "\n" + s7 + "\n" + "\n" + s8
+                        + "\n" + "\n" + s9);
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+
+    }
+
+    private void setNHLHistory() {
+        imageView.setImageResource(R.drawable.nhl_logo);
+
+        firebaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String s1 = dataSnapshot.child("nhl1").getValue(String.class);
+                String s2 = dataSnapshot.child("nhl2").getValue(String.class);
+
+                textView.setText(s1 + "\n" + "\n" + s2);
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+
+    }
+
+    private void setMLBHistory() {
+        imageView.setImageResource(R.drawable.mlb_l);
+
+        firebaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String s1 = dataSnapshot.child("mlb1").getValue(String.class);
+                String s2 = dataSnapshot.child("mlb2").getValue(String.class);
+                String s3 = dataSnapshot.child("mlb3").getValue(String.class);
+
+                textView.setText(s1 + "\n" + "\n" + s2 + "\n" + "\n" + s3);
 
             }
 
