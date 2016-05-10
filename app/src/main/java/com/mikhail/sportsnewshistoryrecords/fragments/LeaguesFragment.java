@@ -46,15 +46,15 @@ public class LeaguesFragment extends Fragment {
     public RecyclerView recyclerView;
     public ArrayList<Doc> searchSportsResults;
     protected SwipeRefreshLayout swipeContainer;
-    public static final String NYT_HOCKEY = "NHL";
+    public static final String NYT_HOCKEY = "Hockey";
     public static final String NYT_MLS = "MLS";
     public static final String NYT_FOOTBALL = "NFL Football";
     public static final String NYT_BASKETBALL = "NBA Basketball";
     public static final String NYT_BASEBALL = "Baseball";
-    public static final String NYT_SPANISH = "La liga";
+    public static final String NYT_SPANISH = "Spanish soccer La liga";
     public static final String NYT_ENGLISH = "English Premier league";
-    public static final String NYT_ITALIAN = "Italian Serie A";
-    public static final String NYT_GERMAN = "Bundesliga";
+    public static final String NYT_ITALIAN = "Italian Soccer Serie A";
+    public static final String NYT_GERMAN = "German Bundesliga";
 
     LeaguesNewsAdapter leaguesNewsAdapter;
 //    NewsDetailsFragment newsDetailsFragment;
@@ -393,7 +393,7 @@ public class LeaguesFragment extends Fragment {
             @Override
             public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
                 ArticleSearch nytSportsSearch = response.body();
-                handleData(nytSportsSearch.getResponse().getDocs());
+//                handleData(nytSportsSearch.getResponse().getDocs());
                 searchSportsResults.clear();
                 Collections.addAll(searchSportsResults, nytSportsSearch.getResponse().getDocs());
 //                leaguesNewsAdapter.updateData(searchSportsResults);
