@@ -40,6 +40,7 @@ public class SportsLeaguesArticleDetailViewFragment extends Fragment {
     private SQLiteDatabase db;
     private MenuItem saveLater;
     ControlLeaguesActivityLayout controlLeaguesActivityLayout;
+    SportsLeaguesArticleDetailViewFragment sportsLeaguesArticleDetailViewFragment;
 
     /**
      * user interface to callback for fragment
@@ -139,7 +140,7 @@ public class SportsLeaguesArticleDetailViewFragment extends Fragment {
             super.onPageFinished(view, url);
             articleWebView.loadUrl("javascript:window.HTMLOUT.showHTML('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>');");
             progress.setVisibility(View.GONE);
-            if (articleWebView != null){
+            if (articleWebView.isShown()){
                 saveLater.setVisible(true);
 
             }

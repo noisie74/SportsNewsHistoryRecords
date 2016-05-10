@@ -147,7 +147,9 @@ public class LeaguesActivity extends AppCompatActivity implements
                 frameLayout.setVisibility(View.GONE);
                 viewPager.setVisibility(View.VISIBLE);
                 tabLayout.setVisibility(View.VISIBLE);
-                toolbar.getMenu().findItem(R.id.save_later).setVisible(false);
+                if (toolbar.getMenu().findItem(R.id.save_later) != null){
+                    toolbar.getMenu().findItem(R.id.save_later).setVisible(false);
+                }
                 toolbar.getMenu().findItem(R.id.share).setVisible(false);
 //                toolbar.getChildAt(2).findViewById(R.id.share).setVisibility(View.INVISIBLE);
             } else {
