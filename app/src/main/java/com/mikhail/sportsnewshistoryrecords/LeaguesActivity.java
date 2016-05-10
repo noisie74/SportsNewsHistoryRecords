@@ -39,13 +39,14 @@ public class LeaguesActivity extends AppCompatActivity implements
     public static final String RETURN_TO_MAIN_ACTIVITY = "backToMainActivity";
     SportsLeaguesArticleDetailViewFragment sportsLeaguesArticleDetailViewFragment;
     FrameLayout frameLayout;
+    public int key;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        int key = getIntent().getIntExtra("KEY", 0);
+         key = getIntent().getIntExtra("KEY", 0);
 
         setContentView(R.layout.activity_leagues);
         toolbar = (Toolbar) findViewById(R.id.toolbar_leagues);
@@ -53,6 +54,7 @@ public class LeaguesActivity extends AppCompatActivity implements
 
         intent = new Intent(LeaguesActivity.this, MainActivity.class);
 
+        toolBarTitle();
 
         tabLayout = (TabLayout) findViewById(R.id.tab_layout_leagues);
         tabLayout.addTab(tabLayout.newTab().setText("Articles"));
@@ -145,15 +147,23 @@ public class LeaguesActivity extends AppCompatActivity implements
                 frameLayout.setVisibility(View.GONE);
                 viewPager.setVisibility(View.VISIBLE);
                 tabLayout.setVisibility(View.VISIBLE);
-//                toolbar.getChildAt(2).setVisibility(View.INVISIBLE);
+                toolbar.getMenu().findItem(R.id.save_later).setVisible(false);
+                toolbar.getMenu().findItem(R.id.share).setVisible(false);
+//                toolbar.getChildAt(2).findViewById(R.id.share).setVisibility(View.INVISIBLE);
             } else {
                 int pos = viewPager.getCurrentItem();
                 if (pos > 0) {
                     viewPager.setCurrentItem(pos - 1);
-                } else {
-                    finish();
+//                } else if (pos == 0){
+//                    intent.putExtra(RETURN_TO_MAIN_ACTIVITY, R.id.top_news);
+//                    startActivity(intent);
+//                    finish();
+//                    super.onBackPressed();
                 }
             }
+        }else {
+
+            super.onBackPressed();
         }
     }
 
@@ -258,5 +268,36 @@ public class LeaguesActivity extends AppCompatActivity implements
         return true;
     }
 
+    private void toolBarTitle() {
+        switch (key) {
+            case R.id.nfl:
+                toolbar.setTitle("NFL");
+                break;
+            case R.id.nba:
+                toolbar.setTitle("NBA");
+                break;
+            case R.id.mlb:
+                toolbar.setTitle("MLB");
+                break;
+            case R.id.nhl:
+                toolbar.setTitle("NHL");
+                break;
+            case R.id.mls:
+                toolbar.setTitle("MLS");
+                break;
+            case R.id.english_soccer:
+                toolbar.setTitle("English Premier League");
+                break;
+            case R.id.spanish_soccer:
+                toolbar.setTitle("Spanish La Liga");
+                break;
+            case R.id.italian_soccer:
+                toolbar.setTitle("Italian Serie A");
+                break;
+            case R.id.german_soccer:
+                toolbar.setTitle("German Bundesliga");
+                break;
+        }
+    }
 
 }

@@ -139,7 +139,10 @@ public class SportsLeaguesArticleDetailViewFragment extends Fragment {
             super.onPageFinished(view, url);
             articleWebView.loadUrl("javascript:window.HTMLOUT.showHTML('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>');");
             progress.setVisibility(View.GONE);
-            saveLater.setVisible(true);
+            if (articleWebView != null){
+                saveLater.setVisible(true);
+
+            }
         }
 
         @Override
