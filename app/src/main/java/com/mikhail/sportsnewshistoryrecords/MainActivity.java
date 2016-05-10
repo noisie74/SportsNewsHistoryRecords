@@ -1,8 +1,11 @@
 package com.mikhail.sportsnewshistoryrecords;
 
+import android.app.job.JobInfo;
+import android.app.job.JobScheduler;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
@@ -25,8 +28,10 @@ import android.widget.Toast;
 import com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.LeaguesFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.NewsDetailsFragment;
+import com.mikhail.sportsnewshistoryrecords.fragments.NotificationFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.SavedArticleDetailsFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.SavedArticleFragment;
+import com.mikhail.sportsnewshistoryrecords.service.JobSchedulerService;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
@@ -51,6 +56,7 @@ public class MainActivity extends AppCompatActivity
     private int key;
     SavedArticleDetailsFragment savedArticleDetailsFragment;
     int spinnerPosition;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,7 +100,7 @@ public class MainActivity extends AppCompatActivity
                 switch (spinnerPosition) {
                     case 0:
                         allSportsFragment.nytAllSportsNews();
-                        Toast.makeText(MainActivity.this, "Top News", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(MainActivity.this, "Top News", Toast.LENGTH_SHORT).show();
                         break;
                     case 1:
                         allSportsFragment.nytFootballSportsNews();
@@ -158,7 +164,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void setSavedArticleBundle(Bundle article) {
-         savedArticleDetailsFragment = new SavedArticleDetailsFragment();
+        savedArticleDetailsFragment = new SavedArticleDetailsFragment();
         savedArticleDetailsFragment.setArguments(article);
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.frag_container, savedArticleDetailsFragment);
@@ -463,6 +469,16 @@ public class MainActivity extends AppCompatActivity
                     spinner.setVisibility(View.GONE);
                 }
                 break;
+            case R.id.notifications:
+                NotificationFragment notificationFragmnet = new NotificationFragment();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.frag_container, notificationFragmnet);
+                fragmentTransaction.commit();
+//                toolbar.setTitle("Saved stories");
+//                if (spinner != null) {
+//                    spinner.setVisibility(View.GONE);
+//                }
+                break;
 
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -474,6 +490,19 @@ public class MainActivity extends AppCompatActivity
 //    protected void onResume() {
 //        super.onResume();
 //    }
+
+    private void callJobScheduler() {
+
+        JobScheduler mJobScheduler;
+
+        mJobScheduler = (JobScheduler) getSystemService(Context.JOB_SCHEDULER_SERVICE);
+        JobInfo.Builder builder = new JobInfo.Builder(1, new ComponentName(getPackageName(),
+                JobSchedulerService.class.getName()));
+        builder.setPeriodic(600000);
+
+        if (mJobScheduler.schedule(builder.build()) <= 0) {
+        }
+    }
 }
 
 
