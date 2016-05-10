@@ -1,5 +1,6 @@
 package com.mikhail.sportsnewshistoryrecords.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.mikhail.sportsnewshistoryrecords.MainActivity;
 import com.mikhail.sportsnewshistoryrecords.R;
 import com.mikhail.sportsnewshistoryrecords.adapters.AllSportsAdapter;
 import com.mikhail.sportsnewshistoryrecords.api.NytAPI;
@@ -48,6 +50,7 @@ public class AllSportsFragment extends Fragment {
     private View rootView;
     private boolean recyclerViewIsSet = false;
     Toolbar toolbar;
+    private MainActivityControl mainActivityControl;
 
     @Nullable
     @Override
@@ -88,14 +91,26 @@ public class AllSportsFragment extends Fragment {
 //                sportsNewsList.get(position).getMultimedia()};
                 article.putStringArray("article", articleDetails);
 
-                Fragment newsDetailsFragment = new NewsDetailsFragment();
-                newsDetailsFragment.setArguments(article);
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.frag_container, newsDetailsFragment);
-                transaction.addToBackStack(null);
-                transaction.commit();
+                mainActivityControl.setBundle(article);
+
+
             }
         });
+    }
+
+    public interface MainActivityControl{
+        void setBundle(Bundle article);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        try { mainActivityControl = (MainActivityControl) getActivity();
+
+        }catch (ClassCastException ex ){
+            throw ex;
+        }
     }
 
     /**

@@ -10,8 +10,11 @@ import android.widget.TextView;
 
 import com.mikhail.sportsnewshistoryrecords.R;
 import com.mikhail.sportsnewshistoryrecords.model.NytSportsMultimedia;
+import com.mikhail.sportsnewshistoryrecords.model.NytSportsObjects;
 import com.mikhail.sportsnewshistoryrecords.model.NytSportsResults;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 /**
  * Created by Mikhail on 4/27/16.
@@ -94,7 +97,7 @@ public class AllSportsAdapter extends RecyclerView.Adapter<AllSportsAdapter.View
                 imageURI = "R.drawable.nyt_icon";
             }
 
-        }else{
+        }else {
 
             imageURI = "R.drawable.nyt_icon";
 
@@ -112,4 +115,8 @@ public class AllSportsAdapter extends RecyclerView.Adapter<AllSportsAdapter.View
     public int getItemCount() {
         return nytSportsResults.getResults().length;
     }
+
+
 }
+
+//nytSportsResults.getResults()[position].getThumbnail_standard();

@@ -1,6 +1,5 @@
 package com.mikhail.sportsnewshistoryrecords;
 
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -17,6 +16,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.support.v4.app.FragmentTransaction;
+
 
 import com.mikhail.sportsnewshistoryrecords.adapters.ViewPagerAdapter;
 import com.mikhail.sportsnewshistoryrecords.fragments.LeaguesFragment;
@@ -33,7 +34,7 @@ public class LeaguesActivity extends AppCompatActivity implements
     ViewPager viewPager;
     TabLayout tabLayout;
     FragmentManager fragmentManager;
-    FragmentTransaction fragmentTransaction;
+    FragmentTransaction transaction;
     NavigationView navigationView;
     Intent intent;
     public static final String RETURN_TO_MAIN_ACTIVITY = "backToMainActivity";
@@ -46,7 +47,7 @@ public class LeaguesActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-         key = getIntent().getIntExtra("KEY", 0);
+        key = getIntent().getIntExtra("KEY", 0);
 
         setContentView(R.layout.activity_leagues);
         toolbar = (Toolbar) findViewById(R.id.toolbar_leagues);
@@ -126,7 +127,7 @@ public class LeaguesActivity extends AppCompatActivity implements
     public void setBundle(Bundle article) {
         sportsLeaguesArticleDetailViewFragment = new SportsLeaguesArticleDetailViewFragment();
         sportsLeaguesArticleDetailViewFragment.setArguments(article);
-        android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frag_container_leagues, sportsLeaguesArticleDetailViewFragment);
         transaction.addToBackStack(null);
         transaction.commit();
@@ -142,12 +143,12 @@ public class LeaguesActivity extends AppCompatActivity implements
             drawer.closeDrawer(GravityCompat.START);
 //            intent.putExtra(RETURN_TO_MAIN_ACTIVITY, R.id.top_news);
 //            startActivity(intent);
-        } else if (sportsLeaguesArticleDetailViewFragment != null){
-            if (frameLayout.getVisibility() == View.VISIBLE){
+        } else if (sportsLeaguesArticleDetailViewFragment != null) {
+            if (frameLayout.getVisibility() == View.VISIBLE) {
                 frameLayout.setVisibility(View.GONE);
                 viewPager.setVisibility(View.VISIBLE);
                 tabLayout.setVisibility(View.VISIBLE);
-                if (toolbar.getMenu().findItem(R.id.save_later) != null){
+                if (toolbar.getMenu().findItem(R.id.save_later) != null) {
                     toolbar.getMenu().findItem(R.id.save_later).setVisible(false);
                 }
                 toolbar.getMenu().findItem(R.id.share).setVisible(false);
@@ -156,15 +157,14 @@ public class LeaguesActivity extends AppCompatActivity implements
                 int pos = viewPager.getCurrentItem();
                 if (pos > 0) {
                     viewPager.setCurrentItem(pos - 1);
-//                } else if (pos == 0){
+                } else if (pos == 0) {
 //                    intent.putExtra(RETURN_TO_MAIN_ACTIVITY, R.id.top_news);
 //                    startActivity(intent);
-//                    finish();
+                    finish();
 //                    super.onBackPressed();
                 }
             }
-        }else {
-
+        } else {
             super.onBackPressed();
         }
     }

@@ -1,5 +1,6 @@
 package com.mikhail.sportsnewshistoryrecords.fragments;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -30,6 +31,7 @@ public class SavedArticleFragment extends Fragment {
     private SavedRecyclerAdapter recycleAdapter;
     private RecyclerView recyclerView;
     private TextView storiesCount;
+    SavedArticleControl savedArticleControl;
 
     @Nullable
     @Override
@@ -57,15 +59,12 @@ public class SavedArticleFragment extends Fragment {
                         String.valueOf(articleLists.get(position).getId())};
                 article.putStringArray("article", articleDetails);
 
+                savedArticleControl.setSavedArticleBundle(article);
+
                 Log.d("Saved Article View", articleLists.get(position).getImage() + "");
 
 
-                Fragment savedArticleStory = new SavedArticleDetailsFragment();
-                savedArticleStory.setArguments(article);
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.frag_container, savedArticleStory);
-                transaction.addToBackStack(null);
-                transaction.commit();
+
             }
         });
 
@@ -82,6 +81,21 @@ public class SavedArticleFragment extends Fragment {
             recyclerView.setAdapter(recycleAdapter);
         }
 
+    }
+
+    public interface SavedArticleControl{
+        void setSavedArticleBundle(Bundle article);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        try { savedArticleControl = (SavedArticleControl) getActivity();
+
+        }catch (ClassCastException ex ){
+            throw ex;
+        }
     }
 
     public void setViews(View v) {
