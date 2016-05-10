@@ -31,12 +31,15 @@ import com.mikhail.sportsnewshistoryrecords.fragments.NewsDetailsFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.NotificationFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.SavedArticleDetailsFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.SavedArticleFragment;
+import com.mikhail.sportsnewshistoryrecords.interfaces.ControlToolbar;
+import com.mikhail.sportsnewshistoryrecords.interfaces.MainActivityControlAllSports;
+import com.mikhail.sportsnewshistoryrecords.interfaces.SavedArticleControl;
 import com.mikhail.sportsnewshistoryrecords.service.JobSchedulerService;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
-        NewsDetailsFragment.ControlToolbar, AllSportsFragment.MainActivityControl,
-        SavedArticleFragment.SavedArticleControl {
+        ControlToolbar, MainActivityControlAllSports,
+        SavedArticleControl {
 
     protected RecyclerView recyclerView;
     private FragmentManager fragmentManager;
@@ -491,18 +494,18 @@ public class MainActivity extends AppCompatActivity
 //        super.onResume();
 //    }
 
-    private void callJobScheduler() {
-
-        JobScheduler mJobScheduler;
-
-        mJobScheduler = (JobScheduler) getSystemService(Context.JOB_SCHEDULER_SERVICE);
-        JobInfo.Builder builder = new JobInfo.Builder(1, new ComponentName(getPackageName(),
-                JobSchedulerService.class.getName()));
-        builder.setPeriodic(600000);
-
-        if (mJobScheduler.schedule(builder.build()) <= 0) {
-        }
-    }
+//    private void callJobScheduler() {
+//
+//        JobScheduler mJobScheduler;
+//
+//        mJobScheduler = (JobScheduler) getSystemService(Context.JOB_SCHEDULER_SERVICE);
+//        JobInfo.Builder builder = new JobInfo.Builder(1, new ComponentName(getPackageName(),
+//                JobSchedulerService.class.getName()));
+//        builder.setPeriodic(600000);
+//
+//        if (mJobScheduler.schedule(builder.build()) <= 0) {
+//        }
+//    }
 }
 
 

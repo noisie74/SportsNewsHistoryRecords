@@ -5,7 +5,6 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -18,6 +17,7 @@ import com.mikhail.sportsnewshistoryrecords.R;
 import com.mikhail.sportsnewshistoryrecords.adapters.SavedRecyclerAdapter;
 import com.mikhail.sportsnewshistoryrecords.database.ArticleSaveForLater;
 import com.mikhail.sportsnewshistoryrecords.database.SaveSQLiteHelper;
+import com.mikhail.sportsnewshistoryrecords.interfaces.SavedArticleControl;
 
 import java.util.ArrayList;
 
@@ -81,10 +81,6 @@ public class SavedArticleFragment extends Fragment {
             recyclerView.setAdapter(recycleAdapter);
         }
 
-    }
-
-    public interface SavedArticleControl{
-        void setSavedArticleBundle(Bundle article);
     }
 
     @Override

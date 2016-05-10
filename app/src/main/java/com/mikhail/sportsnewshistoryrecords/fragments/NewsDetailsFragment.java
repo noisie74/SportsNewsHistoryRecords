@@ -9,7 +9,6 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -22,12 +21,12 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.mikhail.sportsnewshistoryrecords.R;
 import com.mikhail.sportsnewshistoryrecords.database.ArticleSaveForLater;
 import com.mikhail.sportsnewshistoryrecords.database.SaveSQLiteHelper;
+import com.mikhail.sportsnewshistoryrecords.interfaces.ControlToolbar;
 
 /**
  * Created by Mikhail on 4/29/16.
@@ -96,13 +95,6 @@ public class NewsDetailsFragment extends Fragment {
             throw new ClassCastException();
         }
 
-    }
-
-
-    public interface ControlToolbar {
-        void showSpinner(boolean visible);
-
-        void showTitle(boolean visible);
     }
 
 

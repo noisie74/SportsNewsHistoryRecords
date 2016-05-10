@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,10 +13,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.mikhail.sportsnewshistoryrecords.MainActivity;
 import com.mikhail.sportsnewshistoryrecords.R;
 import com.mikhail.sportsnewshistoryrecords.adapters.AllSportsAdapter;
 import com.mikhail.sportsnewshistoryrecords.api.NytAPI;
+import com.mikhail.sportsnewshistoryrecords.interfaces.MainActivityControlAllSports;
 import com.mikhail.sportsnewshistoryrecords.model.NytSportsObjects;
 import com.mikhail.sportsnewshistoryrecords.model.NytSportsResults;
 
@@ -50,7 +49,7 @@ public class AllSportsFragment extends Fragment {
     private View rootView;
     private boolean recyclerViewIsSet = false;
     Toolbar toolbar;
-    private MainActivityControl mainActivityControl;
+    private MainActivityControlAllSports mainActivityControl;
 
     @Nullable
     @Override
@@ -98,15 +97,11 @@ public class AllSportsFragment extends Fragment {
         });
     }
 
-    public interface MainActivityControl{
-        void setBundle(Bundle article);
-    }
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
 
-        try { mainActivityControl = (MainActivityControl) getActivity();
+        try { mainActivityControl = (MainActivityControlAllSports) getActivity();
 
         }catch (ClassCastException ex ){
             throw ex;

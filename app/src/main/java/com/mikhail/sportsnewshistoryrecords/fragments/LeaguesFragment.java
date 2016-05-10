@@ -54,7 +54,7 @@ public class LeaguesFragment extends Fragment {
     public static final String NYT_SPANISH = "Spanish soccer La liga";
     public static final String NYT_ENGLISH = "English Premier league";
     public static final String NYT_ITALIAN = "Italian Soccer Serie A";
-    public static final String NYT_GERMAN = "German Bundesliga";
+    public static final String NYT_GERMAN = "Bundesliga";
 
     LeaguesNewsAdapter leaguesNewsAdapter;
 //    NewsDetailsFragment newsDetailsFragment;
