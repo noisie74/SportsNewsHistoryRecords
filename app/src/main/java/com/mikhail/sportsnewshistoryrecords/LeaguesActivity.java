@@ -21,14 +21,16 @@ import android.support.v4.app.FragmentTransaction;
 
 import com.mikhail.sportsnewshistoryrecords.adapters.ViewPagerAdapter;
 import com.mikhail.sportsnewshistoryrecords.fragments.AboutFragment;
-import com.mikhail.sportsnewshistoryrecords.fragments.LeaguesFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.NotificationFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.details_fragment.SportsLeaguesArticleDetailViewFragment;
+import com.mikhail.sportsnewshistoryrecords.interfaces.ControlLeaguesActivityLayout;
+import com.mikhail.sportsnewshistoryrecords.interfaces.ControlToolbar;
+import com.mikhail.sportsnewshistoryrecords.interfaces.LeaguesActivityControl;
 
 public class LeaguesActivity extends AppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener,
-        SportsLeaguesArticleDetailViewFragment.ControlLeaguesActivityLayout,
-        LeaguesFragment.LeaguesActivityControl {
+        ControlLeaguesActivityLayout,
+        LeaguesActivityControl,ControlToolbar {
 
     Toolbar toolbar;
     private int mNavigationItemId;
@@ -163,8 +165,8 @@ public class LeaguesActivity extends AppCompatActivity implements
                 } else if (pos == 0) {
 //                    intent.putExtra(RETURN_TO_MAIN_ACTIVITY, R.id.top_news);
 //                    startActivity(intent);
-                    finish();
-//                    super.onBackPressed();
+//                    finish();
+                    super.onBackPressed();
                 }
             }
         } else {
@@ -336,4 +338,18 @@ public class LeaguesActivity extends AppCompatActivity implements
         }
     }
 
+    @Override
+    public void showSpinner(boolean visible) {
+
+    }
+
+    @Override
+    public void showTitle(boolean visible) {
+
+    }
+
+    @Override
+    public void setTitle(String title) {
+        toolbar.setTitle(title);
+    }
 }

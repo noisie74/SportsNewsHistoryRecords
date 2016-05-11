@@ -77,6 +77,7 @@ public class NotificationFragment extends Fragment {
         setCheckboxClicks();
 
         controlToolbar.showSpinner(false);
+        controlToolbar.setTitle("Notifications");
 
         hasOptionsMenu();
 

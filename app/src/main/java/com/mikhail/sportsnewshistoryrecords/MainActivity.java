@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.RecyclerView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -37,19 +36,18 @@ public class MainActivity extends AppCompatActivity
         ControlToolbar, MainActivityControlAllSports,
         SavedArticleControl {
 
-    protected RecyclerView recyclerView;
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
     private FrameLayout fragContainer;
     private AllSportsFragment allSportsFragment;
     private int mNavigationItemId;
-    Toolbar toolbar;
+    private Toolbar toolbar;
     private static final String[] paths = {"Top News", "Football", "Basketball", "Baseball", "Hockey", "Soccer"};
     NewsDetailsFragment newsDetailsFragment;
     LeaguesFragment leaguesFragment;
     public static final String KEY = "KEY";
+    public static final String LEAGUES_TRANSITION = "backToMainActivity";
     Spinner spinner;
-    String[] articleDetails;
     Intent intent;
     SavedArticleFragment savedArticleFragment;
     private int key;
@@ -73,26 +71,11 @@ public class MainActivity extends AppCompatActivity
                 R.layout.support_simple_spinner_dropdown_item, paths);
         spinner.setAdapter(adapter);
 
-        key = getIntent().getIntExtra("backToMainActivity", R.id.top_news);
+        key = getIntent().getIntExtra(LEAGUES_TRANSITION, R.id.top_news);
         setViews();
         setFragment();
 
         intent = new Intent(MainActivity.this, LeaguesActivity.class);
-
-
-//
-//        if (articleDetails != null){
-//            articleDetails = getIntent().getExtras().getStringArray("searchedArticle");
-//        }
-//        if (articleDetails != null) {
-//            // TODO you have to load detail fragment because we come from leagues fragment
-//            newsDetailsFragment = new NewsDetailsFragment();
-//            FragmentManager fragmentManager = getSupportFragmentManager();
-//            fragmentTransaction = fragmentManager.beginTransaction();
-//            fragmentTransaction.add(R.id.frag_container, newsDetailsFragment);
-//            fragmentTransaction.commit();
-//        }
-
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -248,7 +231,6 @@ public class MainActivity extends AppCompatActivity
         } else if (savedArticleFragment != null) {
 
             Log.d("Main", "2nd condition");
-//                allSportsFragment.nytAllSportsNews();
             fragContainer.setVisibility(View.VISIBLE);
             allSportsFragment = new AllSportsFragment();
             allSportsFragment.nytAllSportsNews();
@@ -264,9 +246,9 @@ public class MainActivity extends AppCompatActivity
         } else if (aboutFragment != null) {
 
             Log.d("Main", "2nd condition");
-//                allSportsFragment.nytAllSportsNews();
+                allSportsFragment.nytAllSportsNews();
             fragContainer.setVisibility(View.VISIBLE);
-            allSportsFragment = new AllSportsFragment();
+//            allSportsFragment = new AllSportsFragment();
             allSportsFragment.nytAllSportsNews();
             fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.frag_container, allSportsFragment);
@@ -284,6 +266,11 @@ public class MainActivity extends AppCompatActivity
             allSportsFragment.nytAllSportsNews();
             fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.frag_container, allSportsFragment);
+            toolbar.setTitle("Sports News");
+            toolbar.getChildAt(1).setVisibility(View.VISIBLE);
+            if (spinner != null) {
+                spinner.setSelection(0);
+            }
             fragmentTransaction.commit();
 
             notificationFragment = null;
@@ -329,7 +316,6 @@ public class MainActivity extends AppCompatActivity
         leaguesFragment = new LeaguesFragment();
 
         mNavigationItemId = item.getItemId();
-//        leaguesFragment.setFragmentType(mNavigationItemId);
 
         switch (mNavigationItemId) {
             case R.id.top_news:
@@ -376,7 +362,7 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nba:
 
-                intent.putExtra("KEY", R.id.nba);
+                intent.putExtra(KEY, R.id.nba);
                 startActivity(intent);
 
 //
@@ -408,7 +394,7 @@ public class MainActivity extends AppCompatActivity
 //                if (fragContainer != null) {
 //                    fragContainer.setVisibility(View.GONE);
 //                }
-                intent.putExtra("KEY", R.id.mlb);
+                intent.putExtra(KEY, R.id.mlb);
                 startActivity(intent);
 
 
@@ -424,71 +410,28 @@ public class MainActivity extends AppCompatActivity
 //                }
                 break;
             case R.id.nhl:
-
-//                viewPager.setVisibility(View.VISIBLE);
-
-//                if (fragContainer != null) {
-//                    fragContainer.setVisibility(View.GONE);
-//                }
-                intent.putExtra("KEY", R.id.nhl);
+                intent.putExtra(KEY, R.id.nhl);
                 startActivity(intent);
-
-
-//                topicFrag.setSections(BREAKING_NEWS);
-//                fragmentTransaction = fragmentManager.beginTransaction();
-//                fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
-//                fragmentTransaction.commit();
-//                toolbar.setTitle("NHL Hockey");
-//                toolbar.getChildAt(2).setVisibility(View.VISIBLE);
-//                toolbar.getChildAt(1).setVisibility(View.GONE);
-//                if (tabLayout != null) {
-//                    tabLayout.setVisibility(View.VISIBLE);
-//                }
-//                tabLayout.removeAllTabs();
                 break;
             case R.id.mls:
-
-//                viewPager.setVisibility(View.VISIBLE);
-                intent.putExtra("KEY", R.id.mls);
+                intent.putExtra(KEY, R.id.mls);
                 startActivity(intent);
-
                 break;
             case R.id.english_soccer:
-
-                intent.putExtra("KEY", R.id.english_soccer);
+                intent.putExtra(KEY, R.id.english_soccer);
                 startActivity(intent);
-
-
-//                viewPager.setVisibility(View.VISIBLE);
-
-//                if (fragContainer != null) {
-//                    fragContainer.setVisibility(View.GONE);
-//                }
-
-//                topicFrag.setSections(WORLD);
-//                fragmentTransaction = fragmentManager.beginTransaction();
-//                fragmentTransaction.replace(R.id.frag_container, leaguesFragment);
-//                fragmentTransaction.commit();
-//                toolbar.setTitle("English Soccer");
-//                toolbar.getChildAt(1).setVisibility(View.GONE);
-
-//                toolbar.setTitle(getString(R.string.world));
                 break;
             case R.id.spanish_soccer:
-
-                intent.putExtra("KEY", R.id.spanish_soccer);
+                intent.putExtra(KEY, R.id.spanish_soccer);
                 startActivity(intent);
                 break;
             case R.id.italian_soccer:
-
-                intent.putExtra("KEY", R.id.italian_soccer);
+                intent.putExtra(KEY, R.id.italian_soccer);
                 startActivity(intent);
                 break;
             case R.id.german_soccer:
-                intent.putExtra("KEY", R.id.german_soccer);
+                intent.putExtra(KEY, R.id.german_soccer);
                 startActivity(intent);
-
-
                 break;
             case R.id.favorites:
                 savedArticleFragment = new SavedArticleFragment();
@@ -505,17 +448,12 @@ public class MainActivity extends AppCompatActivity
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frag_container, notificationFragment);
                 fragmentTransaction.commit();
-//                toolbar.setTitle("Saved stories");
-//                if (spinner != null) {
-//                    spinner.setVisibility(View.GONE);
-//                }
                 break;
             case R.id.about:
                 aboutFragment = new AboutFragment();
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frag_container, aboutFragment);
                 fragmentTransaction.commit();
-//                toolbar.setTitle("About");
                 break;
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

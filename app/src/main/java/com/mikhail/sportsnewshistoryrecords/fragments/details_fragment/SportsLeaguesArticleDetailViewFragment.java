@@ -26,6 +26,7 @@ import android.widget.Toast;
 import com.mikhail.sportsnewshistoryrecords.R;
 import com.mikhail.sportsnewshistoryrecords.database.ArticleSaveForLater;
 import com.mikhail.sportsnewshistoryrecords.database.SaveSQLiteHelper;
+import com.mikhail.sportsnewshistoryrecords.interfaces.ControlLeaguesActivityLayout;
 
 
 public class SportsLeaguesArticleDetailViewFragment extends Fragment {
@@ -39,7 +40,6 @@ public class SportsLeaguesArticleDetailViewFragment extends Fragment {
     private SQLiteDatabase db;
     private MenuItem saveLater;
     ControlLeaguesActivityLayout controlLeaguesActivityLayout;
-    SportsLeaguesArticleDetailViewFragment sportsLeaguesArticleDetailViewFragment;
 
     /**
      * user interface to callback for fragment
@@ -88,12 +88,6 @@ public class SportsLeaguesArticleDetailViewFragment extends Fragment {
             throw new ClassCastException();
         }
 
-    }
-
-    public interface ControlLeaguesActivityLayout {
-        void showViewPager(boolean visible);
-
-        void showTabLayout(boolean visible);
     }
 
     @Override

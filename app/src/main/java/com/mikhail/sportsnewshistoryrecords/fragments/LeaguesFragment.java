@@ -15,6 +15,7 @@ import com.mikhail.sportsnewshistoryrecords.R;
 import com.mikhail.sportsnewshistoryrecords.adapters.LeaguesNewsAdapter;
 import com.mikhail.sportsnewshistoryrecords.api.NytSearchAPI;
 import com.mikhail.sportsnewshistoryrecords.fragments.details_fragment.SportsLeaguesArticleDetailViewFragment;
+import com.mikhail.sportsnewshistoryrecords.interfaces.LeaguesActivityControl;
 import com.mikhail.sportsnewshistoryrecords.model.search.ArticleSearch;
 import com.mikhail.sportsnewshistoryrecords.model.search.Doc;
 
@@ -101,10 +102,6 @@ public class LeaguesFragment extends Fragment {
         }
 
 
-    }
-
-    public interface LeaguesActivityControl{
-        void setBundle(Bundle article);
     }
 
     @Override
