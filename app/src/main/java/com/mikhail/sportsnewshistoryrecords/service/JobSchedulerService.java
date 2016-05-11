@@ -55,12 +55,12 @@ public class JobSchedulerService extends JobService {
     public static final String NYT_HOCKEY = "Hockey";
     public static final String NYT_SOCCER = "Soccer";
 
-    boolean topNewsCheck = true;
-    boolean footballCheck;
-    boolean basketballCheck;
-    boolean baseballCheck;
-    boolean hockeyCheck;
-    boolean soccerCheck;
+    boolean topNewsCheck = false;
+    boolean footballCheck = false;
+    boolean basketballCheck = false;
+    boolean baseballCheck = false;
+    boolean hockeyCheck = false;
+    boolean soccerCheck = false;
     boolean[] booleenArray;
     ArrayList<NytSportsObjects> sportsNewsList = new ArrayList<>();
     NotificationManager notificationManager;
@@ -87,7 +87,7 @@ public class JobSchedulerService extends JobService {
         Log.d("Notifications", "onStartJob sent");
 
         context = getApplicationContext();
-        setApiCall();
+//        setApiCall();
 
         return false;
 
@@ -183,7 +183,6 @@ public class JobSchedulerService extends JobService {
                     @Override
                     public void onNext(NytSportsResults nytSportsResults) {
                         Log.d("MainActivity", "Next!");
-
 
                         Collections.addAll(sportsNewsList, nytSportsResults.getResults());
                     }

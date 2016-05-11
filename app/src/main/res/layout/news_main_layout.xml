@@ -35,10 +35,24 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/article_info"
+            android:id="@+id/ago"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/headline"
+            android:maxLines="1"
+            android:padding="8dp"
+            android:layout_alignParentRight="true"
+            android:gravity="end"
+            android:text="elapsed"
+            android:textColor="#99666666"
+            android:textSize="10sp" />
+
+
+        <TextView
+            android:id="@+id/article_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ago"
             android:maxLines="3"
             android:padding="8dp"
             android:text="description"

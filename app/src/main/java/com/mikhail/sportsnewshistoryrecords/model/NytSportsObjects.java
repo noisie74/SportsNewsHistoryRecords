@@ -1,8 +1,13 @@
 package com.mikhail.sportsnewshistoryrecords.model;
 
+import android.util.Log;
+
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.mikhail.sportsnewshistoryrecords.model.search.Multimedia;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by Mikhail on 4/27/16.
@@ -76,8 +81,22 @@ public class NytSportsObjects {
         this.abstractResult = abstractResult;
     }
 
-    public String getCreated_date() {
-        return created_date;
+//    public String getCreated_date() {
+//        return created_date;
+//    }
+
+    public long getCreated_date() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZZZZZ");
+
+        long timeInMillis = 0;
+        try {
+            Date mDate = sdf.parse(created_date);
+            timeInMillis = mDate.getTime();
+        } catch (java.text.ParseException e) {
+            e.printStackTrace();
+        }
+        //"created_date": "2016-04-22T07:19:19-04:00"
+        return timeInMillis;
     }
 
     public void setCreated_date(String created_date) {

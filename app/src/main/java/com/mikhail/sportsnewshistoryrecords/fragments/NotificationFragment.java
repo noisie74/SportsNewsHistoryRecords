@@ -286,22 +286,23 @@ public class NotificationFragment extends Fragment {
     @TargetApi(21)
     private void setJobHandler() {
         if (Integer.valueOf(Build.VERSION.SDK_INT) > 20) {
-            PersistableBundle bundle = new PersistableBundle();
-            boolean[] booleenArray = new boolean[6];
-            booleenArray[0] = topNewsCheck;
-            booleenArray[1] = footballCheck;
-            booleenArray[2] = basketballCheck;
-            booleenArray[3] = baseballCheck;
-            booleenArray[4] = hockeyCheck;
-            booleenArray[5] = soccerCheck;
-            bundle.putBooleanArray(BOOLEAN_CODE, booleenArray);
+//            PersistableBundle bundle = new PersistableBundle();
+//            boolean[] booleenArray = new boolean[6];
+//            booleenArray[0] = topNewsCheck;
+//            booleenArray[1] = footballCheck;
+//            booleenArray[2] = basketballCheck;
+//            booleenArray[3] = baseballCheck;
+//            booleenArray[4] = hockeyCheck;
+//            booleenArray[5] = soccerCheck;
+//            bundle.putBooleanArray(BOOLEAN_CODE, booleenArray);
             JobScheduler mJobScheduler = (JobScheduler) getActivity().
                     getSystemService(Context.JOB_SCHEDULER_SERVICE);
             JobInfo.Builder builder = new JobInfo.Builder(1,
                     new ComponentName(getActivity(),
                             JobSchedulerService.class.getName()));
 
-            builder.setPeriodic(5000).setExtras(bundle);
+            builder.setPeriodic(3600000);
+//                    .setExtras(bundle);
 
             if (mJobScheduler.schedule(builder.build()) <= 0) {
                 //If something goes wrong
@@ -315,6 +316,7 @@ public class NotificationFragment extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
-        setJobHandler();
+        createIntentForJobScheduler();
+//        setJobHandler();
     }
 }

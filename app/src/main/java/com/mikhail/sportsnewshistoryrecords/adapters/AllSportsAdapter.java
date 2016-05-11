@@ -53,6 +53,8 @@ public class AllSportsAdapter extends RecyclerView.Adapter<AllSportsAdapter.View
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView headline;
         public TextView articleInfo;
+        public TextView ago;
+
 
         public ImageView articleImage;
 
@@ -61,6 +63,8 @@ public class AllSportsAdapter extends RecyclerView.Adapter<AllSportsAdapter.View
             headline = (TextView) itemView.findViewById(R.id.headline);
             articleInfo = (TextView) itemView.findViewById(R.id.article_info);
             articleImage = (ImageView) itemView.findViewById(R.id.cardView_image);
+            ago = (TextView) itemView.findViewById(R.id.ago);
+
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -85,9 +89,11 @@ public class AllSportsAdapter extends RecyclerView.Adapter<AllSportsAdapter.View
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-
+        long timeStamp = System.currentTimeMillis();
         holder.headline.setText(nytSportsResults.getResults()[position].getTitle());
         holder.articleInfo.setText(nytSportsResults.getResults()[position].getAbstractResult());
+        String agoText = "posted " + getBiggestUnitTimeElapsed(nytSportsResults.getResults()[position].getCreated_date(), timeStamp) + " ago";
+        holder.ago.setText(agoText);
 
         NytSportsMultimedia[] nytSportsMultimedias = nytSportsResults.getResults()[position].getMultimedia();
         String imageURI;
@@ -116,6 +122,30 @@ public class AllSportsAdapter extends RecyclerView.Adapter<AllSportsAdapter.View
         return nytSportsResults.getResults().length;
     }
 
+
+    public static String getBiggestUnitTimeElapsed(long timeStamp, long nowStamp){
+        String time = "";
+        long different = nowStamp - timeStamp;
+        String[] unit = {"year", "month", "day", "hour", "minute", "second"};
+        int numberOfUnits = unit.length;
+        long[] multiple = {31536000000l, 2592000000l, 86400000l, 3600000l, 60000l, 1000l}; //units in millis
+        long[] coef = {0,0,0,0,0,0};
+        for(int i = 0; i < numberOfUnits; i++){
+            coef[i] = different / multiple[i];
+            different = different % multiple[i];
+        }
+
+        for(int i = 0; i < numberOfUnits; i++){
+            if(coef[i] > 0) {
+                time = coef[i] + " " + unit[i];
+                if(coef[i] > 1){
+                    time = time + "s";
+                    break;
+                }
+            }
+        }
+        return time;
+    }
 
 }
 
