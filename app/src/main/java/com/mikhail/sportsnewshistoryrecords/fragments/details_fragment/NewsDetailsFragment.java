@@ -1,4 +1,4 @@
-package com.mikhail.sportsnewshistoryrecords.fragments;
+package com.mikhail.sportsnewshistoryrecords.fragments.details_fragment;
 
 import android.content.ContentValues;
 import android.content.Context;

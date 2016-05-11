@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/White"
+    android:weightSum="1">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageAbout"
+        android:src="@drawable/about_image"
+        android:paddingTop="50dp"
+        android:layout_gravity="center_horizontal|center" />
+
+    <TextView
+        android:id="@+id/app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:text="Sports App"
+        android:textSize="18dp"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:id="@+id/app_version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:text="Version: 1.0"
+        android:textSize="12dp"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send Feedback"
+        android:background="@drawable/round_button"
+        android:id="@+id/button_feedback"
+        android:layout_marginTop="75dp"
+        android:layout_gravity="center_horizontal|bottom" />
+
+
+</LinearLayout>

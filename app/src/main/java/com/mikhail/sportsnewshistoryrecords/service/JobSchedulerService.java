@@ -92,9 +92,9 @@ public class JobSchedulerService extends JobService {
         context = getApplicationContext();
 
 
-        spanishSoccerSearch();
-//        setApiCall();
-//        setApiCall();
+//        nytAllSportsNews();
+//        spanishSoccerSearch();
+        setApiCall();
 
 
         return false;
@@ -129,8 +129,6 @@ public class JobSchedulerService extends JobService {
 //        mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
 //
 //    }
-
-
     private void createNotifications() {
 
         Intent intent = new Intent(context, MainActivity.class);
@@ -138,7 +136,7 @@ public class JobSchedulerService extends JobService {
 
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context);
         mBuilder.setSmallIcon(R.drawable.ic_star_24dp);
-        mBuilder.setContentTitle("Title Works!");
+        mBuilder.setContentTitle("New articles available!");
         mBuilder.setContentText("Hi");
         mBuilder.setContentIntent(pIntent);
         mBuilder.setPriority(Notification.PRIORITY_DEFAULT);
@@ -149,19 +147,19 @@ public class JobSchedulerService extends JobService {
 
     }
 
-    private void setApiCall(){
+    private void setApiCall() {
         Log.d("The Service", topNewsCheck + "");
-        if (topNewsCheck){
-           nytAllSportsNews();
-        }else if (footballCheck){
+        if (topNewsCheck) {
+            nytAllSportsNews();
+        } else if (footballCheck) {
             nytFootballNews();
-        }else if (basketballCheck){
+        } else if (basketballCheck) {
             nytBasketballNews();
-        }else if (baseballCheck){
+        } else if (baseballCheck) {
             nytBaseballNews();
-        }else if (hockeyCheck){
+        } else if (hockeyCheck) {
             nytHockeyNews();
-        }else if (soccerCheck){
+        } else if (soccerCheck) {
             nytSoccerNews();
         }
     }
@@ -194,193 +192,124 @@ public class JobSchedulerService extends JobService {
 
     public void nytAllSportsNews() {
 
-        NytAPI.NytRx nytSports = NytAPI.createRx();
+        NytAPI.NytAPIRetrofit nytSports = NytAPI.create();
 
-        Observable<NytSportsResults> observable = nytSports.nytSportsResults("all", "sports", NYT_ALL);
+        Call<NytSportsResults> call = nytSports.response("all", "sports", NYT_ALL);
 
-        observable.subscribeOn(Schedulers.newThread())
-                .observeOn(Schedulers.newThread())
-                .subscribe(new Subscriber<NytSportsResults>() {
+        call.enqueue(new Callback<NytSportsResults>() {
+            @Override
+            public void onResponse(Call<NytSportsResults> call, Response<NytSportsResults> response) {
+                NytSportsResults nytSports = response.body();
+                createNotifications();
+            }
 
-                    @Override
-                    public void onCompleted() {
-                        Log.d("MainActivity", "Completed!");
-                        createNotifications();
+            @Override
+            public void onFailure(Call<NytSportsResults> call, Throwable t) {
 
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Timber.e(e.getMessage());
-                    }
-
-                    @Override
-                    public void onNext(NytSportsResults nytSportsResults) {
-                        Log.d("MainActivity", "Service API MADE!");
-
-                        Collections.addAll(sportsNewsList, nytSportsResults.getResults());
-                    }
-                });
+            }
+        });
     }
 
     public void nytFootballNews() {
 
-        NytAPI.NytRx nytSports = NytAPI.createRx();
+        NytAPI.NytAPIRetrofit nytSports = NytAPI.create();
 
-        Observable<NytSportsResults> observable = nytSports.nytSportsResults("all", "sports", NYT_FOOTBALL);
+        Call<NytSportsResults> call = nytSports.response("all", "sports", NYT_FOOTBALL);
 
-        observable.subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<NytSportsResults>() {
+        call.enqueue(new Callback<NytSportsResults>() {
+            @Override
+            public void onResponse(Call<NytSportsResults> call, Response<NytSportsResults> response) {
+                NytSportsResults nytSports = response.body();
+                createNotifications();
+            }
 
-                    @Override
-                    public void onCompleted() {
-                        Log.d("MainActivity", "Completed!");
-                        createNotifications();
+            @Override
+            public void onFailure(Call<NytSportsResults> call, Throwable t) {
 
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Timber.e(e.getMessage());
-                    }
-
-                    @Override
-                    public void onNext(NytSportsResults nytSportsResults) {
-                        Log.d("MainActivity", "Next!");
-                        Collections.addAll(sportsNewsList, nytSportsResults.getResults());
-                    }
-                });
+            }
+        });
     }
 
     public void nytBasketballNews() {
 
-        NytAPI.NytRx nytSports = NytAPI.createRx();
+        NytAPI.NytAPIRetrofit nytSports = NytAPI.create();
 
-        Observable<NytSportsResults> observable = nytSports.nytSportsResults("all", "sports", NYT_BASKETBALL);
+        Call<NytSportsResults> call = nytSports.response("all", "sports", NYT_BASKETBALL);
 
-        observable.subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<NytSportsResults>() {
+        call.enqueue(new Callback<NytSportsResults>() {
+            @Override
+            public void onResponse(Call<NytSportsResults> call, Response<NytSportsResults> response) {
+                NytSportsResults nytSports = response.body();
+                createNotifications();
+            }
 
-                    @Override
-                    public void onCompleted() {
-                        Log.d("MainActivity", "Completed!");
-                        createNotifications();
+            @Override
+            public void onFailure(Call<NytSportsResults> call, Throwable t) {
 
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Timber.e(e.getMessage());
-                    }
-
-                    @Override
-                    public void onNext(NytSportsResults nytSportsResults) {
-                        Log.d("MainActivity", "Next!");
-
-
-                        Collections.addAll(sportsNewsList, nytSportsResults.getResults());
-                    }
-                });
+            }
+        });
     }
 
 
     public void nytBaseballNews() {
 
-        NytAPI.NytRx nytSports = NytAPI.createRx();
+        NytAPI.NytAPIRetrofit nytSports = NytAPI.create();
 
-        Observable<NytSportsResults> observable = nytSports.nytSportsResults("all", "sports", NYT_BASEBALL);
+        Call<NytSportsResults> call = nytSports.response("all", "sports", NYT_BASEBALL);
 
-        observable.subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<NytSportsResults>() {
+        call.enqueue(new Callback<NytSportsResults>() {
+            @Override
+            public void onResponse(Call<NytSportsResults> call, Response<NytSportsResults> response) {
+                NytSportsResults nytSports = response.body();
+                createNotifications();
+            }
 
-                    @Override
-                    public void onCompleted() {
-                        Log.d("MainActivity", "Completed!");
-                        createNotifications();
+            @Override
+            public void onFailure(Call<NytSportsResults> call, Throwable t) {
 
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Timber.e(e.getMessage());
-                    }
-
-                    @Override
-                    public void onNext(NytSportsResults nytSportsResults) {
-                        Log.d("MainActivity", "Next!");
-
-
-                        Collections.addAll(sportsNewsList, nytSportsResults.getResults());
-                    }
-                });
+            }
+        });
     }
 
 
     public void nytHockeyNews() {
 
-        NytAPI.NytRx nytSports = NytAPI.createRx();
+        NytAPI.NytAPIRetrofit nytSports = NytAPI.create();
 
-        Observable<NytSportsResults> observable = nytSports.nytSportsResults("all", "sports", NYT_HOCKEY);
+        Call<NytSportsResults> call = nytSports.response("all", "sports", NYT_HOCKEY);
 
-        observable.subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<NytSportsResults>() {
+        call.enqueue(new Callback<NytSportsResults>() {
+            @Override
+            public void onResponse(Call<NytSportsResults> call, Response<NytSportsResults> response) {
+                NytSportsResults nytSports = response.body();
+                createNotifications();
+            }
 
-                    @Override
-                    public void onCompleted() {
-                        Log.d("MainActivity", "Completed!");
-                        createNotifications();
+            @Override
+            public void onFailure(Call<NytSportsResults> call, Throwable t) {
 
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Timber.e(e.getMessage());
-                    }
-
-                    @Override
-                    public void onNext(NytSportsResults nytSportsResults) {
-                        Log.d("MainActivity", "Next!");
-
-
-                        Collections.addAll(sportsNewsList, nytSportsResults.getResults());
-                    }
-                });
+            }
+        });
     }
 
     public void nytSoccerNews() {
 
-        NytAPI.NytRx nytSports = NytAPI.createRx();
+        NytAPI.NytAPIRetrofit nytSports = NytAPI.create();
 
-        Observable<NytSportsResults> observable = nytSports.nytSportsResults("all", "sports", NYT_SOCCER);
+        Call<NytSportsResults> call = nytSports.response("all", "sports", NYT_SOCCER);
 
-        observable.subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<NytSportsResults>() {
+        call.enqueue(new Callback<NytSportsResults>() {
+            @Override
+            public void onResponse(Call<NytSportsResults> call, Response<NytSportsResults> response) {
+                NytSportsResults nytSports = response.body();
+                createNotifications();
+            }
 
-                    @Override
-                    public void onCompleted() {
-                        Log.d("MainActivity", "Completed!");
-                        createNotifications();
+            @Override
+            public void onFailure(Call<NytSportsResults> call, Throwable t) {
 
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Timber.e(e.getMessage());
-                    }
-
-                    @Override
-                    public void onNext(NytSportsResults nytSportsResults) {
-                        Log.d("MainActivity", "Next!");
-
-
-                        Collections.addAll(sportsNewsList, nytSportsResults.getResults());
-                    }
-                });
+            }
+        });
     }
 
 }

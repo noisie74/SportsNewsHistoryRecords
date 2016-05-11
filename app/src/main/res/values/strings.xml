@@ -3,6 +3,12 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="mail_feedback_email">stats.sports.app@gmail.com</string>
+    <string name="mail_feedback_subject">Subject:</string>
+    <string name="mail_feedback_message">Message:</string>
+    <string name="title_send_feedback">Title:</string>
+
+
 
     <string name="action_settings">Settings</string>
 

@@ -44,7 +44,6 @@
             android:layout_toRightOf="@id/saved_cardView_image"
             android:maxLines="1"
             android:paddingLeft="4dp"
-            android:text="elapsed"
             android:textColor="#99666666"
             android:textSize="10sp" />
 

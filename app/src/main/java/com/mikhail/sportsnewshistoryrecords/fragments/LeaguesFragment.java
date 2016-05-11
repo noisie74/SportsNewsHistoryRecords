@@ -1,42 +1,29 @@
 package com.mikhail.sportsnewshistoryrecords.fragments;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.mikhail.sportsnewshistoryrecords.LeaguesActivity;
-import com.mikhail.sportsnewshistoryrecords.MainActivity;
 import com.mikhail.sportsnewshistoryrecords.R;
 import com.mikhail.sportsnewshistoryrecords.adapters.LeaguesNewsAdapter;
 import com.mikhail.sportsnewshistoryrecords.api.NytSearchAPI;
+import com.mikhail.sportsnewshistoryrecords.fragments.details_fragment.SportsLeaguesArticleDetailViewFragment;
 import com.mikhail.sportsnewshistoryrecords.model.search.ArticleSearch;
 import com.mikhail.sportsnewshistoryrecords.model.search.Doc;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-import rx.Observable;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by Mikhail on 4/28/16.
@@ -203,6 +190,7 @@ public class LeaguesFragment extends Fragment {
                 if (recyclerView != null) {
                     recyclerView.setAdapter(leaguesNewsAdapter);
                 }
+                swipeContainer.setRefreshing(false);
 
             }
 
@@ -231,6 +219,7 @@ public class LeaguesFragment extends Fragment {
                 if (recyclerView != null) {
                     recyclerView.setAdapter(leaguesNewsAdapter);
                 }
+                swipeContainer.setRefreshing(false);
 
             }
 
@@ -258,6 +247,7 @@ public class LeaguesFragment extends Fragment {
                 if (recyclerView != null) {
                     recyclerView.setAdapter(leaguesNewsAdapter);
                 }
+                swipeContainer.setRefreshing(false);
 
             }
 
@@ -287,6 +277,7 @@ public class LeaguesFragment extends Fragment {
                 if (recyclerView != null) {
                     recyclerView.setAdapter(leaguesNewsAdapter);
                 }
+                swipeContainer.setRefreshing(false);
 
             }
 
@@ -315,6 +306,7 @@ public class LeaguesFragment extends Fragment {
                 if (recyclerView != null) {
                     recyclerView.setAdapter(leaguesNewsAdapter);
                 }
+                swipeContainer.setRefreshing(false);
 
             }
 
@@ -343,6 +335,7 @@ public class LeaguesFragment extends Fragment {
                 if (recyclerView != null) {
                     recyclerView.setAdapter(leaguesNewsAdapter);
                 }
+                swipeContainer.setRefreshing(false);
 
             }
 
@@ -371,6 +364,8 @@ public class LeaguesFragment extends Fragment {
                 if (recyclerView != null) {
                     recyclerView.setAdapter(leaguesNewsAdapter);
                 }
+                swipeContainer.setRefreshing(false);
+
             }
 
 
@@ -400,6 +395,7 @@ public class LeaguesFragment extends Fragment {
                 if (recyclerView != null) {
                     recyclerView.setAdapter(leaguesNewsAdapter);
                 }
+                swipeContainer.setRefreshing(false);
 
             }
 

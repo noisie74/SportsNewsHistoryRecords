@@ -14,6 +14,5 @@ public class SportsApp extends Application {
         super.onCreate();
         Firebase.setAndroidContext(this);
 
-
     }
 }

@@ -1,4 +1,4 @@
-package com.mikhail.sportsnewshistoryrecords.fragments;
+package com.mikhail.sportsnewshistoryrecords.fragments.details_fragment;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;

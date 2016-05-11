@@ -33,31 +33,24 @@ public class NytAPI {
                 @Path("source") String source,
                 @Path("section") String section,
                 @Query("subsection") String subsection);
-//        @GET("all/sports/1.json?&api-key=" + NytKeys.newsWireKey + "&subsection=")
-//        Observable<NytSportsResults> nytSportsResults(
-//                @Query("subsection") String subsection);
-//        @GET("articlesearch.json?&sort=newest&api-key=" + NytKeys.nyTimesFullSearchQueryKey)
-//        Observable<ArticleSearch> response(
-//                @Query("q") String q);
-//    http://api.nytimes.com/svc/news/v3/content/all/sports/.json?api-key=sample-key&subsection=soccer
-
-//        @GET("/users/{owner}/repos")
-//        Observable<List<Repo>> repos(
-//                @Path("owner") String owner);
     }
 
-//    public interface NytRx {
-//        @GET("{source}/{section}/{subsection}/1.json?&api-key=" + NytKeys.newsWireKey)
-//        Observable<List<NytSportsResults>> nytSportsResults(
-//                @Path("source") String source,
-//                @Path("section") String section,
-//                @Path("subsection") String subsection);
-////        @GET("/users/{owner}/repos")
-////        Observable<List<Repo>> repos(
-////                @Path("owner") String owner);
+    public interface NytAPIRetrofit {
+        @GET("{source}/{section}/{subsection}/1.json?&api-key=" + NytKeys.newsWireKey)
+        Call<NytSportsResults> response(
+                @Path("source") String source,
+                @Path("section") String section,
+                @Query("subsection") String subsection);
+    }
 
-
-//    }
+    public static NytAPIRetrofit create() {
+        // Create a very simple REST adapter which points the GitHub API.
+        return new Retrofit.Builder()
+                .baseUrl(NYT_API_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+                .create(NytAPI.NytAPIRetrofit.class);
+    }
 
     public static NytRx createRx() {
         return new Retrofit.Builder()

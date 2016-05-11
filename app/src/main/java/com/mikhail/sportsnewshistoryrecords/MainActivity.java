@@ -1,9 +1,5 @@
 package com.mikhail.sportsnewshistoryrecords;
 
-import android.app.job.JobInfo;
-import android.app.job.JobScheduler;
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -25,16 +21,16 @@ import android.widget.FrameLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.mikhail.sportsnewshistoryrecords.fragments.AboutFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.LeaguesFragment;
-import com.mikhail.sportsnewshistoryrecords.fragments.NewsDetailsFragment;
+import com.mikhail.sportsnewshistoryrecords.fragments.details_fragment.NewsDetailsFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.NotificationFragment;
-import com.mikhail.sportsnewshistoryrecords.fragments.SavedArticleDetailsFragment;
+import com.mikhail.sportsnewshistoryrecords.fragments.details_fragment.SavedArticleDetailsFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.SavedArticleFragment;
 import com.mikhail.sportsnewshistoryrecords.interfaces.ControlToolbar;
 import com.mikhail.sportsnewshistoryrecords.interfaces.MainActivityControlAllSports;
 import com.mikhail.sportsnewshistoryrecords.interfaces.SavedArticleControl;
-import com.mikhail.sportsnewshistoryrecords.service.JobSchedulerService;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
@@ -482,7 +478,12 @@ public class MainActivity extends AppCompatActivity
 //                    spinner.setVisibility(View.GONE);
 //                }
                 break;
-
+            case R.id.about:
+                AboutFragment aboutFragment = new AboutFragment();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.frag_container, aboutFragment);
+                fragmentTransaction.commit();
+                break;
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
