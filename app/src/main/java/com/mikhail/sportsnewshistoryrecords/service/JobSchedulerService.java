@@ -65,7 +65,6 @@ public class JobSchedulerService extends JobService {
     boolean hockeyCheck = false;
     boolean soccerCheck = false;
     boolean[] booleenArray;
-    ArrayList<NytSportsObjects> sportsNewsList = new ArrayList<>();
     NotificationManager notificationManager;
     JobParameters params;
 
@@ -81,11 +80,8 @@ public class JobSchedulerService extends JobService {
         booleenArray = persistableBundle.getBooleanArray(NotificationFragment.BOOLEAN_CODE);
         updateBooleans();
 
-//        spanishSoccerSearch();
         setApiCall();
 
-
-        // only call this when you are DONE with checking api calls. ALL of them.
         return true;
 
     }
@@ -138,13 +134,13 @@ public class JobSchedulerService extends JobService {
 //        mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
 //
 //    }
-    private void createNotifications(String title, String message) {
+    private void createNotifications(String title, String message, int icon) {
 
         Intent intent = new Intent(context, MainActivity.class);
         PendingIntent pIntent = PendingIntent.getActivity(context, (int) System.currentTimeMillis(), intent, 0);
 
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context);
-        mBuilder.setSmallIcon(R.drawable.ic_star_24dp);
+        mBuilder.setSmallIcon(icon);
         mBuilder.setContentTitle(title);
         mBuilder.setContentText(message);
         mBuilder.setContentIntent(pIntent);
@@ -192,7 +188,8 @@ public class JobSchedulerService extends JobService {
             @Override
             public void onResponse(Call<NytSportsResults> call, Response<NytSportsResults> response) {
                 NytSportsResults nytSports = response.body();
-                createNotifications(nytSports.getResults()[0].getTitle(),nytSports.getResults()[0].getAbstractResult());
+                createNotifications(nytSports.getResults()[0].getTitle(),
+                        nytSports.getResults()[0].getAbstractResult(), R.drawable.basketball24);
             }
 
             @Override
@@ -212,7 +209,8 @@ public class JobSchedulerService extends JobService {
             @Override
             public void onResponse(Call<NytSportsResults> call, Response<NytSportsResults> response) {
                 NytSportsResults nytSports = response.body();
-//                createNotifications();
+                createNotifications(nytSports.getResults()[0].getTitle(),
+                        nytSports.getResults()[0].getAbstractResult(),R.drawable.americanfootball24);
             }
 
             @Override
@@ -232,7 +230,8 @@ public class JobSchedulerService extends JobService {
             @Override
             public void onResponse(Call<NytSportsResults> call, Response<NytSportsResults> response) {
                 NytSportsResults nytSports = response.body();
-//                createNotifications();
+                createNotifications(nytSports.getResults()[0].getTitle(),
+                        nytSports.getResults()[0].getAbstractResult(), R.drawable.basketball24);
             }
 
             @Override
@@ -253,7 +252,8 @@ public class JobSchedulerService extends JobService {
             @Override
             public void onResponse(Call<NytSportsResults> call, Response<NytSportsResults> response) {
                 NytSportsResults nytSports = response.body();
-//                createNotifications();
+                createNotifications(nytSports.getResults()[0].getTitle(),
+                        nytSports.getResults()[0].getAbstractResult(), R.drawable.baseball24);
             }
 
             @Override
@@ -274,7 +274,8 @@ public class JobSchedulerService extends JobService {
             @Override
             public void onResponse(Call<NytSportsResults> call, Response<NytSportsResults> response) {
                 NytSportsResults nytSports = response.body();
-//                createNotifications();
+                createNotifications(nytSports.getResults()[0].getTitle(),
+                        nytSports.getResults()[0].getAbstractResult(),  R.drawable.hockey24);
             }
 
             @Override
@@ -294,7 +295,8 @@ public class JobSchedulerService extends JobService {
             @Override
             public void onResponse(Call<NytSportsResults> call, Response<NytSportsResults> response) {
                 NytSportsResults nytSports = response.body();
-//                createNotifications();
+                createNotifications(nytSports.getResults()[0].getTitle(),
+                        nytSports.getResults()[0].getAbstractResult(), R.drawable.soccer24);
             }
 
             @Override

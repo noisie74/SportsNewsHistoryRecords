@@ -25,6 +25,8 @@ public class AllSportsAdapter extends RecyclerView.Adapter<AllSportsAdapter.View
     public NytSportsResults nytSportsResults;
     private static OnItemClickListener listener;
     Context context;
+    private int placeholderPosition;
+
 
     public AllSportsAdapter(NytSportsResults nytSportsResults) {
         this.nytSportsResults = nytSportsResults;
@@ -100,22 +102,34 @@ public class AllSportsAdapter extends RecyclerView.Adapter<AllSportsAdapter.View
         if (nytSportsMultimedias.length > 0) {
            imageURI  = nytSportsMultimedias[nytSportsMultimedias.length-1].getUrl();
             if (imageURI.isEmpty()) {
-                imageURI = "R.drawable.nyt_icon";
+                imageURI = "R.drawable.about_image";
             }
 
         }else {
 
-            imageURI = "R.drawable.nyt_icon";
+            imageURI = "R.drawable.placeholder_image1";
 
         }
+
+        int[] images = new int[2];
+        images[0] = R.drawable.about_image;
+        images[1] = R.drawable.placeholder_image;
+
         Picasso.with(context)
                 .load(imageURI)
-                .placeholder(R.drawable.nyt_icon)
+                .placeholder(randPlaceholder(images))
                 .resize(250, 180)
                 .centerCrop()
                 .into(holder.articleImage);
     }
 
+    private int randPlaceholder(int[] placeholderDrawables){
+
+
+        placeholderPosition++;
+
+        return placeholderDrawables[placeholderPosition % placeholderDrawables.length];
+    }
 
     @Override
     public int getItemCount() {

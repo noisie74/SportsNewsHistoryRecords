@@ -75,7 +75,6 @@ public class NotificationFragment extends Fragment {
         mNotificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
 
         setCheckboxClicks();
-//        setJobHandler();
 
         controlToolbar.showSpinner(false);
 
@@ -111,95 +110,61 @@ public class NotificationFragment extends Fragment {
                     case R.id.checkbox_top_news:
                         int NOTIFICATION_ID1 = 1;
                         if (checked) {
-//                            TopStories.Section section = TopStories.Section.HOME;
-//                            getTopArticleForSection(section, NOTIFICATION_ID1);
-                            //TODO make appropriate api call
                             topNewsCheck = true;
                         } else {
                             mNotificationManager.cancel(NOTIFICATION_ID1);
-                            topNewsCheck =false;
+                            topNewsCheck = false;
                         }
                         break;
                     case R.id.checkbox_football:
                         int NOTIFICATION_ID2 = 2;
                         if (checked) {
-                            //TODO make appropriate api call
                             footballCheck = true;
                         } else {
                             mNotificationManager.cancel(NOTIFICATION_ID2);
-                            footballCheck =false;
+                            footballCheck = false;
                         }
                         break;
                     case R.id.checkbox_basketball:
                         int NOTIFICATION_ID3 = 3;
                         if (checked) {
-
                             basketballCheck = true;
                         } else {
                             mNotificationManager.cancel(NOTIFICATION_ID3);
-                            basketballCheck =false;
+                            basketballCheck = false;
                         }
                         break;
                     case R.id.checkbox_baseball:
                         int NOTIFICATION_ID4 = 4;
                         if (checked) {
-
                             baseballCheck = true;
-
                         } else {
                             mNotificationManager.cancel(NOTIFICATION_ID4);
-                            baseballCheck =false;
+                            baseballCheck = false;
                         }
                         break;
                     case R.id.checkbox_hockey:
                         int NOTIFICATION_ID5 = 5;
                         if (checked) {
-
                             hockeyCheck = true;
-
                         } else {
                             mNotificationManager.cancel(NOTIFICATION_ID5);
-                            hockeyCheck =false;
+                            hockeyCheck = false;
                         }
                         break;
                     case R.id.checkbox_soccer:
                         int NOTIFICATION_ID6 = 6;
                         if (checked) {
-
                             soccerCheck = true;
-
                         } else {
                             mNotificationManager.cancel(NOTIFICATION_ID6);
-                            soccerCheck =false;
+                            soccerCheck = false;
                         }
                         break;
                     default:
                 }
-
             }
         });
-    }
-
-    /**
-     * Creates notifications for article of selected category
-     * If the notification is clicked on, the user will be taken to the article
-     */
-    private void createNotifications(int notificationID) {
-
-        Intent intent = new Intent(context, MainActivity.class);
-        PendingIntent pIntent = PendingIntent.getActivity(context, (int) System.currentTimeMillis(), intent, 0);
-
-
-        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context);
-        mBuilder.setSmallIcon(R.drawable.ic_star_24dp);
-        mBuilder.setContentTitle(title);
-        mBuilder.setContentText(snippet);
-        mBuilder.setContentIntent(pIntent);
-        mBuilder.setPriority(Notification.PRIORITY_DEFAULT);
-        mBuilder.setAutoCancel(true);
-
-        mNotificationManager.notify(notificationID, mBuilder.build());
-
     }
 
     /**
@@ -280,7 +245,6 @@ public class NotificationFragment extends Fragment {
     }
 
 
-
     /**
      * Builds the JobScheduler in this activity.
      * Sets the time for it to call the api every 60 mins
@@ -300,7 +264,7 @@ public class NotificationFragment extends Fragment {
             bundle.putBooleanArray(BOOLEAN_CODE, booleenArray);
 
             JobInfo.Builder builder = new JobInfo.Builder(1, new ComponentName(getActivity(), JobSchedulerService.class));
-            builder.setPeriodic(36000000).setExtras(bundle);
+            builder.setPeriodic(18000000).setExtras(bundle);
 
             JobScheduler mJobScheduler = (JobScheduler) getActivity().getSystemService(Context.JOB_SCHEDULER_SERVICE);
             if (mJobScheduler.schedule(builder.build()) <= 0) {

@@ -28,6 +28,7 @@ public class LeaguesNewsAdapter extends RecyclerView.Adapter<LeaguesNewsAdapter.
     Context context;
     public ArrayList<Doc> leaguesSearchResults;
     public static OnItemClickListener listener;
+    private int placeholderPosition;
 
     public LeaguesNewsAdapter(ArrayList<Doc> leaguesSearchResults) {
         this.leaguesSearchResults = leaguesSearchResults;
@@ -102,9 +103,15 @@ public class LeaguesNewsAdapter extends RecyclerView.Adapter<LeaguesNewsAdapter.
             imageURI = "R.drawable.nyt_icon";
 
         }
+        int[] images = new int[2];
+        images[0] = R.drawable.about_image;
+        images[1] = R.drawable.placeholder_image;
+//        images[2] = R.drawable.placeholder_image2;
+
+
         Picasso.with(context)
                 .load("http://nytimes.com/" + imageURI)
-                .placeholder(R.drawable.nyt_icon)
+                .placeholder(randPlaceholder(images))
                 .resize(200, 180)
                 .centerCrop()
                 .into(holder.articleImage);
@@ -113,6 +120,16 @@ public class LeaguesNewsAdapter extends RecyclerView.Adapter<LeaguesNewsAdapter.
     @Override
     public int getItemCount() {
         return leaguesSearchResults.size();
+    }
+
+
+
+    private int randPlaceholder(int[] placeholderDrawables){
+
+
+        placeholderPosition++;
+
+        return placeholderDrawables[placeholderPosition % placeholderDrawables.length];
     }
 }
 
