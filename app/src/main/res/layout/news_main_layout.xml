@@ -38,14 +38,14 @@
             android:id="@+id/ago"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/headline"
             android:maxLines="1"
             android:padding="8dp"
-            android:layout_alignParentRight="true"
             android:gravity="end"
             android:text="elapsed"
             android:textColor="#99666666"
-            android:textSize="10sp" />
+            android:textSize="10sp"
+            android:layout_below="@+id/headline"
+            android:layout_alignParentEnd="true" />
 
 
         <TextView

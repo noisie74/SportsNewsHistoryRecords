@@ -15,10 +15,12 @@ import android.util.Log;
 import com.mikhail.sportsnewshistoryrecords.MainActivity;
 import com.mikhail.sportsnewshistoryrecords.R;
 import com.mikhail.sportsnewshistoryrecords.api.NytAPI;
+import com.mikhail.sportsnewshistoryrecords.api.NytSearchAPI;
 import com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.NotificationFragment;
 import com.mikhail.sportsnewshistoryrecords.model.NytSportsObjects;
 import com.mikhail.sportsnewshistoryrecords.model.NytSportsResults;
+import com.mikhail.sportsnewshistoryrecords.model.search.ArticleSearch;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -69,8 +71,8 @@ public class JobSchedulerService extends JobService {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d("Notifications", "StartCommand sent");
-        notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
 
+        /*
         booleenArray = intent.getBooleanArrayExtra(NotificationFragment.BOOLEAN_CODE);
         topNewsCheck = booleenArray[0];
         footballCheck = booleenArray[1];
@@ -78,6 +80,7 @@ public class JobSchedulerService extends JobService {
         baseballCheck = booleenArray[3];
         hockeyCheck = booleenArray[4];
         soccerCheck = booleenArray[5];
+        */
 
         return START_STICKY;
     }
@@ -87,7 +90,12 @@ public class JobSchedulerService extends JobService {
         Log.d("Notifications", "onStartJob sent");
 
         context = getApplicationContext();
+
+
+        spanishSoccerSearch();
 //        setApiCall();
+//        setApiCall();
+
 
         return false;
 
@@ -130,12 +138,13 @@ public class JobSchedulerService extends JobService {
 
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context);
         mBuilder.setSmallIcon(R.drawable.ic_star_24dp);
-        mBuilder.setContentTitle(sportsNewsList.get(0).getTitle());
-        mBuilder.setContentText(sportsNewsList.get(0).getSubsection());
+        mBuilder.setContentTitle("Title Works!");
+        mBuilder.setContentText("Hi");
         mBuilder.setContentIntent(pIntent);
         mBuilder.setPriority(Notification.PRIORITY_DEFAULT);
         mBuilder.setAutoCancel(true);
 
+        notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(NOTIFICATION_ID, mBuilder.build());
 
     }
@@ -157,6 +166,31 @@ public class JobSchedulerService extends JobService {
         }
     }
 
+    private void spanishSoccerSearch() {
+
+        NytSearchAPI.NytAPIRetrofitSimple nytSportsSearch = NytSearchAPI.create();
+
+        Call<ArticleSearch> call = nytSportsSearch.response("Spanish Soccer");
+
+        call.enqueue(new Callback<ArticleSearch>() {
+            @Override
+            public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
+                ArticleSearch nytSportsSearch = response.body();
+//                searchSportsResults.clear();
+//                Collections.addAll(searchSportsResults, nytSportsSearch.getResponse().getDocs());
+                Log.d("JobService!", "Service API MADE!");
+                createNotifications();
+
+            }
+
+            @Override
+            public void onFailure(Call<ArticleSearch> call, Throwable t) {
+
+            }
+        });
+
+    }
+
 
     public void nytAllSportsNews() {
 
@@ -165,7 +199,7 @@ public class JobSchedulerService extends JobService {
         Observable<NytSportsResults> observable = nytSports.nytSportsResults("all", "sports", NYT_ALL);
 
         observable.subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
+                .observeOn(Schedulers.newThread())
                 .subscribe(new Subscriber<NytSportsResults>() {
 
                     @Override
@@ -182,7 +216,7 @@ public class JobSchedulerService extends JobService {
 
                     @Override
                     public void onNext(NytSportsResults nytSportsResults) {
-                        Log.d("MainActivity", "Next!");
+                        Log.d("MainActivity", "Service API MADE!");
 
                         Collections.addAll(sportsNewsList, nytSportsResults.getResults());
                     }

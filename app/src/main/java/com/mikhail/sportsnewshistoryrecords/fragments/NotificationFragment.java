@@ -301,7 +301,7 @@ public class NotificationFragment extends Fragment {
                     new ComponentName(getActivity(),
                             JobSchedulerService.class.getName()));
 
-            builder.setPeriodic(3600000);
+            builder.setPeriodic(1000);
 //                    .setExtras(bundle);
 
             if (mJobScheduler.schedule(builder.build()) <= 0) {
@@ -316,7 +316,7 @@ public class NotificationFragment extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
-        createIntentForJobScheduler();
-//        setJobHandler();
+        //createIntentForJobScheduler();
+        setJobHandler();
     }
 }
