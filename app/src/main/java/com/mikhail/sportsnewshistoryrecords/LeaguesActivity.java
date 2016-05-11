@@ -20,6 +20,7 @@ import android.support.v4.app.FragmentTransaction;
 
 
 import com.mikhail.sportsnewshistoryrecords.adapters.ViewPagerAdapter;
+import com.mikhail.sportsnewshistoryrecords.fragments.AboutFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.LeaguesFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.NotificationFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.details_fragment.SportsLeaguesArticleDetailViewFragment;
@@ -304,6 +305,21 @@ public class LeaguesActivity extends AppCompatActivity implements
                 NotificationFragment notificationFragmnet = new NotificationFragment();
                 transaction = fragmentManager.beginTransaction();
                 transaction.add(R.id.frag_container_leagues, notificationFragmnet);
+                transaction.commit();
+                if (viewPager != null){
+                    viewPager.setVisibility(View.GONE);
+                }
+                if (tabLayout != null){
+                    tabLayout.setVisibility(View.GONE);
+                }
+                if (frameLayout != null){
+                    frameLayout.setVisibility(View.VISIBLE);
+                }
+                break;
+            case R.id.about:
+                AboutFragment aboutFragment = new AboutFragment();
+                transaction = fragmentManager.beginTransaction();
+                transaction.add(R.id.frag_container_leagues, aboutFragment);
                 transaction.commit();
                 if (viewPager != null){
                     viewPager.setVisibility(View.GONE);

@@ -8,6 +8,7 @@ import android.app.job.JobService;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.PersistableBundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.NotificationCompat;
 import android.util.Log;
@@ -66,39 +67,47 @@ public class JobSchedulerService extends JobService {
     boolean[] booleenArray;
     ArrayList<NytSportsObjects> sportsNewsList = new ArrayList<>();
     NotificationManager notificationManager;
+    JobParameters params;
 
-
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.d("Notifications", "StartCommand sent");
-
-        /*
-        booleenArray = intent.getBooleanArrayExtra(NotificationFragment.BOOLEAN_CODE);
-        topNewsCheck = booleenArray[0];
-        footballCheck = booleenArray[1];
-        basketballCheck = booleenArray[2];
-        baseballCheck = booleenArray[3];
-        hockeyCheck = booleenArray[4];
-        soccerCheck = booleenArray[5];
-        */
-
-        return START_STICKY;
-    }
 
     @Override
     public boolean onStartJob(JobParameters params) {
         Log.d("Notifications", "onStartJob sent");
-
+        this.params = params;
+        setBooleanArray();
         context = getApplicationContext();
 
+        PersistableBundle persistableBundle = params.getExtras();
+        booleenArray = persistableBundle.getBooleanArray(NotificationFragment.BOOLEAN_CODE);
+        updateBooleans();
 
-//        nytAllSportsNews();
 //        spanishSoccerSearch();
         setApiCall();
 
 
-        return false;
+        // only call this when you are DONE with checking api calls. ALL of them.
+        return true;
 
+    }
+
+    private void updateBooleans(){
+
+        topNewsCheck = booleenArray[0];
+        footballCheck = booleenArray[1];
+        footballCheck = booleenArray[2];
+        footballCheck = booleenArray[3];
+        footballCheck = booleenArray[4];
+        footballCheck = booleenArray[5];
+    }
+
+    private void setBooleanArray(){
+        booleenArray = new boolean[6];
+        booleenArray[0] = topNewsCheck;
+        booleenArray[1] = footballCheck;
+        booleenArray[2] = footballCheck;
+        booleenArray[3] = footballCheck;
+        booleenArray[4] = footballCheck;
+        booleenArray[5] = footballCheck;
     }
 
     @Override
@@ -129,15 +138,15 @@ public class JobSchedulerService extends JobService {
 //        mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
 //
 //    }
-    private void createNotifications() {
+    private void createNotifications(String title, String message) {
 
         Intent intent = new Intent(context, MainActivity.class);
         PendingIntent pIntent = PendingIntent.getActivity(context, (int) System.currentTimeMillis(), intent, 0);
 
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context);
         mBuilder.setSmallIcon(R.drawable.ic_star_24dp);
-        mBuilder.setContentTitle("New articles available!");
-        mBuilder.setContentText("Hi");
+        mBuilder.setContentTitle(title);
+        mBuilder.setContentText(message);
         mBuilder.setContentIntent(pIntent);
         mBuilder.setPriority(Notification.PRIORITY_DEFAULT);
         mBuilder.setAutoCancel(true);
@@ -145,48 +154,31 @@ public class JobSchedulerService extends JobService {
         notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(NOTIFICATION_ID, mBuilder.build());
 
+        jobFinished(params, false);
+
+
     }
 
     private void setApiCall() {
         Log.d("The Service", topNewsCheck + "");
         if (topNewsCheck) {
             nytAllSportsNews();
-        } else if (footballCheck) {
+        }
+        if (footballCheck) {
             nytFootballNews();
-        } else if (basketballCheck) {
+        }
+        if (basketballCheck) {
             nytBasketballNews();
-        } else if (baseballCheck) {
+        }
+        if (baseballCheck) {
             nytBaseballNews();
-        } else if (hockeyCheck) {
+        }
+        if (hockeyCheck) {
             nytHockeyNews();
-        } else if (soccerCheck) {
+        }
+        if (soccerCheck) {
             nytSoccerNews();
         }
-    }
-
-    private void spanishSoccerSearch() {
-
-        NytSearchAPI.NytAPIRetrofitSimple nytSportsSearch = NytSearchAPI.create();
-
-        Call<ArticleSearch> call = nytSportsSearch.response("Spanish Soccer");
-
-        call.enqueue(new Callback<ArticleSearch>() {
-            @Override
-            public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
-                ArticleSearch nytSportsSearch = response.body();
-//                searchSportsResults.clear();
-//                Collections.addAll(searchSportsResults, nytSportsSearch.getResponse().getDocs());
-                Log.d("JobService!", "Service API MADE!");
-                createNotifications();
-
-            }
-
-            @Override
-            public void onFailure(Call<ArticleSearch> call, Throwable t) {
-
-            }
-        });
-
     }
 
 
@@ -200,7 +192,7 @@ public class JobSchedulerService extends JobService {
             @Override
             public void onResponse(Call<NytSportsResults> call, Response<NytSportsResults> response) {
                 NytSportsResults nytSports = response.body();
-                createNotifications();
+                createNotifications(nytSports.getResults()[0].getTitle(),nytSports.getResults()[0].getAbstractResult());
             }
 
             @Override
@@ -220,7 +212,7 @@ public class JobSchedulerService extends JobService {
             @Override
             public void onResponse(Call<NytSportsResults> call, Response<NytSportsResults> response) {
                 NytSportsResults nytSports = response.body();
-                createNotifications();
+//                createNotifications();
             }
 
             @Override
@@ -240,7 +232,7 @@ public class JobSchedulerService extends JobService {
             @Override
             public void onResponse(Call<NytSportsResults> call, Response<NytSportsResults> response) {
                 NytSportsResults nytSports = response.body();
-                createNotifications();
+//                createNotifications();
             }
 
             @Override
@@ -261,7 +253,7 @@ public class JobSchedulerService extends JobService {
             @Override
             public void onResponse(Call<NytSportsResults> call, Response<NytSportsResults> response) {
                 NytSportsResults nytSports = response.body();
-                createNotifications();
+//                createNotifications();
             }
 
             @Override
@@ -282,7 +274,7 @@ public class JobSchedulerService extends JobService {
             @Override
             public void onResponse(Call<NytSportsResults> call, Response<NytSportsResults> response) {
                 NytSportsResults nytSports = response.body();
-                createNotifications();
+//                createNotifications();
             }
 
             @Override
@@ -302,7 +294,7 @@ public class JobSchedulerService extends JobService {
             @Override
             public void onResponse(Call<NytSportsResults> call, Response<NytSportsResults> response) {
                 NytSportsResults nytSports = response.body();
-                createNotifications();
+//                createNotifications();
             }
 
             @Override

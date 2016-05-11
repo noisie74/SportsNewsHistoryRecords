@@ -279,31 +279,30 @@ public class NotificationFragment extends Fragment {
         getActivity().startService(serviceIntent);
     }
 
+
+
     /**
      * Builds the JobScheduler in this activity.
      * Sets the time for it to call the api every 60 mins
      */
     @TargetApi(21)
-    private void setJobHandler() {
+    public void setJobHandler() {
         if (Integer.valueOf(Build.VERSION.SDK_INT) > 20) {
-//            PersistableBundle bundle = new PersistableBundle();
-//            boolean[] booleenArray = new boolean[6];
-//            booleenArray[0] = topNewsCheck;
-//            booleenArray[1] = footballCheck;
-//            booleenArray[2] = basketballCheck;
-//            booleenArray[3] = baseballCheck;
-//            booleenArray[4] = hockeyCheck;
-//            booleenArray[5] = soccerCheck;
-//            bundle.putBooleanArray(BOOLEAN_CODE, booleenArray);
-            JobScheduler mJobScheduler = (JobScheduler) getActivity().
-                    getSystemService(Context.JOB_SCHEDULER_SERVICE);
-            JobInfo.Builder builder = new JobInfo.Builder(1,
-                    new ComponentName(getActivity(),
-                            JobSchedulerService.class.getName()));
+            PersistableBundle bundle = new PersistableBundle();
 
-            builder.setPeriodic(1000);
-//                    .setExtras(bundle);
+            boolean[] booleenArray = new boolean[6];
+            booleenArray[0] = topNewsCheck;
+            booleenArray[1] = footballCheck;
+            booleenArray[2] = basketballCheck;
+            booleenArray[3] = baseballCheck;
+            booleenArray[4] = hockeyCheck;
+            booleenArray[5] = soccerCheck;
+            bundle.putBooleanArray(BOOLEAN_CODE, booleenArray);
 
+            JobInfo.Builder builder = new JobInfo.Builder(1, new ComponentName(getActivity(), JobSchedulerService.class));
+            builder.setPeriodic(36000000).setExtras(bundle);
+
+            JobScheduler mJobScheduler = (JobScheduler) getActivity().getSystemService(Context.JOB_SCHEDULER_SERVICE);
             if (mJobScheduler.schedule(builder.build()) <= 0) {
                 //If something goes wrong
             }
@@ -317,6 +316,6 @@ public class NotificationFragment extends Fragment {
     public void onStop() {
         super.onStop();
         //createIntentForJobScheduler();
-        setJobHandler();
+//        setJobHandler();
     }
 }

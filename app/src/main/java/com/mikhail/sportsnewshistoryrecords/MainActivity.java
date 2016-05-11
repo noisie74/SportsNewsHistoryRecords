@@ -55,6 +55,8 @@ public class MainActivity extends AppCompatActivity
     private int key;
     SavedArticleDetailsFragment savedArticleDetailsFragment;
     int spinnerPosition;
+    AboutFragment aboutFragment;
+    NotificationFragment notificationFragment;
 
 
     @Override
@@ -253,10 +255,34 @@ public class MainActivity extends AppCompatActivity
                 spinner.setSelection(0);
             }
             savedArticleFragment = null;
-        }
-        // TODO if current fragment is already AllSportsFragment, do NOTHING
+        } else if (aboutFragment != null) {
 
-        else {
+            Log.d("Main", "2nd condition");
+//                allSportsFragment.nytAllSportsNews();
+            fragContainer.setVisibility(View.VISIBLE);
+            allSportsFragment = new AllSportsFragment();
+            allSportsFragment.nytAllSportsNews();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.frag_container, allSportsFragment);
+            fragmentTransaction.commit();
+            toolbar.setTitle("Sports News");
+            toolbar.getChildAt(1).setVisibility(View.VISIBLE);
+            if (spinner != null) {
+                spinner.setSelection(0);
+            }
+            aboutFragment = null;
+        } else if (notificationFragment != null) {
+            notificationFragment.setJobHandler();
+
+            allSportsFragment = new AllSportsFragment();
+            allSportsFragment.nytAllSportsNews();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.frag_container, allSportsFragment);
+            fragmentTransaction.commit();
+
+            notificationFragment = null;
+
+        } else {
             Log.d("MainActivity", "No condition met");
             super.onBackPressed();
         }
@@ -469,9 +495,9 @@ public class MainActivity extends AppCompatActivity
                 }
                 break;
             case R.id.notifications:
-                NotificationFragment notificationFragmnet = new NotificationFragment();
+                 notificationFragment = new NotificationFragment();
                 fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frag_container, notificationFragmnet);
+                fragmentTransaction.replace(R.id.frag_container, notificationFragment);
                 fragmentTransaction.commit();
 //                toolbar.setTitle("Saved stories");
 //                if (spinner != null) {
@@ -479,7 +505,7 @@ public class MainActivity extends AppCompatActivity
 //                }
                 break;
             case R.id.about:
-                AboutFragment aboutFragment = new AboutFragment();
+                aboutFragment = new AboutFragment();
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frag_container, aboutFragment);
                 fragmentTransaction.commit();
