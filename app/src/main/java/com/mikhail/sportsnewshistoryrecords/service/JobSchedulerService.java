@@ -66,12 +66,13 @@ public class JobSchedulerService extends JobService {
     boolean soccerCheck = false;
     boolean[] booleenArray;
     NotificationManager notificationManager;
+    JobParameters params;
 
 
     @Override
     public boolean onStartJob(JobParameters params) {
         Log.d("Notifications", "onStartJob sent");
-        final JobParameters jobParameters = params;
+        this.params = params;
         setBooleanArray();
         context = getApplicationContext();
 
@@ -80,19 +81,6 @@ public class JobSchedulerService extends JobService {
         updateBooleans();
 
         setApiCall();
-
-        Thread closeJobScheduler = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(60000);
-                    jobFinished(jobParameters, false);
-                } catch (Exception e) {
-                    e.getLocalizedMessage();
-                }
-            }
-        });
-        closeJobScheduler.run();
 
         return true;
 
@@ -162,6 +150,7 @@ public class JobSchedulerService extends JobService {
         notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(NOTIFICATION_ID, mBuilder.build());
 
+        jobFinished(params, false);
 
 
     }
@@ -319,3 +308,15 @@ public class JobSchedulerService extends JobService {
 
 }
 
+//Thread closeJobScheduler = new Thread(new Runnable() {
+//    @Override
+//    public void run() {
+//        try {
+//            Thread.sleep(60000);
+//            jobFinished(jobParameters, false);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+//});
+//closeJobScheduler.run();

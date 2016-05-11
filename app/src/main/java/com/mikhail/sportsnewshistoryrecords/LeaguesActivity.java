@@ -43,6 +43,7 @@ public class LeaguesActivity extends AppCompatActivity implements
     SportsLeaguesArticleDetailViewFragment sportsLeaguesArticleDetailViewFragment;
     FrameLayout frameLayout;
     public int key;
+    NotificationFragment notificationFragmnet;
 
 
     @Override
@@ -263,6 +264,36 @@ public class LeaguesActivity extends AppCompatActivity implements
                 startActivity(intent);
 //                toolbar.setTitle("Saved stories");
                 break;
+            case R.id.notifications:
+                notificationFragmnet  = new NotificationFragment();
+                transaction = fragmentManager.beginTransaction();
+                transaction.add(R.id.frag_container_leagues, notificationFragmnet);
+                transaction.commit();
+                if (viewPager != null){
+                    viewPager.setVisibility(View.GONE);
+                }
+                if (tabLayout != null){
+                    tabLayout.setVisibility(View.GONE);
+                }
+                if (frameLayout != null){
+                    frameLayout.setVisibility(View.VISIBLE);
+                }
+                break;
+            case R.id.about:
+                AboutFragment aboutFragment = new AboutFragment();
+                transaction = fragmentManager.beginTransaction();
+                transaction.add(R.id.frag_container_leagues, aboutFragment);
+                transaction.commit();
+                if (viewPager != null){
+                    viewPager.setVisibility(View.GONE);
+                }
+                if (tabLayout != null){
+                    tabLayout.setVisibility(View.GONE);
+                }
+                if (frameLayout != null){
+                    frameLayout.setVisibility(View.VISIBLE);
+                }
+                break;
 
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_leagues);
@@ -301,36 +332,7 @@ public class LeaguesActivity extends AppCompatActivity implements
             case R.id.german_soccer:
                 toolbar.setTitle("German Bundesliga");
                 break;
-            case R.id.notifications:
-                NotificationFragment notificationFragmnet = new NotificationFragment();
-                transaction = fragmentManager.beginTransaction();
-                transaction.add(R.id.frag_container_leagues, notificationFragmnet);
-                transaction.commit();
-                if (viewPager != null){
-                    viewPager.setVisibility(View.GONE);
-                }
-                if (tabLayout != null){
-                    tabLayout.setVisibility(View.GONE);
-                }
-                if (frameLayout != null){
-                    frameLayout.setVisibility(View.VISIBLE);
-                }
-                break;
-            case R.id.about:
-                AboutFragment aboutFragment = new AboutFragment();
-                transaction = fragmentManager.beginTransaction();
-                transaction.add(R.id.frag_container_leagues, aboutFragment);
-                transaction.commit();
-                if (viewPager != null){
-                    viewPager.setVisibility(View.GONE);
-                }
-                if (tabLayout != null){
-                    tabLayout.setVisibility(View.GONE);
-                }
-                if (frameLayout != null){
-                    frameLayout.setVisibility(View.VISIBLE);
-                }
-                break;
+
         }
     }
 

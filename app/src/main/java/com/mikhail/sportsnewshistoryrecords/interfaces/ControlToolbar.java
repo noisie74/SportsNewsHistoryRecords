@@ -8,4 +8,5 @@ public interface ControlToolbar {
     void showSpinner(boolean visible);
 
     void showTitle(boolean visible);
+    void setTitle(String title);
 }

@@ -136,6 +136,12 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
+    public void setTitle(String title) {
+
+        toolbar.setTitle(title);
+    }
+
+    @Override
     public void showSpinner(boolean visible) {
         if (visible) {
             spinner.setVisibility(View.VISIBLE);
@@ -509,6 +515,7 @@ public class MainActivity extends AppCompatActivity
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frag_container, aboutFragment);
                 fragmentTransaction.commit();
+//                toolbar.setTitle("About");
                 break;
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

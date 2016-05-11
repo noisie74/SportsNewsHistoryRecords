@@ -39,6 +39,7 @@ public class AboutFragment extends Fragment {
         feedback = (Button) v.findViewById(R.id.button_feedback);
 
         controlToolbar.showSpinner(false);
+        controlToolbar.setTitle("About");
 
         hasOptionsMenu();
         setClickListener();
