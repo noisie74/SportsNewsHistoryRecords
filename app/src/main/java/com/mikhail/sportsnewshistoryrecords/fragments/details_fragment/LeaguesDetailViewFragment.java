@@ -29,7 +29,7 @@ import com.mikhail.sportsnewshistoryrecords.database.SaveSQLiteHelper;
 import com.mikhail.sportsnewshistoryrecords.interfaces.ControlLeaguesActivityLayout;
 
 
-public class SportsLeaguesArticleDetailViewFragment extends Fragment {
+public class LeaguesDetailViewFragment extends Fragment {
     String[] articleDetails;
     View v;
 

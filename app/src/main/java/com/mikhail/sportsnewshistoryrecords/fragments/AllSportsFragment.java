@@ -181,7 +181,7 @@ public class AllSportsFragment extends Fragment {
 
                     @Override
                     public void onError(Throwable e) {
-                        Timber.e(e.getMessage());
+                        e.printStackTrace();
                     }
 
                     @Override
@@ -209,10 +209,12 @@ public class AllSportsFragment extends Fragment {
 
                     @Override
                     public void onError(Throwable e) {
+                        e.printStackTrace();
                     }
 
                     @Override
                     public void onNext(NytSportsResults nytSportsResults) {
+
 //                        allSportsAdapter = new AllSportsAdapter(nytSportsResults);
                         allSportsAdapter.updateData(nytSportsResults);
                         sportsNewsList.clear();

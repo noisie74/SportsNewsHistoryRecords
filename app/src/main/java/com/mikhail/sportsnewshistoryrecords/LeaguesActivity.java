@@ -22,7 +22,7 @@ import android.support.v4.app.FragmentTransaction;
 import com.mikhail.sportsnewshistoryrecords.adapters.ViewPagerAdapter;
 import com.mikhail.sportsnewshistoryrecords.fragments.AboutFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.NotificationFragment;
-import com.mikhail.sportsnewshistoryrecords.fragments.details_fragment.SportsLeaguesArticleDetailViewFragment;
+import com.mikhail.sportsnewshistoryrecords.fragments.details_fragment.LeaguesDetailViewFragment;
 import com.mikhail.sportsnewshistoryrecords.interfaces.ControlLeaguesActivityLayout;
 import com.mikhail.sportsnewshistoryrecords.interfaces.ControlToolbar;
 import com.mikhail.sportsnewshistoryrecords.interfaces.LeaguesActivityControl;
@@ -32,86 +32,43 @@ public class LeaguesActivity extends AppCompatActivity implements
         ControlLeaguesActivityLayout,
         LeaguesActivityControl, ControlToolbar {
 
-    Toolbar toolbar;
-    private int mNavigationItemId;
-    ViewPagerAdapter viewPagerAdapter;
-    ViewPager viewPager;
-    TabLayout tabLayout;
-    FragmentManager fragmentManager;
-    FragmentTransaction transaction;
-    NavigationView navigationView;
-    Intent intent;
-    public static final String RETURN_TO_MAIN_ACTIVITY = "backToMainActivity";
-    SportsLeaguesArticleDetailViewFragment sportsLeaguesArticleDetailViewFragment;
-    FrameLayout frameLayout;
+    public Toolbar toolbar;
+    public NavigationView navigationView;
+    public FrameLayout frameLayout;
     public int key;
-    NotificationFragment notificationFragmnet;
+    public static final String RETURN_TO_MAIN_ACTIVITY = "backToMainActivity";
+    public static final String FROM_MAIN_ACTIVITY = "KEY";
+    private ViewPagerAdapter viewPagerAdapter;
+    private ViewPager viewPager;
+    private TabLayout tabLayout;
+    private FragmentManager fragmentManager;
+    private FragmentTransaction transaction;
+    private Intent intent;
+    private LeaguesDetailViewFragment leaguesDetailViewFragment;
+    private NotificationFragment notificationFragmnet;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        key = getIntent().getIntExtra("KEY", 0);
-
         setContentView(R.layout.activity_leagues);
-        toolbar = (Toolbar) findViewById(R.id.toolbar_leagues);
-        setSupportActionBar(toolbar);
 
+        key = getIntent().getIntExtra(FROM_MAIN_ACTIVITY, 0);
         intent = new Intent(LeaguesActivity.this, MainActivity.class);
 
+        setViews();
         toolBarTitle();
 
-        tabLayout = (TabLayout) findViewById(R.id.tab_layout_leagues);
-        tabLayout.addTab(tabLayout.newTab().setText("Articles"));
-        tabLayout.addTab(tabLayout.newTab().setText("History"));
-        tabLayout.addTab(tabLayout.newTab().setText("Records"));
-        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-
-        frameLayout = (FrameLayout) findViewById(R.id.frag_container_leagues);
 
         fragmentManager = getSupportFragmentManager();
 
-        viewPager = (ViewPager) findViewById(R.id.viewPager_leagues);
-        viewPagerAdapter = new ViewPagerAdapter
-                (getSupportFragmentManager(), tabLayout.getTabCount());
-        viewPagerAdapter.setFragmentType(key);
-        viewPager.setOffscreenPageLimit(2);
 
-        Log.d("MainActivity", "Tab!" + tabLayout.getTabCount());
-        viewPager.setAdapter(viewPagerAdapter);
-//        viewPager.setVisibility(View.GONE);
-//        fragContainer.setVisibility(View.GONE);
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_leagues);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
-
-        navigationView = (NavigationView) findViewById(R.id.nav_view_leagues);
-        navigationView.setNavigationItemSelectedListener(this);
 
 
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
-
-                int id = tab.getPosition();
-
-//                if (id == 0) {
-//                    viewPagerAdapter.setFragmentType(mNavigationItemId);
-//
-//                }
-
-//                switch (id) {
-//                    case 0:
-//                        viewPagerAdapter.setFragmentType(mNavigationItemId);
-//                        break;
-//
-//                }
 
             }
 
@@ -126,14 +83,46 @@ public class LeaguesActivity extends AppCompatActivity implements
             }
         });
 
+
     }
 
+    public void setViews() {
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar_leagues);
+        setSupportActionBar(toolbar);
+        tabLayout = (TabLayout) findViewById(R.id.tab_layout_leagues);
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_articles));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_history));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_records));
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        frameLayout = (FrameLayout) findViewById(R.id.frag_container_leagues);
+        viewPager = (ViewPager) findViewById(R.id.viewPager_leagues);
+        viewPagerAdapter = new ViewPagerAdapter
+                (getSupportFragmentManager(), tabLayout.getTabCount());
+        viewPagerAdapter.setFragmentType(key);
+        viewPager.setOffscreenPageLimit(2);
+        Log.d("MainActivity", "Tab!" + tabLayout.getTabCount());
+        viewPager.setAdapter(viewPagerAdapter);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_leagues);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+        navigationView = (NavigationView) findViewById(R.id.nav_view_leagues);
+        navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    /**
+     * set bundle to display article
+     * leagues details fragment into webview
+     */
     @Override
     public void setBundle(Bundle article) {
-        sportsLeaguesArticleDetailViewFragment = new SportsLeaguesArticleDetailViewFragment();
-        sportsLeaguesArticleDetailViewFragment.setArguments(article);
+        leaguesDetailViewFragment = new LeaguesDetailViewFragment();
+        leaguesDetailViewFragment.setArguments(article);
         transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frag_container_leagues, sportsLeaguesArticleDetailViewFragment);
+        transaction.replace(R.id.frag_container_leagues, leaguesDetailViewFragment);
         transaction.addToBackStack(null);
         transaction.commit();
         viewPager.setVisibility(View.GONE);
@@ -142,13 +131,10 @@ public class LeaguesActivity extends AppCompatActivity implements
 
     @Override
     public void onBackPressed() {
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_leagues);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-//            intent.putExtra(RETURN_TO_MAIN_ACTIVITY, R.id.top_news);
-//            startActivity(intent);
-        } else if (sportsLeaguesArticleDetailViewFragment != null) {
+        } else if (leaguesDetailViewFragment != null) {
             if (frameLayout.getVisibility() == View.VISIBLE) {
                 frameLayout.setVisibility(View.GONE);
                 viewPager.setVisibility(View.VISIBLE);
@@ -156,16 +142,14 @@ public class LeaguesActivity extends AppCompatActivity implements
                 if (toolbar.getMenu().findItem(R.id.save_later) != null) {
                     toolbar.getMenu().findItem(R.id.save_later).setVisible(false);
                 }
-//                toolbar.getMenu().findItem(R.id.share).setVisible(false);
-//                toolbar.getChildAt(2).findViewById(R.id.share).setVisibility(View.INVISIBLE);
+                if (toolbar.getMenu().findItem(R.id.share) != null) {
+                    toolbar.getMenu().findItem(R.id.share).setVisible(false);
+                }
             } else {
                 int pos = viewPager.getCurrentItem();
                 if (pos > 0) {
                     viewPager.setCurrentItem(pos - 1);
                 } else if (pos == 0) {
-//                    intent.putExtra(RETURN_TO_MAIN_ACTIVITY, R.id.top_news);
-//                    startActivity(intent);
-//                    finish();
                     super.onBackPressed();
                 }
             }
@@ -186,7 +170,6 @@ public class LeaguesActivity extends AppCompatActivity implements
 
     @Override
     public void showTabLayout(boolean visible) {
-
         if (visible) {
             tabLayout.setVisibility(View.VISIBLE);
         } else {
@@ -197,32 +180,25 @@ public class LeaguesActivity extends AppCompatActivity implements
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
-        int mNavigationItemId = item.getItemId();
-
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-
+        int mNavigationItemId;
         mNavigationItemId = item.getItemId();
         viewPagerAdapter.setFragmentType(mNavigationItemId);
 
         switch (mNavigationItemId) {
             case R.id.top_news:
-                // TODO send user back to main activty
                 intent.putExtra(RETURN_TO_MAIN_ACTIVITY, R.id.top_news);
                 startActivity(intent);
-
                 break;
             case R.id.nfl:
                 toolbar.setTitle("NFL Football");
@@ -235,10 +211,11 @@ public class LeaguesActivity extends AppCompatActivity implements
                 if (frameLayout != null) {
                     frameLayout.setVisibility(View.GONE);
                 }
-                if (toolbar.getChildAt(2).findViewById(R.id.share) != null){
+                if (toolbar.getChildAt(2).findViewById(R.id.share) != null) {
 
                     toolbar.getChildAt(2).findViewById(R.id.share).setVisibility(View.INVISIBLE);
-                }                viewPagerAdapter.refreshData();
+                }
+                viewPagerAdapter.refreshData();
                 break;
             case R.id.nba:
                 toolbar.setTitle("NBA Basketball");
@@ -251,10 +228,11 @@ public class LeaguesActivity extends AppCompatActivity implements
                 if (frameLayout != null) {
                     frameLayout.setVisibility(View.GONE);
                 }
-                if (toolbar.getChildAt(2).findViewById(R.id.share) != null){
+                if (toolbar.getChildAt(2).findViewById(R.id.share) != null) {
 
                     toolbar.getChildAt(2).findViewById(R.id.share).setVisibility(View.INVISIBLE);
-                }                viewPagerAdapter.refreshData();
+                }
+                viewPagerAdapter.refreshData();
                 break;
             case R.id.mlb:
                 toolbar.setTitle("MLB Baseball");
@@ -267,10 +245,11 @@ public class LeaguesActivity extends AppCompatActivity implements
                 if (frameLayout != null) {
                     frameLayout.setVisibility(View.GONE);
                 }
-                if (toolbar.getChildAt(2).findViewById(R.id.share) != null){
+                if (toolbar.getChildAt(2).findViewById(R.id.share) != null) {
 
                     toolbar.getChildAt(2).findViewById(R.id.share).setVisibility(View.INVISIBLE);
-                }                viewPagerAdapter.refreshData();
+                }
+                viewPagerAdapter.refreshData();
                 break;
             case R.id.nhl:
                 toolbar.setTitle("NHL Hockey");
@@ -283,10 +262,11 @@ public class LeaguesActivity extends AppCompatActivity implements
                 if (frameLayout != null) {
                     frameLayout.setVisibility(View.GONE);
                 }
-                if (toolbar.getChildAt(2).findViewById(R.id.share) != null){
+                if (toolbar.getChildAt(2).findViewById(R.id.share) != null) {
 
                     toolbar.getChildAt(2).findViewById(R.id.share).setVisibility(View.INVISIBLE);
-                }                viewPagerAdapter.refreshData();
+                }
+                viewPagerAdapter.refreshData();
                 break;
             case R.id.mls:
                 toolbar.setTitle("MLS Soccer");
@@ -303,10 +283,11 @@ public class LeaguesActivity extends AppCompatActivity implements
                 if (frameLayout != null) {
                     frameLayout.setVisibility(View.GONE);
                 }
-                if (toolbar.getChildAt(2).findViewById(R.id.share) != null){
+                if (toolbar.getChildAt(2).findViewById(R.id.share) != null) {
 
                     toolbar.getChildAt(2).findViewById(R.id.share).setVisibility(View.INVISIBLE);
-                }                viewPagerAdapter.refreshData();
+                }
+                viewPagerAdapter.refreshData();
                 break;
             case R.id.spanish_soccer:
                 toolbar.setTitle("Spanish Soccer");
@@ -319,10 +300,11 @@ public class LeaguesActivity extends AppCompatActivity implements
                 if (frameLayout != null) {
                     frameLayout.setVisibility(View.GONE);
                 }
-                if (toolbar.getChildAt(2).findViewById(R.id.share) != null){
+                if (toolbar.getChildAt(2).findViewById(R.id.share) != null) {
 
                     toolbar.getChildAt(2).findViewById(R.id.share).setVisibility(View.INVISIBLE);
-                }                viewPagerAdapter.refreshData();
+                }
+                viewPagerAdapter.refreshData();
                 break;
             case R.id.italian_soccer:
                 toolbar.setTitle("Italian Soccer");
@@ -335,7 +317,7 @@ public class LeaguesActivity extends AppCompatActivity implements
                 if (frameLayout != null) {
                     frameLayout.setVisibility(View.GONE);
                 }
-                if (toolbar.getChildAt(2).findViewById(R.id.share) != null){
+                if (toolbar.getChildAt(2).findViewById(R.id.share) != null) {
 
                     toolbar.getChildAt(2).findViewById(R.id.share).setVisibility(View.INVISIBLE);
                 }
@@ -352,7 +334,7 @@ public class LeaguesActivity extends AppCompatActivity implements
                 if (frameLayout != null) {
                     frameLayout.setVisibility(View.GONE);
                 }
-                if (toolbar.getChildAt(2).findViewById(R.id.share) != null){
+                if (toolbar.getChildAt(2).findViewById(R.id.share) != null) {
 
                     toolbar.getChildAt(2).findViewById(R.id.share).setVisibility(View.INVISIBLE);
                 }
@@ -360,10 +342,8 @@ public class LeaguesActivity extends AppCompatActivity implements
                 viewPagerAdapter.refreshData();
                 break;
             case R.id.favorites:
-//                TODO open saved articles fragment
                 intent.putExtra(RETURN_TO_MAIN_ACTIVITY, R.id.favorites);
                 startActivity(intent);
-//                toolbar.setTitle("Saved stories");
                 break;
             case R.id.notifications:
                 notificationFragmnet = new NotificationFragment();
@@ -452,15 +432,4 @@ public class LeaguesActivity extends AppCompatActivity implements
         toolbar.setTitle(title);
     }
 
-//    private void setViewPagerAndTabs() {
-//        if (viewPager != null) {
-//            viewPager.setVisibility(View.GONE);
-//        }
-//        if (tabLayout != null) {
-//            tabLayout.setVisibility(View.GONE);
-//        }
-//        if (frameLayout != null) {
-//            frameLayout.setVisibility(View.VISIBLE);
-//        }
-//    }
 }

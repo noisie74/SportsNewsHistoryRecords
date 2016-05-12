@@ -79,6 +79,13 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+
+    @Override
+    protected void onResume() {
+        setAllSportsFragment();
+        super.onResume();
+    }
+
     /**
      set click listener for spinner
      */
@@ -87,6 +94,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 spinnerPosition = spinner.getSelectedItemPosition();
+                Log.d("FromSecondActivity", "Spinner" + spinnerPosition);
                 switch (spinnerPosition) {
                     case 0:
                         allSportsFragment.nytAllSportsNews();
@@ -107,6 +115,7 @@ public class MainActivity extends AppCompatActivity
                         allSportsFragment.nytSoccerSportsNews();
                         break;
                 }
+
             }
 
             @Override
