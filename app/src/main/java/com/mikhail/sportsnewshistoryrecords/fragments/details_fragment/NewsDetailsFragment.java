@@ -115,7 +115,7 @@ public class NewsDetailsFragment extends Fragment {
             Intent intent = new Intent(Intent.ACTION_SEND);
             intent.setType("text/plain");
             intent.putExtra(Intent.EXTRA_TEXT, articleDetails[2]);
-            intent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Check out this site!");
+            intent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Check out this article!");
             startActivity(Intent.createChooser(intent, "Share"));
             return true;
         } else if (id == R.id.save_later) {

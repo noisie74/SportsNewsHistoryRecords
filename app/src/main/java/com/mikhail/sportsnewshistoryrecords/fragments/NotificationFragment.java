@@ -71,6 +71,8 @@ public class NotificationFragment extends Fragment {
         hockey = (CheckBox) v.findViewById(R.id.checkbox_hockey);
         soccer = (CheckBox) v.findViewById(R.id.checkbox_soccer);
 
+        v.canScrollVertically(20);
+
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         mNotificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
 

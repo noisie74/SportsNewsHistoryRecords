@@ -2,6 +2,7 @@ package com.mikhail.sportsnewshistoryrecords.fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -37,6 +38,9 @@ public class AboutFragment extends Fragment {
         appName = (TextView) v.findViewById(R.id.app_name);
         appVersion = (TextView) v.findViewById(R.id.app_version);
         feedback = (Button) v.findViewById(R.id.button_feedback);
+
+        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
 
         controlToolbar.showSpinner(false);
         controlToolbar.setTitle("About");
