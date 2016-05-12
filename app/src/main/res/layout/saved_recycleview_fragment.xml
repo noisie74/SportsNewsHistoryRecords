@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:textSize="16sp"
         android:layout_gravity="center|center_horizontal"
-        android:text="articles saved" />
+        android:text="@string/articles_saved" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/saved_recycle_view"

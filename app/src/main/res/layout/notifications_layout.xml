@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Notification preferences"
+        android:text="@string/notification_preferences"
         android:layout_gravity="center_horizontal"
         android:layout_margin="10dp"
         android:textSize="22sp"/>
@@ -31,7 +31,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Top News"/>
+            android:text="@string/notification_topnews"/>
     </LinearLayout>
 
     <LinearLayout
@@ -49,7 +49,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Football"/>
+            android:text="@string/notification_football"/>
     </LinearLayout>
 
     <LinearLayout
@@ -66,7 +66,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Basketball"/>
+            android:text="@string/notification_basketball"/>
     </LinearLayout>
 
     <LinearLayout
@@ -84,7 +84,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Baseball"/>
+            android:text="@string/notification_baseball"/>
     </LinearLayout>
 
     <LinearLayout
@@ -102,7 +102,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hockey"/>
+            android:text="@string/notification_hockey"/>
     </LinearLayout>
 
     <LinearLayout
@@ -120,7 +120,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Soccer"/>
+            android:text="@string/notification_soccer"/>
     </LinearLayout>
 
 

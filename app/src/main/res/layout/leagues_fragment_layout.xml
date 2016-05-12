@@ -47,7 +47,7 @@
             android:layout_below="@+id/cardView_image"
             android:maxLines="3"
             android:padding="8dp"
-            android:text="title"
+            android:text="@string/leagues_fragment_title"
             android:textColor="#222"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -59,7 +59,7 @@
             android:layout_below="@+id/headline"
             android:maxLines="3"
             android:padding="8dp"
-            android:text="description"
+            android:text="@string/leagues_description"
             android:textColor="#666"
             android:textSize="12sp" />
 
