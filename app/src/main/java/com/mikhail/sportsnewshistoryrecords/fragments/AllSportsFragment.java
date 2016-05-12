@@ -34,7 +34,7 @@ import timber.log.Timber;
  */
 public class AllSportsFragment extends Fragment {
 
-    private int mFragmentType;
+    public int mFragmentType;
     public RecyclerView recyclerView;
     public AllSportsAdapter allSportsAdapter;
     public ArrayList<NytSportsObjects> sportsNewsList;

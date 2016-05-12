@@ -30,7 +30,7 @@ import com.mikhail.sportsnewshistoryrecords.interfaces.LeaguesActivityControl;
 public class LeaguesActivity extends AppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener,
         ControlLeaguesActivityLayout,
-        LeaguesActivityControl,ControlToolbar {
+        LeaguesActivityControl, ControlToolbar {
 
     Toolbar toolbar;
     private int mNavigationItemId;
@@ -156,7 +156,7 @@ public class LeaguesActivity extends AppCompatActivity implements
                 if (toolbar.getMenu().findItem(R.id.save_later) != null) {
                     toolbar.getMenu().findItem(R.id.save_later).setVisible(false);
                 }
-                toolbar.getMenu().findItem(R.id.share).setVisible(false);
+//                toolbar.getMenu().findItem(R.id.share).setVisible(false);
 //                toolbar.getChildAt(2).findViewById(R.id.share).setVisibility(View.INVISIBLE);
             } else {
                 int pos = viewPager.getCurrentItem();
@@ -226,19 +226,67 @@ public class LeaguesActivity extends AppCompatActivity implements
                 break;
             case R.id.nfl:
                 toolbar.setTitle("NFL Football");
-                viewPagerAdapter.refreshData();
+                if (viewPager != null) {
+                    viewPager.setVisibility(View.VISIBLE);
+                }
+                if (tabLayout != null) {
+                    tabLayout.setVisibility(View.VISIBLE);
+                }
+                if (frameLayout != null) {
+                    frameLayout.setVisibility(View.GONE);
+                }
+                if (toolbar.getChildAt(2).findViewById(R.id.share) != null){
+
+                    toolbar.getChildAt(2).findViewById(R.id.share).setVisibility(View.INVISIBLE);
+                }                viewPagerAdapter.refreshData();
                 break;
             case R.id.nba:
                 toolbar.setTitle("NBA Basketball");
-                viewPagerAdapter.refreshData();
+                if (viewPager != null) {
+                    viewPager.setVisibility(View.VISIBLE);
+                }
+                if (tabLayout != null) {
+                    tabLayout.setVisibility(View.VISIBLE);
+                }
+                if (frameLayout != null) {
+                    frameLayout.setVisibility(View.GONE);
+                }
+                if (toolbar.getChildAt(2).findViewById(R.id.share) != null){
+
+                    toolbar.getChildAt(2).findViewById(R.id.share).setVisibility(View.INVISIBLE);
+                }                viewPagerAdapter.refreshData();
                 break;
             case R.id.mlb:
                 toolbar.setTitle("MLB Baseball");
-                viewPagerAdapter.refreshData();
+                if (viewPager != null) {
+                    viewPager.setVisibility(View.VISIBLE);
+                }
+                if (tabLayout != null) {
+                    tabLayout.setVisibility(View.VISIBLE);
+                }
+                if (frameLayout != null) {
+                    frameLayout.setVisibility(View.GONE);
+                }
+                if (toolbar.getChildAt(2).findViewById(R.id.share) != null){
+
+                    toolbar.getChildAt(2).findViewById(R.id.share).setVisibility(View.INVISIBLE);
+                }                viewPagerAdapter.refreshData();
                 break;
             case R.id.nhl:
                 toolbar.setTitle("NHL Hockey");
-                viewPagerAdapter.refreshData();
+                if (viewPager != null) {
+                    viewPager.setVisibility(View.VISIBLE);
+                }
+                if (tabLayout != null) {
+                    tabLayout.setVisibility(View.VISIBLE);
+                }
+                if (frameLayout != null) {
+                    frameLayout.setVisibility(View.GONE);
+                }
+                if (toolbar.getChildAt(2).findViewById(R.id.share) != null){
+
+                    toolbar.getChildAt(2).findViewById(R.id.share).setVisibility(View.INVISIBLE);
+                }                viewPagerAdapter.refreshData();
                 break;
             case R.id.mls:
                 toolbar.setTitle("MLS Soccer");
@@ -246,18 +294,69 @@ public class LeaguesActivity extends AppCompatActivity implements
                 break;
             case R.id.english_soccer:
                 toolbar.setTitle("English Soccer");
-                viewPagerAdapter.refreshData();
+                if (viewPager != null) {
+                    viewPager.setVisibility(View.VISIBLE);
+                }
+                if (tabLayout != null) {
+                    tabLayout.setVisibility(View.VISIBLE);
+                }
+                if (frameLayout != null) {
+                    frameLayout.setVisibility(View.GONE);
+                }
+                if (toolbar.getChildAt(2).findViewById(R.id.share) != null){
+
+                    toolbar.getChildAt(2).findViewById(R.id.share).setVisibility(View.INVISIBLE);
+                }                viewPagerAdapter.refreshData();
                 break;
             case R.id.spanish_soccer:
                 toolbar.setTitle("Spanish Soccer");
-                viewPagerAdapter.refreshData();
+                if (viewPager != null) {
+                    viewPager.setVisibility(View.VISIBLE);
+                }
+                if (tabLayout != null) {
+                    tabLayout.setVisibility(View.VISIBLE);
+                }
+                if (frameLayout != null) {
+                    frameLayout.setVisibility(View.GONE);
+                }
+                if (toolbar.getChildAt(2).findViewById(R.id.share) != null){
+
+                    toolbar.getChildAt(2).findViewById(R.id.share).setVisibility(View.INVISIBLE);
+                }                viewPagerAdapter.refreshData();
                 break;
             case R.id.italian_soccer:
                 toolbar.setTitle("Italian Soccer");
+                if (viewPager != null) {
+                    viewPager.setVisibility(View.VISIBLE);
+                }
+                if (tabLayout != null) {
+                    tabLayout.setVisibility(View.VISIBLE);
+                }
+                if (frameLayout != null) {
+                    frameLayout.setVisibility(View.GONE);
+                }
+                if (toolbar.getChildAt(2).findViewById(R.id.share) != null){
+
+                    toolbar.getChildAt(2).findViewById(R.id.share).setVisibility(View.INVISIBLE);
+                }
                 viewPagerAdapter.refreshData();
                 break;
             case R.id.german_soccer:
                 toolbar.setTitle("German Soccer");
+                if (viewPager != null) {
+                    viewPager.setVisibility(View.VISIBLE);
+                }
+                if (tabLayout != null) {
+                    tabLayout.setVisibility(View.VISIBLE);
+                }
+                if (frameLayout != null) {
+                    frameLayout.setVisibility(View.GONE);
+                }
+                if (toolbar.getChildAt(2).findViewById(R.id.share) != null){
+
+                    toolbar.getChildAt(2).findViewById(R.id.share).setVisibility(View.INVISIBLE);
+                }
+
                 viewPagerAdapter.refreshData();
                 break;
             case R.id.favorites:
@@ -267,32 +366,32 @@ public class LeaguesActivity extends AppCompatActivity implements
 //                toolbar.setTitle("Saved stories");
                 break;
             case R.id.notifications:
-                notificationFragmnet  = new NotificationFragment();
+                notificationFragmnet = new NotificationFragment();
                 transaction = fragmentManager.beginTransaction();
-                transaction.add(R.id.frag_container_leagues, notificationFragmnet);
+                transaction.replace(R.id.frag_container_leagues, notificationFragmnet);
                 transaction.commit();
-                if (viewPager != null){
+                if (viewPager != null) {
                     viewPager.setVisibility(View.GONE);
                 }
-                if (tabLayout != null){
+                if (tabLayout != null) {
                     tabLayout.setVisibility(View.GONE);
                 }
-                if (frameLayout != null){
+                if (frameLayout != null) {
                     frameLayout.setVisibility(View.VISIBLE);
                 }
                 break;
             case R.id.about:
                 AboutFragment aboutFragment = new AboutFragment();
                 transaction = fragmentManager.beginTransaction();
-                transaction.add(R.id.frag_container_leagues, aboutFragment);
+                transaction.replace(R.id.frag_container_leagues, aboutFragment);
                 transaction.commit();
-                if (viewPager != null){
+                if (viewPager != null) {
                     viewPager.setVisibility(View.GONE);
                 }
-                if (tabLayout != null){
+                if (tabLayout != null) {
                     tabLayout.setVisibility(View.GONE);
                 }
-                if (frameLayout != null){
+                if (frameLayout != null) {
                     frameLayout.setVisibility(View.VISIBLE);
                 }
                 break;
@@ -351,5 +450,17 @@ public class LeaguesActivity extends AppCompatActivity implements
     @Override
     public void setTitle(String title) {
         toolbar.setTitle(title);
+    }
+
+    private void setViewPagerAndTabs() {
+        if (viewPager != null) {
+            viewPager.setVisibility(View.GONE);
+        }
+        if (tabLayout != null) {
+            tabLayout.setVisibility(View.GONE);
+        }
+        if (frameLayout != null) {
+            frameLayout.setVisibility(View.VISIBLE);
+        }
     }
 }
