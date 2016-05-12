@@ -1663,5 +1663,15 @@ Most points in the Final, career: Jean Beliveau, 62
     <string name="tab_articles">Articles</string>
     <string name="tab_history">History</string>
     <string name="tab_records">Records</string>
+    <string name="nfl_title_leagues_ac">NFL Football</string>
+    <string name="nba_title_leagues_ac">NBA Basketball</string>
+    <string name="nfl_title_leagues_activity">MLB Baseball</string>
+    <string name="nhl_title_leagues_activity">NHL Hockey</string>
+    <string name="mlb_title_leagues_activity">MLB Baseball</string>
+    <string name="mls_title_leagues_activity">MLS Soccer</string>
+    <string name="english_title_leagues_activity">English Soccer</string>
+    <string name="spanish_title_leagues_activity">Spanish Soccer</string>
+    <string name="italian_title_leagues_activity">Italian Soccer</string>
+    <string name="german_title_leagues_activity">German Soccer</string>
 
 </resources>

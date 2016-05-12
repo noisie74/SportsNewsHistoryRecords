@@ -34,6 +34,7 @@ public class LeaguesActivity extends AppCompatActivity implements
 
     public Toolbar toolbar;
     public NavigationView navigationView;
+    public NotificationFragment notificationFragment;
     public FrameLayout frameLayout;
     public int key;
     public static final String RETURN_TO_MAIN_ACTIVITY = "backToMainActivity";
@@ -45,7 +46,6 @@ public class LeaguesActivity extends AppCompatActivity implements
     private FragmentTransaction transaction;
     private Intent intent;
     private LeaguesDetailViewFragment leaguesDetailViewFragment;
-    private NotificationFragment notificationFragmnet;
 
 
     @Override
@@ -53,37 +53,10 @@ public class LeaguesActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leagues);
 
-        key = getIntent().getIntExtra(FROM_MAIN_ACTIVITY, 0);
-        intent = new Intent(LeaguesActivity.this, MainActivity.class);
-
+        setIntent();
         setViews();
         toolBarTitle();
-
-
-        fragmentManager = getSupportFragmentManager();
-
-
-
-
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
-
-
+        setTabLayoutClickListener();
     }
 
     public void setViews() {
@@ -101,7 +74,6 @@ public class LeaguesActivity extends AppCompatActivity implements
                 (getSupportFragmentManager(), tabLayout.getTabCount());
         viewPagerAdapter.setFragmentType(key);
         viewPager.setOffscreenPageLimit(2);
-        Log.d("MainActivity", "Tab!" + tabLayout.getTabCount());
         viewPager.setAdapter(viewPagerAdapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_leagues);
@@ -111,6 +83,29 @@ public class LeaguesActivity extends AppCompatActivity implements
         toggle.syncState();
         navigationView = (NavigationView) findViewById(R.id.nav_view_leagues);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    /**
+     set click listener for tab layout
+     */
+    public void setTabLayoutClickListener() {
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
     }
 
     /**
@@ -127,6 +122,14 @@ public class LeaguesActivity extends AppCompatActivity implements
         transaction.commit();
         viewPager.setVisibility(View.GONE);
         frameLayout.setVisibility(View.VISIBLE);
+    }
+
+    /**
+     * receive intent from main activity
+     */
+    public void setIntent() {
+        key = getIntent().getIntExtra(FROM_MAIN_ACTIVITY, 0);
+        intent = new Intent(LeaguesActivity.this, MainActivity.class);
     }
 
     @Override
@@ -201,7 +204,7 @@ public class LeaguesActivity extends AppCompatActivity implements
                 startActivity(intent);
                 break;
             case R.id.nfl:
-                toolbar.setTitle("NFL Football");
+                toolbar.setTitle(R.string.nfl_title_leagues_ac);
                 if (viewPager != null) {
                     viewPager.setVisibility(View.VISIBLE);
                 }
@@ -218,7 +221,7 @@ public class LeaguesActivity extends AppCompatActivity implements
                 viewPagerAdapter.refreshData();
                 break;
             case R.id.nba:
-                toolbar.setTitle("NBA Basketball");
+                toolbar.setTitle(R.string.nba_title_leagues_ac);
                 if (viewPager != null) {
                     viewPager.setVisibility(View.VISIBLE);
                 }
@@ -235,7 +238,7 @@ public class LeaguesActivity extends AppCompatActivity implements
                 viewPagerAdapter.refreshData();
                 break;
             case R.id.mlb:
-                toolbar.setTitle("MLB Baseball");
+                toolbar.setTitle(R.string.mlb_title_leagues_activity);
                 if (viewPager != null) {
                     viewPager.setVisibility(View.VISIBLE);
                 }
@@ -252,7 +255,7 @@ public class LeaguesActivity extends AppCompatActivity implements
                 viewPagerAdapter.refreshData();
                 break;
             case R.id.nhl:
-                toolbar.setTitle("NHL Hockey");
+                toolbar.setTitle(R.string.nhl_title_leagues_activity);
                 if (viewPager != null) {
                     viewPager.setVisibility(View.VISIBLE);
                 }
@@ -269,11 +272,24 @@ public class LeaguesActivity extends AppCompatActivity implements
                 viewPagerAdapter.refreshData();
                 break;
             case R.id.mls:
-                toolbar.setTitle("MLS Soccer");
+                toolbar.setTitle(R.string.mls_title_leagues_activity);
+                if (viewPager != null) {
+                    viewPager.setVisibility(View.VISIBLE);
+                }
+                if (tabLayout != null) {
+                    tabLayout.setVisibility(View.VISIBLE);
+                }
+                if (frameLayout != null) {
+                    frameLayout.setVisibility(View.GONE);
+                }
+                if (toolbar.getChildAt(2).findViewById(R.id.share) != null) {
+
+                    toolbar.getChildAt(2).findViewById(R.id.share).setVisibility(View.INVISIBLE);
+                }
                 viewPagerAdapter.refreshData();
                 break;
             case R.id.english_soccer:
-                toolbar.setTitle("English Soccer");
+                toolbar.setTitle(R.string.english_title_leagues_activity);
                 if (viewPager != null) {
                     viewPager.setVisibility(View.VISIBLE);
                 }
@@ -290,7 +306,7 @@ public class LeaguesActivity extends AppCompatActivity implements
                 viewPagerAdapter.refreshData();
                 break;
             case R.id.spanish_soccer:
-                toolbar.setTitle("Spanish Soccer");
+                toolbar.setTitle(R.string.spanish_title_leagues_activity);
                 if (viewPager != null) {
                     viewPager.setVisibility(View.VISIBLE);
                 }
@@ -307,7 +323,7 @@ public class LeaguesActivity extends AppCompatActivity implements
                 viewPagerAdapter.refreshData();
                 break;
             case R.id.italian_soccer:
-                toolbar.setTitle("Italian Soccer");
+                toolbar.setTitle(R.string.italian_title_leagues_activity);
                 if (viewPager != null) {
                     viewPager.setVisibility(View.VISIBLE);
                 }
@@ -324,7 +340,7 @@ public class LeaguesActivity extends AppCompatActivity implements
                 viewPagerAdapter.refreshData();
                 break;
             case R.id.german_soccer:
-                toolbar.setTitle("German Soccer");
+                toolbar.setTitle(R.string.german_title_leagues_activity);
                 if (viewPager != null) {
                     viewPager.setVisibility(View.VISIBLE);
                 }
@@ -335,10 +351,8 @@ public class LeaguesActivity extends AppCompatActivity implements
                     frameLayout.setVisibility(View.GONE);
                 }
                 if (toolbar.getChildAt(2).findViewById(R.id.share) != null) {
-
                     toolbar.getChildAt(2).findViewById(R.id.share).setVisibility(View.INVISIBLE);
                 }
-
                 viewPagerAdapter.refreshData();
                 break;
             case R.id.favorites:
@@ -346,9 +360,9 @@ public class LeaguesActivity extends AppCompatActivity implements
                 startActivity(intent);
                 break;
             case R.id.notifications:
-                notificationFragmnet = new NotificationFragment();
+                notificationFragment = new NotificationFragment();
                 transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.frag_container_leagues, notificationFragmnet);
+                transaction.replace(R.id.frag_container_leagues, notificationFragment);
                 transaction.commit();
                 if (viewPager != null) {
                     viewPager.setVisibility(View.GONE);
@@ -387,31 +401,31 @@ public class LeaguesActivity extends AppCompatActivity implements
     private void toolBarTitle() {
         switch (key) {
             case R.id.nfl:
-                toolbar.setTitle("NFL Football");
+                toolbar.setTitle(R.string.nfl_title_leagues_ac);
                 break;
             case R.id.nba:
-                toolbar.setTitle("NBA Basketball");
+                toolbar.setTitle(R.string.nba_title_leagues_ac);
                 break;
             case R.id.mlb:
-                toolbar.setTitle("MLB Baseball");
+                toolbar.setTitle(R.string.mlb_title_leagues_activity);
                 break;
             case R.id.nhl:
-                toolbar.setTitle("NHL Hockey");
+                toolbar.setTitle(R.string.nhl_title_leagues_activity);
                 break;
             case R.id.mls:
-                toolbar.setTitle("MLS Soccer");
+                toolbar.setTitle(R.string.mls_title_leagues_activity);
                 break;
             case R.id.english_soccer:
-                toolbar.setTitle("English Premier League");
+                toolbar.setTitle(R.string.english_title_leagues_activity);
                 break;
             case R.id.spanish_soccer:
-                toolbar.setTitle("Spanish La Liga");
+                toolbar.setTitle(R.string.spanish_title_leagues_activity);
                 break;
             case R.id.italian_soccer:
-                toolbar.setTitle("Italian Serie A");
+                toolbar.setTitle(R.string.italian_title_leagues_activity);
                 break;
             case R.id.german_soccer:
-                toolbar.setTitle("German Bundesliga");
+                toolbar.setTitle(R.string.german_title_leagues_activity);
                 break;
 
         }
