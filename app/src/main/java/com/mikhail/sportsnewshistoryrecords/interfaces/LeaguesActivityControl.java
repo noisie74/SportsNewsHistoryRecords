@@ -3,7 +3,8 @@ package com.mikhail.sportsnewshistoryrecords.interfaces;
 import android.os.Bundle;
 
 /**
- * Created by Mikhail on 5/11/16.
+ * Connection between Leagues fragment
+ * and activities. Sends bundle
  */
 public interface LeaguesActivityControl {
     void setBundle(Bundle article);

@@ -2,17 +2,13 @@ package com.mikhail.sportsnewshistoryrecords.api;
 
 import com.google.gson.Gson;
 import com.mikhail.sportsnewshistoryrecords.api.keys.NytKeys;
-import com.mikhail.sportsnewshistoryrecords.model.NytSportsResults;
 import com.mikhail.sportsnewshistoryrecords.model.search.ArticleSearch;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 import rx.Observable;
 

@@ -1,7 +1,7 @@
 package com.mikhail.sportsnewshistoryrecords.model.search;
 
 /**
- * Created by Mikhail on 4/28/16.
+ * Array of  Multimedia objects from NYT News Wire API
  */
 public class Multimedia {
 

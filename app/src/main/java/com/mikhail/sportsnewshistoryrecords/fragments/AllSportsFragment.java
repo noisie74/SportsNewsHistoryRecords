@@ -17,8 +17,8 @@ import com.mikhail.sportsnewshistoryrecords.R;
 import com.mikhail.sportsnewshistoryrecords.adapters.AllSportsAdapter;
 import com.mikhail.sportsnewshistoryrecords.api.NytAPI;
 import com.mikhail.sportsnewshistoryrecords.interfaces.MainActivityControlAllSports;
-import com.mikhail.sportsnewshistoryrecords.model.NytSportsObjects;
-import com.mikhail.sportsnewshistoryrecords.model.NytSportsResults;
+import com.mikhail.sportsnewshistoryrecords.model.newswire.NytSportsObjects;
+import com.mikhail.sportsnewshistoryrecords.model.newswire.NytSportsResults;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -30,7 +30,7 @@ import rx.schedulers.Schedulers;
 import timber.log.Timber;
 
 /**
- * Created by Mikhail on 4/27/16.
+ * Fragment with api calls for NYT News Wire
  */
 public class AllSportsFragment extends Fragment {
 
@@ -45,10 +45,8 @@ public class AllSportsFragment extends Fragment {
     public static final String NYT_BASEBALL = "baseball";
     public static final String NYT_HOCKEY = "Hockey";
     public static final String NYT_SOCCER = "Soccer";
-    NytSportsResults nytSportsResults;
     private View rootView;
     private boolean recyclerViewIsSet = false;
-    Toolbar toolbar;
     private MainActivityControlAllSports mainActivityControl;
 
     @Nullable
@@ -79,19 +77,15 @@ public class AllSportsFragment extends Fragment {
             @Override
             public void onItemClick(View view, int position) {
 
-//                sportsNewsList.get(position);
-
                 Bundle article = new Bundle(); //will bundle the 5 fields of NYTSportsObjects in a string array
                 String[] articleDetails = {sportsNewsList.get(position).getSection(),
                         sportsNewsList.get(position).getTitle(),
                         sportsNewsList.get(position).getUrl(),
                         sportsNewsList.get(position).getThumbnail_standard(),
                         sportsNewsList.get(position).getAbstractResult()};
-//                sportsNewsList.get(position).getMultimedia()};
                 article.putStringArray("article", articleDetails);
 
                 mainActivityControl.setBundle(article);
-
 
             }
         });
@@ -119,7 +113,6 @@ public class AllSportsFragment extends Fragment {
             }
         });
 
-        // Configure the refreshing colors
         swipeContainer.setColorSchemeResources(android.R.color.darker_gray,
                 android.R.color.white);
 
@@ -139,8 +132,6 @@ public class AllSportsFragment extends Fragment {
                 .subscribe(new Subscriber<NytSportsResults>() {
                     @Override
                     public void onCompleted() {
-                        Log.d("MainActivity", "Completed!");
-
                     }
 
                     @Override
@@ -150,10 +141,8 @@ public class AllSportsFragment extends Fragment {
 
                     @Override
                     public void onNext(NytSportsResults nytSportsResults) {
-                        Log.d("MainActivity", "Next!");
                         if (recyclerViewIsSet) {
                             allSportsAdapter.updateData(nytSportsResults);
-
                         } else {
                             allSportsAdapter.updateData(nytSportsResults);
                             recyclerView.setAdapter(allSportsAdapter);
@@ -215,7 +204,6 @@ public class AllSportsFragment extends Fragment {
                     @Override
                     public void onNext(NytSportsResults nytSportsResults) {
 
-//                        allSportsAdapter = new AllSportsAdapter(nytSportsResults);
                         allSportsAdapter.updateData(nytSportsResults);
                         sportsNewsList.clear();
                         Collections.addAll(sportsNewsList, nytSportsResults.getResults());

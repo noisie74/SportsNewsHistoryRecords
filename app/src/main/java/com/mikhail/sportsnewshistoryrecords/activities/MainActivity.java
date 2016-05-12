@@ -1,4 +1,4 @@
-package com.mikhail.sportsnewshistoryrecords;
+package com.mikhail.sportsnewshistoryrecords.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -27,6 +27,7 @@ import android.widget.Toast;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import com.mikhail.sportsnewshistoryrecords.R;
 import com.mikhail.sportsnewshistoryrecords.fragments.AboutFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.LeaguesFragment;

@@ -1,4 +1,4 @@
-package com.mikhail.sportsnewshistoryrecords;
+package com.mikhail.sportsnewshistoryrecords.activities;
 
 import android.content.Intent;
 import android.support.design.widget.NavigationView;
@@ -11,7 +11,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +18,7 @@ import android.widget.FrameLayout;
 import android.support.v4.app.FragmentTransaction;
 
 
+import com.mikhail.sportsnewshistoryrecords.R;
 import com.mikhail.sportsnewshistoryrecords.adapters.ViewPagerAdapter;
 import com.mikhail.sportsnewshistoryrecords.fragments.AboutFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.NotificationFragment;
@@ -34,7 +34,6 @@ public class LeaguesActivity extends AppCompatActivity implements
 
     public Toolbar toolbar;
     public NavigationView navigationView;
-    public NotificationFragment notificationFragment;
     public FrameLayout frameLayout;
     public int key;
     public static final String RETURN_TO_MAIN_ACTIVITY = "backToMainActivity";
@@ -57,6 +56,7 @@ public class LeaguesActivity extends AppCompatActivity implements
         setViews();
         toolBarTitle();
         setTabLayoutClickListener();
+        fragmentManager = getSupportFragmentManager();
     }
 
     public void setViews() {
@@ -360,7 +360,7 @@ public class LeaguesActivity extends AppCompatActivity implements
                 startActivity(intent);
                 break;
             case R.id.notifications:
-                notificationFragment = new NotificationFragment();
+                NotificationFragment notificationFragment = new NotificationFragment();
                 transaction = fragmentManager.beginTransaction();
                 transaction.replace(R.id.frag_container_leagues, notificationFragment);
                 transaction.commit();

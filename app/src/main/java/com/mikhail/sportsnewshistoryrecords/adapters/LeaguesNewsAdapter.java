@@ -2,7 +2,6 @@ package com.mikhail.sportsnewshistoryrecords.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,15 +9,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mikhail.sportsnewshistoryrecords.R;
-import com.mikhail.sportsnewshistoryrecords.model.NytSportsResults;
-import com.mikhail.sportsnewshistoryrecords.model.search.ArticleSearch;
 import com.mikhail.sportsnewshistoryrecords.model.search.Doc;
 import com.mikhail.sportsnewshistoryrecords.model.search.Multimedia;
-import com.mikhail.sportsnewshistoryrecords.model.search.Response;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Mikhail on 4/28/16.

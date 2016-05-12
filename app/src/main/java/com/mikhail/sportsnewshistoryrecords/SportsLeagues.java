@@ -5,9 +5,10 @@ import android.app.Application;
 import com.firebase.client.Firebase;
 
 /**
- * Created by Mikhail on 5/3/16.
+ * Main Application class
+ * load Firebase server
  */
-public class SportsApp extends Application {
+public class SportsLeagues extends Application {
 
     @Override
     public void onCreate() {

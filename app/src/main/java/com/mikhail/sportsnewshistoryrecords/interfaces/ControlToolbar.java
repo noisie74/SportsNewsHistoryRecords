@@ -1,7 +1,8 @@
 package com.mikhail.sportsnewshistoryrecords.interfaces;
 
 /**
- * Created by Mikhail on 5/10/16.
+ * Connection between all fragments
+ *and activities. Manages toolbar
  */
 public interface ControlToolbar {
 

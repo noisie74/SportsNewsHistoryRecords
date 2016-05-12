@@ -7,49 +7,26 @@ import android.app.job.JobParameters;
 import android.app.job.JobService;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.PersistableBundle;
-import android.preference.PreferenceManager;
 import android.support.v7.app.NotificationCompat;
-import android.util.Log;
 
-import com.mikhail.sportsnewshistoryrecords.MainActivity;
+import com.mikhail.sportsnewshistoryrecords.activities.MainActivity;
 import com.mikhail.sportsnewshistoryrecords.R;
 import com.mikhail.sportsnewshistoryrecords.api.NytAPI;
-import com.mikhail.sportsnewshistoryrecords.api.NytSearchAPI;
-import com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.NotificationFragment;
-import com.mikhail.sportsnewshistoryrecords.model.NytSportsObjects;
-import com.mikhail.sportsnewshistoryrecords.model.NytSportsResults;
-import com.mikhail.sportsnewshistoryrecords.model.search.ArticleSearch;
-
-import java.util.ArrayList;
-import java.util.Collections;
+import com.mikhail.sportsnewshistoryrecords.model.newswire.NytSportsResults;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-import rx.Observable;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
-import timber.log.Timber;
 
 /**
- * Created by Mikhail on 5/10/16.
+ * Service for notifications
  */
 public class JobSchedulerService extends JobService {
 
-    NytAPI latestNewsService;
-    public ArrayList<NytSportsResults> articleLists;
-    public String sections = "all";
-    public String chooseMagazineSource = "all";
     private static final int NOTIFICATION_ID = 1;
-    Context context;
-    NytSportsResults nytSportsResults;
-    SharedPreferences sharedPreferences;
+    public Context context;
 
     public static final String NYT_ALL = "Pro football,Pro basketball,baseball,soccer,Hockey";
     public static final String NYT_FOOTBALL = "Pro%20Football";
@@ -58,52 +35,55 @@ public class JobSchedulerService extends JobService {
     public static final String NYT_HOCKEY = "Hockey";
     public static final String NYT_SOCCER = "Soccer";
 
-    boolean topNewsCheck = false;
-    boolean footballCheck = false;
-    boolean basketballCheck = false;
-    boolean baseballCheck = false;
-    boolean hockeyCheck = false;
-    boolean soccerCheck = false;
-    boolean[] booleenArray;
-    NotificationManager notificationManager;
-    JobParameters params;
+    public boolean topNewsCheck = false;
+    public boolean footballCheck = false;
+    public boolean basketballCheck = false;
+    public boolean baseballCheck = false;
+    public boolean hockeyCheck = false;
+    public boolean soccerCheck = false;
+    public boolean[] booleanArray;
+    public NotificationManager notificationManager;
+    public JobParameters params;
 
 
     @Override
     public boolean onStartJob(JobParameters params) {
-        Log.d("Notifications", "onStartJob sent");
         this.params = params;
         setBooleanArray();
         context = getApplicationContext();
 
         PersistableBundle persistableBundle = params.getExtras();
-        booleenArray = persistableBundle.getBooleanArray(NotificationFragment.BOOLEAN_CODE);
+        booleanArray = persistableBundle.getBooleanArray(NotificationFragment.BOOLEAN_CODE);
         updateBooleans();
-
         setApiCall();
-
         return true;
 
     }
 
-    private void updateBooleans(){
-
-        topNewsCheck = booleenArray[0];
-        footballCheck = booleenArray[1];
-        footballCheck = booleenArray[2];
-        footballCheck = booleenArray[3];
-        footballCheck = booleenArray[4];
-        footballCheck = booleenArray[5];
+    /**
+     * update value of boolean in the array
+     */
+    private void updateBooleans() {
+        topNewsCheck = booleanArray[0];
+        footballCheck = booleanArray[1];
+        footballCheck = booleanArray[2];
+        footballCheck = booleanArray[3];
+        footballCheck = booleanArray[4];
+        footballCheck = booleanArray[5];
     }
 
-    private void setBooleanArray(){
-        booleenArray = new boolean[6];
-        booleenArray[0] = topNewsCheck;
-        booleenArray[1] = footballCheck;
-        booleenArray[2] = footballCheck;
-        booleenArray[3] = footballCheck;
-        booleenArray[4] = footballCheck;
-        booleenArray[5] = footballCheck;
+    /**
+     * set array of booleans
+     * with checkboxes
+     */
+    private void setBooleanArray() {
+        booleanArray = new boolean[6];
+        booleanArray[0] = topNewsCheck;
+        booleanArray[1] = footballCheck;
+        booleanArray[2] = footballCheck;
+        booleanArray[3] = footballCheck;
+        booleanArray[4] = footballCheck;
+        booleanArray[5] = footballCheck;
     }
 
     @Override
@@ -112,28 +92,8 @@ public class JobSchedulerService extends JobService {
     }
 
     /**
-     * this method sets notifications
-     * when system makes api call
+     * create notifications
      */
-//    private void setNotifications() {
-//
-//        Intent intent = new Intent(context, MainActivity.class);
-//
-//        PendingIntent pIntent = PendingIntent.getActivity(context, (int) System.currentTimeMillis(), intent, 0);
-//
-//        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context);
-//        mBuilder.setSmallIcon(R.drawable.ic_star_24dp);
-//        mBuilder.setContentTitle("Notification from Excalibur!");
-//        mBuilder.setContentText("New article: " + articleLists.get(0));
-//        mBuilder.setContentIntent(pIntent);
-//        mBuilder.setAutoCancel(true);
-//        mBuilder.setPriority(Notification.PRIORITY_HIGH);
-//
-//        NotificationManager mNotificationManager =
-//                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-//        mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
-//
-//    }
     private void createNotifications(String title, String message, int icon) {
 
         Intent intent = new Intent(context, MainActivity.class);
@@ -150,13 +110,18 @@ public class JobSchedulerService extends JobService {
         notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(NOTIFICATION_ID, mBuilder.build());
 
+        /**
+         * stop service
+         */
         jobFinished(params, false);
 
 
     }
 
+    /**
+     * make api call for each checkbox
+     */
     private void setApiCall() {
-        Log.d("The Service", topNewsCheck + "");
         if (topNewsCheck) {
             nytAllSportsNews();
         }
@@ -177,7 +142,9 @@ public class JobSchedulerService extends JobService {
         }
     }
 
-
+    /**
+     * api call for all sports
+     */
     public void nytAllSportsNews() {
 
         NytAPI.NytAPIRetrofit nytSports = NytAPI.create();
@@ -199,6 +166,9 @@ public class JobSchedulerService extends JobService {
         });
     }
 
+    /**
+     * api call for football
+     */
     public void nytFootballNews() {
 
         NytAPI.NytAPIRetrofit nytSports = NytAPI.create();
@@ -210,7 +180,7 @@ public class JobSchedulerService extends JobService {
             public void onResponse(Call<NytSportsResults> call, Response<NytSportsResults> response) {
                 NytSportsResults nytSports = response.body();
                 createNotifications(nytSports.getResults()[0].getTitle(),
-                        nytSports.getResults()[0].getAbstractResult(),R.drawable.americanfootball24);
+                        nytSports.getResults()[0].getAbstractResult(), R.drawable.americanfootball24);
             }
 
             @Override
@@ -220,6 +190,9 @@ public class JobSchedulerService extends JobService {
         });
     }
 
+    /**
+     * api call for basketball
+     */
     public void nytBasketballNews() {
 
         NytAPI.NytAPIRetrofit nytSports = NytAPI.create();
@@ -241,7 +214,9 @@ public class JobSchedulerService extends JobService {
         });
     }
 
-
+    /**
+     * api call for baseball
+     */
     public void nytBaseballNews() {
 
         NytAPI.NytAPIRetrofit nytSports = NytAPI.create();
@@ -263,7 +238,9 @@ public class JobSchedulerService extends JobService {
         });
     }
 
-
+    /**
+     * api call for hockey
+     */
     public void nytHockeyNews() {
 
         NytAPI.NytAPIRetrofit nytSports = NytAPI.create();
@@ -275,7 +252,7 @@ public class JobSchedulerService extends JobService {
             public void onResponse(Call<NytSportsResults> call, Response<NytSportsResults> response) {
                 NytSportsResults nytSports = response.body();
                 createNotifications(nytSports.getResults()[0].getTitle(),
-                        nytSports.getResults()[0].getAbstractResult(),  R.drawable.hockey24);
+                        nytSports.getResults()[0].getAbstractResult(), R.drawable.hockey24);
             }
 
             @Override
@@ -285,6 +262,9 @@ public class JobSchedulerService extends JobService {
         });
     }
 
+    /**
+     * api call for soccer
+     */
     public void nytSoccerNews() {
 
         NytAPI.NytAPIRetrofit nytSports = NytAPI.create();
@@ -307,16 +287,3 @@ public class JobSchedulerService extends JobService {
     }
 
 }
-
-//Thread closeJobScheduler = new Thread(new Runnable() {
-//    @Override
-//    public void run() {
-//        try {
-//            Thread.sleep(60000);
-//            jobFinished(jobParameters, false);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
-//});
-//closeJobScheduler.run();

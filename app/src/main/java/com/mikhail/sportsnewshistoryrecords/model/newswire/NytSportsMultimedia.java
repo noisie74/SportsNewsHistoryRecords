@@ -1,7 +1,7 @@
-package com.mikhail.sportsnewshistoryrecords.model;
+package com.mikhail.sportsnewshistoryrecords.model.newswire;
 
 /**
- * Created by Mikhail on 5/1/16.
+ * Array of  Multimedia objects from NYT News Wire API
  */
 public class NytSportsMultimedia {
 

@@ -1,7 +1,7 @@
 package com.mikhail.sportsnewshistoryrecords.api.keys;
 
 /**
- * Created by Mikhail on 4/27/16.
+ * NYT API KEYS
  */
 public class NytKeys {
 

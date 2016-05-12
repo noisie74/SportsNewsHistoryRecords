@@ -11,12 +11,7 @@ import rx.Observable;
 
 import com.google.gson.Gson;
 import com.mikhail.sportsnewshistoryrecords.api.keys.NytKeys;
-import com.mikhail.sportsnewshistoryrecords.model.NytSportsObjects;
-import com.mikhail.sportsnewshistoryrecords.model.NytSportsResults;
-import com.mikhail.sportsnewshistoryrecords.model.search.ArticleSearch;
-import com.mikhail.sportsnewshistoryrecords.model.search.Response;
-
-import java.util.List;
+import com.mikhail.sportsnewshistoryrecords.model.newswire.NytSportsResults;
 
 /**
  * Created by Mikhail on 4/27/16.
@@ -26,7 +21,9 @@ public class NytAPI {
     public static final String NYT_API_URL = "http://api.nytimes.com/svc/news/v3/content/";
     public static Gson gson = new Gson();
 
-//    http://api.nytimes.com/svc/news/v3/content/all/sports/.json?api-key=sample-key&subsection=Pro%20Football
+    /**
+     * RX JAva interface to make NYT News Wire api call
+     */
     public interface NytRx {
         @GET("{source}/{section}/{subsection}/1.json?&api-key=" + NytKeys.newsWireKey)
         Observable<NytSportsResults> nytSportsResults(
@@ -35,6 +32,9 @@ public class NytAPI {
                 @Query("subsection") String subsection);
     }
 
+    /**
+     * RX JAva interface to make NYT News Wire api call
+     */
     public interface NytAPIRetrofit {
         @GET("{source}/{section}/{subsection}/1.json?&api-key=" + NytKeys.newsWireKey)
         Call<NytSportsResults> response(
@@ -43,8 +43,10 @@ public class NytAPI {
                 @Query("subsection") String subsection);
     }
 
+    /**
+     * Simple REST adapter which points to NYT News Wire api
+     */
     public static NytAPIRetrofit create() {
-        // Create a very simple REST adapter which points the GitHub API.
         return new Retrofit.Builder()
                 .baseUrl(NYT_API_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -52,6 +54,9 @@ public class NytAPI {
                 .create(NytAPI.NytAPIRetrofit.class);
     }
 
+    /**
+     * RX JAva adapter which points to NYT News Wire api
+     */
     public static NytRx createRx() {
         return new Retrofit.Builder()
                 .baseUrl(NYT_API_URL)
@@ -60,9 +65,5 @@ public class NytAPI {
                 .build()
                 .create(NytAPI.NytRx.class);
     }
-
-
-//    @GET("{source}/sports/1.json?&api-key=" + Keys.newsWireKey)
-//    Call<NewsWireResults> listNewsWireResults();
 
 }

@@ -18,15 +18,15 @@ import com.mikhail.sportsnewshistoryrecords.interfaces.ControlToolbar;
 
 
 /**
- * Created by Mikhail on 5/11/16.
+ * About page Fragment
  */
 public class AboutFragment extends Fragment {
 
     protected ImageView appImage;
     protected TextView appName, appVersion;
-    Button feedback;
+    protected Button feedback;
     protected View v;
-    ControlToolbar controlToolbar;
+    public ControlToolbar controlToolbar;
 
 
     @Nullable
@@ -39,8 +39,11 @@ public class AboutFragment extends Fragment {
         appVersion = (TextView) v.findViewById(R.id.app_version);
         feedback = (Button) v.findViewById(R.id.button_feedback);
 
+        /**
+         * set screen orientation for portrait mode only
+         * activity that will be launched after is set to portrait mode
+         */
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
 
         controlToolbar.showSpinner(false);
         controlToolbar.setTitle("About");
@@ -51,6 +54,9 @@ public class AboutFragment extends Fragment {
         return v;
     }
 
+    /**
+     * fragment attaches to activity from which opened
+     */
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -69,7 +75,9 @@ public class AboutFragment extends Fragment {
             }
         });
     }
-
+    /**
+     * Open email clients to send feedback email
+     */
     private void sendFeedback() {
         final Intent intent = new Intent(android.content.Intent.ACTION_SEND);
         intent.setType("text/html");

@@ -3,7 +3,8 @@ package com.mikhail.sportsnewshistoryrecords.interfaces;
 import android.os.Bundle;
 
 /**
- * Created by Mikhail on 5/10/16.
+ * Connection between All Sports fragment
+ *and activities. Sends bundle
  */
 public interface MainActivityControlAllSports {
     void setBundle(Bundle article);
