@@ -97,7 +97,7 @@ public class RecordsFragment extends Fragment {
 
     private void setSpanishSoccerRecords() {
 
-        imageView.setImageResource(R.drawable.laliga_records);
+        imageView.setImageResource(R.drawable.laliga_logo);
         textView.setText(getString(R.string.la_liga_records_title).toUpperCase() + "\n" +
                 getString(R.string.la_liga_records_team1) + "\n" +
                 getString(R.string.la_liga_records_team2) + "\n" +
@@ -113,7 +113,7 @@ public class RecordsFragment extends Fragment {
 
     private void setEnglishSoccerRecords() {
 
-        imageView.setImageResource(R.drawable.premier_league_logo);
+        imageView.setImageResource(R.drawable.english_pm_logo);
         textView.setText(getString(R.string.english_records_title1).toUpperCase() + "\n" +
                 getString(R.string.english_records_title2) + "\n" +
                 getString(R.string.english_records1) + "\n" +
@@ -163,7 +163,7 @@ public class RecordsFragment extends Fragment {
 
     private void setMLSSoccerRecords() {
 
-        imageView.setImageResource(R.drawable.mls_logo);
+        imageView.setImageResource(R.drawable.mls);
         textView.setText(getString(R.string.top_scorers_title).toUpperCase() + "\n" +
                 getString(R.string.mls_records));
     }
@@ -181,7 +181,7 @@ public class RecordsFragment extends Fragment {
 
     private void setNFLRecords() {
 
-        imageView.setImageResource(R.drawable.nfl_l);
+        imageView.setImageResource(R.drawable.nfl_logo);
         textView.setText(getString(R.string.nfl_records_title1).toUpperCase() + "\n" +
                 getString(R.string.nfl_records1) + "\n"
                 + getString(R.string.nfl_records_title2)
@@ -196,7 +196,7 @@ public class RecordsFragment extends Fragment {
 
     private void setMLBRecords() {
 
-        imageView.setImageResource(R.drawable.mlb_l);
+        imageView.setImageResource(R.drawable.mlb);
         textView.setText(getString(R.string.mlb_records_title).toUpperCase() + "\n" +
                 getString(R.string.mlb_records) + "\n"
                 + getString(R.string.mlb_records_title1)
@@ -213,7 +213,7 @@ public class RecordsFragment extends Fragment {
 
     private void setNHLRecords() {
 
-        imageView.setImageResource(R.drawable.nhl_logo);
+        imageView.setImageResource(R.drawable.nhl_l);
         textView.setText(getString(R.string.nhl_records_title).toUpperCase() + "\n" +
                 getString(R.string.nhl_records_title1) + "\n"
                 + getString(R.string.nhl_records)

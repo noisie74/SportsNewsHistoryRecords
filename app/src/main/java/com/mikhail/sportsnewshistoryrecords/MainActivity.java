@@ -1,7 +1,11 @@
 package com.mikhail.sportsnewshistoryrecords;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.design.widget.NavigationView;
@@ -30,6 +34,9 @@ import com.mikhail.sportsnewshistoryrecords.fragments.SavedArticleFragment;
 import com.mikhail.sportsnewshistoryrecords.interfaces.ControlToolbar;
 import com.mikhail.sportsnewshistoryrecords.interfaces.MainActivityControlAllSports;
 import com.mikhail.sportsnewshistoryrecords.interfaces.SavedArticleControl;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
@@ -74,6 +81,7 @@ public class MainActivity extends AppCompatActivity
         key = getIntent().getIntExtra(LEAGUES_TRANSITION, R.id.top_news);
         setViews();
         setFragment();
+        checkNetwork();
 
         intent = new Intent(MainActivity.this, LeaguesActivity.class);
 
@@ -460,24 +468,22 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-//
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//    }
+    public void checkNetwork(){
+        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if (networkInfo == null) {
 
-//    private void callJobScheduler() {
-//
-//        JobScheduler mJobScheduler;
-//
-//        mJobScheduler = (JobScheduler) getSystemService(Context.JOB_SCHEDULER_SERVICE);
-//        JobInfo.Builder builder = new JobInfo.Builder(1, new ComponentName(getPackageName(),
-//                JobSchedulerService.class.getName()));
-//        builder.setPeriodic(600000);
-//
-//        if (mJobScheduler.schedule(builder.build()) <= 0) {
-//        }
-//    }
+            new Timer().schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    Intent intent = new Intent(Settings.ACTION_SETTINGS);
+                    startActivity(intent);
+                }
+            }, 1600);
+
+            Toast.makeText(MainActivity.this, "No network connection!", Toast.LENGTH_LONG).show();
+        }
+    }
 }
 
 

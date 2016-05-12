@@ -407,19 +407,19 @@ public class LeaguesActivity extends AppCompatActivity implements
     private void toolBarTitle() {
         switch (key) {
             case R.id.nfl:
-                toolbar.setTitle("NFL");
+                toolbar.setTitle("NFL Football");
                 break;
             case R.id.nba:
-                toolbar.setTitle("NBA");
+                toolbar.setTitle("NBA Basketball");
                 break;
             case R.id.mlb:
-                toolbar.setTitle("MLB");
+                toolbar.setTitle("MLB Baseball");
                 break;
             case R.id.nhl:
-                toolbar.setTitle("NHL");
+                toolbar.setTitle("NHL Hockey");
                 break;
             case R.id.mls:
-                toolbar.setTitle("MLS");
+                toolbar.setTitle("MLS Soccer");
                 break;
             case R.id.english_soccer:
                 toolbar.setTitle("English Premier League");
@@ -452,15 +452,15 @@ public class LeaguesActivity extends AppCompatActivity implements
         toolbar.setTitle(title);
     }
 
-    private void setViewPagerAndTabs() {
-        if (viewPager != null) {
-            viewPager.setVisibility(View.GONE);
-        }
-        if (tabLayout != null) {
-            tabLayout.setVisibility(View.GONE);
-        }
-        if (frameLayout != null) {
-            frameLayout.setVisibility(View.VISIBLE);
-        }
-    }
+//    private void setViewPagerAndTabs() {
+//        if (viewPager != null) {
+//            viewPager.setVisibility(View.GONE);
+//        }
+//        if (tabLayout != null) {
+//            tabLayout.setVisibility(View.GONE);
+//        }
+//        if (frameLayout != null) {
+//            frameLayout.setVisibility(View.VISIBLE);
+//        }
+//    }
 }

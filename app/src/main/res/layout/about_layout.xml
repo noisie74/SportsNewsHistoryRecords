@@ -2,15 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/White"
+    android:background="@color/LightBlue"
     android:weightSum="1">
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="300dp"
         android:id="@+id/imageAbout"
-        android:src="@drawable/about_image"
-        android:paddingTop="50dp"
+        android:src="@drawable/image_about"
+        android:paddingTop="30dp"
         android:layout_gravity="center_horizontal|center" />
 
     <TextView
@@ -37,7 +37,7 @@
         android:text="Send Feedback"
         android:background="@drawable/round_button"
         android:id="@+id/button_feedback"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="65dp"
         android:layout_gravity="center_horizontal|bottom" />
 
 

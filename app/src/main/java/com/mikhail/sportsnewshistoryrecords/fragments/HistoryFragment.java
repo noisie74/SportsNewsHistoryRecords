@@ -123,7 +123,7 @@ public class HistoryFragment extends Fragment {
 
     private void setEnglishSoccerHistory() {
 
-        imageView.setImageResource(R.drawable.premier_league_logo);
+        imageView.setImageResource(R.drawable.english_pm_logo);
         textView.setText(getString(R.string.english_history1) +
                 "\n" + getString(R.string.english_history_title1).toUpperCase() + "\n" +
                 getString(R.string.english_history_title2) + "\n" +
@@ -146,7 +146,7 @@ public class HistoryFragment extends Fragment {
 
     private void setMLSSoccerHistory() {
 
-        imageView.setImageResource(R.drawable.mls_logo);
+        imageView.setImageResource(R.drawable.mls);
         textView.setText(getString(R.string.mls_history1) + "\n" +
                 getString(R.string.mls_history4) + "\n" +
                 getString(R.string.mls_title1).toUpperCase() + "\n" +
@@ -191,7 +191,7 @@ public class HistoryFragment extends Fragment {
     }
 
     private void setNFLHistory() {
-        imageView.setImageResource(R.drawable.nfl_l);
+        imageView.setImageResource(R.drawable.nfl_logo);
 
         firebaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -222,7 +222,7 @@ public class HistoryFragment extends Fragment {
     }
 
     private void setNHLHistory() {
-        imageView.setImageResource(R.drawable.nhl_logo);
+        imageView.setImageResource(R.drawable.nhl_l);
 
         firebaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -243,7 +243,7 @@ public class HistoryFragment extends Fragment {
     }
 
     private void setMLBHistory() {
-        imageView.setImageResource(R.drawable.mlb_l);
+        imageView.setImageResource(R.drawable.mlb);
 
         firebaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
