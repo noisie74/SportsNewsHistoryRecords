@@ -41,7 +41,6 @@ public class SavedRecyclerAdapter extends RecyclerView.Adapter<SavedRecyclerAdap
         TextView headline;
         ImageView imageIcon;
         TextView articleAbstract;
-        TextView ago;
         ArticleSaveForLater articlesSaved;
 
         public SavedRecyclerViewHolder(final View itemView) {
@@ -50,7 +49,6 @@ public class SavedRecyclerAdapter extends RecyclerView.Adapter<SavedRecyclerAdap
             headline = (TextView) itemView.findViewById(R.id.saved_headline);
             imageIcon = (ImageView)itemView.findViewById(R.id.saved_cardView_image);
             articleAbstract = (TextView)itemView.findViewById(R.id.saved_article_info_cardview);
-            ago = (TextView)itemView.findViewById(R.id.saved_ago);
             articlesSaved = new ArticleSaveForLater();
 
             itemView.setOnClickListener(new View.OnClickListener() {

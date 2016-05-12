@@ -25,7 +25,7 @@ import java.util.ArrayList;
  * Created by Mikhail on 5/6/16.
  */
 public class SavedArticleFragment extends Fragment {
-    public final static int savedArticleLimit = 15;
+    public final static int savedArticleLimit = 20;
     public ArrayList<ArticleSaveForLater> articleLists;
 
     private SavedRecyclerAdapter recycleAdapter;

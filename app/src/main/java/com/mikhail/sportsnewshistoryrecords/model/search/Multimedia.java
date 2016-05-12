@@ -11,5 +11,4 @@ public class Multimedia {
         return  "http://nytimes.com/" + url;
     }
 
-//    "https://static01.nyt.com/"
 }

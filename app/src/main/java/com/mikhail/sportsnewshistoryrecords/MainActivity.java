@@ -24,6 +24,9 @@ import android.widget.FrameLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import com.mikhail.sportsnewshistoryrecords.fragments.AboutFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.AllSportsFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.LeaguesFragment;
@@ -34,56 +37,52 @@ import com.mikhail.sportsnewshistoryrecords.fragments.SavedArticleFragment;
 import com.mikhail.sportsnewshistoryrecords.interfaces.ControlToolbar;
 import com.mikhail.sportsnewshistoryrecords.interfaces.MainActivityControlAllSports;
 import com.mikhail.sportsnewshistoryrecords.interfaces.SavedArticleControl;
-import java.util.Timer;
-import java.util.TimerTask;
+
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         ControlToolbar, MainActivityControlAllSports,
         SavedArticleControl {
 
-    private FragmentManager fragmentManager;
-    private FragmentTransaction fragmentTransaction;
-    private FrameLayout fragContainer;
-    private AllSportsFragment allSportsFragment;
-    public int mNavigationItemId;
-    private Toolbar toolbar;
-    private static final String[] paths = {"Top News", "Football", "Basketball", "Baseball", "Hockey", "Soccer"};
-    public NewsDetailsFragment newsDetailsFragment;
-    public LeaguesFragment leaguesFragment;
     public static final String KEY = "KEY";
     public static final String LEAGUES_TRANSITION = "backToMainActivity";
     public Spinner spinner;
-    private Intent intent;
-    public SavedArticleFragment savedArticleFragment;
+    public int mNavigationItemId;
+    public LeaguesFragment leaguesFragment;
+    private static final String[] spinnerItems = {"Top News", "Football",
+            "Basketball", "Baseball", "Hockey", "Soccer"};
     private int key;
-    SavedArticleDetailsFragment savedArticleDetailsFragment;
-    int spinnerPosition;
-    AboutFragment aboutFragment;
-    NotificationFragment notificationFragment;
+    private Toolbar toolbar;
+    private Intent intent;
+    private int spinnerPosition;
+    private NewsDetailsFragment newsDetailsFragment;
+    private FragmentManager fragmentManager;
+    private AboutFragment aboutFragment;
+    private NotificationFragment notificationFragment;
+    private FragmentTransaction fragmentTransaction;
+    private FrameLayout fragContainer;
+    private SavedArticleFragment savedArticleFragment;
+    private SavedArticleDetailsFragment savedArticleDetailsFragment;
+    private AllSportsFragment allSportsFragment;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setTitle("Sports News");
 
-
-        spinner = (Spinner) toolbar.findViewById(R.id.app_bar_spinner);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                R.layout.support_simple_spinner_dropdown_item, paths);
-        spinner.setAdapter(adapter);
-
-        key = getIntent().getIntExtra(LEAGUES_TRANSITION, R.id.top_news);
+        setIntent();
         setViews();
         setFragment();
         checkNetwork();
+        setSpinnerClickListener();
 
-        intent = new Intent(MainActivity.this, LeaguesActivity.class);
+    }
 
+    /**
+     set click listener for spinner
+     */
+    private void setSpinnerClickListener() {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -91,27 +90,21 @@ public class MainActivity extends AppCompatActivity
                 switch (spinnerPosition) {
                     case 0:
                         allSportsFragment.nytAllSportsNews();
-//                        Toast.makeText(MainActivity.this, "Top News", Toast.LENGTH_SHORT).show();
                         break;
                     case 1:
                         allSportsFragment.nytFootballSportsNews();
-                        Toast.makeText(MainActivity.this, "Football", Toast.LENGTH_SHORT).show();
                         break;
                     case 2:
                         allSportsFragment.nytBasketballSportsNews();
-                        Toast.makeText(MainActivity.this, "Basketball", Toast.LENGTH_SHORT).show();
                         break;
                     case 3:
                         allSportsFragment.nytBaseballSportsNews();
-                        Toast.makeText(MainActivity.this, "Baseball", Toast.LENGTH_SHORT).show();
                         break;
                     case 4:
                         allSportsFragment.nytHockeySportsNews();
-                        Toast.makeText(MainActivity.this, "Hockey", Toast.LENGTH_SHORT).show();
                         break;
                     case 5:
                         allSportsFragment.nytSoccerSportsNews();
-                        Toast.makeText(MainActivity.this, "Soccer", Toast.LENGTH_SHORT).show();
                         break;
                 }
             }
@@ -125,31 +118,19 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    @Override
-    public void setTitle(String title) {
-
-        toolbar.setTitle(title);
+    /**
+     * receive intent from leagues activity
+     */
+    private void setIntent() {
+        key = getIntent().getIntExtra(LEAGUES_TRANSITION, R.id.top_news);
+        intent = new Intent(MainActivity.this, LeaguesActivity.class);
     }
 
-    @Override
-    public void showSpinner(boolean visible) {
-        if (visible) {
-            spinner.setVisibility(View.VISIBLE);
-        } else {
-            spinner.setVisibility(View.GONE);
-        }
-    }
 
-    @Override
-    public void showTitle(boolean visible) {
-
-        if (visible) {
-            toolbar.setTitle("");
-        } else {
-            toolbar.setTitle("Sports News");
-        }
-    }
-
+    /**
+     * set bundle to display article
+     * details fragment into webview
+     */
     @Override
     public void setBundle(Bundle article) {
         newsDetailsFragment = new NewsDetailsFragment();
@@ -159,17 +140,30 @@ public class MainActivity extends AppCompatActivity
         fragmentTransaction.commit();
     }
 
+    /**
+     * set bundle to display  saved article
+     * details fragment into webview
+     */
     @Override
     public void setSavedArticleBundle(Bundle article) {
         savedArticleDetailsFragment = new SavedArticleDetailsFragment();
         savedArticleDetailsFragment.setArguments(article);
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.frag_container, savedArticleDetailsFragment);
-//        transaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 
+    /**
+     * set view for main activity
+     */
     private void setViews() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setTitle(R.string.app_title_toolbar);
+        spinner = (Spinner) toolbar.findViewById(R.id.app_bar_spinner);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                R.layout.support_simple_spinner_dropdown_item, spinnerItems);
+        spinner.setAdapter(adapter);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -180,15 +174,14 @@ public class MainActivity extends AppCompatActivity
         fragContainer = (FrameLayout) findViewById(R.id.frag_container);
         fragmentManager = getSupportFragmentManager();
         allSportsFragment = new AllSportsFragment();
-        toolbar.setTitle("Sports News");
-//        newsDetailsFragment = new NewsDetailsFragment();
-//        spinner = (Spinner) findViewById(R.mNavigationItemId.spinner);
-
-
+        toolbar.setTitle(R.string.app_title_toolbar);
     }
 
+    /**
+     * set fragment according to intent
+     * from leagues activity
+     */
     private void setFragment() {
-
         if (key == R.id.top_news) {
             fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.add(R.id.frag_container, allSportsFragment);
@@ -199,7 +192,7 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.frag_container, savedArticleFragment);
             fragmentTransaction.commit();
-            toolbar.setTitle("Saved stories");
+            toolbar.setTitle(R.string.saved_stories_toolbar);
             if (spinner != null) {
                 spinner.setVisibility(View.GONE);
             }
@@ -207,114 +200,6 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    @Override
-    public void onBackPressed() {
-
-        Log.d("MainActivity", "Back!");
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else if (newsDetailsFragment != null) {
-//            fragmentManager.popBackStack();
-            Log.d("Main", "1st condition");
-            fragContainer.setVisibility(View.VISIBLE);
-
-            allSportsFragment = new AllSportsFragment();
-            allSportsFragment.nytAllSportsNews();
-            fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.frag_container, allSportsFragment);
-            fragmentTransaction.commit();
-            toolbar.setTitle("Sports News");
-            newsDetailsFragment = null;
-            if (spinner != null) {
-                spinner.setVisibility(View.VISIBLE);
-            }
-        } else if (savedArticleDetailsFragment != null) {
-            savedArticleFragment = new SavedArticleFragment();
-            fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.frag_container, savedArticleFragment);
-            fragmentTransaction.commit();
-            savedArticleDetailsFragment = null;
-        } else if (savedArticleFragment != null) {
-
-            Log.d("Main", "2nd condition");
-            fragContainer.setVisibility(View.VISIBLE);
-            allSportsFragment = new AllSportsFragment();
-            allSportsFragment.nytAllSportsNews();
-            fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.frag_container, allSportsFragment);
-            fragmentTransaction.commit();
-            toolbar.setTitle("Sports News");
-            toolbar.getChildAt(1).setVisibility(View.VISIBLE);
-            if (spinner != null) {
-                spinner.setSelection(0);
-            }
-            savedArticleFragment = null;
-        } else if (aboutFragment != null) {
-
-            Log.d("Main", "2nd condition");
-                allSportsFragment.nytAllSportsNews();
-            fragContainer.setVisibility(View.VISIBLE);
-//            allSportsFragment = new AllSportsFragment();
-            allSportsFragment.nytAllSportsNews();
-            fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.frag_container, allSportsFragment);
-            fragmentTransaction.commit();
-            toolbar.setTitle("Sports News");
-            toolbar.getChildAt(1).setVisibility(View.VISIBLE);
-            if (spinner != null) {
-                spinner.setSelection(0);
-            }
-            aboutFragment = null;
-        } else if (notificationFragment != null) {
-            notificationFragment.setJobHandler();
-
-            allSportsFragment = new AllSportsFragment();
-            allSportsFragment.nytAllSportsNews();
-            fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.frag_container, allSportsFragment);
-            toolbar.setTitle("Sports News");
-            toolbar.getChildAt(1).setVisibility(View.VISIBLE);
-            if (spinner != null) {
-                spinner.setSelection(0);
-            }
-            fragmentTransaction.commit();
-
-            notificationFragment = null;
-
-        } else {
-            Log.d("MainActivity", "No condition met");
-            super.onBackPressed();
-        }
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-//        int mNavigationItemId = item.getItemId();
-//
-//        if (mNavigationItemId == R.mNavigationItemId.action_settings) {
-//
-//            root_layout.addView(spinner);
-//            spinner.setAdapter(new ArrayAdapter<>(this,
-//                    android.R.layout.simple_spinner_dropdown_item,paths));
-//
-//
-////            popup();
-//        }
-
-
-        return super.onOptionsItemSelected(item);
-    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -384,7 +269,7 @@ public class MainActivity extends AppCompatActivity
                 }
                 break;
             case R.id.notifications:
-                 notificationFragment = new NotificationFragment();
+                notificationFragment = new NotificationFragment();
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frag_container, notificationFragment);
                 fragmentTransaction.commit();
@@ -400,7 +285,11 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-    public void checkNetwork(){
+
+    /**
+     * check network connection
+     */
+    public void checkNetwork() {
         ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         if (networkInfo == null) {
@@ -416,6 +305,113 @@ public class MainActivity extends AppCompatActivity
             Toast.makeText(MainActivity.this, R.string.no_network, Toast.LENGTH_LONG).show();
         }
     }
+
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void setTitle(String title) {
+        toolbar.setTitle(title);
+    }
+
+    @Override
+    public void showSpinner(boolean visible) {
+        if (visible) {
+            spinner.setVisibility(View.VISIBLE);
+        } else {
+            spinner.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
+    public void showTitle(boolean visible) {
+
+        if (visible) {
+            toolbar.setTitle("");
+        } else {
+            toolbar.setTitle(R.string.app_title_toolbar);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Log.d("MainActivity", "Back!");
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else if (newsDetailsFragment != null) {
+            Log.d("Main", "1st condition");
+            fragContainer.setVisibility(View.VISIBLE);
+            setAllSportsFragment();
+            newsDetailsFragment = null;
+            if (spinner != null) {
+                spinner.setVisibility(View.VISIBLE);
+            }
+        } else if (savedArticleDetailsFragment != null) {
+            savedArticleFragment = new SavedArticleFragment();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.frag_container, savedArticleFragment);
+            fragmentTransaction.commit();
+            savedArticleDetailsFragment = null;
+        } else if (savedArticleFragment != null) {
+
+            Log.d("Main", "2nd condition");
+            fragContainer.setVisibility(View.VISIBLE);
+            setAllSportsFragment();
+            toolbar.getChildAt(1).setVisibility(View.VISIBLE);
+            if (spinner != null) {
+                spinner.setSelection(0);
+            }
+            savedArticleFragment = null;
+        } else if (aboutFragment != null) {
+
+            Log.d("Main", "3rd condition");
+            fragContainer.setVisibility(View.VISIBLE);
+            setAllSportsFragment();
+            toolbar.getChildAt(1).setVisibility(View.VISIBLE);
+            if (spinner != null) {
+                spinner.setSelection(0);
+            }
+            aboutFragment = null;
+        } else if (notificationFragment != null) {
+            notificationFragment.setJobHandler();
+            setAllSportsFragment();
+            toolbar.getChildAt(1).setVisibility(View.VISIBLE);
+            if (spinner != null) {
+                spinner.setSelection(0);
+            }
+            notificationFragment = null;
+
+        } else {
+            Log.d("MainActivity", "No condition met");
+            super.onBackPressed();
+        }
+    }
+
+    /**
+     set all sports fragment
+     */
+    private void setAllSportsFragment(){
+
+        allSportsFragment = new AllSportsFragment();
+        allSportsFragment.nytAllSportsNews();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frag_container, allSportsFragment);
+        fragmentTransaction.commit();
+        toolbar.setTitle(R.string.app_title_toolbar);
+
+    }
+
 }
 
 

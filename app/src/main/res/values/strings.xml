@@ -1652,5 +1652,13 @@ Most points in the Final, career: Jean Beliveau, 62
     <string name="no_network">No network connection!</string>
     <string name="saved_stories_title_favorites">Saved stories</string>
     <string name="main_activity_title">Sports News</string>
+    <string name="app_title_toolbar">Sports News</string>
+    <string name="saved_stories_toolbar">Saved stories</string>
+    <string name="top_news_toast">Top News</string>
+    <string name="football_toast">Football</string>
+    <string name="basketball_toast">Basketball</string>
+    <string name="baseball_toast">Baseball</string>
+    <string name="hockey_toast">Hockey</string>
+    <string name="soccer_toast">Soccer</string>
 
 </resources>
