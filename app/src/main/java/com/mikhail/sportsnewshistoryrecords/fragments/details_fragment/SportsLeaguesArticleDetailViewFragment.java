@@ -110,6 +110,7 @@ public class SportsLeaguesArticleDetailViewFragment extends Fragment {
             startActivity(Intent.createChooser(intent, "Share"));
             return true;
         } else if (id == R.id.save_later) {
+            Log.d(TAG, articleDetails[2]);
             ArticleSaveForLater article = new ArticleSaveForLater(htmlSaveForLater, articleDetails[0], articleDetails[3], articleDetails[1], articleDetails[2]);
             insertIntoDbFromSearchArticle(article);
             return true;

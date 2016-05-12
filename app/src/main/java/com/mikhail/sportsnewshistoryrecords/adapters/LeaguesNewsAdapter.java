@@ -110,7 +110,7 @@ public class LeaguesNewsAdapter extends RecyclerView.Adapter<LeaguesNewsAdapter.
 
 
         Picasso.with(context)
-                .load("http://nytimes.com/" + imageURI)
+                .load(imageURI)
                 .placeholder(randPlaceholder(images))
                 .resize(200, 180)
                 .centerCrop()

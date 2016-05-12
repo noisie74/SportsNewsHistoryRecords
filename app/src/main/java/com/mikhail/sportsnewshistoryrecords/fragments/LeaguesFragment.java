@@ -18,6 +18,7 @@ import com.mikhail.sportsnewshistoryrecords.fragments.details_fragment.SportsLea
 import com.mikhail.sportsnewshistoryrecords.interfaces.LeaguesActivityControl;
 import com.mikhail.sportsnewshistoryrecords.model.search.ArticleSearch;
 import com.mikhail.sportsnewshistoryrecords.model.search.Doc;
+import com.mikhail.sportsnewshistoryrecords.model.search.Multimedia;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -75,15 +76,24 @@ public class LeaguesFragment extends Fragment {
 
     public void leaguesFragmentSetOnItemClickListener() {
 
+
+
         if (leaguesNewsAdapter != null) {
             leaguesNewsAdapter.setOnItemClickListener(new LeaguesNewsAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(View view, int position) {
                     searchSportsResults.get(position);
+                    String imageUrl;
+                    imageUrl = "";
+
+                    Multimedia[] multimedias = searchSportsResults.get(position).getMultimedia();
+                    if (multimedias != null && multimedias.length > 0){
+                        imageUrl = multimedias[0].getUrl();
+                    }
                     Bundle article = new Bundle(); //will bundle the 5 fields of articleSearchObjects in a string array
                     String[] articleDetails = {searchSportsResults.get(position).getHeadline().getMain(),
                             searchSportsResults.get(position).getWeb_url(),
-                            searchSportsResults.get(position).getMultimedia().toString(),
+                            imageUrl,
                             searchSportsResults.get(position).getLead_paragraph()};
                     article.putStringArray("searchedArticle", articleDetails);
 

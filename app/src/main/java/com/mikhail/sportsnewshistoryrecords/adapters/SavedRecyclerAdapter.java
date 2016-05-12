@@ -50,7 +50,7 @@ public class SavedRecyclerAdapter extends RecyclerView.Adapter<SavedRecyclerAdap
             headline = (TextView) itemView.findViewById(R.id.saved_headline);
             imageIcon = (ImageView)itemView.findViewById(R.id.saved_cardView_image);
             articleAbstract = (TextView)itemView.findViewById(R.id.saved_article_info_cardview);
-//            ago = (TextView)itemView.findViewById(R.id.saved_ago);
+            ago = (TextView)itemView.findViewById(R.id.saved_ago);
             articlesSaved = new ArticleSaveForLater();
 
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -81,7 +81,7 @@ public class SavedRecyclerAdapter extends RecyclerView.Adapter<SavedRecyclerAdap
 
     @Override
     public void onBindViewHolder(SavedRecyclerViewHolder holder, int position) {
-        long timeStamp = System.currentTimeMillis();
+//        long timeStamp = System.currentTimeMillis();
         holder.headline.setText(data.get(position).getTitle());
         holder.articleAbstract.setText(data.get(position).getSnippet());
 //        holder.ago.setText("saved " + AllSportsAdapter.getBiggestUnitTimeElapsed(data.get(position).getCode(), timeStamp) + " ago");
@@ -89,12 +89,12 @@ public class SavedRecyclerAdapter extends RecyclerView.Adapter<SavedRecyclerAdap
 
         String imageURI = data.get(position).getImage();
         if(imageURI.isEmpty()){
-            imageURI = "R.drawable.nyt_icon";
+            imageURI = "R.drawable.placeholder_image";
         }
 
         Picasso.with(context)
                 .load(imageURI)
-                .placeholder(R.drawable.nyt_icon)
+                .placeholder(R.drawable.about_image)
                 .resize(160, 160)
                 .centerCrop()
                 .into(holder.imageIcon);
