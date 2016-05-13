@@ -426,6 +426,10 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    @Override
+    public int getSpinnerSelection() {
+        return this.spinnerPosition;
+    }
 }
 
 
