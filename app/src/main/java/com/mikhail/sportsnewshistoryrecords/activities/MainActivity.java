@@ -40,6 +40,8 @@ import com.mikhail.sportsnewshistoryrecords.interfaces.MainActivityControlAllSpo
 import com.mikhail.sportsnewshistoryrecords.interfaces.SavedArticleControl;
 import com.mikhail.sportsnewshistoryrecords.util.CheckNetworkConnection;
 
+import timber.log.Timber;
+
 import static com.mikhail.sportsnewshistoryrecords.util.CheckNetworkConnection.*;
 
 
@@ -278,16 +280,24 @@ public class MainActivity extends AppCompatActivity
                 fragmentTransaction.commit();
                 break;
             case R.id.about:
+                if (aboutFragment != null && aboutFragment.isVisible()){
+                    aboutFragment= null;
+                }
                 aboutFragment = new AboutFragment();
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frag_container, aboutFragment);
                 fragmentTransaction.commit();
                 break;
         }
+
+//
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
 
     private void startMyActivity(int id) {
         intent.putExtra(KEY, id);
@@ -392,6 +402,7 @@ public class MainActivity extends AppCompatActivity
             setSpinnerSelection();
             aboutFragment = null;
         } else if (notificationFragment != null) {
+            Timber.d("JobHandler");
             notificationFragment.setJobHandler();
             setAllSportsFragment();
             toolbar.getChildAt(1).setVisibility(View.VISIBLE);

@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 
 import com.mikhail.sportsnewshistoryrecords.R;
+import com.mikhail.sportsnewshistoryrecords.activities.MainActivity;
 import com.mikhail.sportsnewshistoryrecords.interfaces.ControlToolbar;
 import com.mikhail.sportsnewshistoryrecords.service.JobSchedulerService;
 
@@ -28,9 +29,7 @@ import com.mikhail.sportsnewshistoryrecords.service.JobSchedulerService;
  */
 public class NotificationFragment extends Fragment {
 
-    View v;
-    CheckBox topNews, football, basketball, baseball, hockey, soccer;
-    ControlToolbar controlToolbar;
+    public View v;
     public static final String BOOLEAN_CODE = "booleanCode";
     private String TOP_NEWS_CODE = "Pro football,Pro basketball,baseball,soccer,Hockey";
     private String FOOTBALL_CODE = "Pro%20Football";
@@ -38,10 +37,8 @@ public class NotificationFragment extends Fragment {
     private String BASEBALL_CODE = "baseball";
     private String HOCKEY_CODE = "Hockey";
     private String SOCCER_CODE = "Soccer";
-
-    private String title;
-    private String snippet;
-    private String urlForArticle;
+    private CheckBox topNews, football, basketball, baseball, hockey, soccer;
+    private ControlToolbar controlToolbar;
 
     private boolean topNewsCheck = false;
     private boolean footballCheck = false;
@@ -55,8 +52,23 @@ public class NotificationFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         v = inflater.inflate(R.layout.notifications_layout, container, false);
+
+
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        mNotificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+
+        setViews();
+        setCheckboxClicks();
+        hasOptionsMenu();
+
+        return v;
+
+
+
+    }
+
+    private void setViews(){
 
         topNews = (CheckBox) v.findViewById(R.id.checkbox_top_news);
         football = (CheckBox) v.findViewById(R.id.checkbox_football);
@@ -65,22 +77,9 @@ public class NotificationFragment extends Fragment {
         hockey = (CheckBox) v.findViewById(R.id.checkbox_hockey);
         soccer = (CheckBox) v.findViewById(R.id.checkbox_soccer);
 
-        v.canScrollVertically(20);
-
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        mNotificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
-
-        setCheckboxClicks();
-
         controlToolbar.showSpinner(false);
         controlToolbar.setTitle("Notifications");
-
-        hasOptionsMenu();
-
-        return v;
-
     }
-
 
     @Override
     public void onAttach(Context context) {
@@ -244,12 +243,15 @@ public class NotificationFragment extends Fragment {
             booleanArray[5] = soccerCheck;
             bundle.putBooleanArray(BOOLEAN_CODE, booleanArray);
 
-            JobInfo.Builder builder = new JobInfo.Builder(1, new ComponentName(getActivity(), JobSchedulerService.class));
-            builder.setPeriodic(18000000).setExtras(bundle);
+            if (getActivity() != null){
+                JobInfo.Builder builder = new JobInfo.Builder(1, new ComponentName(getActivity(), JobSchedulerService.class));
+                builder.setPeriodic(18000000).setExtras(bundle);
 
-            JobScheduler mJobScheduler = (JobScheduler) getActivity().getSystemService(Context.JOB_SCHEDULER_SERVICE);
-            if (mJobScheduler.schedule(builder.build()) <= 0) {
-                //If something goes wrong
+                JobScheduler mJobScheduler = (JobScheduler) getActivity().getSystemService(Context.JOB_SCHEDULER_SERVICE);
+                if (mJobScheduler.schedule(builder.build()) <= 0) {
+                    //If something goes wrong
+            }
+
             }
         }
     }

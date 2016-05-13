@@ -166,7 +166,7 @@ public class AllSportsFragment extends Fragment {
 
         Observable<NytSportsResults> observable = nytSports.nytSportsResults(NYT_SOURCE, NYT_SUBSECTION, NYT_ALL);
 
-        Subscription sportsSubscription = observable.subscribeOn(Schedulers.newThread())
+        observable.subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<NytSportsResults>() {
                     @Override
@@ -193,7 +193,6 @@ public class AllSportsFragment extends Fragment {
                     }
                 });
 
-        sportsSubscription.unsubscribe();
     }
 
     public void nytSoccerSportsNews() {
