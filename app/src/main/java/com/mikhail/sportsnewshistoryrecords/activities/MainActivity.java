@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity
                         allSportsFragment.nytBasketballSportsNews();
                         break;
                     case 3:
-                        allSportsFragment.nytBaseballSportsNews();
+                        allSportsFragment.nytApiCall(AllSportsFragment.NYT_BASEBALL);
                         break;
                     case 4:
                         allSportsFragment.nytHockeySportsNews();

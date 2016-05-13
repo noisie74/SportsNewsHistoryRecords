@@ -119,25 +119,10 @@ public class AllSportsFragment extends Fragment {
                 if (!isConnected(context)) {
                     Toast.makeText(getContext(), R.string.no_network, Toast.LENGTH_LONG).show();
                     swipeContainer.setRefreshing(false);
-                } else if (mainActivityControl.getSpinnerSelection() == 0) {
-                    nytAllSportsNews();
-                    Timber.d("All Sports pullRefresh");
-                } else if (mainActivityControl.getSpinnerSelection() == 1) {
-                    nytFootballSportsNews();
-                    Timber.d("Football pullRefresh");
-                } else if (mainActivityControl.getSpinnerSelection() == 2) {
-                    nytBasketballSportsNews();
-                    Timber.d("Basketball pullRefresh");
-                } else if (mainActivityControl.getSpinnerSelection() == 3) {
-                    nytBaseballSportsNews();
-                    Timber.d("Baseball pullRefresh");
-                } else if (mainActivityControl.getSpinnerSelection() == 4) {
-                    nytHockeySportsNews();
-                    Timber.d("Hockey pullRefresh");
-                } else if (mainActivityControl.getSpinnerSelection() == 5) {
-                    nytSoccerSportsNews();
-                    Timber.d("Soccer pullRefresh");
+                } else {
+                    apiForSpinnerPosition();
                 }
+
             }
         });
 
@@ -146,6 +131,30 @@ public class AllSportsFragment extends Fragment {
 
     }
 
+    /**
+     * check current spinner position and make correct api call
+     */
+    private void apiForSpinnerPosition() {
+        if (mainActivityControl.getSpinnerSelection() == 0) {
+            nytAllSportsNews();
+            Timber.d("All Sports pullRefresh");
+        } else if (mainActivityControl.getSpinnerSelection() == 1) {
+            nytFootballSportsNews();
+            Timber.d("Football pullRefresh");
+        } else if (mainActivityControl.getSpinnerSelection() == 2) {
+            nytBasketballSportsNews();
+            Timber.d("Basketball pullRefresh");
+        } else if (mainActivityControl.getSpinnerSelection() == 3) {
+            nytApiCall(NYT_BASEBALL);
+            Timber.d("Baseball pullRefresh");
+        } else if (mainActivityControl.getSpinnerSelection() == 4) {
+            nytHockeySportsNews();
+            Timber.d("Hockey pullRefresh");
+        } else if (mainActivityControl.getSpinnerSelection() == 5) {
+            nytSoccerSportsNews();
+            Timber.d("Soccer pullRefresh");
+        }
+    }
 
     /**
      * this will pull a list of articles according to the navi bar topics
@@ -241,10 +250,11 @@ public class AllSportsFragment extends Fragment {
                 });
     }
 
-    public void nytBaseballSportsNews() {
+    public void nytApiCall(String query) {
+
         NytAPI.NytRx nytSports = NytAPI.createRx();
 
-        Observable<NytSportsResults> observable = nytSports.nytSportsResults(NYT_SOURCE, NYT_SUBSECTION, NYT_BASEBALL);
+        Observable<NytSportsResults> observable = nytSports.nytSportsResults(NYT_SOURCE, NYT_SUBSECTION, query);
 
         observable.subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -267,6 +277,11 @@ public class AllSportsFragment extends Fragment {
                         swipeContainer.setRefreshing(false);
                     }
                 });
+
+    }
+
+    public void nytBaseballSportsNews() {
+
     }
 
     public void nytBasketballSportsNews() {

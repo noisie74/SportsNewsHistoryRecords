@@ -52,8 +52,6 @@ public class NotificationFragment extends Fragment {
     NotificationManager mNotificationManager;
     SharedPreferences sharedPreferences;
 
-    Context context;
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -227,43 +225,27 @@ public class NotificationFragment extends Fragment {
     }
 
     /**
-     * Sends an array of booleans to the service to let the
-     * service know which sections it needs to create notifications for
-     */
-    private void createIntentForJobScheduler() {
-        Intent serviceIntent = new Intent(getActivity(), JobSchedulerService.class);
-        boolean[] booleenArray = new boolean[6];
-        booleenArray[0] = topNewsCheck;
-        booleenArray[1] = footballCheck;
-        booleenArray[2] = basketballCheck;
-        booleenArray[3] = baseballCheck;
-        booleenArray[4] = hockeyCheck;
-        booleenArray[5] = soccerCheck;
-        serviceIntent.putExtra(BOOLEAN_CODE, booleenArray);
-        getActivity().startService(serviceIntent);
-    }
-
-
-    /**
      * Builds the JobScheduler in this activity.
      * Sets the time for it to call the api every 60 mins
+     * Sends an array of booleans to the service to let the
+     * service know which sections it needs to create notifications for
      */
     @TargetApi(21)
     public void setJobHandler() {
         if (Integer.valueOf(Build.VERSION.SDK_INT) > 20) {
             PersistableBundle bundle = new PersistableBundle();
 
-            boolean[] booleenArray = new boolean[6];
-            booleenArray[0] = topNewsCheck;
-            booleenArray[1] = footballCheck;
-            booleenArray[2] = basketballCheck;
-            booleenArray[3] = baseballCheck;
-            booleenArray[4] = hockeyCheck;
-            booleenArray[5] = soccerCheck;
-            bundle.putBooleanArray(BOOLEAN_CODE, booleenArray);
+            boolean[] booleanArray = new boolean[6];
+            booleanArray[0] = topNewsCheck;
+            booleanArray[1] = footballCheck;
+            booleanArray[2] = basketballCheck;
+            booleanArray[3] = baseballCheck;
+            booleanArray[4] = hockeyCheck;
+            booleanArray[5] = soccerCheck;
+            bundle.putBooleanArray(BOOLEAN_CODE, booleanArray);
 
             JobInfo.Builder builder = new JobInfo.Builder(1, new ComponentName(getActivity(), JobSchedulerService.class));
-            builder.setPeriodic(18000000).setExtras(bundle);
+            builder.setPeriodic(10000).setExtras(bundle);
 
             JobScheduler mJobScheduler = (JobScheduler) getActivity().getSystemService(Context.JOB_SCHEDULER_SERVICE);
             if (mJobScheduler.schedule(builder.build()) <= 0) {
@@ -272,13 +254,8 @@ public class NotificationFragment extends Fragment {
         }
     }
 
-    /**
-     * Sends the array of booleans to the service
-     */
     @Override
     public void onStop() {
         super.onStop();
-        //createIntentForJobScheduler();
-//        setJobHandler();
     }
 }
