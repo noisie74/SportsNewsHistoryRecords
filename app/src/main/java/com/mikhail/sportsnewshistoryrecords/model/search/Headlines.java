@@ -1,7 +1,7 @@
 package com.mikhail.sportsnewshistoryrecords.model.search;
 
 /**
- * Created by Mikhail on 4/28/16.
+ * object from NYT Article Search API
  */
 public class Headlines {
     private String print_headline;

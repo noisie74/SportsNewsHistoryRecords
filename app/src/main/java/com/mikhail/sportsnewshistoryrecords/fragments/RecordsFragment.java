@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mikhail.sportsnewshistoryrecords.R;
+import com.squareup.picasso.Picasso;
 
 /**
  * Created by Mikhail on 5/2/16.
@@ -44,7 +45,6 @@ public class RecordsFragment extends Fragment {
     }
 
     public void setFragmentType(int type) {
-        Log.d("RecordFragment", "Fragmetn set!");
         mFragmentType = type;
         if (v != null) {
             setRecordsFragmentData();
@@ -55,12 +55,16 @@ public class RecordsFragment extends Fragment {
 
         switch (mFragmentType) {
             case R.id.nfl:
+                setNFLRecords();
                 break;
             case R.id.nba:
+                setNBARecords();
                 break;
             case R.id.mlb:
+                setMLBRecords();
                 break;
             case R.id.nhl:
+                setNHLRecords();
                 break;
             case R.id.mls:
                 setMLSSoccerRecords();
@@ -93,7 +97,7 @@ public class RecordsFragment extends Fragment {
 
     private void setSpanishSoccerRecords() {
 
-        imageView.setImageResource(R.drawable.laliga_records);
+        imageView.setImageResource(R.drawable.laliga_logo);
         textView.setText(getString(R.string.la_liga_records_title).toUpperCase() + "\n" +
                 getString(R.string.la_liga_records_team1) + "\n" +
                 getString(R.string.la_liga_records_team2) + "\n" +
@@ -109,7 +113,7 @@ public class RecordsFragment extends Fragment {
 
     private void setEnglishSoccerRecords() {
 
-        imageView.setImageResource(R.drawable.premier_eague_rec);
+        imageView.setImageResource(R.drawable.english_pm_logo);
         textView.setText(getString(R.string.english_records_title1).toUpperCase() + "\n" +
                 getString(R.string.english_records_title2) + "\n" +
                 getString(R.string.english_records1) + "\n" +
@@ -159,8 +163,72 @@ public class RecordsFragment extends Fragment {
 
     private void setMLSSoccerRecords() {
 
-        imageView.setImageResource(R.drawable.mls_logo);
+        imageView.setImageResource(R.drawable.mls);
         textView.setText(getString(R.string.top_scorers_title).toUpperCase() + "\n" +
                 getString(R.string.mls_records));
+    }
+
+    private void setNBARecords() {
+
+        imageView.setImageResource(R.drawable.nba_logo_history);
+        textView.setText(getString(R.string.nba_records_title).toUpperCase() + "\n" +
+                getString(R.string.nba_records)
+                + "\n" + getString(R.string.nba_records1)
+                + "\n" + getString(R.string.nba_records3)
+                + "\n" + getString(R.string.nba_records4)
+                + "\n" + getString(R.string.nba_records5) );
+    }
+
+    private void setNFLRecords() {
+
+        imageView.setImageResource(R.drawable.nfl_logo);
+        textView.setText(getString(R.string.nfl_records_title1).toUpperCase() + "\n" +
+                getString(R.string.nfl_records1) + "\n"
+                + getString(R.string.nfl_records_title2)
+                + "\n" + getString(R.string.nfl_records2)
+                + "\n" + getString(R.string.nfl_records_title3)
+                + "\n" + getString(R.string.nfl_records3)
+                + "\n" + getString(R.string.nfl_records_title4)
+                + "\n" + getString(R.string.nfl_records4)
+                + "\n" + getString(R.string.nfl_records_title5)
+                + "\n" + getString(R.string.nfl_records5));
+    }
+
+    private void setMLBRecords() {
+
+        imageView.setImageResource(R.drawable.mlb);
+        textView.setText(getString(R.string.mlb_records_title).toUpperCase() + "\n" +
+                getString(R.string.mlb_records) + "\n"
+                + getString(R.string.mlb_records_title1)
+                + "\n" + getString(R.string.mlb_records1)
+                + "\n" + getString(R.string.mlb_records_title2)
+                + "\n" + getString(R.string.mlb_records2)
+                + "\n" + getString(R.string.mlb_records_title3)
+                + "\n" + getString(R.string.mlb_records3)
+                + "\n" + getString(R.string.mlb_records_title4)
+                + "\n" + getString(R.string.mlb_records4)
+                + "\n" + getString(R.string.mlb_records_title5)
+                + "\n" + getString(R.string.mlb_records5));
+    }
+
+    private void setNHLRecords() {
+
+        imageView.setImageResource(R.drawable.nhl_l);
+        textView.setText(getString(R.string.nhl_records_title).toUpperCase() + "\n" +
+                getString(R.string.nhl_records_title1) + "\n"
+                + getString(R.string.nhl_records)
+                + "\n" + getString(R.string.nhl_records_title2)
+                + "\n" + getString(R.string.nhl_records_title3)
+                + "\n" + getString(R.string.nhl_records2)
+                + "\n" + getString(R.string.nhl_records_title4)
+                + "\n" + getString(R.string.nhl_records3)
+                + "\n" + getString(R.string.nhl_records_title5)
+                + "\n" + getString(R.string.nhl_records4)
+                + "\n" + getString(R.string.nhl_records_title6)
+                + "\n" + getString(R.string.nhl_records5)
+                + "\n" + getString(R.string.nhl_records_title7)
+                + "\n" + getString(R.string.nhl_records6)
+                + "\n" + getString(R.string.nhl_records_title8)
+                + "\n" + getString(R.string.nhl_records7));
     }
 }

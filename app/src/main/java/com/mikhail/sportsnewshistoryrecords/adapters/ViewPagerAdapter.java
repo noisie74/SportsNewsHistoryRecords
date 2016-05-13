@@ -3,15 +3,10 @@ package com.mikhail.sportsnewshistoryrecords.adapters;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
-import android.view.MenuItem;
 
-import com.mikhail.sportsnewshistoryrecords.MainActivity;
-import com.mikhail.sportsnewshistoryrecords.R;
 import com.mikhail.sportsnewshistoryrecords.fragments.HistoryFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.LeaguesFragment;
-import com.mikhail.sportsnewshistoryrecords.fragments.NewsDetailsFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.RecordsFragment;
 
 /**

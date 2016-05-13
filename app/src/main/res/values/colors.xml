@@ -6,4 +6,9 @@
     <color name="Yellow">#FFFF00</color>
     <color name="Snow">#FFFAFA</color>
     <color name="FloralWhite">#FFFAF0</color>
+    <color name="White">#FFFFFF</color>
+    <color name="Grey">#4c4c4c</color>
+    <color name="DarkGrey">#333333</color>
+    <color name="Black">#191919</color>
+    <color name="LightBlue">#ADD8E6</color>
 </resources>

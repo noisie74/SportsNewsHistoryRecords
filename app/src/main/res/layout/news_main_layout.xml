@@ -10,7 +10,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/selector">
 
 
         <ImageView
@@ -28,10 +29,11 @@
             android:layout_below="@+id/cardView_image"
             android:maxLines="3"
             android:padding="8dp"
-            android:text="title"
+            android:text="@string/news_main_title"
             android:textColor="#222"
             android:textSize="18sp"
             android:textStyle="bold" />
+
 
         <TextView
             android:id="@+id/article_info"
@@ -40,9 +42,21 @@
             android:layout_below="@+id/headline"
             android:maxLines="3"
             android:padding="8dp"
-            android:text="description"
+            android:text="@string/news_main_description"
             android:textColor="#666"
             android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/ago"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:paddingRight="8dp"
+            android:gravity="end"
+            android:textColor="#99666666"
+            android:textSize="10sp"
+            android:layout_below="@+id/article_info"
+            android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
 

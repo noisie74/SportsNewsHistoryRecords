@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created by Mikhail on 4/28/16.
+ * Array of objects from Article Search API
  */
 public class Doc {
     private String lead_paragraph;
@@ -38,7 +38,6 @@ public class Doc {
     public Long getPub_date() {
 
 
-//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ZZZ");
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
 
@@ -51,7 +50,6 @@ public class Doc {
         } catch (java.text.ParseException e) {
             e.printStackTrace();
         }
-        //"pub_date": "2016-04-16T00:00:00Z",
         return timeInMillis;
     }
 }

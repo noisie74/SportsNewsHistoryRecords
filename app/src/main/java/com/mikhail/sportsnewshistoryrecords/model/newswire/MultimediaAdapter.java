@@ -1,16 +1,16 @@
-package com.mikhail.sportsnewshistoryrecords.model;
+package com.mikhail.sportsnewshistoryrecords.model.newswire;
 
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
 import com.mikhail.sportsnewshistoryrecords.api.NytAPI;
-import com.mikhail.sportsnewshistoryrecords.model.search.Multimedia;
+import com.mikhail.sportsnewshistoryrecords.model.newswire.NytSportsMultimedia;
 
 import java.io.IOException;
 
 /**
- * Created by Mikhail on 5/2/16.
+ * Adapter that handles empty Multimedia array of objects from NYT News Wire API
  */
 public class MultimediaAdapter extends TypeAdapter<NytSportsMultimedia[]> {
 

@@ -5,12 +5,11 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
 import com.mikhail.sportsnewshistoryrecords.api.NytAPI;
-import com.mikhail.sportsnewshistoryrecords.model.NytSportsMultimedia;
 
 import java.io.IOException;
 
 /**
- * Created by Mikhail on 5/2/16.
+ * Adapter that handles empty Multimedia array of objects from NYT Article Search API
  */
 public class MultimediaSearchAdapter extends TypeAdapter<Multimedia[]> {
 
