@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.mikhail.sportsnewshistoryrecords.R;
 import com.mikhail.sportsnewshistoryrecords.adapters.LeaguesNewsAdapter;
@@ -27,6 +28,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.mikhail.sportsnewshistoryrecords.util.CheckNetworkConnection.isConnected;
+
 /**
  * Created by Mikhail on 4/28/16.
  */
@@ -35,6 +38,7 @@ public class LeaguesFragment extends Fragment {
     public RecyclerView recyclerView;
     public ArrayList<Doc> searchSportsResults;
     protected SwipeRefreshLayout swipeContainer;
+    protected Context context;
     public static final String NYT_HOCKEY = "Hockey";
     public static final String NYT_MLS = "MLS";
     public static final String NYT_FOOTBALL = "NFL Football";
@@ -44,19 +48,16 @@ public class LeaguesFragment extends Fragment {
     public static final String NYT_ENGLISH = "English Premier league";
     public static final String NYT_ITALIAN = "Italian Soccer Serie A";
     public static final String NYT_GERMAN = "Bundesliga";
-
-    LeaguesNewsAdapter leaguesNewsAdapter;
-//    NewsDetailsFragment newsDetailsFragment;
-    View v;
-    ArticleSearch nytSportsSearch;
-    LeaguesDetailViewFragment sportsLeaguesArticleDetailViewFragment;
-    LeaguesActivityControl leaguesActivityControl;
+    public LeaguesNewsAdapter leaguesNewsAdapter;
+    public View v;
+    public LeaguesActivityControl leaguesActivityControl;
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.recycleview_activity_fragment, container, false);
+        context = getContext();
         recyclerView = (RecyclerView) v.findViewById(R.id.recycle_view);
 
         searchSportsResults = new ArrayList<>();
@@ -65,7 +66,6 @@ public class LeaguesFragment extends Fragment {
         setPullRefresh();
 
         leaguesNewsAdapter = new LeaguesNewsAdapter(searchSportsResults);
-//        italianSoccerSearch();
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         leaguesFragmentSetOnItemClickListener();
@@ -77,7 +77,6 @@ public class LeaguesFragment extends Fragment {
     public void leaguesFragmentSetOnItemClickListener() {
 
 
-
         if (leaguesNewsAdapter != null) {
             leaguesNewsAdapter.setOnItemClickListener(new LeaguesNewsAdapter.OnItemClickListener() {
                 @Override
@@ -87,7 +86,7 @@ public class LeaguesFragment extends Fragment {
                     imageUrl = "";
 
                     Multimedia[] multimedias = searchSportsResults.get(position).getMultimedia();
-                    if (multimedias != null && multimedias.length > 0){
+                    if (multimedias != null && multimedias.length > 0) {
                         imageUrl = multimedias[0].getUrl();
                     }
                     Bundle article = new Bundle(); //will bundle the 5 fields of articleSearchObjects in a string array
@@ -100,13 +99,6 @@ public class LeaguesFragment extends Fragment {
 
                     leaguesActivityControl.showFragment(article);
 
-//                    Intent intent = new Intent(getActivity(), MainActivity.class);
-//                    intent.putExtras(article);
-//                    getActivity().startActivity(intent);
-
-                    // todo all this code below goes into LeaguesActivity and will be called when
-                    // todo interface pases the bundle in
-
                 }
             });
         }
@@ -118,9 +110,10 @@ public class LeaguesFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
 
-        try { leaguesActivityControl = (LeaguesActivityControl) getActivity();
+        try {
+            leaguesActivityControl = (LeaguesActivityControl) getActivity();
 
-        }catch (ClassCastException ex ){
+        } catch (ClassCastException ex) {
             throw ex;
         }
     }
@@ -129,15 +122,20 @@ public class LeaguesFragment extends Fragment {
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                apiCall();
+                if (!isConnected(context)){
+                    Toast.makeText(getContext(), R.string.no_network, Toast.LENGTH_LONG).show();
+                    swipeContainer.setRefreshing(false);
+                } else {
+                    apiCall();
+                }
             }
         });
 
-        // Configure the refreshing colors
         swipeContainer.setColorSchemeResources(android.R.color.darker_gray,
                 android.R.color.white);
 
     }
+
 
     private void italianSoccerSearch() {
 
@@ -237,6 +235,7 @@ public class LeaguesFragment extends Fragment {
         });
 
     }
+
     private void bundesligaSearch() {
 
         NytSearchAPI.NytAPIRetrofitSimple nytSportsSearch = NytSearchAPI.create();
@@ -419,6 +418,7 @@ public class LeaguesFragment extends Fragment {
         mFragmentType = type;
         apiCall();
     }
+
 
     private void apiCall() {
         switch (mFragmentType) {

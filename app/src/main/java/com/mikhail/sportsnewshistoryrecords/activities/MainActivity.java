@@ -38,6 +38,9 @@ import com.mikhail.sportsnewshistoryrecords.fragments.SavedArticleFragment;
 import com.mikhail.sportsnewshistoryrecords.interfaces.ControlToolbar;
 import com.mikhail.sportsnewshistoryrecords.interfaces.MainActivityControlAllSports;
 import com.mikhail.sportsnewshistoryrecords.interfaces.SavedArticleControl;
+import com.mikhail.sportsnewshistoryrecords.util.CheckNetworkConnection;
+
+import static com.mikhail.sportsnewshistoryrecords.util.CheckNetworkConnection.*;
 
 
 public class MainActivity extends AppCompatActivity
@@ -49,6 +52,7 @@ public class MainActivity extends AppCompatActivity
     public static final String LEAGUES_TRANSITION = "backToMainActivity";
     public Spinner spinner;
     public int mNavigationItemId;
+    public Context context;
     public LeaguesFragment leaguesFragment;
     private static final String[] spinnerItems = {"Top News", "Football",
             "Basketball", "Baseball", "Hockey", "Soccer"};
@@ -71,6 +75,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        context = getApplicationContext();
 
         setIntent();
         setViews();
@@ -81,11 +86,11 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    @Override
-    protected void onResume() {
-        setAllSportsFragment();
-        super.onResume();
-    }
+//    @Override
+//    protected void onResume() {
+////        setAllSportsFragment();
+//        super.onResume();
+//    }
 
     /**
      set click listener for spinner
@@ -225,51 +230,36 @@ public class MainActivity extends AppCompatActivity
 
         switch (mNavigationItemId) {
             case R.id.top_news:
-
-                if (spinner != null) {
-                    spinner.setSelection(0);
-                }
-                allSportsFragment.nytAllSportsNews();
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frag_container, allSportsFragment);
-                fragmentTransaction.commit();
-                toolbar.setTitle(R.string.main_activity_title);
+                setSpinnerSelection();
+                setAllSportsFragment();
                 toolbar.getChildAt(1).setVisibility(View.VISIBLE);
                 break;
             case R.id.nfl:
                 startMyActivity(R.id.nfl);
                 break;
             case R.id.nba:
-                intent.putExtra(KEY, R.id.nba);
-                startActivity(intent);
+                startMyActivity(R.id.nba);
                 break;
             case R.id.mlb:
-                intent.putExtra(KEY, R.id.mlb);
-                startActivity(intent);
+                startMyActivity(R.id.mlb);
                 break;
             case R.id.nhl:
-                intent.putExtra(KEY, R.id.nhl);
-                startActivity(intent);
+                startMyActivity(R.id.nhl);
                 break;
             case R.id.mls:
-                intent.putExtra(KEY, R.id.mls);
-                startActivity(intent);
+                startMyActivity(R.id.mls);
                 break;
             case R.id.english_soccer:
-                intent.putExtra(KEY, R.id.english_soccer);
-                startActivity(intent);
+                startMyActivity(R.id.english_soccer);
                 break;
             case R.id.spanish_soccer:
-                intent.putExtra(KEY, R.id.spanish_soccer);
-                startActivity(intent);
+                startMyActivity(R.id.spanish_soccer);
                 break;
             case R.id.italian_soccer:
-                intent.putExtra(KEY, R.id.italian_soccer);
-                startActivity(intent);
+                startMyActivity(R.id.italian_soccer);
                 break;
             case R.id.german_soccer:
-                intent.putExtra(KEY, R.id.german_soccer);
-                startActivity(intent);
+                startMyActivity(R.id.german_soccer);
                 break;
             case R.id.favorites:
                 savedArticleFragment = new SavedArticleFragment();
@@ -308,9 +298,8 @@ public class MainActivity extends AppCompatActivity
      * check network connection
      */
     public void checkNetwork() {
-        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        if (networkInfo == null) {
+
+        if (!isConnected(this.context)) {
 
             new Timer().schedule(new TimerTask() {
                 @Override
@@ -324,12 +313,12 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    public static boolean isConnected(){
-
-        // return true when connected
-        // return false when not conencted
-        return false;
-    }
+//    public static boolean isConnected(){
+//
+//        // return true when connected
+//        // return false when not conencted
+//        return false;
+//    }
 
 
 
@@ -368,6 +357,12 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    public void setSpinnerSelection(){
+        if (spinner != null) {
+            spinner.setSelection(0);
+        }
+    }
+
     @Override
     public void onBackPressed() {
         Log.d("MainActivity", "Back!");
@@ -394,9 +389,7 @@ public class MainActivity extends AppCompatActivity
             fragContainer.setVisibility(View.VISIBLE);
             setAllSportsFragment();
             toolbar.getChildAt(1).setVisibility(View.VISIBLE);
-            if (spinner != null) {
-                spinner.setSelection(0);
-            }
+            setSpinnerSelection();
             savedArticleFragment = null;
         } else if (aboutFragment != null) {
 
@@ -404,17 +397,13 @@ public class MainActivity extends AppCompatActivity
             fragContainer.setVisibility(View.VISIBLE);
             setAllSportsFragment();
             toolbar.getChildAt(1).setVisibility(View.VISIBLE);
-            if (spinner != null) {
-                spinner.setSelection(0);
-            }
+            setSpinnerSelection();
             aboutFragment = null;
         } else if (notificationFragment != null) {
             notificationFragment.setJobHandler();
             setAllSportsFragment();
             toolbar.getChildAt(1).setVisibility(View.VISIBLE);
-            if (spinner != null) {
-                spinner.setSelection(0);
-            }
+            setSpinnerSelection();
             notificationFragment = null;
 
         } else {

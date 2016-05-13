@@ -118,7 +118,7 @@ public class LeaguesActivity extends AppCompatActivity implements
         leaguesDetailViewFragment.setArguments(article);
         transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frag_container_leagues, leaguesDetailViewFragment);
-        transaction.addToBackStack(null);
+//        transaction.addToBackStack(null);
         transaction.commit();
         viewPager.setVisibility(View.GONE);
         frameLayout.setVisibility(View.VISIBLE);

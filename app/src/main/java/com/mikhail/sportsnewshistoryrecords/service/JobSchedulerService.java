@@ -34,6 +34,9 @@ public class JobSchedulerService extends JobService {
     public static final String NYT_BASEBALL = "baseball";
     public static final String NYT_HOCKEY = "Hockey";
     public static final String NYT_SOCCER = "Soccer";
+    public static final String NYT_SOURCE = "all";
+    public static final String NYT_SUBSECTION = "sports";
+
 
     public boolean topNewsCheck = false;
     public boolean footballCheck = false;
@@ -149,14 +152,14 @@ public class JobSchedulerService extends JobService {
 
         NytAPI.NytAPIRetrofit nytSports = NytAPI.create();
 
-        Call<NytSportsResults> call = nytSports.response("all", "sports", NYT_ALL);
+        Call<NytSportsResults> call = nytSports.response(NYT_SOURCE, NYT_SUBSECTION, NYT_ALL);
 
         call.enqueue(new Callback<NytSportsResults>() {
             @Override
             public void onResponse(Call<NytSportsResults> call, Response<NytSportsResults> response) {
                 NytSportsResults nytSports = response.body();
                 createNotifications(nytSports.getResults()[0].getTitle(),
-                        nytSports.getResults()[0].getAbstractResult(), R.drawable.basketball24);
+                        nytSports.getResults()[0].getAbstractResult(), R.drawable.ic_info_24dp);
             }
 
             @Override
@@ -173,7 +176,7 @@ public class JobSchedulerService extends JobService {
 
         NytAPI.NytAPIRetrofit nytSports = NytAPI.create();
 
-        Call<NytSportsResults> call = nytSports.response("all", "sports", NYT_FOOTBALL);
+        Call<NytSportsResults> call = nytSports.response(NYT_SOURCE, NYT_SUBSECTION, NYT_FOOTBALL);
 
         call.enqueue(new Callback<NytSportsResults>() {
             @Override
@@ -197,7 +200,7 @@ public class JobSchedulerService extends JobService {
 
         NytAPI.NytAPIRetrofit nytSports = NytAPI.create();
 
-        Call<NytSportsResults> call = nytSports.response("all", "sports", NYT_BASKETBALL);
+        Call<NytSportsResults> call = nytSports.response(NYT_SOURCE, NYT_SUBSECTION, NYT_BASKETBALL);
 
         call.enqueue(new Callback<NytSportsResults>() {
             @Override
@@ -221,7 +224,7 @@ public class JobSchedulerService extends JobService {
 
         NytAPI.NytAPIRetrofit nytSports = NytAPI.create();
 
-        Call<NytSportsResults> call = nytSports.response("all", "sports", NYT_BASEBALL);
+        Call<NytSportsResults> call = nytSports.response(NYT_SOURCE, NYT_SUBSECTION, NYT_BASEBALL);
 
         call.enqueue(new Callback<NytSportsResults>() {
             @Override
@@ -245,7 +248,7 @@ public class JobSchedulerService extends JobService {
 
         NytAPI.NytAPIRetrofit nytSports = NytAPI.create();
 
-        Call<NytSportsResults> call = nytSports.response("all", "sports", NYT_HOCKEY);
+        Call<NytSportsResults> call = nytSports.response(NYT_SOURCE, NYT_SUBSECTION, NYT_HOCKEY);
 
         call.enqueue(new Callback<NytSportsResults>() {
             @Override
@@ -269,7 +272,7 @@ public class JobSchedulerService extends JobService {
 
         NytAPI.NytAPIRetrofit nytSports = NytAPI.create();
 
-        Call<NytSportsResults> call = nytSports.response("all", "sports", NYT_SOCCER);
+        Call<NytSportsResults> call = nytSports.response(NYT_SOURCE, NYT_SUBSECTION, NYT_SOCCER);
 
         call.enqueue(new Callback<NytSportsResults>() {
             @Override

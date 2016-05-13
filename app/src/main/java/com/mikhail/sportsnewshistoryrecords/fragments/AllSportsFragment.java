@@ -7,11 +7,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.mikhail.sportsnewshistoryrecords.R;
 import com.mikhail.sportsnewshistoryrecords.activities.MainActivity;
@@ -20,6 +19,7 @@ import com.mikhail.sportsnewshistoryrecords.api.NytAPI;
 import com.mikhail.sportsnewshistoryrecords.interfaces.MainActivityControlAllSports;
 import com.mikhail.sportsnewshistoryrecords.model.newswire.NytSportsObjects;
 import com.mikhail.sportsnewshistoryrecords.model.newswire.NytSportsResults;
+import com.mikhail.sportsnewshistoryrecords.util.CheckNetworkConnection;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,6 +29,8 @@ import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import timber.log.Timber;
+
+import static com.mikhail.sportsnewshistoryrecords.util.CheckNetworkConnection.*;
 
 /**
  * Fragment with api calls for NYT News Wire
@@ -40,6 +42,8 @@ public class AllSportsFragment extends Fragment {
     public AllSportsAdapter allSportsAdapter;
     public ArrayList<NytSportsObjects> sportsNewsList;
     public SwipeRefreshLayout swipeContainer;
+    public static final String NYT_SOURCE = "all";
+    public static final String NYT_SUBSECTION = "sports";
     public static final String NYT_ALL = "Pro football,Pro basketball,baseball,soccer,Hockey";
     public static final String NYT_FOOTBALL = "Pro%20Football";
     public static final String NYT_BASKETBALL = "Pro basketball";
@@ -49,12 +53,13 @@ public class AllSportsFragment extends Fragment {
     private View rootView;
     private boolean recyclerViewIsSet = false;
     private MainActivityControlAllSports mainActivityControl;
+    protected Context context;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.recycleview_activity_fragment, container, false);
-
+        context = getContext();
         setViews(rootView);
         sportsNewsList = new ArrayList<>();
         allSportsAdapter = new AllSportsAdapter();
@@ -110,12 +115,11 @@ public class AllSportsFragment extends Fragment {
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                // else do api call
-                if (MainActivity.isConnected()){
-                    nytAllSportsNews();
-                } else {
+                if (!isConnected(context)){
+                    Toast.makeText(getContext(), R.string.no_network, Toast.LENGTH_LONG).show();
                     swipeContainer.setRefreshing(false);
-                    // make toast
+                } else {
+                    nytAllSportsNews();
                 }
             }
         });
@@ -132,7 +136,7 @@ public class AllSportsFragment extends Fragment {
     public void nytAllSportsNews() {
         NytAPI.NytRx nytSports = NytAPI.createRx();
 
-        Observable<NytSportsResults> observable = nytSports.nytSportsResults("all", "sports", NYT_ALL);
+        Observable<NytSportsResults> observable = nytSports.nytSportsResults(NYT_SOURCE, NYT_SUBSECTION, NYT_ALL);
 
         observable.subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -156,7 +160,7 @@ public class AllSportsFragment extends Fragment {
                             recyclerViewIsSet = true;
                         }
                         Collections.addAll(sportsNewsList, nytSportsResults.getResults());
-                        setPullRefresh();
+//                        setPullRefresh();
                         swipeContainer.setRefreshing(false);
                     }
                 });
@@ -165,7 +169,7 @@ public class AllSportsFragment extends Fragment {
     public void nytSoccerSportsNews() {
         NytAPI.NytRx nytSports = NytAPI.createRx();
 
-        Observable<NytSportsResults> observable = nytSports.nytSportsResults("all", "sports", NYT_SOCCER);
+        Observable<NytSportsResults> observable = nytSports.nytSportsResults(NYT_SOURCE, NYT_SUBSECTION, NYT_SOCCER);
 
         observable.subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -193,7 +197,7 @@ public class AllSportsFragment extends Fragment {
     public void nytFootballSportsNews() {
         NytAPI.NytRx nytSports = NytAPI.createRx();
 
-        Observable<NytSportsResults> observable = nytSports.nytSportsResults("all", "sports", NYT_FOOTBALL);
+        Observable<NytSportsResults> observable = nytSports.nytSportsResults(NYT_SOURCE, NYT_SUBSECTION, NYT_FOOTBALL);
 
         observable.subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -222,7 +226,7 @@ public class AllSportsFragment extends Fragment {
     public void nytBaseballSportsNews() {
         NytAPI.NytRx nytSports = NytAPI.createRx();
 
-        Observable<NytSportsResults> observable = nytSports.nytSportsResults("all", "sports", NYT_BASEBALL);
+        Observable<NytSportsResults> observable = nytSports.nytSportsResults(NYT_SOURCE, NYT_SUBSECTION, NYT_BASEBALL);
 
         observable.subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -250,7 +254,7 @@ public class AllSportsFragment extends Fragment {
     public void nytBasketballSportsNews() {
         NytAPI.NytRx nytSports = NytAPI.createRx();
 
-        Observable<NytSportsResults> observable = nytSports.nytSportsResults("all", "sports", NYT_BASKETBALL);
+        Observable<NytSportsResults> observable = nytSports.nytSportsResults(NYT_SOURCE,NYT_SUBSECTION, NYT_BASKETBALL);
 
         observable.subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -278,7 +282,7 @@ public class AllSportsFragment extends Fragment {
     public void nytHockeySportsNews() {
         NytAPI.NytRx nytSports = NytAPI.createRx();
 
-        Observable<NytSportsResults> observable = nytSports.nytSportsResults("all", "sports", NYT_HOCKEY);
+        Observable<NytSportsResults> observable = nytSports.nytSportsResults(NYT_SOURCE, NYT_SUBSECTION, NYT_HOCKEY);
 
         observable.subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
