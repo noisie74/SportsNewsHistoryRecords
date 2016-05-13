@@ -26,6 +26,7 @@ import java.util.Collections;
 
 import rx.Observable;
 import rx.Subscriber;
+import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import timber.log.Timber;
@@ -165,7 +166,7 @@ public class AllSportsFragment extends Fragment {
 
         Observable<NytSportsResults> observable = nytSports.nytSportsResults(NYT_SOURCE, NYT_SUBSECTION, NYT_ALL);
 
-        observable.subscribeOn(Schedulers.newThread())
+        Subscription sportsSubscription = observable.subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<NytSportsResults>() {
                     @Override
@@ -191,6 +192,8 @@ public class AllSportsFragment extends Fragment {
                         swipeContainer.setRefreshing(false);
                     }
                 });
+
+        sportsSubscription.unsubscribe();
     }
 
     public void nytSoccerSportsNews() {
