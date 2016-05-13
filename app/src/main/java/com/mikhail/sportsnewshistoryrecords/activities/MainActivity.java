@@ -171,6 +171,9 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
         toolbar.setTitle(R.string.app_title_toolbar);
         spinner = (Spinner) toolbar.findViewById(R.id.app_bar_spinner);
+        fragContainer = (FrameLayout) findViewById(R.id.frag_container);
+
+
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 R.layout.support_simple_spinner_dropdown_item, spinnerItems);
         spinner.setAdapter(adapter);
@@ -181,10 +184,8 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        fragContainer = (FrameLayout) findViewById(R.id.frag_container);
         fragmentManager = getSupportFragmentManager();
         allSportsFragment = new AllSportsFragment();
-        toolbar.setTitle(R.string.app_title_toolbar);
     }
 
     /**
@@ -194,6 +195,9 @@ public class MainActivity extends AppCompatActivity
     private void setFragment() {
         if (key == R.id.top_news) {
             fragmentTransaction = fragmentManager.beginTransaction();
+            if (allSportsFragment == null){
+                allSportsFragment = new AllSportsFragment();
+            }
             fragmentTransaction.add(R.id.frag_container, allSportsFragment);
             fragmentTransaction.commit();
             allSportsFragment.setFragment(key);
@@ -233,8 +237,7 @@ public class MainActivity extends AppCompatActivity
                 toolbar.getChildAt(1).setVisibility(View.VISIBLE);
                 break;
             case R.id.nfl:
-                intent.putExtra(KEY, R.id.nfl);
-                startActivity(intent);
+                startMyActivity(R.id.nfl);
                 break;
             case R.id.nba:
                 intent.putExtra(KEY, R.id.nba);
@@ -296,6 +299,11 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    private void startMyActivity(int id) {
+        intent.putExtra(KEY, id);
+        startActivity(intent);
+    }
+
     /**
      * check network connection
      */
@@ -314,6 +322,13 @@ public class MainActivity extends AppCompatActivity
 
             Toast.makeText(MainActivity.this, R.string.no_network, Toast.LENGTH_LONG).show();
         }
+    }
+
+    public static boolean isConnected(){
+
+        // return true when connected
+        // return false when not conencted
+        return false;
     }
 
 

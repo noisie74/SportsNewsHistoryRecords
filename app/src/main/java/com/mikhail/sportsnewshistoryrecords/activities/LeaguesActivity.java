@@ -113,7 +113,7 @@ public class LeaguesActivity extends AppCompatActivity implements
      * leagues details fragment into webview
      */
     @Override
-    public void setBundle(Bundle article) {
+    public void showFragment(Bundle article) {
         leaguesDetailViewFragment = new LeaguesDetailViewFragment();
         leaguesDetailViewFragment.setArguments(article);
         transaction = getSupportFragmentManager().beginTransaction();

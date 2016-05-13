@@ -7,5 +7,5 @@ import android.os.Bundle;
  * and activities. Sends bundle
  */
 public interface LeaguesActivityControl {
-    void setBundle(Bundle article);
+    void showFragment(Bundle article);
 }

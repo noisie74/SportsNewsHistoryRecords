@@ -98,7 +98,7 @@ public class LeaguesFragment extends Fragment {
                     article.putStringArray("searchedArticle", articleDetails);
 
 
-                    leaguesActivityControl.setBundle(article);
+                    leaguesActivityControl.showFragment(article);
 
 //                    Intent intent = new Intent(getActivity(), MainActivity.class);
 //                    intent.putExtras(article);

@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.mikhail.sportsnewshistoryrecords.R;
+import com.mikhail.sportsnewshistoryrecords.activities.MainActivity;
 import com.mikhail.sportsnewshistoryrecords.adapters.AllSportsAdapter;
 import com.mikhail.sportsnewshistoryrecords.api.NytAPI;
 import com.mikhail.sportsnewshistoryrecords.interfaces.MainActivityControlAllSports;
@@ -109,7 +110,13 @@ public class AllSportsFragment extends Fragment {
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                nytAllSportsNews();
+                // else do api call
+                if (MainActivity.isConnected()){
+                    nytAllSportsNews();
+                } else {
+                    swipeContainer.setRefreshing(false);
+                    // make toast
+                }
             }
         });
 

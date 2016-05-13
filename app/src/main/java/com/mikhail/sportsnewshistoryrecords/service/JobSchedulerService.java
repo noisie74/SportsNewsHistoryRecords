@@ -66,10 +66,10 @@ public class JobSchedulerService extends JobService {
     private void updateBooleans() {
         topNewsCheck = booleanArray[0];
         footballCheck = booleanArray[1];
-        footballCheck = booleanArray[2];
-        footballCheck = booleanArray[3];
-        footballCheck = booleanArray[4];
-        footballCheck = booleanArray[5];
+        basketballCheck = booleanArray[2];
+        baseballCheck = booleanArray[3];
+        hockeyCheck = booleanArray[4];
+        soccerCheck = booleanArray[5];
     }
 
     /**
@@ -80,10 +80,10 @@ public class JobSchedulerService extends JobService {
         booleanArray = new boolean[6];
         booleanArray[0] = topNewsCheck;
         booleanArray[1] = footballCheck;
-        booleanArray[2] = footballCheck;
-        booleanArray[3] = footballCheck;
-        booleanArray[4] = footballCheck;
-        booleanArray[5] = footballCheck;
+        booleanArray[2] = basketballCheck;
+        booleanArray[3] = baseballCheck;
+        booleanArray[4] = hockeyCheck;
+        booleanArray[5] = soccerCheck;
     }
 
     @Override
