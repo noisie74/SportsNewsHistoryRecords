@@ -313,14 +313,6 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-//    public static boolean isConnected(){
-//
-//        // return true when connected
-//        // return false when not conencted
-//        return false;
-//    }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

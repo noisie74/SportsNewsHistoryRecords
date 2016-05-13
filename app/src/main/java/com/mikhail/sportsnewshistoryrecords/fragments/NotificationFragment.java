@@ -245,7 +245,7 @@ public class NotificationFragment extends Fragment {
             bundle.putBooleanArray(BOOLEAN_CODE, booleanArray);
 
             JobInfo.Builder builder = new JobInfo.Builder(1, new ComponentName(getActivity(), JobSchedulerService.class));
-            builder.setPeriodic(10000).setExtras(bundle);
+            builder.setPeriodic(18000000).setExtras(bundle);
 
             JobScheduler mJobScheduler = (JobScheduler) getActivity().getSystemService(Context.JOB_SCHEDULER_SERVICE);
             if (mJobScheduler.schedule(builder.build()) <= 0) {
