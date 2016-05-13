@@ -158,15 +158,6 @@ public class LeaguesFragment extends Fragment {
                 }
                 swipeContainer.setRefreshing(false);
 
-//                ArticleSearch nytSportsSearch = response.body();
-//
-//                if (nytSportsSearch == null) {
-//                    return;
-//                }
-//                searchSportsResults.clear();
-//                Collections.addAll(searchSportsResults, nytSportsSearch.getResponse().getDocs());
-//                handleData(nytSportsSearch.getResponse().getDocs());
-//                //                leaguesNewsAdapter.updateData(searchSportsResults);
 
             }
 

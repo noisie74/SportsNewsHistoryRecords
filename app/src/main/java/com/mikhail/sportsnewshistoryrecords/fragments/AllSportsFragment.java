@@ -152,6 +152,7 @@ public class AllSportsFragment extends Fragment {
 
                     @Override
                     public void onNext(NytSportsResults nytSportsResults) {
+                        Timber.i("Completed");
                         if (recyclerViewIsSet) {
                             allSportsAdapter.updateData(nytSportsResults);
                         } else {
