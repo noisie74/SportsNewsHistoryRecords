@@ -1,11 +1,13 @@
-package com.mikhail.sportsnewshistoryrecords.model;
+package com.mikhail.sportsnewshistoryrecords.model.newswire;
 
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
-import com.mikhail.sportsnewshistoryrecords.model.search.Multimedia;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
- * Created by Mikhail on 4/27/16.
+ * Array of objects from NYT News Wire API
  */
 public class NytSportsObjects {
 
@@ -23,10 +25,6 @@ public class NytSportsObjects {
         return multimedia;
     }
 
-    @Override
-    public String toString() {
-        return String.format("%s", title, abstractResult);
-    }
 
     public String getSection() {
         return section;
@@ -76,11 +74,23 @@ public class NytSportsObjects {
         this.abstractResult = abstractResult;
     }
 
-    public String getCreated_date() {
-        return created_date;
+
+    public long getCreated_date() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZZZZZ");
+
+        long timeInMillis = 0;
+        try {
+            Date mDate = sdf.parse(created_date);
+            timeInMillis = mDate.getTime();
+        } catch (java.text.ParseException e) {
+            e.printStackTrace();
+        }
+        return timeInMillis;
     }
 
     public void setCreated_date(String created_date) {
         this.created_date = created_date;
     }
+
+
 }

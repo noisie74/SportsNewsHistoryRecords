@@ -1,8 +1,14 @@
 <resources>
-    <string name="app_name">SportsNewsHistoryRecords</string>
+    <string name="app_name">Sports Leagues</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="mail_feedback_email">stats.sports.app@gmail.com</string>
+    <string name="mail_feedback_subject">Subject:</string>
+    <string name="mail_feedback_message">Message:</string>
+    <string name="title_send_feedback">Title:</string>
+
+
 
     <string name="action_settings">Settings</string>
 
@@ -821,5 +827,851 @@ Despite the financial problems, though, MLS did have some accomplishments that w
 10	Guatemala Carlos Ruiz	games 88	goals 182\n
     </string>
 
+
+    <string name="nba_records_title">
+        RECORDS\n
+    </string>
+
+          <string name="nba_records">
+•	Most minutes in a game\n
+	•	69 by Dale Ellis, Seattle SuperSonics (at Milwaukee Bucks) on November 9, 1989 (5 OT)\n
+	•	Most points in a game\n
+	•	100 by Wilt Chamberlain, Philadelphia Warriors (vs. New York Knicks) on March 2, 1962\n
+	•	Most points in a half\n
+	•	59 by Wilt Chamberlain, Philadelphia Warriors (vs. New York Knicks) on March 2, 1962 (2nd)\n
+	•	Most points in a quarter\n
+	•	37 by Klay Thompson, Golden State Warriors (vs. Sacramento Kings) on January 23, 2015 (3rd)\n
+	•	Most points in an overtime period\n
+	•	16 by Gilbert Arenas, Washington Wizards (vs. Los Angeles Lakers) on December 17, 2006\n
+    </string>
+
+    <string name="nba_records1">
+    •	Most field goals made in a game\n
+	•	36 by Wilt Chamberlain, Philadelphia Warriors (vs. New York Knicks) on March 2, 1962\n
+	•	Most field goals attempted in a game\n
+	•	63 by Wilt Chamberlain, Philadelphia Warriors (vs. New York Knicks) on March 2, 1962\n
+	•	Most field goals missed in a game\n
+	•	30 by Kobe Bryant, Los Angeles Lakers (vs. Boston Celtics) on November 7, 2002\n
+	•	Most field goals made in a half\n
+	•	22 by Wilt Chamberlain, Philadelphia Warriors (vs. New York Knicks) on March 2, 1962 (2nd)\n
+	•	Most field goals attempted in a half\n
+	•	37 by Wilt Chamberlain, Philadelphia Warriors (vs. New York Knicks) on March 2, 1962 (2nd)\n
+	•	Most field goals made in a quarter\n
+	•	13 by David Thompson, Denver Nuggets (vs. Detroit Pistons) on April 9, 1978 (1st)\n
+	•	13 by Klay Thompson, Golden State Warriors (vs. Sacramento Kings) on January 23, 2015 (3rd)\n
+	•	Most field goals attempted in a quarter\n
+	•	21 by Wilt Chamberlain, Philadelphia Warriors (vs. New York Knicks) on March 2, 1962 (4th)\n
+	•	Most field goals made in a game, no misses\n
+	•	18 by Wilt Chamberlain, Philadelphia 76ers (vs. Baltimore Bullets) on February 24, 1967\n
+	•	Most field goals attempted in a game, none made\n
+	•	17 by Tim Hardaway, Golden State Warriors (at Minnesota Timberwolves) on December 27, 1991\n
+	•	Most 3-point field goals made in a game\n
+	•	12 by Kobe Bryant, Los Angeles Lakers (vs. Seattle SuperSonics) on January 7, 2003 \n
+	•	12 by Donyell Marshall, Toronto Raptors (vs. Philadelphia 76ers) on March 13, 2005 \n
+	•	12 by Stephen Curry, Golden State Warriors (vs. Oklahoma City Thunder) on February 27, 2016\n
+	•	Most 3-point field goals attempted in a game\n
+	•	22 by J. R. Smith, New York Knicks (at Miami Heat) on April 6, 2014 \n
+	•	Most 3-point field goals made in a half\n
+	•	10 by Chandler Parsons, Houston Rockets (vs. Memphis Grizzlies) on January 24, 2014\n
+	•	Most 3-point field goals made in a quarter\n
+	•	9 by Klay Thompson, Golden State Warriors (vs. Sacramento Kings) on January 23, 2015 (9-9)\n
+	•	Most 3-point field goals made in a game, no misses\n
+	•	9 by Latrell Sprewell, New York Knicks (vs. Los Angeles Clippers) on February 4, 2003\n
+	•	9 by Ben Gordon, Chicago Bulls (vs. Washington Wizards) on April 14, 2006\n
+	•	9 by Ben Gordon, Detroit Pistons (at Denver Nuggets) on March 21, 2012\n
+	•	Most consecutive 3-point field goals made to start a game\n
+	•	10 by Ty Lawson, Denver Nuggets (vs. Minnesota Timberwolves) on April 9, 2011\n
+	•	Most 3-point field goals attempted in a game, none made\n
+	•	11 by Antoine Walker, Boston Celtics (vs. Philadelphia 76ers) on December 17, 2001\n
+	•	11 by Trey Burke, Utah Jazz (vs. Atlanta Hawks) on January 2, 2015\n
+	•	Most free throws made in a game\n
+	•	28 by Wilt Chamberlain, Philadelphia Warriors (vs. New York Knicks) on March 2, 1962 (28-32)\n
+	•	28 by Adrian Dantley, Utah Jazz (vs. Houston Rockets) on January 4, 1984 (28-29)\n
+	•	Most free throws made in a game, no misses\n
+	•	23 by Dominique Wilkins, Atlanta Hawks (vs. Chicago Bulls) on December 8, 1992\n
+	•	Most free throws attempted in a game, none made\n
+	•	11 by Shaquille O\'Neal, Los Angeles Lakers (vs. Seattle SuperSonics) on December 8, 2000\n
+	•	Most free throws attempted in a game\n
+	•	39 by Dwight Howard, Orlando Magic (vs. Golden State Warriors) on January 12, 2012 (21-39)\n
+	•	39 by Dwight Howard, Los Angeles Lakers (at Orlando Magic) on March 12, 2013 (25-39)\n
+	•	Most free throws missed in a game\n
+	•	23 by Andre Drummond, Detroit Pistons (at Houston Rockets) on January 20, 2016 (13-36)\n
+	•	Most free throws made in a half\n
+	•	20 by Michael Jordan, Chicago Bulls (vs. Miami Heat) on December 30, 1992\n
+	•	Most free throws attempted in a half\n
+	•	26 by Josh Smith, Houston Rockets (vs. San Antonio Spurs) on April 10, 2015 (12-26)\n
+	•	Most free throws made in a quarter\n
+	•	16 by Vince Carter, New Jersey Nets (at Miami Heat) on December 23, 2005\n
+	•	Most free throws attempted in a quarter\n
+	•	20 by Ben Wallace, Detroit Pistons (at Los Angeles Clippers) on December 11, 2005\n
+	•	Most rebounds in a game\n
+	•	55 by Wilt Chamberlain, Philadelphia Warriors (vs. Boston Celtics) on November 24, 1960\n
+	•	Most rebounds in a half\n
+	•	32 by Bill Russell, Boston Celtics (vs. Philadelphia Warriors) on November 16, 1957\n
+	•	Most rebounds in a quarter\n
+	•	18 by Nate Thurmond, San Francisco Warriors (at Baltimore Bullets) on February 28, 1965\n
+	•	Most offensive rebounds in a game\n
+	•	21 by Moses Malone, Houston Rockets (vs. Seattle SuperSonics) on February 11, 1982\n
+	•	Most defensive rebounds in a game\n
+	•	29 by Kareem Abdul-Jabbar, Los Angeles Lakers (vs. Detroit Pistons) on December 14, 1975\n
+	•	Most offensive rebounds in a half\n
+	•	13 by Charles Barkley, Philadelphia 76ers (vs. New York Knicks) on March 4, 1987\n
+	•	Most defensive rebounds in a half\n
+	•	13 by Swen Nater, San Diego Clippers (vs. Denver Nuggets) on December 14, 1979\n
+	•	Most offensive rebounds in a quarter\n
+	•	11 by Charles Barkley, Philadelphia 76ers (vs. New York Knicks) on March 4, 1987\n
+	•	11 by Larry Smith, Golden State Warriors (vs. Denver Nuggets) on March 23, 1986\n
+	•	Most defensive rebounds in a quarter\n
+	•	13 by Happy Hairston, Los Angeles Lakers (vs. Philadelphia 76ers) on November 15, 1974\n
+	•	Most assists in a game\n
+	•	30 by Scott Skiles, Orlando Magic (vs. Denver Nuggets) on December 30, 1990\n
+	•	Most assists in a half\n
+	•	19 by Bob Cousy, Boston Celtics (vs. Minneapolis Lakers) on February 27, 1959\n
+	•	Most assists in a quarter\n
+	•	14 by John Lucas, San Antonio Spurs (vs. Denver Nuggets) on April 15, 1984\n
+	•	14 by Steve Blake, Portland Trail Blazers (vs. Los Angeles Clippers) on February 22, 2009\n
+	•	Most steals in a game\n
+	•	11 by Larry Kenon, San Antonio Spurs (at Kansas City Kings) on December 26, 1976\n
+	•	11 by Kendall Gill, New Jersey Nets (vs. Miami Heat) on April 3, 1999\n
+	•	Most steals in a half\n
+	•	8 by Quinn Buckner, Milwaukee Bucks (vs. New York Nets) on November 27, 1976\n
+	•	8 by Fred Brown, Seattle SuperSonics (at Philadelphia 76ers) on December 3, 1976\n
+	•	8 by Gus Williams, Seattle SuperSonics (at Washington Bullets) on January 23, 1979\n
+	•	8 by Eddie Jordan, New Jersey Nets (at Chicago Bulls) on October 23, 1979\n
+	•	8 by Dudley Bradley, Indiana Pacers (at Utah Jazz) on November 10, 1980\n
+	•	8 by Rob Williams, Denver Nuggets (at New Jersey Nets) on February 17, 1983\n
+	•	8 by Fat Lever, Denver Nuggets (vs. Indiana Pacers) on March 9, 1985\n
+	•	8 by Michael Jordan, Chicago Bulls (at Boston Celtics) on November 9, 1988\n
+	•	8 by Clyde Drexler, Houston Rockets (vs. Sacramento Kings) on November 1, 1996\n
+	•	8 by Doug Christie, Toronto Raptors (at Philadelphia 76ers) on April 2, 1997\n
+	•	8 by Michael Finley, Dallas Mavericks (vs. Philadelphia 76ers) on January 23, 2001\n
+	•	8 by Rafer Alston, Houston Rockets (vs. Charlotte Bobcats) on February 10, 2007\n
+	•	Most steals in a quarter\n
+	•	8 by Fat Lever, Denver Nuggets (vs. Indiana Pacers) on March 9, 1985\n
+	•	Most blocks in a game\n
+	•	17 by Elmore Smith, Los Angeles Lakers (vs. Portland Trail Blazers) on October 28, 1973\n
+	•	Most blocks in a half\n
+	•	11 by Elmore Smith, Los Angeles Lakers (vs. Portland Trail Blazers) on October 28, 1973\n
+	•	11 by George T. Johnson, San Antonio Spurs (vs. Golden State Warriors) on February 24, 1981\n
+	•	11 by Manute Bol, Washington Bullets (vs. Milwaukee Bucks) on December 12, 1985\n
+	•	Most blocks in a quarter\n
+	•	8 by Manute Bol, Washington Bullets (vs. Milwaukee Bucks) on December 12, 1985\n
+	•	8 by Manute Bol, Washington Bullets (vs. Indiana Pacers) on February 26, 1987\n
+	•	8 by Dikembe Mutombo, Philadelphia 76ers (at Chicago Bulls) on December 1, 2001\n
+	•	8 by Erick Dampier, Golden State Warriors (vs. Los Angeles Clippers) on April 17, 2002\n
+	•	Most turnovers in a game\n
+	•	14 by John Drew, Atlanta Hawks (at New Jersey Nets) on March 1, 1978\n
+	•	14 by Jason Kidd, Phoenix Suns (vs. New York Knicks) on November 17, 2000\n
+	•	Quickest disqualification\n
+	•	3 minutes by Bubba Wells, Dallas Mavericks (vs. Chicago Bulls) on December 29, 1997\n
+    </string>
+
+    <string name="nba_records3">
+        Season\n
+	•	Most games played\n
+	•	88 by Walt Bellamy, 1968–69\n
+	•	Most minutes per game average\n
+	•	48.52 by Wilt Chamberlain, 1961–62\n
+	•	Most minutes\n
+	•	3,882 by Wilt Chamberlain, 1961–62\n
+	•	Highest points per game average\n
+	•	50.36 by Wilt Chamberlain, 1961–62\n
+	•	Most points\n
+	•	4,029 by Wilt Chamberlain, 1961–62\n
+	•	Most 50-point games\n
+	•	45 by Wilt Chamberlain, 1961–62\n
+	•	Most 40-point games\n
+	•	63 by Wilt Chamberlain, 1961–62\n
+	•	Most field goals made\n
+	•	1,597 by Wilt Chamberlain, 1961–62\n
+	•	Most field goals attempted\n
+	•	3,159 by Wilt Chamberlain, 1961–62\n
+	•	Most field goals missed\n
+	•	1,562 by Wilt Chamberlain, 1961–62\n
+	•	Highest field goal percentage\n
+	•	72.7% by Wilt Chamberlain, 1972–73\n
+	•	Most free throws made\n
+	•	840 by Jerry West, 1965–66\n
+    </string>
+
+    <string name="nba_records4">
+	•	Most 3-point field goals made\n
+	•	402 by Stephen Curry, 2015–16\n
+	•	Highest 3-point field goals per game average\n
+	•	5.1 by Stephen Curry, 2015–16\n
+	•	Most 3-point field goals attempted\n
+	•	886 by Stephen Curry, 2015–16\n
+	•	Highest 3-point field goals attempted per game average\n
+	•	11.2 by Stephen Curry, 2015–16\n
+	•	Highest 3-point field goal percentage\n
+	•	53.6% by Kyle Korver, 2009–10\n
+	•	Highest rebounds per game average\n
+	•	27.2 by Wilt Chamberlain, 1960–61\n
+	•	Most rebounds\n
+	•	2,149 by Wilt Chamberlain, 1960–61\n
+	•	Highest defensive rebounds per game average\n
+	•	13.7 by Elvin Hayes, 1973–74\n
+	•	Most defensive rebounds\n
+	•	1,111 by Kareem Abdul-Jabbar, 1975–76\n
+	•	Highest offensive rebounds per game average\n
+	•	7.2 by Moses Malone, 1978–79\n
+	•	Most offensive rebounds\n
+	•	587 by Moses Malone, 1978–79\n
+	•	Highest assists per game average\n
+	•	14.54 by John Stockton, 1989–90\n
+    </string>
+
+    <string name="nba_records5">
+        Career\n
+	•	Most games\n
+	•	1,611 by Robert Parish\n
+	•	Most consecutive games\n
+	•	1,192 by A.C. Green\n
+	•	Most minutes per game\n
+	•	45.8 by Wilt Chamberlain\n
+	•	Most minutes\n
+	•	57,446 by Kareem Abdul-Jabbar\n
+	•	Highest points per game average\n
+	•	30.12 by Michael Jordan\n
+	•	Most points\n
+	•	38,387 by Kareem Abdul-Jabbar\n
+	•	Most seasons leading league in points\n
+	•	11 by Michael Jordan\n
+	•	Most seasons leading league in points per game\n
+	•	10 by Michael Jordan\n
+	•	Most consecutive seasons leading league in points\n
+	•	7 by Wilt Chamberlain (1959–60–1965–66) and Michael Jordan (1986–87–1992–93)\n
+	•	Most 60+ point games\n
+	•	32 by Wilt Chamberlain\n
+	•	Most 50+ point games\n
+	•	118 by Wilt Chamberlain\n
+	•	Most 40+ point games\n
+	•	271 by Wilt Chamberlain\n
+	•	Most 30+ point games\n
+	•	562 by Michael Jordan\n
+	•	Most 20+ point games\n
+	•	1,134 by Karl Malone\n
+	•	Most 10+ point games\n
+    </string>
+
+     <string name="nfl_records_title1">
+        Championships\n
+    </string>
+
+     <string name="nfl_records1">
+•	Most Super Bowl Wins, 6\n
+Pittsburgh Steelers\n
+	•	Most Super Bowl Appearances, 8\n
+Dallas Cowboys 1970, 1971, 1975, 1977, 1978, 1992, 1993, 1995\n
+Pittsburgh Steelers 1974, 1975, 1978, 1979, 1995, 2005, 2008, 2010\n
+New England Patriots 1985, 1996, 2001, 2003, 2004, 2007, 2011, 2014\n
+Denver Broncos 1977, 1986, 1987, 1989, 1997, 1998, 2013, 2015\n
+	•	Most League Championships, 13\n
+Green Bay Packers 1929–1931, 1936, 1939, 1944, 1961–62, 1965–67, 1996, 2010\n
+	•	Most Conference Championship Game Appearances, 15\n
+Pittsburgh Steelers 1972, 1974-76, 1978-79, 1984, 1994-1995, 1997, 2001, 2004-2005, 2008, 2010\n
+San Francisco 49ers 1970-1971, 1981, 1983-1984, 1988-1990, 1992-1994, 1997, 2011-2013\n
+	•	Most Consecutive League Championships, 3\n
+Green Bay Packers 1929–31, 1965–67\n
+	•	Most Consecutive Times Finishing First in a Division, Regular Season, 7\n
+Los Angeles Rams 1973–79\n
+New England Patriots 2009-2015\n
+    </string>
+
+     <string name="nfl_records_title2">
+        Games Won\n
+    </string>
+
+     <string name="nfl_records2">
+•	Highest Winning Percentage for Regular Season, .570 (741-555-42)\n
+Chicago Bears 1960–2015\n
+	•	Highest Winning Percentage for Post Season, .682 (15–7)\n
+Baltimore Ravens 2000–2014\n
+	•	Most Games Won (regular season only), Franchise History, 741\n
+Chicago Bears 1919–2015\n
+	•	Most Games Won (including playoffs), Franchise History, 758\n
+Chicago Bears 1919–2015\n
+	•	Most Games Won (regular season only), since 1970 merger, 433\n
+Pittsburgh Steelers: 1970–2015\n
+	•	Most Games Won (including playoffs), since 1970 merger, 467\n
+Pittsburgh Steelers 1970–2015\n
+	•	Most Consecutive Games Won (including playoffs), 21\n
+New England Patriots 2003–2004\n
+	•	Most Consecutive Games Won (regular season only), 23\n
+Indianapolis Colts 2008–2009\n
+	•	Most Consecutive Games Without Defeat, 25\n
+Canton Bulldogs 1921–1923\n
+	•	Most Games Won, Regular Season, 16\n
+New England Patriots, 2007\n
+	•	Most Consecutive Winning Seasons, Franchise History, 20\n
+Dallas Cowboys 1966–1985\n
+	•	Most Consecutive Home Games Won, 27\n
+Miami Dolphins 1971-1974\n
+	•	Most Consecutive Home Games Won (including playoffs), 31\n
+Miami Dolphins 1971–1974\n
+	•	Most Consecutive Home Games Without Defeat, 30\n
+Green Bay Packers 1928–1933\n
+	•	Most Consecutive Road Games Won, 18\n
+San Francisco 49ers 1988–1990\n
+	•	Most Consecutive Road Games Without Defeat, 18\n
+San Francisco 49ers 1988–1990\n
+	•	Most Shutout Games Won or Tied, Season, 11\n
+Pottsville Maroons: 1926\n
+	•	Most Consecutive Shutout Games Won or Tied, 13\n
+Akron Pros, 1920–1921\n
+	•	Most Total Wins Over 2 Consecutive Seasons, 34 (28 Regular Season and 6 Post Season)\n
+New England Patriots 2003–2004\n
+	•	Most Total Wins Over 3 Consecutive Seasons, 46 (39 Regular Season and 7 Post Season)\n
+Denver Broncos 1996–1998\n
+    </string>
+
+     <string name="nfl_records_title3">
+        Losses\n
+    </string>
+
+     <string name="nfl_records3">
+•	Lowest All-time Winning Percentage for Regular Season, current franchises, .385 (241–386-1)\n
+Tampa Bay Buccaneers, 1976–2015\n
+	•	Lowest All-time Winning Percentage for Post Season, .263 (5–14)\n
+Cincinnati Bengals, 1970–2015\n
+	•	Lowest All-time Winning Percentage, combined Regular Season and Post Season, .385 (247–395–1)\n
+Tampa Bay Buccaneers, 1976–2015\n
+	•	Most Consecutive Post Season Losses, 8\n
+Detroit Lions, Jan. 12, 1992-ongoing\n
+Kansas City Chiefs, Jan. 23, 1994-2016\n
+Cincinnati Bengals, 1990-ongoing\n
+	•	Longest Losing Streak, Multiple seasons, 26 games\n
+Tampa Bay Buccaneers: 1976–1977\n
+	•	Most Losses, Season / Longest Losing Streak in a Season, 16 games (in 16 games season)\n
+Detroit Lions: 2008\n
+	•	Most consecutive losing seasons, 14 seasons\n
+Tampa Bay Buccaneers: 1983–1996\n
+	•	Most consecutive seasons without a winning record, 20 seasons\n
+New Orleans Saints: 1967–1986\n
+	•	Longest Home Game Losing Streak, 14 games\n
+Dallas Cowboys: 1988–1989\n
+St. Louis Rams: 2008–2010\n
+	•	Longest Road Game Losing Streak, 26 games\n
+Detroit Lions: 2007–2010\n
+	•	Longest Road Streak Without Win (Losses or Ties), 26 games\n
+Detroit Lions 2007–2010\n
+	•	Most Shutout Losses or Ties in a Season, 8\n
+Frankford Yellow Jackets (lost 6, tied 2) 1927\n
+Brooklyn Dodgers (lost 8) 1931\n
+	•	Most Consecutive Shutout Losses or Ties, 8\n
+Rochester Jeffersons (lost 6) 1922–1924\n
+    </string>
+
+     <string name="nfl_records_title4">
+        Scoring\n
+    </string>
+
+    <string name="nfl_records4">
+        •	Most Seasons Leading League Scoring, 10\n
+Chicago Bears: 1932, 1934–35, 1939, 1941–43, 1946–47, 1956\n
+	•	Most Consecutive Seasons Leading League Scoring, 4\n
+San Francisco 49ers: 1992–95\n
+	•	Most Points, Season, 606\n
+Denver Broncos: 2013\n
+	•	Most Points at Home, Season, 329\n
+New Orleans Saints: 2011\n
+	•	Most Points on the Road, Season, 314\n
+New England Patriots: 2007\n
+	•	Fewest Points at Home, Season, since 1940, 20\n
+Tampa Bay Buccaneers: 1977, (7 games)\n
+	•	Fewest Points on the Road, 8-road game season, since, 1940, 41\n
+Cincinnati Bengals: 2000\n
+	•	Most Points per Game, Season (Min 10 games), 38.83\n
+Los Angeles Rams: 1950 (466 points in 12 games)\n
+	•	Most Points per Home Game, Season, 41.1\n
+New Orleans Saints: 2011\n
+	•	Fewest Points, Season, 37\n
+Cincinnati Reds/St. Louis Gunners: 1934\n
+	•	Fewest Points, 14 game season, 103\n
+Tampa Bay Buccaneers: 1977\n
+	•	Fewest Points, 16 game season, 140\n
+Seattle Seahawks: 1992\n
+	•	Games Scoring 50+ Points, Season, 3\n
+New York Giants: 1950\n
+Los Angeles Rams: 1950\n
+San Diego Chargers: 1963 (including a postseason win)\n
+Dallas Cowboys: 1966\n
+Minnesota Vikings: 1969\n
+Denver Broncos: 2013\n
+	•	Most Games Scoring 30+ Points, Season, 13\n
+Denver Broncos: 2013\n
+	•	Most consecutive games scoring 10+ points, 110\n
+Indianapolis Colts, 2003-2009\n
+	•	Most consecutive games scoring 20+ points, 30\n
+Denver Broncos, 2012-2014\n
+	•	Most consecutive games scoring 30+ points, 14\n
+St. Louis Rams, Nov. 28, 1999-Oct. 29, 2000\n
+	•	Most consecutive games scoring 40+ points, 4\n
+Indianapolis Colts, Nov. 14, 2004-Dec. 5, 2004\n
+St. Louis Rams, Sept. 17, 2000-Oct. 15, 2000\n
+	•	Most Points, Single Team, Game, 73\n
+Chicago Bears (73) (vs Washington Redskins (0)), Dec 9, 1940, (Championship Game)\n
+	•	Most Points, Single Team, Regular Season Game, 72\n
+Washington Redskins (vs New York Giants) Nov 27, 1966\n
+	•	Most Points, Single Team, Game, Since AFL/NFL Merger, 62\n
+New York Giants (vs Philadelphia Eagles) Nov 26, 1972\n
+Atlanta Falcons (vs New Orleans Saints) Sep 16, 1973\n
+New York Jets (vs Tampa Bay Buccaneers) Nov 17, 1985\n
+Jacksonville Jaguars (vs Miami Dolphins) Jan 15, 2000 (Postseason)\n
+New Orleans Saints (vs Indianapolis Colts) Oct 23, 2011\n
+	•	Most Points, Both Teams, Game, 113\n
+Washington Redskins (72) vs New York Giants (41), Nov 27, 1966\n
+	•	Most Points, Both Teams, Game, Since AFL/NFL Merger, 106\n
+Cincinnati Bengals (58) vs Cleveland Browns (48), Nov 28, 2004\n
+	•	Most Points, Shutout Victory, Game, 73\n
+Chicago Bears vs Washington Redskins, Dec 9, 1940 (Championship Game)\n
+	•	Most Points, Shutout Victory, Game, Since AFL/NFL Merger, 59\n
+Los Angeles Rams vs Atlanta Falcons, Dec 4, 1976\n
+New England Patriots vs Tennessee Titans, Oct 18, 2009\n
+	•	Fewest Points, Both Teams, Game, 0\n
+In many games; last: New York Giants vs Detroit Lions, Nov 7, 1943\n
+	•	Fewest Points, Shutout Victory, Game, 2\n
+Akron Pros vs Buffalo All-Americans, Nov 29, 1923\n
+Kansas City Cowboys vs Buffalo Rangers, Nov 21, 1926\n
+Frankford Yellow Jackets vs Green Bay Packers, Nov 29, 1928\n
+Green Bay Packers vs Chicago Bears, Oct 16, 1932\n
+Chicago Bears vs Green Bay Packers, Sep 18, 1938\n
+	•	Fewest Points, Shutout Victory, Game, Since AFL/NFL Merger, 3\n
+Minnesota Vikings vs Green Bay Packers, Nov 14, 1971\n
+Buffalo Bills vs Atlanta Falcons, Oct 16, 1977\n
+Tampa Bay Buccaneers vs Kansas City Chiefs, Dec 16, 1979\n
+New England Patriots vs Miami Dolphins, Dec 12, 1982\n
+New York Jets vs Washington Redskins, Dec 11, 1993\n
+Pittsburgh Steelers vs Miami Dolphins, Nov 26, 2007\n
+	•	Most Points Overcome to Win Game, 32\n
+Buffalo Bills vs Houston Oilers, Jan 3, 1993, (trailed 3–35, won 41–38, OT) (Playoff Game)\n
+	•	Most Points Overcome to Win Regular Season Game, 28\n
+San Francisco 49ers vs New Orleans Saints, Dec 7, 1980, (OT) (trailed 7–35, won 38–35)\n
+	•	Most Points Overcome to Win Game on the Road, 25\n
+Cleveland Browns vs Tennessee Titans, Oct 5, 2014, (trailed 3–28, won 29-28)\n
+	•	Most Points Overcome to Tie a Game,\n
+Denver Broncos vs Buffalo Bills, Nov 27, 1960 (trailed 7–38, tied 38–38)\n
+	•	Largest First Quarter Deficit Overcome to Win Game, 21\n
+Miami Dolphins vs New England Patriots, Dec 15, 1974 (trailed 0–21, won 34–27)\n
+Cincinnati Bengals vs Seattle Seahawks, Sep 6, 1981 (trailed 0–21, won 27–21)\n
+Arizona Cardinals vs Philadelphia Eagles, Sep 12, 1999 (trailed 0–21, won 25–24)\n
+Washington Redskins vs Carolina Panthers, Oct 3, 1999 (trailed 0–21, won 38–36)\n
+Tennessee Titans vs Atlanta Falcons, Nov 23, 2003 (trailed 0–21, won 38–31)\n
+Miami Dolphins vs Buffalo Bills, Dec 4, 2005 (trailed 0–21, won 24–23)\n
+San Diego Chargers vs Cincinnati Bengals, Nov 12, 2006 (trailed 0–21, won 49–41)\n
+New England Patriots vs Buffalo Bills, Jan 1, 2012 (trailed 0–21, won 49–21)\n
+	•	Largest Halftime Deficit Overcome to Win Game, 28\n
+San Francisco 49ers vs New Orleans Saints, Dec 7, 1980, (OT) (trailed 7–35, won 38–35)\n
+	•	Largest Halftime Deficit Overcome to Win Game in Regulation Time, 24\n
+Philadelphia Eagles vs Washington Redskins, Oct 27, 1946 (trailed 0–24, won 28–24)\n
+Los Angeles Rams vs Tampa Bay Buccaneers, Dec 6, 1992 (trailed 3–27, won 31–27)\n
+Denver Broncos vs San Diego Chargers, Oct 15, 2012 (trailed 0–24, won 35–24)\n
+	•	Largest Third Quarter Deficit Overcome to Win Game, 25\n
+St. Louis Cardinals vs Tampa Bay Buccaneers, Nov 8, 1987 (trailed 3–28, won 31–28)\n
+    </string>
+
+    <string name="nfl_records_title5">
+        Touchdowns\n
+    </string>
+
+    <string name="nfl_records5">
+•	Most Touchdowns, season, 76\n
+Denver Broncos: 2013\n
+	•	Fewest Touchdowns, season, since 1946, 11\n
+Tampa Bay Buccaneers: 1977\n
+	•	Fewest Offensive Touchdowns, season, since 1943, 7\n
+Tampa Bay Buccaneers: 1977\n
+	•	Most Touchdowns, Single Team, Regular Season, game, 10\n
+Washington Redskins (vs. New York Giants), Nov. 27, 1966\n
+	•	Most Touchdowns, Both Teams, game, 16\n
+Washington Redskins (vs. New York Giants), Nov. 27, 1966\n
+	•	Most Touchdowns, Single Team, Post Season, game, 11\n
+Chicago Bears (vs. Washington Redskins), Dec. 8, 1940\n
+	•	Most consecutive games scoring 1+ touchdowns, 166\n
+Cleveland Browns: 1957-1969\n
+	•	Most consecutive games scoring 2+ touchdowns, 47\n
+New England Patriots: September 27, 2009-September 9, 2012\n
+	•	Most consecutive games scoring 3+ touchdowns, 21\n
+Miami Dolphins: November 20, 1983-December 17, 1984\n
+	•	Most consecutive games scoring 4+ touchdowns, 12\n
+Denver Broncos: Dec. 16, 2012-Nov. 10, 2013\n
+New England Patriots: Nov. 14, 2010-Oct. 2, 2011\n
+	•	Most consecutive games scoring 5+ touchdowns, 5\n
+4 times, most recently\n
+St. Louis Rams: Sept. 17, 2000-Oct. 22, 2000\n
+	•	Most consecutive games scoring 6+ touchdowns (since 1940), 3\n
+8 times, most recently\n
+New Orleans Saints: Dec. 18, 2011-Jan. 1, 2012\n
+	•	Most consecutive games scoring 7+ touchdowns (since 1940), 3\n
+Chicago Bears: Oct. 5, 1941-Oct. 19, 1941\n
+	•	Most consecutive games scoring 8+ touchdowns, 2\n
+Los Angeles Rams: Oct. 22, 1950-Oct. 29, 1950\n
+	•	Most consecutive games scoring 9+ touchdowns, 2\n
+Los Angeles Rams: Oct. 22, 1950-Oct. 29, 1950\n
+	•	Most consecutive road games scoring 1+ touchdown, since AFL-NFL Merger, 82\n
+New Orleans Saints: Oct. 23, 2005-Nov. 15, 2015\n
+	•	Most consecutive road games scoring 1+ touchdown, 85\n
+Cleveland Browns: 1956-1969\n
+	•	Most consecutive road games scoring 2+ touchdowns, 33\n
+New England Patriots: Oct. 11, 2009-Sept. 29, 2013\n
+	•	Most consecutive road games scoring 3+ touchdowns, 13\n
+Chicago Bears: Sept. 28, 1941-Nov. 14, 1943\n
+San Francisco 49ers: Sept. 2, 1984-Oct. 27, 1985\n
+	•	Most consecutive road games scoring 4+ touchdowns, 12\n
+Cleveland Browns: Nov. 21, 1948-Oct. 7, 1950\n
+	•	Most consecutive road games scoring 5+ touchdowns (since 1940), 3\n
+15 times, most recently\n
+Dallas Cowboys: Dec. 4, 2014-Dec. 28, 2014\n
+	•	Most consecutive road games scoring 6+ touchdowns (since 1940), 3\n
+Houston Oilers: Nov. 5, 1961-Dec. 17, 1961\n
+	•	Most consecutive road games scoring 7+ touchdowns (since 1940), 2\n
+Cleveland Browns: Dec. 8, 1946-Sept. 12, 1947\n
+	•	Most consecutive home games scoring 1+ touchdowns, 112\n
+Cleveland/Los Angeles Rams: Sept. 20, 1942-Oct. 21, 1962\n
+Indianapolis Colts: Nov. 2, 1997-Nov. 6, 2011\n
+	•	Most consecutive home games scoring 2+ touchdowns, 42\n
+Miami Dolphins: Sept. 9, 1982-Dec. 10, 1987\n
+	•	Most consecutive home games scoring 3+ touchdowns, 21\n
+Miami Dolphins: Oct. 9, 1983-Sept. 14, 1986\n
+	•	Most consecutive home games scoring 4+ touchdowns, 12\n
+Oakland Raiders: Sept. 24, 2000-Dec. 9, 2001\n
+	•	Most consecutive home games scoring 5+ touchdowns, 5\n
+5 times, most recently,\n
+Green Bay Packers: Nov. 14, 2011-Jan. 1, 2012\n
+	•	Most consecutive home games scoring 6+ touchdowns, 4\n
+San Francisco 49ers: Sept. 4, 1949-Oct. 16, 1949\n
+	•	Most consecutive home games scoring 8+ touchdowns, 2\n
+Los Angeles Rams: Oct. 22, 1950-Oct. 29, 1950\n
+	•	Most consecutive home games scoring 9+ touchdowns, 2\n
+Los Angeles Rams: Oct. 22, 1950-Oct. 29, 1950
+    </string>
+
+     <string name="mlb_records_title">
+        Season records\n
+    </string>
+
+    <string name="mlb_records">
+
+Season	Franchise	League	Wins	Losses	Pct.	Finish\n
+1906	Chicago Cubs	    NL	116	36	.763	Lost 1906 World Series\n
+1902	Pittsburgh Pirates	NL	103	36	.741	National League Champions\n
+1886	Chicago White Stockings	NL	90	34	.726	Lost 1886 World Series\n
+1909	Pittsburgh Pirates	NL	110	42	.724	Won 1909 World Series\n
+1954	Cleveland Indians	AL	111	43	.721	Lost 1954 World Series\n
+2001	Seattle Mariners	AL	116	46	.716	Lost 2001 ALCS\n
+1927	New York Yankees	AL	110	44	.714	Won 1927 World Series\n
+1886	Detroit Wolverines	NL	87	36	.707	2nd place in National League\n
+1897	Boston Beaneaters	NL	93	39	.705	Lost 1897 Temple Cup\n
+1998	New York Yankees	AL	114	48	.704	Won 1998 World Series\n
+1907	Chicago Cubs	NL	107	45	.704	Won 1907 World Series\n
+1931	Philadelphia Athletics	AL	107	45	.704	Lost 1931 World Series\n
+1887	St. Louis Browns	AA	95	40	.704	Lost 1887 World Series\n
+1939	New York Yankees	AL	106	45	.702	Won 1939 World Series\n
+    </string>
+
+     <string name="mlb_records_title1">
+       Hitting records: single game\n
+    </string>
+
+     <string name="mlb_records1">
+Most hits in a nine-inning game: 7 by Wilbert Robinson, June 10, 1892, and Rennie Stennett, September 16, 1975.\n
+Most hits in an extra-inning game: 9, Johnny Burnett, July 10, 1932.\n
+Most total bases in a nine-inning game: 19 (4 home runs, a double and a single), Shawn Green, May 23, 2002.\n
+    </string>
+
+    <string name="mlb_records_title2">
+       Pitching records: single game\n
+    </string>
+
+    <string name="mlb_records2">
+Most home runs allowed: 7, Charlie Sweeney, June 12, 1886\n
+Most strikeouts: 21, Tom Cheney, September 12, 1962 (16 innings)\n
+Most strikeouts in a nine-inning game: 20 by Kerry Wood and Roger Clemens (twice)\n
+Most consecutive home runs allowed: 4 by Paul Foytack, July 31, 1963, Chase Wright, April 22, 2007, and Dave Bush, August 11, 2010\n
+Oldest pitcher to win a game: Age 49, Jamie Moyer, May 16, 2012\n
+    </string>
+
+    <string name="mlb_records_title3">
+      Catcher records: career\n
+    </string>
+
+     <string name="mlb_records3">
+Most runners caught stealing: 810, Gary Carter\n
+Most stolen bases allowed: 1,498, Gary Carter\n
+Most stolen-base attempts: 2,308, Gary Carter\n
+Highest caught-stealing : 57.40, Roy Campanella\n
+Most pick-offs: 81, Ivan Rodriguez\n
+Most no-hitters caught: 4, Jason Varitek\n
+    </string>
+
+    <string name="mlb_records_title4">
+     Catcher records: single season\n
+    </string>
+
+     <string name="mlb_records4">
+Most runners caught stealing: Jody Davis, 89 (1986)\n
+Most stolen bases allowed: Mike Piazza, 155 (1996)\n
+Highest caught-stealing : Mike LaValliere, 72.73 (1993)\n
+Most no-hitters caught: 2, Carlos Ruiz (2010) (List of Major League Baseball no-hitters)\n
+    </string>
+
+     <string name="mlb_records_title5">
+     Batting records: career\n
+    </string>
+
+     <string name="mlb_records5">
+Highest batting average	Ty Cobb	.366\n
+Most singles	Pete Rose	3,215\n
+Most doubles	Tris Speaker	792\n
+Most triples	Sam Crawford	309\n
+Most home runs	Barry Bonds	762\n
+Most grand slams	Alex Rodriguez\n
+Most home runs by a pitcher	Wes Ferrell	38\n
+Most grand slams by a pitcher	Madison Bumgarner	2\n
+Most RBI	Hank Aaron	2,297\n
+Most hits	Pete Rose	4,256\n
+Most runs scored	Rickey Henderson	2,295\n
+Highest on-base percentage	Ted Williams	.482\n
+Most stolen bases	Rickey Henderson	1,406\n
+Most steals of home	Ty Cobb	54\n
+Highest slugging percentage	Babe Ruth	.690\n
+Highest OPS	Babe Ruth	1.164\n
+Most walks	Barry Bonds	2,558\n
+Most intentional walks	Barry Bonds	688\n
+Most strikeouts	Reggie Jackson	2,597\n
+Most at-bats	Pete Rose	14,053\n
+Most total bases	Hank Aaron	6,856\n
+Most runs created	Barry Bonds	2,892\n
+Most games played	Pete Rose	3,562\n
+    </string>
+
+     <string name="nhl_records_title">
+    Team Records\n
+    </string>
+
+      <string name="nhl_records_title1">
+     Season records\n
+    </string>
+
+      <string name="nhl_records">
+Most Points in 70 or More Games: 132, by the 1976–77 Montreal Canadiens\n
+Most Points in 44–60 Games: 83, by the 1943–44 Montreal Canadiens\n
+Most Points in 36 or Fewer Games: 52, by the 1925–26 Ottawa Senators\n
+Fewest Points in 70 or More Games: 21, by the 1974–75 Washington Capitals\n
+Fewest Points in 44–60 Games: 12, by the 1930–31 Philadelphia Quakers\n
+Fewest Points in 36 or Fewer Games: 8, by the 1919–20 Quebec Bulldogs\n
+Most Wins in 70 or More Games: 62, by the 1995–96 Detroit Red Wings\n
+Most Wins in 44–60 Games: 38, by the 1943–44 Montreal Canadiens and 1944–45 Montreal Canadiens\n
+Most Wins in 36 or Fewer Games: 24, by the 1925–26 Ottawa Senators\n
+Fewest Wins in 70 or More Games: 8, by the 1974–75 Washington Capitals\n
+Fewest Wins in 44–60 Games: 4, by the 1930–31 Philadelphia Quakers\n
+Fewest Wins in 36 or Fewer Games: 4, by the 1919–20 Quebec Bulldogs\n
+Most Ties in 70 or More Games: 24, by the 1969–70 Philadelphia Flyers\n
+Most Ties in 44–60 Games: 15, by the 1928–29 Montreal Canadiens and 1942–43 Chicago Blackhawks\n
+Most Ties in 36 or Fewer Games: 5, by 1925–26 Montreal Maroons\n
+Fewest Ties in 70 or More Games: 2, by the 1992–93 San Jose Sharks\n
+Fewest Ties in 44–60 Games: 1, by the 1929–30 Boston Bruins\n
+Most Shootout Wins: 15, by the 2007–08 Edmonton Oilers\n
+Most Shootout Losses: 13, by the 2013–14 New Jersey Devils\n
+Most Losses in 70 or More Games: 71, by the 1992–93 San Jose Sharks\n
+Most Losses in 44–60 Games: 39, by 1943–44 New York Rangers\n
+Most Losses in 36 or Fewer Games: 24, by the 1924–25 Boston Bruins\n
+Fewest Losses in 70 or More Games: 8, by the 1976–77 Montreal Canadiens\n
+Fewest Losses in 44–60 Games: 5, by the 1943–44 Montreal Canadiens and 1929–30 Boston Bruins\n
+Fewest Losses in 36 or Fewer Games: 5 by the 1919–20 Ottawa Senators\n
+Most Goals in 70 or More Games: 446, by the 1983–84 Edmonton Oilers\n
+Most Goals in 44–60 Games: 234, by the 1943–44 Montreal Canadiens\n
+Most Goals in 36 or Fewer Games: 129, by the 1919–20 Montreal Canadiens\n
+Fewest Goals in 70 or More Games: 133, by the 1953–54 Chicago Blackhawks\n
+Fewest Goals in 44–60 Games: 33, by the 1928–29 Chicago Blackhawks\n
+Fewest Goals in 36 or Fewer Games: 45, by the 1924–25 Montreal Canadiens\n
+Most Goals Against in 70 or More Games: 446, by the 1974–75 Washington Capitals\n
+Most Goals Against in 44–60 Games: 310, by the 1943–44 New York Rangers\n
+Most Goals Against in 36 or Fewer Games: 177, by the 1919–20 Quebec Bulldogs\n
+Fewest Goals Against in 70 or More Games: 131, by the 1953–54 Toronto Maple Leafs and 1955–56 Montreal Canadiens\n
+Fewest Goals Against in 44–60 Games: 43 by the 1928–29 Montreal Canadiens\n
+Fewest Goals Against in 36 or Fewer Games: 42, by the 1925–26 Ottawa Senators\n
+Greatest Goal Differential: +216, by the 1976–77 Montreal Canadiens\n
+Lowest Goal Differential: -265, by the 1974–75 Washington Capitals\n
+Best Power Play Percentage in a Season: 31.88 percent, by the 1977–78 Montreal Canadiens\n
+Worst Power Play Percentage in a Season: 9.35 percent, by the 1997–98 Tampa Bay Lightning\n
+Best Penalty Kill Percentage in a Season: 89.58 percent, by the 2011–12 New Jersey Devils\n
+Worst Penalty Kill Percentage in a Season: 67.70 percent, by the 1979–80 Los Angeles Kings\n
+Best Home Record: 36–2–2 by the 1975–76 Philadelphia Flyers\n
+Worst Home Record: 7–28–5 by the 1974–75 Washington Capitals\n
+Best Away Record: 31–7–3 by the 2005–06 Detroit Red Wings\n
+Worst Away Record: 1–41–0, by the 1992–93 Ottawa Senators\n
+Most Shutout Wins in a Season: 22 of 44 games played (50.0 percent), by the 1928–29 Montreal Canadiens\n
+Most Shutout Losses in a Season: 20 of 44 games played (45.5 percent), by the 1928–29 Chicago Blackhawks\n
+    </string>
+
+ <string name="nhl_records_title2">
+     Individual records\n
+    </string>
+
+     <string name="nhl_records_title3">
+     Seasons\n
+    </string>
+
+ <string name="nhl_records2">
+Most seasons: Gordie Howe, (1946–47 to 1970–1971; 1979–1980), Chris Chelios, (1983–84 to 2009–10, except for the 2004–05 NHL lockout), 26\n
+Most playoff seasons: Chris Chelios, 24 (1983–84 to 2008–09, except for 1997–98 and the 2004–05 NHL lockout year)\n
+Most consecutive playoff seasons: Larry Robinson, (1972–73 to 1991–92), Nicklas Lidstrom, (1991–92 to 2011–12, except for the 2004–05 NHL lockout), 20\n
+    </string>
+
+     <string name="nhl_records_title4">
+     Games\n
+    </string>
+
+      <string name="nhl_records3">
+Most games: Gordie Howe, 1,767\n
+Most games, including playoffs: Mark Messier, 1,992\n
+Most playoff games: Chris Chelios 266\n
+Most games played in a single NHL season, not including playoffs: Jimmy Carson (1992–93) and Bob Kudelski (1993–94), 86\n
+Most consecutive games: Doug Jarvis, 964 (October 8, 1975 – October 10, 1987)\n
+Most consecutive games by a defenceman: Jay Bouwmeester, 737\n
+Oldest player to play a game: Gordie Howe, 52 years, 11 days\n
+Most games by a coach in the Stanley Cup Final: Dick Irvin (Chicago(5), Toronto(29), Montreal(43), 77\n
+Most games played in the Finals: Red Kelly (Detroit(37), Toronto(28), Henri Richard (Montreal), 65\n
+Most games won by a coach in the Stanley Cup Finals: Scotty Bowman, 36 (Montreal(20), Pittsburgh(4), Detroit(12)\n
+    </string>
+
+      <string name="nhl_records_title5">
+     Stanley Cups\n
+    </string>
+
+      <string name="nhl_records4">
+Most Stanley Cups, as a player: Henri Richard, Montreal Canadiens, 11 (1956, 57, 58, 59, 60, 65, 66, 68, 69, 71, 73)\n
+Most Stanley Cups, as a non-player: Scotty Bowman, 14 - Montreal (1973, 76, 77, 78,79), Pittsburgh (1991, 92), Detroit (1997, 98, 2002, 08), Chicago (2010, 13, 15)\n
+Most Stanley Cups, combined player or non-player: Jean Beliveau, Montreal Canadiens, 17 Player - (1956, 57, 58, 59, 60, 65, 66, 68, 69, 71), Executive - (1973, 76, 77, 78, 79, 86, 93)\n
+    </string>
+
+      <string name="nhl_records_title6">
+     Goals\n
+    </string>
+
+      <string name="nhl_records5">
+Most goals career: Wayne Gretzky, 894\n
+Most goals playoffs career; Wayne Gretzky, 122\n
+Most goals career, including playoffs: Wayne Gretzky, 1,016\n
+Most goals, one season: Wayne Gretzky, 92 (1981–82)\n
+Most goals, in playoffs one season: Reggie Leach (1976) and Jari Kurri (1985), 19\n
+Most goals, one season, including playoffs: Wayne Gretzky, 100 (1983–84)\n
+Most goals, one playoff series: Jari Kurri (6 game series), 12 (1985)\n
+Most goals in a Stanley Cup Final: Cyclone Taylor (1918, 5 games), Frank Foyston (1919, 5 games), Babe Dye (1922, 5 games), 9\n
+Most goals in the Finals, career: Maurice Richard, 34\n
+Most goals, 50 games from start of season: Wayne Gretzky, 61 (1981–82 and 1983–84)\n
+Fastest 50 goals from start of season: Wayne Gretzky, 39 games (Dec. 30, 1981)\n
+Most goals, one game: Joe Malone, 7 (Jan. 31, 1920)\n
+Most goals, one regular season game: Joe Malone, 7 (Jan. 31, 1920)\n
+Most goals, one regular season home game: Joe Malone, 7 (Jan. 31, 1920)\n
+Most goals, one regular season road game: Red Berenson, 6 (Nov. 7, 1968)\n
+Most goals, one playoff game: Newsy Lalonde (Mar. 1, 1919), Maurice Richard (Mar. 23, 1944), Darryl Sittler (Apr. 22, 1976), Reggie Leach (May 6, 1976), Mario Lemieux (Apr. 25, 1989), 5\n
+Most goals, one home playoff game: Maurice Richard (Mar. 23, 1944), Darryl Sittler (Apr. 22, 1976), Reggie Leach (May 6, 1976), Mario Lemieux (Apr. 25, 1989), 5\n
+Most goals, one road playoff game: Newsy Lalonde (Mar. 1, 1919), 5\n
+Most goals, one period: Max Bentley (Jan. 28, 1943), Busher Jackson (Nov. 20, 1934), Clint Smith (Mar. 4, 1945), Red Berenson (Nov. 7, 1968), Wayne Gretzky (Feb. 18, 1981), Grant Mulvey (Feb. 3, 1982), Bryan Trottier (Feb. 13, 1982), Johan Franzen (May 6, 2010), Tim Kerr (Apr. 13, 1985), Al Secord (Jan. 7, 1987), Joe Nieuwendyk (Jan. 11, 1989), Peter Bondra (Feb. 5, 1994), Mario Lemieux (Jan. 26, 1997), 4\n
+Most goals in one period during the finals: Busher Jackson (Apr. 5, 1932), Ted Lindsay (Apr. 5, 1955), Maurice Richard (Apr. 6, 1957), Wayne Gretzky (May 25, 1985), Dirk Graham (June 1, 1992), Peter Forsberg (June 6, 1996), 3\n
+Most game-winning goals in a season: Phil Esposito (1970–71 and 1971–72) and Michel Goulet (1983–84), 16\n
+Most game-winning goals in playoffs one season: Brad Richards (2004), 7\n
+Most game-winning goals in a playoff series: Mike Bossy (6 game series) (1983), 4\n
+Most game-winning goals career: Jaromir Jagr, 124\n
+Most game-winning goals playoffs career: Wayne Gretzky, Brett Hull, 24\n
+    </string>
+
+    <string name="nhl_records_title7">
+    Assists\n
+    </string>
+
+    <string name="nhl_records6">
+Most assists regular season career: Wayne Gretzky, 1,963\n
+Most assists playoffs career: Wayne Gretzky 260\n
+Most assists career, including playoffs: Wayne Gretzky, 2,223\n
+Most assists, one season: Wayne Gretzky, 163 (1985–86)\n
+Most assists, one playoff season: Wayne Gretzky, 31 (1987–88)\n
+Most assists, one season, including playoffs: Wayne Gretzky, 174 (1985–86)\n
+Most assists, playoff series: Rick Middleton (7 game series) (1983), Wayne Gretzky (6 game series) (1985) 14\n
+Most assists, one game: Billy Taylor (Mar. 16, 1947), Wayne Gretzky (Feb. 15, 1980, Dec. 11, 1985, and Feb. 14, 1986), 7\n
+Most assists, one road game: Billy Taylor (Mar. 16, 1947), Wayne Gretzky (Dec. 11, 1985), 7\n
+Most assists, one playoff game: Mikko Leinonen (Apr. 8, 1982), Wayne Gretzky (Apr. 9, 1987), 6\n
+Most assists, one period: Dale Hawerchuk, 5 (Mar. 6, 1984)\n
+    </string>
+
+    <string name="nhl_records_title8">
+    Points\n
+    </string>
+
+    <string name="nhl_records7">
+Most points regular season career: Wayne Gretzky, 2,857\n
+Most points playoff career: Wayne Gretzky, 382\n
+Most points career, including playoffs: Wayne Gretzky, 3,239\n
+Most points, one season: Wayne Gretzky, 215 (1985–86)\n
+Fastest 100 points from the start of a season: Wayne Gretzky, 34 games (Dec. 27, 1981)\n
+Most points, one season, including playoffs: Wayne Gretzky, 255 (1984–85)\n
+Most points, one game: Darryl Sittler, 10 (Feb. 7, 1976)\n
+Most points, one playoff game: Patrik Sundstrom (Apr. 22, 1988) and Mario Lemieux (Apr. 25, 1989), 8\n
+Most points, one road game: Peter Stastny and Anton Stastny,(Feb. 22, 1981), 8\n
+Most points, one period: Bryan Trottier, 6 (December 23, 1978, second period)\n
+Most points, one playoff season: Wayne Gretzky, 47 (1985)\n
+Most points, one playoff series: Rick Middleton (7 game series), 19 (1983)\n
+Most points in the Final, one series: Wayne Gretzky, 13 (1988)\n
+Most points in the Final, career: Jean Beliveau, 62
+    </string>
+    <string name="app_version">Version: 1.0</string>
+    <string name="send_feedback">Send Feedback</string>
+    <string name="leagues_description">description</string>
+    <string name="leagues_fragment_title">title</string>
+    <string name="news_main_title">title</string>
+    <string name="news_main_description">description</string>
+    <string name="notification_preferences">Notification preferences</string>
+    <string name="notification_topnews">Top News</string>
+    <string name="notification_football">Football</string>
+    <string name="notification_basketball">Basketball</string>
+    <string name="notification_baseball">Baseball</string>
+    <string name="notification_hockey">Hockey</string>
+    <string name="notification_soccer">Soccer</string>
+    <string name="save_recycle_title">title</string>
+    <string name="save_recycle_description">description</string>
+    <string name="articles_saved">articles saved</string>
+    <string name="menu_fragment_share">share</string>
+    <string name="menu_fragment_title">saved_articles</string>
+    <string name="main_drawer_sports">Sports News</string>
+    <string name="main_drawer_saved">Saved Stories</string>
+    <string name="main_drawer_leagues">Leagues</string>
+    <string name="main_drawer_football">NFL Football</string>
+    <string name="main_drawer_basket">NBA Basketball</string>
+    <string name="main_drawer_baseball">MLB Baseball</string>
+    <string name="main_drawer_hockey">NHL Hockey</string>
+    <string name="main_drawer_soccer">MLS Soccer</string>
+    <string name="main_drawer_english">English Premier League</string>
+    <string name="main_drawer_spanish">Spanish La Liga</string>
+    <string name="main_drawer_italian">Italian Serie A</string>
+    <string name="main_drawer_german">German Bundesliga</string>
+    <string name="main_drawer_settings">Settings</string>
+    <string name="main_drawer_notifications">Notifications</string>
+    <string name="main_drawer_about">About</string>
+    <string name="no_network">No network connection!</string>
+    <string name="saved_stories_title_favorites">Saved stories</string>
+    <string name="main_activity_title">Sports News</string>
+    <string name="app_title_toolbar">Sports News</string>
+    <string name="saved_stories_toolbar">Saved stories</string>
+    <string name="top_news_toast">Top News</string>
+    <string name="football_toast">Football</string>
+    <string name="basketball_toast">Basketball</string>
+    <string name="baseball_toast">Baseball</string>
+    <string name="hockey_toast">Hockey</string>
+    <string name="soccer_toast">Soccer</string>
+    <string name="tab_articles">Articles</string>
+    <string name="tab_history">History</string>
+    <string name="tab_records">Records</string>
+    <string name="nfl_title_leagues_ac">NFL Football</string>
+    <string name="nba_title_leagues_ac">NBA Basketball</string>
+    <string name="nfl_title_leagues_activity">MLB Baseball</string>
+    <string name="nhl_title_leagues_activity">NHL Hockey</string>
+    <string name="mlb_title_leagues_activity">MLB Baseball</string>
+    <string name="mls_title_leagues_activity">MLS Soccer</string>
+    <string name="english_title_leagues_activity">English Soccer</string>
+    <string name="spanish_title_leagues_activity">Spanish Soccer</string>
+    <string name="italian_title_leagues_activity">Italian Soccer</string>
+    <string name="german_title_leagues_activity">German Soccer</string>
 
 </resources>

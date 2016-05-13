@@ -1,7 +1,7 @@
 package com.mikhail.sportsnewshistoryrecords.model.search;
 
 /**
- * Created by Mikhail on 4/28/16.
+ * Root object for NYT Article Search API
  */
 public class ArticleSearch {
     Response response;

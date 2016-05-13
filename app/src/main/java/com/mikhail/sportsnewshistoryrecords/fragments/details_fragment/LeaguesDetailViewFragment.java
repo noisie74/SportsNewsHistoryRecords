@@ -1,4 +1,4 @@
-package com.mikhail.sportsnewshistoryrecords.fragments;
+package com.mikhail.sportsnewshistoryrecords.fragments.details_fragment;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,11 +6,9 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.view.menu.ActionMenuItemView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -28,9 +26,10 @@ import android.widget.Toast;
 import com.mikhail.sportsnewshistoryrecords.R;
 import com.mikhail.sportsnewshistoryrecords.database.ArticleSaveForLater;
 import com.mikhail.sportsnewshistoryrecords.database.SaveSQLiteHelper;
+import com.mikhail.sportsnewshistoryrecords.interfaces.ControlLeaguesActivityLayout;
 
 
-public class SportsLeaguesArticleDetailViewFragment extends Fragment {
+public class LeaguesDetailViewFragment extends Fragment {
     String[] articleDetails;
     View v;
 
@@ -91,12 +90,6 @@ public class SportsLeaguesArticleDetailViewFragment extends Fragment {
 
     }
 
-    public interface ControlLeaguesActivityLayout {
-        void showViewPager(boolean visible);
-
-        void showTabLayout(boolean visible);
-    }
-
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_fragment, menu);
@@ -117,6 +110,7 @@ public class SportsLeaguesArticleDetailViewFragment extends Fragment {
             startActivity(Intent.createChooser(intent, "Share"));
             return true;
         } else if (id == R.id.save_later) {
+            Log.d(TAG, articleDetails[2]);
             ArticleSaveForLater article = new ArticleSaveForLater(htmlSaveForLater, articleDetails[0], articleDetails[3], articleDetails[1], articleDetails[2]);
             insertIntoDbFromSearchArticle(article);
             return true;
@@ -140,7 +134,10 @@ public class SportsLeaguesArticleDetailViewFragment extends Fragment {
             super.onPageFinished(view, url);
             articleWebView.loadUrl("javascript:window.HTMLOUT.showHTML('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>');");
             progress.setVisibility(View.GONE);
-            saveLater.setVisible(true);
+            if (articleWebView.isShown()){
+                saveLater.setVisible(true);
+
+            }
         }
 
         @Override

@@ -2,7 +2,6 @@ package com.mikhail.sportsnewshistoryrecords.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,15 +9,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mikhail.sportsnewshistoryrecords.R;
-import com.mikhail.sportsnewshistoryrecords.model.NytSportsResults;
-import com.mikhail.sportsnewshistoryrecords.model.search.ArticleSearch;
 import com.mikhail.sportsnewshistoryrecords.model.search.Doc;
 import com.mikhail.sportsnewshistoryrecords.model.search.Multimedia;
-import com.mikhail.sportsnewshistoryrecords.model.search.Response;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Mikhail on 4/28/16.
@@ -28,6 +23,7 @@ public class LeaguesNewsAdapter extends RecyclerView.Adapter<LeaguesNewsAdapter.
     Context context;
     public ArrayList<Doc> leaguesSearchResults;
     public static OnItemClickListener listener;
+    private int placeholderPosition;
 
     public LeaguesNewsAdapter(ArrayList<Doc> leaguesSearchResults) {
         this.leaguesSearchResults = leaguesSearchResults;
@@ -102,9 +98,15 @@ public class LeaguesNewsAdapter extends RecyclerView.Adapter<LeaguesNewsAdapter.
             imageURI = "R.drawable.nyt_icon";
 
         }
+        int[] images = new int[2];
+        images[0] = R.drawable.about_image;
+        images[1] = R.drawable.placeholder_image;
+//        images[2] = R.drawable.placeholder_image2;
+
+
         Picasso.with(context)
-                .load("http://nytimes.com/" + imageURI)
-                .placeholder(R.drawable.nyt_icon)
+                .load(imageURI)
+                .placeholder(randPlaceholder(images))
                 .resize(200, 180)
                 .centerCrop()
                 .into(holder.articleImage);
@@ -113,6 +115,16 @@ public class LeaguesNewsAdapter extends RecyclerView.Adapter<LeaguesNewsAdapter.
     @Override
     public int getItemCount() {
         return leaguesSearchResults.size();
+    }
+
+
+
+    private int randPlaceholder(int[] placeholderDrawables){
+
+
+        placeholderPosition++;
+
+        return placeholderDrawables[placeholderPosition % placeholderDrawables.length];
     }
 }
 

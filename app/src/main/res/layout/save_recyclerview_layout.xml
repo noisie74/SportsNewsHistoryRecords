@@ -30,7 +30,7 @@
             android:paddingLeft="4dp"
             android:paddingRight="4dp"
             android:paddingTop="4dp"
-            android:text="title"
+            android:text="@string/save_recycle_title"
             android:textColor="#222"
             android:textStyle="bold"
             android:textSize="14sp"
@@ -44,7 +44,6 @@
             android:layout_toRightOf="@id/saved_cardView_image"
             android:maxLines="1"
             android:paddingLeft="4dp"
-            android:text="elapsed"
             android:textColor="#99666666"
             android:textSize="10sp" />
 
@@ -58,7 +57,7 @@
             android:paddingLeft="4dp"
             android:paddingRight="4dp"
             android:paddingBottom="4dp"
-            android:text="description"
+            android:text="@string/save_recycle_description"
             android:textColor="#666"
             android:textSize="12sp" />
 

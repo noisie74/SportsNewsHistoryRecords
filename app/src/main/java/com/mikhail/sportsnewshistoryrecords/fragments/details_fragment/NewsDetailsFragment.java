@@ -1,4 +1,4 @@
-package com.mikhail.sportsnewshistoryrecords.fragments;
+package com.mikhail.sportsnewshistoryrecords.fragments.details_fragment;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -9,7 +9,6 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -22,12 +21,12 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.mikhail.sportsnewshistoryrecords.R;
 import com.mikhail.sportsnewshistoryrecords.database.ArticleSaveForLater;
 import com.mikhail.sportsnewshistoryrecords.database.SaveSQLiteHelper;
+import com.mikhail.sportsnewshistoryrecords.interfaces.ControlToolbar;
 
 /**
  * Created by Mikhail on 4/29/16.
@@ -42,8 +41,6 @@ public class NewsDetailsFragment extends Fragment {
     private static final String TAG = "ArticleStory Fragment";
     public String htmlSaveForLater;
     public SQLiteDatabase db;
-    Toolbar toolbar;
-    Spinner spinner;
     ControlToolbar controlToolbar;
     String[] leaguesArticleDetails;
 
@@ -75,6 +72,9 @@ public class NewsDetailsFragment extends Fragment {
 //        if (leaguesArticleDetails == null){
             historyWebView.loadUrl(articleDetails[2]);
 //
+        SaveSQLiteHelper mDbHelper = SaveSQLiteHelper.getInstance(getContext());
+        db = mDbHelper.getWritableDatabase();
+
 //        }
 //        if (articleDetails == null){
 //            historyWebView.loadUrl(leaguesArticleDetails[1]);
@@ -98,13 +98,6 @@ public class NewsDetailsFragment extends Fragment {
     }
 
 
-    public interface ControlToolbar {
-        void showSpinner(boolean visible);
-
-        void showTitle(boolean visible);
-    }
-
-
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_fragment, menu);
@@ -122,7 +115,7 @@ public class NewsDetailsFragment extends Fragment {
             Intent intent = new Intent(Intent.ACTION_SEND);
             intent.setType("text/plain");
             intent.putExtra(Intent.EXTRA_TEXT, articleDetails[2]);
-            intent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Check out this site!");
+            intent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Check out this article!");
             startActivity(Intent.createChooser(intent, "Share"));
             return true;
         } else if (id == R.id.save_later) {
@@ -163,6 +156,7 @@ public class NewsDetailsFragment extends Fragment {
         @JavascriptInterface
         @SuppressWarnings("unused")
         public void showHTML(String html) {
+            htmlSaveForLater = html;
         }
     }
 

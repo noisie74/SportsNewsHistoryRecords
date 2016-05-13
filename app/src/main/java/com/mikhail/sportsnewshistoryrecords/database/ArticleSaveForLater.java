@@ -22,8 +22,10 @@ public class ArticleSaveForLater {
         this.snippet = snippet;
         this.url = url;
         this.image = image;
-        this.code = (System.currentTimeMillis());
+//        this.code = (System.currentTimeMillis());
     }
+
+
 
     public int getId() {
         return id;
@@ -81,12 +83,4 @@ public class ArticleSaveForLater {
         this.code = code;
     }
 
-    public static String titleForToast(String title){
-        int titleLength = title.length();
-        int limit = 30;
-        if(titleLength > limit) {
-            titleLength = limit;
-        }
-        return title.substring(0,titleLength) + "...";
-    }
 }

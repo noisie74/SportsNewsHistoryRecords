@@ -6,65 +6,65 @@
     <item
         android:id="@+id/top_news"
         android:icon="@drawable/ic_whatshot_24dp"
-        android:title="Sports News" />
+        android:title="@string/main_drawer_sports" />
     <item
         android:id="@+id/favorites"
         android:icon="@drawable/ic_star_24dp"
-        android:title="Saved Stories" />
+        android:title="@string/main_drawer_saved" />
 
-    <item android:title="Leagues">
+    <item android:title="@string/main_drawer_leagues">
         <menu>
 
     <item
         android:id="@+id/nfl"
         android:icon="@drawable/americanfootball24"
-        android:title="NFL Football" />
+        android:title="@string/main_drawer_football" />
     <item
         android:id="@+id/nba"
         android:icon="@drawable/basketball24"
-        android:title="NBA Basketball" />
+        android:title="@string/main_drawer_basket" />
     <item
         android:id="@+id/mlb"
         android:icon="@drawable/baseball24"
-        android:title="MLB Baseball" />
+        android:title="@string/main_drawer_baseball" />
     <item
         android:id="@+id/nhl"
         android:icon="@drawable/hockey24"
-        android:title="NHL Hockey" />
+        android:title="@string/main_drawer_hockey" />
 
     <item
         android:id="@+id/mls"
         android:icon="@drawable/soccer24"
-        android:title="MLS Soccer" />
+        android:title="@string/main_drawer_soccer" />
     <item
         android:id="@+id/english_soccer"
         android:icon="@drawable/soccer24"
-        android:title="English Premier League" />
+        android:title="@string/main_drawer_english" />
     <item
         android:id="@+id/spanish_soccer"
         android:icon="@drawable/soccer24"
-        android:title="Spanish La Liga" />
+        android:title="@string/main_drawer_spanish" />
     <item
         android:id="@+id/italian_soccer"
         android:icon="@drawable/soccer24"
-        android:title="Italian Serie A" />
+        android:title="@string/main_drawer_italian" />
     <item
         android:id="@+id/german_soccer"
         android:icon="@drawable/soccer24"
-        android:title="German Bundesliga" />
+        android:title="@string/main_drawer_german" />
         </menu>
     </item>
 
-    <item android:title="Settings">
+    <item android:title="@string/main_drawer_settings">
         <menu>
             <item
                 android:id="@+id/notifications"
                 android:icon="@drawable/ic_notifications_24dp"
-                android:title="Notifications" />
+                android:title="@string/main_drawer_notifications" />
             <item
                 android:id="@+id/about"
                 android:icon="@drawable/about24"
-                android:title="About" />
+                android:title="@string/main_drawer_about" />
         </menu>
     </item>
 
