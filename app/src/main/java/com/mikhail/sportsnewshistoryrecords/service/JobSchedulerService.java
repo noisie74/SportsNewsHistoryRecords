@@ -55,10 +55,10 @@ public class JobSchedulerService extends JobService {
         setBooleanArray();
         context = getApplicationContext();
 
-        PersistableBundle persistableBundle = params.getExtras();
-        booleanArray = persistableBundle.getBooleanArray(NotificationFragment.BOOLEAN_CODE);
-        updateBooleans();
-        setApiCall();
+//        PersistableBundle persistableBundle = params.getExtras();
+//        booleanArray = persistableBundle.getBooleanArray(NotificationFragment.BOOLEAN_CODE);
+//        updateBooleans();
+//        setApiCall();
         return true;
 
     }

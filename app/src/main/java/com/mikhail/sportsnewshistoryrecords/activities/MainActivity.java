@@ -87,6 +87,13 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+
+//    @Override
+//    protected void onResume() {
+////        setAllSportsFragment();
+//        super.onResume();
+//    }
+
     /**
      * set click listener for spinner
      */
@@ -98,22 +105,22 @@ public class MainActivity extends AppCompatActivity
                 Log.d("FromSecondActivity", "Spinner" + spinnerPosition);
                 switch (spinnerPosition) {
                     case 0:
-                        allSportsFragment.nytApiCall(AllSportsFragment.NYT_ALL);
+                        allSportsFragment.nytAllSportsNews();
                         break;
                     case 1:
-                        allSportsFragment.nytApiCall(AllSportsFragment.NYT_FOOTBALL);
+                        allSportsFragment.nytFootballSportsNews();
                         break;
                     case 2:
-                        allSportsFragment.nytApiCall(AllSportsFragment.NYT_BASKETBALL);
+                        allSportsFragment.nytBasketballSportsNews();
                         break;
                     case 3:
                         allSportsFragment.nytApiCall(AllSportsFragment.NYT_BASEBALL);
                         break;
                     case 4:
-                        allSportsFragment.nytApiCall(AllSportsFragment.NYT_HOCKEY);
+                        allSportsFragment.nytHockeySportsNews();
                         break;
                     case 5:
-                        allSportsFragment.nytApiCall(AllSportsFragment.NYT_SOCCER);
+                        allSportsFragment.nytSoccerSportsNews();
                         break;
                 }
 
@@ -412,7 +419,7 @@ public class MainActivity extends AppCompatActivity
     private void setAllSportsFragment() {
 
         allSportsFragment = new AllSportsFragment();
-        allSportsFragment.nytApiCall(AllSportsFragment.NYT_ALL);
+        allSportsFragment.nytAllSportsNews();
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frag_container, allSportsFragment);
         fragmentTransaction.commit();
