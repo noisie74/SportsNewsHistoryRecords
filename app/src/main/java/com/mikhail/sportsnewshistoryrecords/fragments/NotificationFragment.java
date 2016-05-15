@@ -46,8 +46,7 @@ public class NotificationFragment extends Fragment {
     private boolean baseballCheck = false;
     private boolean hockeyCheck = false;
     private boolean soccerCheck = false;
-    NotificationManager mNotificationManager;
-    SharedPreferences sharedPreferences;
+    public SharedPreferences sharedPreferences;
 
     @Nullable
     @Override
@@ -56,7 +55,6 @@ public class NotificationFragment extends Fragment {
 
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        mNotificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
 
         setViews();
         setCheckboxClicks();
@@ -104,56 +102,44 @@ public class NotificationFragment extends Fragment {
                 boolean checked = ((CheckBox) view).isChecked();
                 switch (view.getId()) {
                     case R.id.checkbox_top_news:
-                        int NOTIFICATION_ID1 = 1;
                         if (checked) {
                             topNewsCheck = true;
                         } else {
-                            mNotificationManager.cancel(NOTIFICATION_ID1);
                             topNewsCheck = false;
                         }
                         break;
                     case R.id.checkbox_football:
-                        int NOTIFICATION_ID2 = 2;
                         if (checked) {
                             footballCheck = true;
                         } else {
-                            mNotificationManager.cancel(NOTIFICATION_ID2);
                             footballCheck = false;
                         }
                         break;
                     case R.id.checkbox_basketball:
-                        int NOTIFICATION_ID3 = 3;
                         if (checked) {
                             basketballCheck = true;
                         } else {
-                            mNotificationManager.cancel(NOTIFICATION_ID3);
                             basketballCheck = false;
                         }
                         break;
                     case R.id.checkbox_baseball:
-                        int NOTIFICATION_ID4 = 4;
                         if (checked) {
                             baseballCheck = true;
                         } else {
-                            mNotificationManager.cancel(NOTIFICATION_ID4);
                             baseballCheck = false;
                         }
                         break;
                     case R.id.checkbox_hockey:
-                        int NOTIFICATION_ID5 = 5;
                         if (checked) {
                             hockeyCheck = true;
                         } else {
-                            mNotificationManager.cancel(NOTIFICATION_ID5);
                             hockeyCheck = false;
                         }
                         break;
                     case R.id.checkbox_soccer:
-                        int NOTIFICATION_ID6 = 6;
                         if (checked) {
                             soccerCheck = true;
                         } else {
-                            mNotificationManager.cancel(NOTIFICATION_ID6);
                             soccerCheck = false;
                         }
                         break;

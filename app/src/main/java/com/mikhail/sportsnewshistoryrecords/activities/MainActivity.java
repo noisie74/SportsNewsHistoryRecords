@@ -87,15 +87,8 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-
-//    @Override
-//    protected void onResume() {
-////        setAllSportsFragment();
-//        super.onResume();
-//    }
-
     /**
-     set click listener for spinner
+     * set click listener for spinner
      */
     private void setSpinnerClickListener() {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -105,22 +98,22 @@ public class MainActivity extends AppCompatActivity
                 Log.d("FromSecondActivity", "Spinner" + spinnerPosition);
                 switch (spinnerPosition) {
                     case 0:
-                        allSportsFragment.nytAllSportsNews();
+                        allSportsFragment.nytApiCall(AllSportsFragment.NYT_ALL);
                         break;
                     case 1:
-                        allSportsFragment.nytFootballSportsNews();
+                        allSportsFragment.nytApiCall(AllSportsFragment.NYT_FOOTBALL);
                         break;
                     case 2:
-                        allSportsFragment.nytBasketballSportsNews();
+                        allSportsFragment.nytApiCall(AllSportsFragment.NYT_BASKETBALL);
                         break;
                     case 3:
                         allSportsFragment.nytApiCall(AllSportsFragment.NYT_BASEBALL);
                         break;
                     case 4:
-                        allSportsFragment.nytHockeySportsNews();
+                        allSportsFragment.nytApiCall(AllSportsFragment.NYT_HOCKEY);
                         break;
                     case 5:
-                        allSportsFragment.nytSoccerSportsNews();
+                        allSportsFragment.nytApiCall(AllSportsFragment.NYT_SOCCER);
                         break;
                 }
 
@@ -202,7 +195,7 @@ public class MainActivity extends AppCompatActivity
     private void setFragment() {
         if (key == R.id.top_news) {
             fragmentTransaction = fragmentManager.beginTransaction();
-            if (allSportsFragment == null){
+            if (allSportsFragment == null) {
                 allSportsFragment = new AllSportsFragment();
             }
             fragmentTransaction.add(R.id.frag_container, allSportsFragment);
@@ -280,23 +273,21 @@ public class MainActivity extends AppCompatActivity
                 fragmentTransaction.commit();
                 break;
             case R.id.about:
-                if (aboutFragment != null && aboutFragment.isVisible()){
-                    aboutFragment= null;
+                if (aboutFragment == null) {
+                    aboutFragment = new AboutFragment();
+                    fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.frag_container, aboutFragment);
+                    fragmentTransaction.commit();
+                    aboutFragment = null;
                 }
-                aboutFragment = new AboutFragment();
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frag_container, aboutFragment);
-                fragmentTransaction.commit();
                 break;
         }
 
-//
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
 
 
     private void startMyActivity(int id) {
@@ -359,7 +350,7 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    public void setSpinnerSelection(){
+    public void setSpinnerSelection() {
         if (spinner != null) {
             spinner.setSelection(0);
         }
@@ -416,12 +407,12 @@ public class MainActivity extends AppCompatActivity
     }
 
     /**
-     set all sports fragment
+     * set all sports fragment
      */
-    private void setAllSportsFragment(){
+    private void setAllSportsFragment() {
 
         allSportsFragment = new AllSportsFragment();
-        allSportsFragment.nytAllSportsNews();
+        allSportsFragment.nytApiCall(AllSportsFragment.NYT_ALL);
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frag_container, allSportsFragment);
         fragmentTransaction.commit();

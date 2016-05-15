@@ -43,14 +43,14 @@ public class AllSportsFragment extends Fragment {
     public AllSportsAdapter allSportsAdapter;
     public ArrayList<NytSportsObjects> sportsNewsList;
     public SwipeRefreshLayout swipeContainer;
-    public static final String NYT_SOURCE = "all";
-    public static final String NYT_SUBSECTION = "sports";
     public static final String NYT_ALL = "Pro football,Pro basketball,baseball,soccer,Hockey";
     public static final String NYT_FOOTBALL = "Pro%20Football";
     public static final String NYT_BASKETBALL = "Pro basketball";
     public static final String NYT_BASEBALL = "baseball";
     public static final String NYT_HOCKEY = "Hockey";
     public static final String NYT_SOCCER = "Soccer";
+    public static final String NYT_SOURCE = "all";
+    public static final String NYT_SUBSECTION = "sports";
     private View rootView;
     private boolean recyclerViewIsSet = false;
     private MainActivityControlAllSports mainActivityControl;
@@ -73,7 +73,7 @@ public class AllSportsFragment extends Fragment {
 
     public void setFragment(int type) {
         this.mFragmentType = type;
-        nytAllSportsNews();
+        nytApiCall(NYT_ALL);
     }
 
     /**
@@ -137,22 +137,22 @@ public class AllSportsFragment extends Fragment {
      */
     private void apiForSpinnerPosition() {
         if (mainActivityControl.getSpinnerSelection() == 0) {
-            nytAllSportsNews();
+            nytApiCall(NYT_ALL);
             Timber.d("All Sports pullRefresh");
         } else if (mainActivityControl.getSpinnerSelection() == 1) {
-            nytFootballSportsNews();
+            nytApiCall(NYT_FOOTBALL);
             Timber.d("Football pullRefresh");
         } else if (mainActivityControl.getSpinnerSelection() == 2) {
-            nytBasketballSportsNews();
+            nytApiCall(NYT_BASKETBALL);
             Timber.d("Basketball pullRefresh");
         } else if (mainActivityControl.getSpinnerSelection() == 3) {
             nytApiCall(NYT_BASEBALL);
             Timber.d("Baseball pullRefresh");
         } else if (mainActivityControl.getSpinnerSelection() == 4) {
-            nytHockeySportsNews();
+            nytApiCall(NYT_HOCKEY);
             Timber.d("Hockey pullRefresh");
         } else if (mainActivityControl.getSpinnerSelection() == 5) {
-            nytSoccerSportsNews();
+            nytApiCall(NYT_SOCCER);
             Timber.d("Soccer pullRefresh");
         }
     }
@@ -161,102 +161,12 @@ public class AllSportsFragment extends Fragment {
      * this will pull a list of articles according to the navi bar topics
      * default will pull all topics
      */
-    public void nytAllSportsNews() {
-        NytAPI.NytRx nytSports = NytAPI.createRx();
-
-        Observable<NytSportsResults> observable = nytSports.nytSportsResults(NYT_SOURCE, NYT_SUBSECTION, NYT_ALL);
-
-        observable.subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<NytSportsResults>() {
-                    @Override
-                    public void onCompleted() {
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Timber.e(e.getMessage());
-                    }
-
-                    @Override
-                    public void onNext(NytSportsResults nytSportsResults) {
-                        Timber.i("Completed");
-                        if (recyclerViewIsSet) {
-                            allSportsAdapter.updateData(nytSportsResults);
-                        } else {
-                            allSportsAdapter.updateData(nytSportsResults);
-                            recyclerView.setAdapter(allSportsAdapter);
-                            recyclerViewIsSet = true;
-                        }
-                        Collections.addAll(sportsNewsList, nytSportsResults.getResults());
-                        swipeContainer.setRefreshing(false);
-                    }
-                });
-
-    }
-
-    public void nytSoccerSportsNews() {
-        NytAPI.NytRx nytSports = NytAPI.createRx();
-
-        Observable<NytSportsResults> observable = nytSports.nytSportsResults(NYT_SOURCE, NYT_SUBSECTION, NYT_SOCCER);
-
-        observable.subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<NytSportsResults>() {
-                    @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        e.printStackTrace();
-                    }
-
-                    @Override
-                    public void onNext(NytSportsResults nytSportsResults) {
-                        allSportsAdapter.updateData(nytSportsResults);
-                        sportsNewsList.clear();
-                        Collections.addAll(sportsNewsList, nytSportsResults.getResults());
-                        swipeContainer.setRefreshing(false);
-                    }
-                });
-    }
-
-    public void nytFootballSportsNews() {
-        NytAPI.NytRx nytSports = NytAPI.createRx();
-
-        Observable<NytSportsResults> observable = nytSports.nytSportsResults(NYT_SOURCE, NYT_SUBSECTION, NYT_FOOTBALL);
-
-        observable.subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<NytSportsResults>() {
-                    @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        e.printStackTrace();
-                    }
-
-                    @Override
-                    public void onNext(NytSportsResults nytSportsResults) {
-
-                        allSportsAdapter.updateData(nytSportsResults);
-                        sportsNewsList.clear();
-                        Collections.addAll(sportsNewsList, nytSportsResults.getResults());
-                        swipeContainer.setRefreshing(false);
-                    }
-                });
-    }
 
     public void nytApiCall(String query) {
 
         NytAPI.NytRx nytSports = NytAPI.createRx();
 
-        Observable<NytSportsResults> observable = nytSports.nytSportsResults(NYT_SOURCE, NYT_SUBSECTION, query);
+        Observable<NytSportsResults> observable = nytSports.nytSportsResults(NYT_SOURCE,NYT_SUBSECTION,query);
 
         observable.subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -282,65 +192,6 @@ public class AllSportsFragment extends Fragment {
 
     }
 
-    public void nytBaseballSportsNews() {
-
-    }
-
-    public void nytBasketballSportsNews() {
-        NytAPI.NytRx nytSports = NytAPI.createRx();
-
-        Observable<NytSportsResults> observable = nytSports.nytSportsResults(NYT_SOURCE, NYT_SUBSECTION, NYT_BASKETBALL);
-
-        observable.subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<NytSportsResults>() {
-                    @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Timber.e(e.getMessage());
-                    }
-
-                    @Override
-                    public void onNext(NytSportsResults nytSportsResults) {
-                        allSportsAdapter.updateData(nytSportsResults);
-                        sportsNewsList.clear();
-                        Collections.addAll(sportsNewsList, nytSportsResults.getResults());
-                        swipeContainer.setRefreshing(false);
-                    }
-                });
-    }
-
-    public void nytHockeySportsNews() {
-        NytAPI.NytRx nytSports = NytAPI.createRx();
-
-        Observable<NytSportsResults> observable = nytSports.nytSportsResults(NYT_SOURCE, NYT_SUBSECTION, NYT_HOCKEY);
-
-        observable.subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<NytSportsResults>() {
-                    @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Timber.e(e.getMessage());
-                    }
-
-                    @Override
-                    public void onNext(NytSportsResults nytSportsResults) {
-                        allSportsAdapter.updateData(nytSportsResults);
-                        sportsNewsList.clear();
-                        Collections.addAll(sportsNewsList, nytSportsResults.getResults());
-                        swipeContainer.setRefreshing(false);
-                    }
-                });
-    }
 
     public void setViews(View v) {
         swipeContainer = (SwipeRefreshLayout) rootView.findViewById(R.id.swipeContainer);
