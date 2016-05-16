@@ -26,6 +26,7 @@ import java.util.Collections;
 
 import rx.Observable;
 import rx.Subscriber;
+import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import timber.log.Timber;
@@ -101,9 +102,10 @@ public class AllSportsFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
 
-        try { mainActivityControl = (MainActivityControlAllSports) getActivity();
+        try {
+            mainActivityControl = (MainActivityControlAllSports) getActivity();
 
-        }catch (ClassCastException ex ){
+        } catch (ClassCastException ex) {
             throw ex;
         }
     }
@@ -115,18 +117,44 @@ public class AllSportsFragment extends Fragment {
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                if (!isConnected(context)){
+                if (!isConnected(context)) {
                     Toast.makeText(getContext(), R.string.no_network, Toast.LENGTH_LONG).show();
                     swipeContainer.setRefreshing(false);
                 } else {
-                    nytAllSportsNews();
+                    apiForSpinnerPosition();
                 }
+
             }
         });
 
         swipeContainer.setColorSchemeResources(android.R.color.darker_gray,
                 android.R.color.white);
 
+    }
+
+    /**
+     * check current spinner position and make correct api call
+     */
+    private void apiForSpinnerPosition() {
+        if (mainActivityControl.getSpinnerSelection() == 0) {
+            nytAllSportsNews();
+            Timber.d("All Sports pullRefresh");
+        } else if (mainActivityControl.getSpinnerSelection() == 1) {
+            nytFootballSportsNews();
+            Timber.d("Football pullRefresh");
+        } else if (mainActivityControl.getSpinnerSelection() == 2) {
+            nytBasketballSportsNews();
+            Timber.d("Basketball pullRefresh");
+        } else if (mainActivityControl.getSpinnerSelection() == 3) {
+            nytApiCall(NYT_BASEBALL);
+            Timber.d("Baseball pullRefresh");
+        } else if (mainActivityControl.getSpinnerSelection() == 4) {
+            nytHockeySportsNews();
+            Timber.d("Hockey pullRefresh");
+        } else if (mainActivityControl.getSpinnerSelection() == 5) {
+            nytSoccerSportsNews();
+            Timber.d("Soccer pullRefresh");
+        }
     }
 
     /**
@@ -152,6 +180,7 @@ public class AllSportsFragment extends Fragment {
 
                     @Override
                     public void onNext(NytSportsResults nytSportsResults) {
+                        Timber.i("Completed");
                         if (recyclerViewIsSet) {
                             allSportsAdapter.updateData(nytSportsResults);
                         } else {
@@ -160,10 +189,10 @@ public class AllSportsFragment extends Fragment {
                             recyclerViewIsSet = true;
                         }
                         Collections.addAll(sportsNewsList, nytSportsResults.getResults());
-//                        setPullRefresh();
                         swipeContainer.setRefreshing(false);
                     }
                 });
+
     }
 
     public void nytSoccerSportsNews() {
@@ -223,10 +252,11 @@ public class AllSportsFragment extends Fragment {
                 });
     }
 
-    public void nytBaseballSportsNews() {
+    public void nytApiCall(String query) {
+
         NytAPI.NytRx nytSports = NytAPI.createRx();
 
-        Observable<NytSportsResults> observable = nytSports.nytSportsResults(NYT_SOURCE, NYT_SUBSECTION, NYT_BASEBALL);
+        Observable<NytSportsResults> observable = nytSports.nytSportsResults(NYT_SOURCE, NYT_SUBSECTION, query);
 
         observable.subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -249,12 +279,17 @@ public class AllSportsFragment extends Fragment {
                         swipeContainer.setRefreshing(false);
                     }
                 });
+
+    }
+
+    public void nytBaseballSportsNews() {
+
     }
 
     public void nytBasketballSportsNews() {
         NytAPI.NytRx nytSports = NytAPI.createRx();
 
-        Observable<NytSportsResults> observable = nytSports.nytSportsResults(NYT_SOURCE,NYT_SUBSECTION, NYT_BASKETBALL);
+        Observable<NytSportsResults> observable = nytSports.nytSportsResults(NYT_SOURCE, NYT_SUBSECTION, NYT_BASKETBALL);
 
         observable.subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())

@@ -40,6 +40,8 @@ import com.mikhail.sportsnewshistoryrecords.interfaces.MainActivityControlAllSpo
 import com.mikhail.sportsnewshistoryrecords.interfaces.SavedArticleControl;
 import com.mikhail.sportsnewshistoryrecords.util.CheckNetworkConnection;
 
+import timber.log.Timber;
+
 import static com.mikhail.sportsnewshistoryrecords.util.CheckNetworkConnection.*;
 
 
@@ -93,7 +95,7 @@ public class MainActivity extends AppCompatActivity
 //    }
 
     /**
-     set click listener for spinner
+     * set click listener for spinner
      */
     private void setSpinnerClickListener() {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -112,7 +114,7 @@ public class MainActivity extends AppCompatActivity
                         allSportsFragment.nytBasketballSportsNews();
                         break;
                     case 3:
-                        allSportsFragment.nytBaseballSportsNews();
+                        allSportsFragment.nytApiCall(AllSportsFragment.NYT_BASEBALL);
                         break;
                     case 4:
                         allSportsFragment.nytHockeySportsNews();
@@ -200,7 +202,7 @@ public class MainActivity extends AppCompatActivity
     private void setFragment() {
         if (key == R.id.top_news) {
             fragmentTransaction = fragmentManager.beginTransaction();
-            if (allSportsFragment == null){
+            if (allSportsFragment == null) {
                 allSportsFragment = new AllSportsFragment();
             }
             fragmentTransaction.add(R.id.frag_container, allSportsFragment);
@@ -278,16 +280,22 @@ public class MainActivity extends AppCompatActivity
                 fragmentTransaction.commit();
                 break;
             case R.id.about:
-                aboutFragment = new AboutFragment();
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frag_container, aboutFragment);
-                fragmentTransaction.commit();
+                if (aboutFragment == null) {
+                    aboutFragment = new AboutFragment();
+                    fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.frag_container, aboutFragment);
+                    fragmentTransaction.commit();
+                    aboutFragment = null;
+                }
                 break;
         }
+
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 
     private void startMyActivity(int id) {
         intent.putExtra(KEY, id);
@@ -312,14 +320,6 @@ public class MainActivity extends AppCompatActivity
             Toast.makeText(MainActivity.this, R.string.no_network, Toast.LENGTH_LONG).show();
         }
     }
-
-//    public static boolean isConnected(){
-//
-//        // return true when connected
-//        // return false when not conencted
-//        return false;
-//    }
-
 
 
     @Override
@@ -357,7 +357,7 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    public void setSpinnerSelection(){
+    public void setSpinnerSelection() {
         if (spinner != null) {
             spinner.setSelection(0);
         }
@@ -400,6 +400,7 @@ public class MainActivity extends AppCompatActivity
             setSpinnerSelection();
             aboutFragment = null;
         } else if (notificationFragment != null) {
+            Timber.d("JobHandler");
             notificationFragment.setJobHandler();
             setAllSportsFragment();
             toolbar.getChildAt(1).setVisibility(View.VISIBLE);
@@ -413,9 +414,9 @@ public class MainActivity extends AppCompatActivity
     }
 
     /**
-     set all sports fragment
+     * set all sports fragment
      */
-    private void setAllSportsFragment(){
+    private void setAllSportsFragment() {
 
         allSportsFragment = new AllSportsFragment();
         allSportsFragment.nytAllSportsNews();
@@ -426,6 +427,10 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    @Override
+    public int getSpinnerSelection() {
+        return this.spinnerPosition;
+    }
 }
 
 

@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 
 import com.mikhail.sportsnewshistoryrecords.R;
+import com.mikhail.sportsnewshistoryrecords.activities.MainActivity;
 import com.mikhail.sportsnewshistoryrecords.interfaces.ControlToolbar;
 import com.mikhail.sportsnewshistoryrecords.service.JobSchedulerService;
 
@@ -28,9 +29,7 @@ import com.mikhail.sportsnewshistoryrecords.service.JobSchedulerService;
  */
 public class NotificationFragment extends Fragment {
 
-    View v;
-    CheckBox topNews, football, basketball, baseball, hockey, soccer;
-    ControlToolbar controlToolbar;
+    public View v;
     public static final String BOOLEAN_CODE = "booleanCode";
     private String TOP_NEWS_CODE = "Pro football,Pro basketball,baseball,soccer,Hockey";
     private String FOOTBALL_CODE = "Pro%20Football";
@@ -38,10 +37,8 @@ public class NotificationFragment extends Fragment {
     private String BASEBALL_CODE = "baseball";
     private String HOCKEY_CODE = "Hockey";
     private String SOCCER_CODE = "Soccer";
-
-    private String title;
-    private String snippet;
-    private String urlForArticle;
+    private CheckBox topNews, football, basketball, baseball, hockey, soccer;
+    private ControlToolbar controlToolbar;
 
     private boolean topNewsCheck = false;
     private boolean footballCheck = false;
@@ -49,16 +46,27 @@ public class NotificationFragment extends Fragment {
     private boolean baseballCheck = false;
     private boolean hockeyCheck = false;
     private boolean soccerCheck = false;
-    NotificationManager mNotificationManager;
-    SharedPreferences sharedPreferences;
-
-    Context context;
+    public SharedPreferences sharedPreferences;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         v = inflater.inflate(R.layout.notifications_layout, container, false);
+
+
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+
+        setViews();
+        setCheckboxClicks();
+        hasOptionsMenu();
+
+        return v;
+
+
+
+    }
+
+    private void setViews(){
 
         topNews = (CheckBox) v.findViewById(R.id.checkbox_top_news);
         football = (CheckBox) v.findViewById(R.id.checkbox_football);
@@ -67,22 +75,9 @@ public class NotificationFragment extends Fragment {
         hockey = (CheckBox) v.findViewById(R.id.checkbox_hockey);
         soccer = (CheckBox) v.findViewById(R.id.checkbox_soccer);
 
-        v.canScrollVertically(20);
-
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        mNotificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
-
-        setCheckboxClicks();
-
         controlToolbar.showSpinner(false);
         controlToolbar.setTitle("Notifications");
-
-        hasOptionsMenu();
-
-        return v;
-
     }
-
 
     @Override
     public void onAttach(Context context) {
@@ -107,56 +102,44 @@ public class NotificationFragment extends Fragment {
                 boolean checked = ((CheckBox) view).isChecked();
                 switch (view.getId()) {
                     case R.id.checkbox_top_news:
-                        int NOTIFICATION_ID1 = 1;
                         if (checked) {
                             topNewsCheck = true;
                         } else {
-                            mNotificationManager.cancel(NOTIFICATION_ID1);
                             topNewsCheck = false;
                         }
                         break;
                     case R.id.checkbox_football:
-                        int NOTIFICATION_ID2 = 2;
                         if (checked) {
                             footballCheck = true;
                         } else {
-                            mNotificationManager.cancel(NOTIFICATION_ID2);
                             footballCheck = false;
                         }
                         break;
                     case R.id.checkbox_basketball:
-                        int NOTIFICATION_ID3 = 3;
                         if (checked) {
                             basketballCheck = true;
                         } else {
-                            mNotificationManager.cancel(NOTIFICATION_ID3);
                             basketballCheck = false;
                         }
                         break;
                     case R.id.checkbox_baseball:
-                        int NOTIFICATION_ID4 = 4;
                         if (checked) {
                             baseballCheck = true;
                         } else {
-                            mNotificationManager.cancel(NOTIFICATION_ID4);
                             baseballCheck = false;
                         }
                         break;
                     case R.id.checkbox_hockey:
-                        int NOTIFICATION_ID5 = 5;
                         if (checked) {
                             hockeyCheck = true;
                         } else {
-                            mNotificationManager.cancel(NOTIFICATION_ID5);
                             hockeyCheck = false;
                         }
                         break;
                     case R.id.checkbox_soccer:
-                        int NOTIFICATION_ID6 = 6;
                         if (checked) {
                             soccerCheck = true;
                         } else {
-                            mNotificationManager.cancel(NOTIFICATION_ID6);
                             soccerCheck = false;
                         }
                         break;
@@ -227,58 +210,40 @@ public class NotificationFragment extends Fragment {
     }
 
     /**
-     * Sends an array of booleans to the service to let the
-     * service know which sections it needs to create notifications for
-     */
-    private void createIntentForJobScheduler() {
-        Intent serviceIntent = new Intent(getActivity(), JobSchedulerService.class);
-        boolean[] booleenArray = new boolean[6];
-        booleenArray[0] = topNewsCheck;
-        booleenArray[1] = footballCheck;
-        booleenArray[2] = basketballCheck;
-        booleenArray[3] = baseballCheck;
-        booleenArray[4] = hockeyCheck;
-        booleenArray[5] = soccerCheck;
-        serviceIntent.putExtra(BOOLEAN_CODE, booleenArray);
-        getActivity().startService(serviceIntent);
-    }
-
-
-    /**
      * Builds the JobScheduler in this activity.
      * Sets the time for it to call the api every 60 mins
+     * Sends an array of booleans to the service to let the
+     * service know which sections it needs to create notifications for
      */
     @TargetApi(21)
     public void setJobHandler() {
         if (Integer.valueOf(Build.VERSION.SDK_INT) > 20) {
             PersistableBundle bundle = new PersistableBundle();
 
-            boolean[] booleenArray = new boolean[6];
-            booleenArray[0] = topNewsCheck;
-            booleenArray[1] = footballCheck;
-            booleenArray[2] = basketballCheck;
-            booleenArray[3] = baseballCheck;
-            booleenArray[4] = hockeyCheck;
-            booleenArray[5] = soccerCheck;
-            bundle.putBooleanArray(BOOLEAN_CODE, booleenArray);
+            boolean[] booleanArray = new boolean[6];
+            booleanArray[0] = topNewsCheck;
+            booleanArray[1] = footballCheck;
+            booleanArray[2] = basketballCheck;
+            booleanArray[3] = baseballCheck;
+            booleanArray[4] = hockeyCheck;
+            booleanArray[5] = soccerCheck;
+            bundle.putBooleanArray(BOOLEAN_CODE, booleanArray);
 
-            JobInfo.Builder builder = new JobInfo.Builder(1, new ComponentName(getActivity(), JobSchedulerService.class));
-            builder.setPeriodic(18000000).setExtras(bundle);
+            if (getActivity() != null){
+                JobInfo.Builder builder = new JobInfo.Builder(1, new ComponentName(getActivity(), JobSchedulerService.class));
+                builder.setPeriodic(18000000).setExtras(bundle);
 
-            JobScheduler mJobScheduler = (JobScheduler) getActivity().getSystemService(Context.JOB_SCHEDULER_SERVICE);
-            if (mJobScheduler.schedule(builder.build()) <= 0) {
-                //If something goes wrong
+                JobScheduler mJobScheduler = (JobScheduler) getActivity().getSystemService(Context.JOB_SCHEDULER_SERVICE);
+                if (mJobScheduler.schedule(builder.build()) <= 0) {
+                    //If something goes wrong
+            }
+
             }
         }
     }
 
-    /**
-     * Sends the array of booleans to the service
-     */
     @Override
     public void onStop() {
         super.onStop();
-        //createIntentForJobScheduler();
-//        setJobHandler();
     }
 }

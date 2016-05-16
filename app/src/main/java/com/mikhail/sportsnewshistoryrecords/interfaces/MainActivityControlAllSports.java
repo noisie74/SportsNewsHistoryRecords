@@ -8,4 +8,5 @@ import android.os.Bundle;
  */
 public interface MainActivityControlAllSports {
     void setBundle(Bundle article);
+    int getSpinnerSelection();
 }

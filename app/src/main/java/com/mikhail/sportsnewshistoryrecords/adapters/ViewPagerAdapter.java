@@ -14,8 +14,8 @@ import com.mikhail.sportsnewshistoryrecords.fragments.RecordsFragment;
  */
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
-    int fragmentType;
-    int mNumOfTabs;
+    public int fragmentType;
+    public int mNumOfTabs;
     private LeaguesFragment leaguesFragment;
     private HistoryFragment historyFragment;
     private RecordsFragment recordsFragment;
