@@ -1,13 +1,13 @@
 Sports Leagues App 
 
-This sports app will show latest sports news, history and records of the world’s major sports leagues
+This sports app will show latest sports news, history and records of the world’s major sports leagues.
 Options to filter out by sports also give the latest articles. 
 The article list are fully clickable and will bring you to the web page showing the full article.
 _________________________________________________________________________________________________________________________________________
 Features:
-Notifications
-Social Share Articles
-Save an article to read later with no network connection
+<br>Notifications<br>
+<br>Social Share Articles<br>
+<br>Save an article to read later with no network connection<br>
 
 <html>
 <body>
