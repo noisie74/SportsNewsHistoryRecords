@@ -227,7 +227,7 @@ public class NotificationFragment extends Fragment {
             booleanArray[3] = baseballCheck;
             booleanArray[4] = hockeyCheck;
             booleanArray[5] = soccerCheck;
-//            bundle.putBooleanArray(BOOLEAN_CODE, booleanArray);
+            bundle.putBooleanArray(BOOLEAN_CODE, booleanArray);
 
             if (getActivity() != null){
                 JobInfo.Builder builder = new JobInfo.Builder(1, new ComponentName(getActivity(), JobSchedulerService.class));
