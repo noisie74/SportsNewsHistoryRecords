@@ -5,9 +5,9 @@ Options to filter out by sports also give the latest articles.
 The article list are fully clickable and will bring you to the web page showing the full article.
 _________________________________________________________________________________________________________________________________________
 Features:
-<br>Notifications<br>
-<br>Social Share Articles<br>
-<br>Save an article to read later with no network connection<br>
+<br>Notifications
+<br>Social Share Articles
+<br>Save an article to read later with no network connection
 
 <html>
 <body>
