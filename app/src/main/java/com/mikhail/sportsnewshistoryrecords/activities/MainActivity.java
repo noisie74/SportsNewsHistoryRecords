@@ -205,14 +205,7 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.commit();
             allSportsFragment.setFragment(key);
         } else if (key == R.id.favorites) {
-            savedArticleFragment = new SavedArticleFragment();
-            fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.frag_container, savedArticleFragment);
-            fragmentTransaction.commit();
-            toolbar.setTitle(R.string.saved_stories_toolbar);
-            if (spinner != null) {
-                spinner.setVisibility(View.GONE);
-            }
+            setSavedArticleFragment();
         }
 
     }
@@ -260,29 +253,13 @@ public class MainActivity extends AppCompatActivity
                 startMyActivity(R.id.german_soccer);
                 break;
             case R.id.favorites:
-                savedArticleFragment = new SavedArticleFragment();
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frag_container, savedArticleFragment);
-                fragmentTransaction.commit();
-                toolbar.setTitle(R.string.saved_stories_title_favorites);
-                if (spinner != null) {
-                    spinner.setVisibility(View.GONE);
-                }
+                setSavedArticleFragment();
                 break;
             case R.id.notifications:
-                notificationFragment = new NotificationFragment();
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frag_container, notificationFragment);
-                fragmentTransaction.commit();
+                setNotificationFragment();
                 break;
             case R.id.about:
-                if (aboutFragment == null) {
-                    aboutFragment = new AboutFragment();
-                    fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.frag_container, aboutFragment);
-                    fragmentTransaction.commit();
-                    aboutFragment = null;
-                }
+                setAboutFragment();
                 break;
         }
 
@@ -421,6 +398,37 @@ public class MainActivity extends AppCompatActivity
         fragmentTransaction.commit();
         toolbar.setTitle(R.string.app_title_toolbar);
 
+    }
+
+
+    private void setSavedArticleFragment() {
+        savedArticleFragment = new SavedArticleFragment();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frag_container, savedArticleFragment);
+        fragmentTransaction.commit();
+        toolbar.setTitle(R.string.saved_stories_toolbar);
+        if (spinner != null) {
+            spinner.setVisibility(View.GONE);
+        }
+
+    }
+
+    private void setNotificationFragment() {
+        notificationFragment = new NotificationFragment();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frag_container, notificationFragment);
+        fragmentTransaction.commit();
+
+    }
+
+    private void setAboutFragment() {
+        if (aboutFragment == null) {
+            aboutFragment = new AboutFragment();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.frag_container, aboutFragment);
+            fragmentTransaction.commit();
+            aboutFragment = null;
+        }
     }
 
     @Override

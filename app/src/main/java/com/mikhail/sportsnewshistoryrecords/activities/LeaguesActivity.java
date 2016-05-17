@@ -86,7 +86,7 @@ public class LeaguesActivity extends AppCompatActivity implements
     }
 
     /**
-     set click listener for tab layout
+     * set click listener for tab layout
      */
     public void setTabLayoutClickListener() {
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -118,7 +118,6 @@ public class LeaguesActivity extends AppCompatActivity implements
         leaguesDetailViewFragment.setArguments(article);
         transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frag_container_leagues, leaguesDetailViewFragment);
-//        transaction.addToBackStack(null);
         transaction.commit();
         viewPager.setVisibility(View.GONE);
         frameLayout.setVisibility(View.VISIBLE);
@@ -205,189 +204,49 @@ public class LeaguesActivity extends AppCompatActivity implements
                 break;
             case R.id.nfl:
                 toolbar.setTitle(R.string.nfl_title_leagues_ac);
-                if (viewPager != null) {
-                    viewPager.setVisibility(View.VISIBLE);
-                }
-                if (tabLayout != null) {
-                    tabLayout.setVisibility(View.VISIBLE);
-                }
-                if (frameLayout != null) {
-                    frameLayout.setVisibility(View.GONE);
-                }
-                if (toolbar.getChildAt(2).findViewById(R.id.share) != null) {
-
-                    toolbar.getChildAt(2).findViewById(R.id.share).setVisibility(View.INVISIBLE);
-                }
-                viewPagerAdapter.refreshData();
+                hideFrameLayout();
                 break;
             case R.id.nba:
                 toolbar.setTitle(R.string.nba_title_leagues_ac);
-                if (viewPager != null) {
-                    viewPager.setVisibility(View.VISIBLE);
-                }
-                if (tabLayout != null) {
-                    tabLayout.setVisibility(View.VISIBLE);
-                }
-                if (frameLayout != null) {
-                    frameLayout.setVisibility(View.GONE);
-                }
-                if (toolbar.getChildAt(2).findViewById(R.id.share) != null) {
-
-                    toolbar.getChildAt(2).findViewById(R.id.share).setVisibility(View.INVISIBLE);
-                }
-                viewPagerAdapter.refreshData();
+                hideFrameLayout();
                 break;
             case R.id.mlb:
                 toolbar.setTitle(R.string.mlb_title_leagues_activity);
-                if (viewPager != null) {
-                    viewPager.setVisibility(View.VISIBLE);
-                }
-                if (tabLayout != null) {
-                    tabLayout.setVisibility(View.VISIBLE);
-                }
-                if (frameLayout != null) {
-                    frameLayout.setVisibility(View.GONE);
-                }
-                if (toolbar.getChildAt(2).findViewById(R.id.share) != null) {
-
-                    toolbar.getChildAt(2).findViewById(R.id.share).setVisibility(View.INVISIBLE);
-                }
-                viewPagerAdapter.refreshData();
+                hideFrameLayout();
                 break;
             case R.id.nhl:
                 toolbar.setTitle(R.string.nhl_title_leagues_activity);
-                if (viewPager != null) {
-                    viewPager.setVisibility(View.VISIBLE);
-                }
-                if (tabLayout != null) {
-                    tabLayout.setVisibility(View.VISIBLE);
-                }
-                if (frameLayout != null) {
-                    frameLayout.setVisibility(View.GONE);
-                }
-                if (toolbar.getChildAt(2).findViewById(R.id.share) != null) {
-
-                    toolbar.getChildAt(2).findViewById(R.id.share).setVisibility(View.INVISIBLE);
-                }
-                viewPagerAdapter.refreshData();
+                hideFrameLayout();
                 break;
             case R.id.mls:
                 toolbar.setTitle(R.string.mls_title_leagues_activity);
-                if (viewPager != null) {
-                    viewPager.setVisibility(View.VISIBLE);
-                }
-                if (tabLayout != null) {
-                    tabLayout.setVisibility(View.VISIBLE);
-                }
-                if (frameLayout != null) {
-                    frameLayout.setVisibility(View.GONE);
-                }
-                if (toolbar.getChildAt(2).findViewById(R.id.share) != null) {
-
-                    toolbar.getChildAt(2).findViewById(R.id.share).setVisibility(View.INVISIBLE);
-                }
-                viewPagerAdapter.refreshData();
+                hideFrameLayout();
                 break;
             case R.id.english_soccer:
                 toolbar.setTitle(R.string.english_title_leagues_activity);
-                if (viewPager != null) {
-                    viewPager.setVisibility(View.VISIBLE);
-                }
-                if (tabLayout != null) {
-                    tabLayout.setVisibility(View.VISIBLE);
-                }
-                if (frameLayout != null) {
-                    frameLayout.setVisibility(View.GONE);
-                }
-                if (toolbar.getChildAt(2).findViewById(R.id.share) != null) {
-
-                    toolbar.getChildAt(2).findViewById(R.id.share).setVisibility(View.INVISIBLE);
-                }
-                viewPagerAdapter.refreshData();
+                hideFrameLayout();
                 break;
             case R.id.spanish_soccer:
                 toolbar.setTitle(R.string.spanish_title_leagues_activity);
-                if (viewPager != null) {
-                    viewPager.setVisibility(View.VISIBLE);
-                }
-                if (tabLayout != null) {
-                    tabLayout.setVisibility(View.VISIBLE);
-                }
-                if (frameLayout != null) {
-                    frameLayout.setVisibility(View.GONE);
-                }
-                if (toolbar.getChildAt(2).findViewById(R.id.share) != null) {
-
-                    toolbar.getChildAt(2).findViewById(R.id.share).setVisibility(View.INVISIBLE);
-                }
-                viewPagerAdapter.refreshData();
+                hideFrameLayout();
                 break;
             case R.id.italian_soccer:
                 toolbar.setTitle(R.string.italian_title_leagues_activity);
-                if (viewPager != null) {
-                    viewPager.setVisibility(View.VISIBLE);
-                }
-                if (tabLayout != null) {
-                    tabLayout.setVisibility(View.VISIBLE);
-                }
-                if (frameLayout != null) {
-                    frameLayout.setVisibility(View.GONE);
-                }
-                if (toolbar.getChildAt(2).findViewById(R.id.share) != null) {
-
-                    toolbar.getChildAt(2).findViewById(R.id.share).setVisibility(View.INVISIBLE);
-                }
-                viewPagerAdapter.refreshData();
+                hideFrameLayout();
                 break;
             case R.id.german_soccer:
                 toolbar.setTitle(R.string.german_title_leagues_activity);
-                if (viewPager != null) {
-                    viewPager.setVisibility(View.VISIBLE);
-                }
-                if (tabLayout != null) {
-                    tabLayout.setVisibility(View.VISIBLE);
-                }
-                if (frameLayout != null) {
-                    frameLayout.setVisibility(View.GONE);
-                }
-                if (toolbar.getChildAt(2).findViewById(R.id.share) != null) {
-                    toolbar.getChildAt(2).findViewById(R.id.share).setVisibility(View.INVISIBLE);
-                }
-                viewPagerAdapter.refreshData();
+                hideFrameLayout();
                 break;
             case R.id.favorites:
                 intent.putExtra(RETURN_TO_MAIN_ACTIVITY, R.id.favorites);
                 startActivity(intent);
                 break;
             case R.id.notifications:
-                NotificationFragment notificationFragment = new NotificationFragment();
-                transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.frag_container_leagues, notificationFragment);
-                transaction.commit();
-                if (viewPager != null) {
-                    viewPager.setVisibility(View.GONE);
-                }
-                if (tabLayout != null) {
-                    tabLayout.setVisibility(View.GONE);
-                }
-                if (frameLayout != null) {
-                    frameLayout.setVisibility(View.VISIBLE);
-                }
+                setNotificationsFragment();
                 break;
             case R.id.about:
-                AboutFragment aboutFragment = new AboutFragment();
-                transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.frag_container_leagues, aboutFragment);
-                transaction.commit();
-                if (viewPager != null) {
-                    viewPager.setVisibility(View.GONE);
-                }
-                if (tabLayout != null) {
-                    tabLayout.setVisibility(View.GONE);
-                }
-                if (frameLayout != null) {
-                    frameLayout.setVisibility(View.VISIBLE);
-                }
+                setAboutFragment();
                 break;
 
         }
@@ -396,6 +255,51 @@ public class LeaguesActivity extends AppCompatActivity implements
             drawer.closeDrawer(GravityCompat.START);
         }
         return true;
+    }
+
+    private void setNotificationsFragment() {
+        NotificationFragment notificationFragment = new NotificationFragment();
+        transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.frag_container_leagues, notificationFragment);
+        transaction.commit();
+        showFrameLayout();
+    }
+
+    private void setAboutFragment() {
+        AboutFragment aboutFragment = new AboutFragment();
+        transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.frag_container_leagues, aboutFragment);
+        transaction.commit();
+        showFrameLayout();
+    }
+
+    private void showFrameLayout() {
+        if (viewPager != null) {
+            viewPager.setVisibility(View.GONE);
+        }
+        if (tabLayout != null) {
+            tabLayout.setVisibility(View.GONE);
+        }
+        if (frameLayout != null) {
+            frameLayout.setVisibility(View.VISIBLE);
+        }
+
+    }
+
+    private void hideFrameLayout() {
+        if (viewPager != null) {
+            viewPager.setVisibility(View.VISIBLE);
+        }
+        if (tabLayout != null) {
+            tabLayout.setVisibility(View.VISIBLE);
+        }
+        if (frameLayout != null) {
+            frameLayout.setVisibility(View.GONE);
+        }
+        if (toolbar.getChildAt(2).findViewById(R.id.share) != null) {
+            toolbar.getChildAt(2).findViewById(R.id.share).setVisibility(View.INVISIBLE);
+        }
+        viewPagerAdapter.refreshData();
     }
 
     private void toolBarTitle() {
