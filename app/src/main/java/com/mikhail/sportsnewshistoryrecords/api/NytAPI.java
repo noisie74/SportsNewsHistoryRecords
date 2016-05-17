@@ -25,10 +25,8 @@ public class NytAPI {
      * RX JAva interface to make NYT News Wire api call
      */
     public interface NytRx {
-        @GET("{source}/{section}/{subsection}/1.json?&api-key=" + NytKeys.newsWireKey)
+        @GET("all/sports/{subsection}/1.json?&api-key=" + NytKeys.newsWireKey)
         Observable<NytSportsResults> nytSportsResults(
-                @Path("source") String source,
-                @Path("section") String section,
                 @Query("subsection") String subsection);
     }
 

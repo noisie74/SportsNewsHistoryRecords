@@ -88,12 +88,6 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-//    @Override
-//    protected void onResume() {
-////        setAllSportsFragment();
-//        super.onResume();
-//    }
-
     /**
      * set click listener for spinner
      */
@@ -108,19 +102,21 @@ public class MainActivity extends AppCompatActivity
                         allSportsFragment.nytAllSportsNews();
                         break;
                     case 1:
-                        allSportsFragment.nytFootballSportsNews();
+                        allSportsFragment.nytApiCall(AllSportsFragment.NYT_FOOTBALL);
+
                         break;
                     case 2:
-                        allSportsFragment.nytBasketballSportsNews();
+                        allSportsFragment.nytApiCall(AllSportsFragment.NYT_BASKETBALL);
+
                         break;
                     case 3:
                         allSportsFragment.nytApiCall(AllSportsFragment.NYT_BASEBALL);
                         break;
                     case 4:
-                        allSportsFragment.nytHockeySportsNews();
+                        allSportsFragment.nytApiCall(AllSportsFragment.NYT_HOCKEY);
                         break;
                     case 5:
-                        allSportsFragment.nytSoccerSportsNews();
+                        allSportsFragment.nytApiCall(AllSportsFragment.NYT_SOCCER);
                         break;
                 }
 

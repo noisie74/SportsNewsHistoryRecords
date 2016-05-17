@@ -211,7 +211,7 @@ public class NotificationFragment extends Fragment {
 
     /**
      * Builds the JobScheduler in this activity.
-     * Sets the time for it to call the api every 60 mins
+     * Sets the time for it to call the api every 300 mins
      * Sends an array of booleans to the service to let the
      * service know which sections it needs to create notifications for
      */
