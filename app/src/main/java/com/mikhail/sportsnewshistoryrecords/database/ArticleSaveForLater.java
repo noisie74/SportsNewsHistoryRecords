@@ -22,7 +22,6 @@ public class ArticleSaveForLater {
         this.snippet = snippet;
         this.url = url;
         this.image = image;
-//        this.code = (System.currentTimeMillis());
     }
 
 

@@ -160,4 +160,3 @@ public class AllSportsAdapter extends RecyclerView.Adapter<AllSportsAdapter.View
 
 }
 
-//nytSportsResults.getResults()[position].getThumbnail_standard();

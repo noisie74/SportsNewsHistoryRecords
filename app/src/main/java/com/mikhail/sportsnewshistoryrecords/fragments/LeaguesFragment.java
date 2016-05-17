@@ -136,12 +136,11 @@ public class LeaguesFragment extends Fragment {
 
     }
 
-
-    private void italianSoccerSearch() {
+    private void nytSearchApiCall(String query) {
 
         NytSearchAPI.NytAPIRetrofitSimple nytSportsSearch = NytSearchAPI.create();
 
-        Call<ArticleSearch> call = nytSportsSearch.response(NYT_ITALIAN);
+        Call<ArticleSearch> call = nytSportsSearch.response(query);
 
         call.enqueue(new Callback<ArticleSearch>() {
             @Override
@@ -169,225 +168,6 @@ public class LeaguesFragment extends Fragment {
 
     }
 
-    private void spanishSoccerSearch() {
-
-        NytSearchAPI.NytAPIRetrofitSimple nytSportsSearch = NytSearchAPI.create();
-
-        Call<ArticleSearch> call = nytSportsSearch.response(NYT_SPANISH);
-
-        call.enqueue(new Callback<ArticleSearch>() {
-            @Override
-            public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
-                ArticleSearch nytSportsSearch = response.body();
-                searchSportsResults.clear();
-                Collections.addAll(searchSportsResults, nytSportsSearch.getResponse().getDocs());
-                if (recyclerView != null) {
-                    recyclerView.setAdapter(leaguesNewsAdapter);
-                }
-                swipeContainer.setRefreshing(false);
-
-            }
-
-            @Override
-            public void onFailure(Call<ArticleSearch> call, Throwable t) {
-
-            }
-        });
-
-    }
-
-    private void mlsSearch() {
-
-        NytSearchAPI.NytAPIRetrofitSimple nytSportsSearch = NytSearchAPI.create();
-
-        Call<ArticleSearch> call = nytSportsSearch.response(NYT_MLS);
-
-        call.enqueue(new Callback<ArticleSearch>() {
-            @Override
-            public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
-                ArticleSearch nytSportsSearch = response.body();
-                searchSportsResults.clear();
-                Collections.addAll(searchSportsResults, nytSportsSearch.getResponse().getDocs());
-                if (recyclerView != null) {
-                    recyclerView.setAdapter(leaguesNewsAdapter);
-                }
-                swipeContainer.setRefreshing(false);
-
-            }
-
-            @Override
-            public void onFailure(Call<ArticleSearch> call, Throwable t) {
-
-            }
-        });
-
-    }
-
-    private void bundesligaSearch() {
-
-        NytSearchAPI.NytAPIRetrofitSimple nytSportsSearch = NytSearchAPI.create();
-
-        Call<ArticleSearch> call = nytSportsSearch.response(NYT_GERMAN);
-
-        call.enqueue(new Callback<ArticleSearch>() {
-            @Override
-            public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
-                ArticleSearch nytSportsSearch = response.body();
-                searchSportsResults.clear();
-                Collections.addAll(searchSportsResults, nytSportsSearch.getResponse().getDocs());
-                if (recyclerView != null) {
-                    recyclerView.setAdapter(leaguesNewsAdapter);
-                }
-                swipeContainer.setRefreshing(false);
-
-            }
-
-            @Override
-            public void onFailure(Call<ArticleSearch> call, Throwable t) {
-
-            }
-        });
-
-    }
-
-    private void nbaSearch() {
-
-        NytSearchAPI.NytAPIRetrofitSimple nytSportsSearch = NytSearchAPI.create();
-
-        Call<ArticleSearch> call = nytSportsSearch.response(NYT_BASKETBALL);
-
-        call.enqueue(new Callback<ArticleSearch>() {
-            @Override
-            public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
-                ArticleSearch nytSportsSearch = response.body();
-                setPullRefresh();
-                searchSportsResults.clear();
-                Collections.addAll(searchSportsResults, nytSportsSearch.getResponse().getDocs());
-                if (recyclerView != null) {
-                    recyclerView.setAdapter(leaguesNewsAdapter);
-                }
-                swipeContainer.setRefreshing(false);
-
-            }
-
-            @Override
-            public void onFailure(Call<ArticleSearch> call, Throwable t) {
-
-            }
-        });
-
-    }
-
-    private void footballSearch() {
-
-        NytSearchAPI.NytAPIRetrofitSimple nytSportsSearch = NytSearchAPI.create();
-
-        Call<ArticleSearch> call = nytSportsSearch.response(NYT_FOOTBALL);
-
-        call.enqueue(new Callback<ArticleSearch>() {
-            @Override
-            public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
-                ArticleSearch nytSportsSearch = response.body();
-                searchSportsResults.clear();
-                Collections.addAll(searchSportsResults, nytSportsSearch.getResponse().getDocs());
-                if (recyclerView != null) {
-                    recyclerView.setAdapter(leaguesNewsAdapter);
-                }
-                swipeContainer.setRefreshing(false);
-
-            }
-
-            @Override
-            public void onFailure(Call<ArticleSearch> call, Throwable t) {
-
-            }
-        });
-
-    }
-
-    private void baseballSearch() {
-
-        NytSearchAPI.NytAPIRetrofitSimple nytSportsSearch = NytSearchAPI.create();
-
-        Call<ArticleSearch> call = nytSportsSearch.response(NYT_BASEBALL);
-
-        call.enqueue(new Callback<ArticleSearch>() {
-            @Override
-            public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
-                ArticleSearch nytSportsSearch = response.body();
-                searchSportsResults.clear();
-                Collections.addAll(searchSportsResults, nytSportsSearch.getResponse().getDocs());
-                if (recyclerView != null) {
-                    recyclerView.setAdapter(leaguesNewsAdapter);
-                }
-                swipeContainer.setRefreshing(false);
-
-            }
-
-            @Override
-            public void onFailure(Call<ArticleSearch> call, Throwable t) {
-
-            }
-        });
-
-    }
-
-    private void hockeySearch() {
-
-        NytSearchAPI.NytAPIRetrofitSimple nytSportsSearch = NytSearchAPI.create();
-
-        Call<ArticleSearch> call = nytSportsSearch.response(NYT_HOCKEY);
-
-        call.enqueue(new Callback<ArticleSearch>() {
-            @Override
-            public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
-                ArticleSearch nytSportsSearch = response.body();
-                searchSportsResults.clear();
-                Collections.addAll(searchSportsResults, nytSportsSearch.getResponse().getDocs());
-                if (recyclerView != null) {
-                    recyclerView.setAdapter(leaguesNewsAdapter);
-                }
-                swipeContainer.setRefreshing(false);
-
-            }
-
-
-            @Override
-            public void onFailure(Call<ArticleSearch> call, Throwable t) {
-
-            }
-        });
-
-    }
-
-
-    private void englishSoccerSearch() {
-
-        NytSearchAPI.NytAPIRetrofitSimple nytSportsSearch = NytSearchAPI.create();
-
-        Call<ArticleSearch> call = nytSportsSearch.response(NYT_ENGLISH);
-
-        call.enqueue(new Callback<ArticleSearch>() {
-            @Override
-            public void onResponse(Call<ArticleSearch> call, Response<ArticleSearch> response) {
-                ArticleSearch nytSportsSearch = response.body();
-                searchSportsResults.clear();
-                Collections.addAll(searchSportsResults, nytSportsSearch.getResponse().getDocs());
-                if (recyclerView != null) {
-                    recyclerView.setAdapter(leaguesNewsAdapter);
-                }
-                swipeContainer.setRefreshing(false);
-
-            }
-
-            @Override
-            public void onFailure(Call<ArticleSearch> call, Throwable t) {
-
-            }
-        });
-
-    }
-
 
     public void setFragmentType(int type) {
         mFragmentType = type;
@@ -398,31 +178,31 @@ public class LeaguesFragment extends Fragment {
     private void apiCall() {
         switch (mFragmentType) {
             case R.id.nfl:
-                footballSearch();
+                nytSearchApiCall(NYT_FOOTBALL);
                 break;
             case R.id.nba:
-                nbaSearch();
+                nytSearchApiCall(NYT_BASKETBALL);
                 break;
             case R.id.mlb:
-                baseballSearch();
+                nytSearchApiCall(NYT_BASEBALL);
                 break;
             case R.id.nhl:
-                hockeySearch();
+                nytSearchApiCall(NYT_HOCKEY);
                 break;
             case R.id.mls:
-                mlsSearch();
+                nytSearchApiCall(NYT_MLS);
                 break;
             case R.id.english_soccer:
-                englishSoccerSearch();
+                nytSearchApiCall(NYT_ENGLISH);
                 break;
             case R.id.spanish_soccer:
-                spanishSoccerSearch();
+                nytSearchApiCall(NYT_SPANISH);
                 break;
             case R.id.italian_soccer:
-                italianSoccerSearch();
+                nytSearchApiCall(NYT_ITALIAN);
                 break;
             case R.id.german_soccer:
-                bundesligaSearch();
+                nytSearchApiCall(NYT_GERMAN);
                 break;
         }
     }

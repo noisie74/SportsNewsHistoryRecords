@@ -14,7 +14,7 @@ import com.mikhail.sportsnewshistoryrecords.api.keys.NytKeys;
 import com.mikhail.sportsnewshistoryrecords.model.newswire.NytSportsResults;
 
 /**
- * Created by Mikhail on 4/27/16.
+ * API call NYT News Wire
  */
 public class NytAPI {
 
@@ -31,7 +31,7 @@ public class NytAPI {
     }
 
     /**
-     * RX JAva interface to make NYT News Wire api call
+     * Retrofit interface to make NYT News Wire api call
      */
     public interface NytAPIRetrofit {
         @GET("{source}/{section}/{subsection}/1.json?&api-key=" + NytKeys.newsWireKey)

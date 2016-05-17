@@ -32,7 +32,6 @@ public class RecordsFragment extends Fragment {
         imageView = (ImageView) v.findViewById(R.id.league_records_logo);
         textView = (TextView) v.findViewById(R.id.league_records_text);
 
-
         return v;
 
     }
