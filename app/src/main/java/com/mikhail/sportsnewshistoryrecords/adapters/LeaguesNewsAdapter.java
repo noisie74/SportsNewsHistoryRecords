@@ -29,13 +29,6 @@ public class LeaguesNewsAdapter extends RecyclerView.Adapter<LeaguesNewsAdapter.
         this.leaguesSearchResults = leaguesSearchResults;
     }
 
-    public LeaguesNewsAdapter(){
-    }
-
-    public void updateData(ArrayList<Doc> results){
-        this.leaguesSearchResults = results;
-        notifyDataSetChanged();
-    }
 
     public interface OnItemClickListener {
         void onItemClick(View itemView, int position);
@@ -45,22 +38,18 @@ public class LeaguesNewsAdapter extends RecyclerView.Adapter<LeaguesNewsAdapter.
         this.listener = listener;
     }
 
-    public void setArticles(ArrayList<Doc> results){
-        this.leaguesSearchResults = results;
-    }
+
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView headline;
         public TextView articleInfo;
         public ImageView articleImage;
-//        Doc doc;
 
         public ViewHolder(final View itemView) {
             super(itemView);
             headline = (TextView) itemView.findViewById(R.id.headline);
             articleInfo = (TextView) itemView.findViewById(R.id.article_info);
             articleImage = (ImageView) itemView.findViewById(R.id.cardView_image);
-//            doc = new Doc();
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -101,7 +90,6 @@ public class LeaguesNewsAdapter extends RecyclerView.Adapter<LeaguesNewsAdapter.
         int[] images = new int[2];
         images[0] = R.drawable.about_image;
         images[1] = R.drawable.placeholder_image;
-//        images[2] = R.drawable.placeholder_image2;
 
 
         Picasso.with(context)
@@ -118,7 +106,11 @@ public class LeaguesNewsAdapter extends RecyclerView.Adapter<LeaguesNewsAdapter.
     }
 
 
-
+    /**
+     random placeholder images
+     * @param placeholderDrawables
+     * @return
+     */
     private int randPlaceholder(int[] placeholderDrawables){
 
 
@@ -127,10 +119,3 @@ public class LeaguesNewsAdapter extends RecyclerView.Adapter<LeaguesNewsAdapter.
         return placeholderDrawables[placeholderPosition % placeholderDrawables.length];
     }
 }
-
-
-//public List<Doc> docs;
-//
-//    public LeaguesNewsAdapter(List<Doc>docs) {
-//        this.docs = docs;
-//    }

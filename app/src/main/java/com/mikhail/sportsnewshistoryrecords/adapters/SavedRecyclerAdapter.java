@@ -79,10 +79,8 @@ public class SavedRecyclerAdapter extends RecyclerView.Adapter<SavedRecyclerAdap
 
     @Override
     public void onBindViewHolder(SavedRecyclerViewHolder holder, int position) {
-//        long timeStamp = System.currentTimeMillis();
         holder.headline.setText(data.get(position).getTitle());
         holder.articleAbstract.setText(data.get(position).getSnippet());
-//        holder.ago.setText("saved " + AllSportsAdapter.getBiggestUnitTimeElapsed(data.get(position).getCode(), timeStamp) + " ago");
 
 
         String imageURI = data.get(position).getImage();

@@ -10,7 +10,7 @@ import com.mikhail.sportsnewshistoryrecords.fragments.LeaguesFragment;
 import com.mikhail.sportsnewshistoryrecords.fragments.RecordsFragment;
 
 /**
- * Created by Mikhail on 4/29/16.
+ * View pager adapter that switches fragments
  */
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
